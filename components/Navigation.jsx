@@ -14,7 +14,7 @@ const navItems = [
 ];
 
 export default function Navigation() {
-  const location = usePathname();
+  const pathname = usePathname();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-40 border-b border-border bg-background/80 backdrop-blur-md">
@@ -32,7 +32,7 @@ export default function Navigation() {
           <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => {
               const Icon = item.icon;
-              const isActive = location.pathname === item.path;
+              const isActive = pathname === item.path;
 
               return (
                 <Link
