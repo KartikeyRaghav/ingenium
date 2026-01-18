@@ -5,7 +5,7 @@ import { Calendar } from "lucide-react";
 
 const timelineData = [
   {
-    date: "March 15, 2026",
+    date: "March 14, 2026",
     day: "Day 01",
     events: [
       {
@@ -25,7 +25,7 @@ const timelineData = [
     ],
   },
   {
-    date: "March 16, 2026",
+    date: "March 15, 2026",
     day: "Day 02",
     events: [
       { time: "10:00 AM", name: "HackIgenium Ends", venue: "LHC" },
@@ -37,7 +37,7 @@ const timelineData = [
     ],
   },
   {
-    date: "March 17, 2026",
+    date: "March 16, 2026",
     day: "Day 03",
     events: [
       { time: "10:00 AM", name: "Debate Competition", venue: "Seminar Hall" },

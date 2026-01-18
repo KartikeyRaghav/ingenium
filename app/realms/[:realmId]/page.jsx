@@ -149,7 +149,7 @@ const realmData = {
         type: "Performance",
         team: "8-12",
         prize: "₹50,000",
-        date: "Mar 17",
+        date: "Mar 16",
       },
       {
         id: "drama",
@@ -157,7 +157,7 @@ const realmData = {
         type: "Performance",
         team: "6-10",
         prize: "₹40,000",
-        date: "Mar 17",
+        date: "Mar 16",
       },
     ],
   },

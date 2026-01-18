@@ -5,7 +5,7 @@
 
 :root {
   --font-size: 16px;
-  
+
   /* Ingenium Dark Theme Colors - Restrained Sci-Fi */
   --background: #0a0e1a;
   --foreground: #e2e4e9;
@@ -31,7 +31,7 @@
   --font-weight-normal: 400;
   --ring: rgba(74, 122, 140, 0.3);
   --radius: 0.125rem;
-  
+
   /* Additional Theme Variables */
   --nav-blur: blur(10px);
   --glow-subtle: 0 0 20px rgba(74, 122, 140, 0.1);
@@ -119,5 +119,77 @@
   input {
     font-weight: var(--font-weight-normal);
     line-height: 1.5;
+  }
+}
+
+.arc-reactor {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+      #0b1624 0%,
+      #050b14 70%);
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(120, 160, 255, 0.15);
+}
+
+.outer {
+  animation: rotateSlow 30s linear infinite;
+}
+
+.inner {
+  inset: 40px;
+  animation: rotateFast 12s linear infinite reverse;
+}
+
+.segments {
+  inset: 20px;
+  mask: repeating-conic-gradient(from 0deg,
+      #000 0deg 6deg,
+      transparent 6deg 12deg);
+  background: rgba(120, 160, 255, 0.25);
+}
+
+.core {
+  position: absolute;
+  inset: 80px;
+  border-radius: 50%;
+  background: #050b14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(120, 160, 255, 0.3);
+}
+
+.time {
+  font-family: var(--font-mono);
+  letter-spacing: 0.12em;
+  font-size: 1.2rem;
+  color: #b6c8ff;
+}
+
+@keyframes rotateSlow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateFast {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
   }
 }
