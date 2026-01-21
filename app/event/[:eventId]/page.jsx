@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Navigation from "@/app/components/Navigation";
+import Navigation from "@/components/Navigation";
 import {
   ArrowLeft,
   Calendar,

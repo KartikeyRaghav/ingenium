@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { Progress } from '@/app/components/ui/progress';
+import { useEffect, useState } from "react";
 
 export default function Preloader() {
   const [progress, setProgress] = useState(0);
@@ -22,14 +21,14 @@ export default function Preloader() {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-background">
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div 
+        <div
           className="h-full w-full"
           style={{
             backgroundImage: `
               linear-gradient(rgba(90, 107, 130, 0.1) 1px, transparent 1px),
               linear-gradient(90deg, rgba(90, 107, 130, 0.1) 1px, transparent 1px)
             `,
-            backgroundSize: '40px 40px'
+            backgroundSize: "40px 40px",
           }}
         />
       </div>
@@ -38,7 +37,7 @@ export default function Preloader() {
       <div className="relative z-10 flex flex-col items-center gap-12 px-8">
         {/* Logo / Title */}
         <div className="text-center">
-          <div 
+          <div
             className="mb-4 text-6xl tracking-tighter font-medium"
             data-animate="fade-in"
           >
@@ -51,10 +50,10 @@ export default function Preloader() {
 
         {/* Progress Bar - Clean & Minimal */}
         <div className="w-100 max-w-full">
-          <Progress 
+          {/* <Progress 
             value={progress} 
             className="h-0.5 bg-muted"
-          />
+          /> */}
           <div className="mt-3 flex justify-between text-xs text-muted-foreground font-mono">
             <span>INITIALIZING</span>
             <span>{progress}%</span>
@@ -63,10 +62,10 @@ export default function Preloader() {
 
         {/* Status Text */}
         <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          {progress < 30 && 'Loading System'}
-          {progress >= 30 && progress < 60 && 'Establishing Connection'}
-          {progress >= 60 && progress < 90 && 'Synchronizing Data'}
-          {progress >= 90 && 'Ready'}
+          {progress < 30 && "Loading System"}
+          {progress >= 30 && progress < 60 && "Establishing Connection"}
+          {progress >= 60 && progress < 90 && "Synchronizing Data"}
+          {progress >= 90 && "Ready"}
         </div>
       </div>
     </div>

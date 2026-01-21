@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
-import ArcReactorClock from "@/components/ArcReactorClock";
 
 export default function CountdownPage() {
   const targetDate = new Date("2026-03-14T18:00:00").getTime();
