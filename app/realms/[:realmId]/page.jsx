@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import { ArrowLeft, Calendar, Users, Trophy } from "lucide-react";

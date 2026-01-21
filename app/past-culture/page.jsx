@@ -1,3 +1,4 @@
+"use client";
 import Navigation from '@/components/Navigation';
 import { Calendar, Users, Award } from 'lucide-react';
 

@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { ChevronRight, Calendar, MapPin } from "lucide-react";
 import Navigation from "@/components/Navigation";

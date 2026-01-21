@@ -1,3 +1,4 @@
+"use client";
 import Link  from 'next/link';
 import Navigation from '@/components/Navigation';
 import { Code, Palette, Music, Zap, Brain, Globe } from 'lucide-react';
