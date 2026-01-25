@@ -1,72 +1,313 @@
 "use client";
-import { Home, Map, Calendar, Timer, Users, Heart, Award } from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 
-const navItems = [
-  { path: "/", label: "Home", icon: Home },
-  { path: "/realms", label: "Realms", icon: Map },
-  { path: "/timeline", label: "Timeline", icon: Calendar },
-  { path: "/countdown", label: "Countdown", icon: Timer },
-  { path: "/sponsors", label: "Sponsors", icon: Award },
-  { path: "/past-culture", label: "Archives", icon: Heart },
-  { path: "/team", label: "Team", icon: Users },
-];
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { Clock, Calendar, Rocket, Users, Phone } from "lucide-react";
 
-export default function Navigation() {
-  const pathname = usePathname();
+const Navigation = ({ onNodeSelect }) => {
+  const containerRef = useRef(null);
+  const [hoveredNode, setHoveredNode] = useState(null);
+  const [selectedNode, setSelectedNode] = useState(null);
+
+  const nodes = [
+    {
+      id: "past",
+      label: "PAST",
+      position: { x: 20, y: 50 },
+      icon: <Clock className="w-6 h-6" />,
+      description: "Origins & Culture",
+    },
+    {
+      id: "present",
+      label: "PRESENT",
+      position: { x: 50, y: 50 },
+      icon: <Calendar className="w-6 h-6" />,
+      description: "Events & Schedule",
+    },
+    {
+      id: "future",
+      label: "FUTURE",
+      position: { x: 80, y: 50 },
+      icon: <Rocket className="w-6 h-6" />,
+      description: "Vision & Sponsors",
+    },
+    {
+      id: "countdown",
+      label: "TIME CORE",
+      position: { x: 50, y: 25 },
+      icon: <Clock className="w-5 h-5" />,
+      description: "Countdown",
+    },
+    {
+      id: "contact",
+      label: "CONTACT",
+      position: { x: 50, y: 75 },
+      icon: <Phone className="w-5 h-5" />,
+      description: "Team & Reach",
+    },
+  ];
+
+  useEffect(() => {
+    // GSAP Animation Hook: Navigation map entrance
+    const tl = gsap.timeline();
+
+    tl.fromTo(
+      containerRef.current,
+      {
+        opacity: 0,
+        scale: 0.9,
+        duration: 0.8,
+        ease: "power2.out",
+      },
+      {
+        opacity: 1,
+        scale: 0.9,
+        duration: 0.8,
+        ease: "power2.out",
+      },
+    );
+
+    // Animate nodes in sequence
+    nodes.forEach((node, index) => {
+      const nodeElement = document.getElementById(`node-${node.id}`);
+      if (nodeElement) {
+        gsap.fromTo(
+          nodeElement,
+          {
+            opacity: 0,
+            scale: 0,
+            duration: 0.5,
+            delay: index * 0.1,
+            ease: "back.out(1.7)",
+          },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.5,
+            delay: index * 0.1,
+            ease: "back.out(1.7)",
+          },
+        );
+      }
+    });
+
+    // Animate connection lines
+    const lines = document.querySelectorAll(".connection-line");
+    lines.forEach((line, index) => {
+      gsap.from(line, {
+        strokeDashoffset: 1000,
+        duration: 1.5,
+        delay: 0.5 + index * 0.2,
+        ease: "power2.out",
+      });
+    });
+  }, []);
+
+  const handleNodeHover = (nodeId) => {
+    setHoveredNode(nodeId);
+
+    const nodeElement = document.getElementById(`node-${nodeId}`);
+    if (nodeElement && nodeId) {
+      // GSAP Animation Hook: Node hover effect
+      gsap.to(nodeElement, {
+        scale: 1.15,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    }
+  };
+
+  const handleNodeLeave = (nodeId) => {
+    const nodeElement = document.getElementById(`node-${nodeId}`);
+    if (nodeElement && nodeId !== selectedNode) {
+      gsap.to(nodeElement, {
+        scale: 1,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    }
+  };
+
+  const handleNodeClick = (nodeId) => {
+    setSelectedNode(nodeId);
+
+    // GSAP Animation Hook: Node selection with camera pan effect
+    const nodeElement = document.getElementById(`node-${nodeId}`);
+    if (nodeElement) {
+      gsap.to(nodeElement, {
+        scale: 1.2,
+        duration: 0.4,
+        ease: "power2.out",
+      });
+    }
+
+    // Trigger content panel opening
+    setTimeout(() => {
+      onNodeSelect(nodeId);
+    }, 400);
+  };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 border-b border-border bg-background/80 backdrop-blur-md">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="text-xl tracking-tighter font-medium hover:text-accent transition-colors"
-          >
-            INGENIUM
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = pathname === item.path;
-
-              return (
-                <Link
-                  key={item.path}
-                  href={item.path}
-                  className={`
-                    flex items-center gap-2 px-4 py-2 text-sm rounded-sm transition-all
-                    ${
-                      isActive
-                        ? "bg-muted text-foreground"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                    }
-                  `}
-                >
-                  <Icon className="h-4 w-4" />
-                  <span className="uppercase tracking-wider">{item.label}</span>
-                </Link>
-              );
-            })}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-muted-foreground hover:text-foreground"
-            aria-label="Menu"
-          >
-            <div className="w-5 h-4 flex flex-col justify-between">
-              <span className="w-full h-0.5 bg-current" />
-              <span className="w-full h-0.5 bg-current" />
-              <span className="w-full h-0.5 bg-current" />
-            </div>
-          </button>
-        </div>
+    <div
+      ref={containerRef}
+      className="relative w-full h-screen bg-[#0a0e1a] overflow"
+    >
+      {/* Technical Grid Background */}
+      <div className="absolute inset-0 opacity-10">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(59, 130, 246, 0.2) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(59, 130, 246, 0.2) 1px, transparent 1px)
+            `,
+            backgroundSize: "40px 40px",
+          }}
+        />
       </div>
-    </nav>
+
+      {/* Header */}
+      <div className="absolute top-8 left-8 z-20">
+        <h2 className="text-2xl font-light tracking-wider text-blue-100">
+          INGENIUM
+        </h2>
+        <p className="text-sm text-blue-300/60 tracking-wide">
+          CHRONOVERSE NAVIGATION
+        </p>
+      </div>
+
+      {/* SVG Connection Lines */}
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{ zIndex: 1 }}
+      >
+        {/* Past to Present */}
+        <line
+          className="connection-line"
+          x1="20%"
+          y1="50%"
+          x2="50%"
+          y2="50%"
+          stroke="rgba(59, 130, 246, 0.3)"
+          strokeWidth="1"
+          strokeDasharray="5,5"
+          style={{ strokeDashoffset: 0 }}
+        />
+
+        {/* Present to Future */}
+        <line
+          className="connection-line"
+          x1="50%"
+          y1="50%"
+          x2="80%"
+          y2="50%"
+          stroke="rgba(59, 130, 246, 0.3)"
+          strokeWidth="1"
+          strokeDasharray="5,5"
+          style={{ strokeDashoffset: 0 }}
+        />
+
+        {/* Time Core to Present */}
+        <line
+          className="connection-line"
+          x1="50%"
+          y1="25%"
+          x2="50%"
+          y2="50%"
+          stroke="rgba(59, 130, 246, 0.2)"
+          strokeWidth="1"
+          strokeDasharray="5,5"
+          style={{ strokeDashoffset: 0 }}
+        />
+
+        {/* Present to Contact */}
+        <line
+          className="connection-line"
+          x1="50%"
+          y1="50%"
+          x2="50%"
+          y2="75%"
+          stroke="rgba(59, 130, 246, 0.2)"
+          strokeWidth="1"
+          strokeDasharray="5,5"
+          style={{ strokeDashoffset: 0 }}
+        />
+      </svg>
+
+      {/* Navigation Nodes */}
+      <div className="relative w-full h-full">
+        {nodes.map((node) => (
+          <div
+            key={node.id}
+            id={`node-${node.id}`}
+            className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+            style={{
+              left: `${node.position.x}%`,
+              top: `${node.position.y}%`,
+              zIndex: 10,
+            }}
+            onMouseEnter={() => handleNodeHover(node.id)}
+            onMouseLeave={() => handleNodeLeave(node.id)}
+            onClick={() => handleNodeClick(node.id)}
+          >
+            {/* Node Container */}
+            <div className="relative flex flex-col items-center">
+              {/* Node Circle */}
+              <div
+                className={`
+                  w-20 h-20 border flex items-center justify-center
+                  transition-all duration-300
+                  ${
+                    hoveredNode === node.id || selectedNode === node.id
+                      ? "border-blue-400/80 bg-blue-500/10 shadow-[0_0_30px_rgba(59,130,246,0.3)]"
+                      : "border-blue-400/40 bg-blue-500/5 shadow-[0_0_15px_rgba(59,130,246,0.1)]"
+                  }
+                `}
+                style={{
+                  clipPath:
+                    "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
+                }}
+              >
+                <div className="text-blue-200">{node.icon}</div>
+              </div>
+
+              {/* Node Label */}
+              <div className="mt-4 text-center">
+                <p className="text-xs tracking-widest text-blue-100 font-light">
+                  {node.label}
+                </p>
+                <p className="text-[10px] tracking-wide text-blue-400/60 mt-1">
+                  {node.description}
+                </p>
+              </div>
+
+              {/* Glow effect on hover */}
+              {hoveredNode === node.id && (
+                <div
+                  className="absolute inset-0 -z-10"
+                  style={{
+                    background:
+                      "radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)",
+                    width: "200%",
+                    height: "200%",
+                    left: "-50%",
+                    top: "-50%",
+                  }}
+                />
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Instructions */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
+        <p className="text-blue-400/40 text-xs tracking-wider uppercase">
+          Select a node to explore
+        </p>
+      </div>
+    </div>
   );
-}
+};
+
+export default Navigation;
