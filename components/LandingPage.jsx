@@ -82,7 +82,7 @@ const LandingPage = ({ onNavigate }) => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-screen bg-[#0a0e1a] overflow-hidden flex items-center justify-center"
+      className="relative w-full h-screen bg-transparent overflow-hidden flex items-center justify-center"
     >
       {/* Animated Grid Background */}
       <div className="absolute inset-0 opacity-20">
@@ -104,7 +104,7 @@ const LandingPage = ({ onNavigate }) => {
         {[...Array(12)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-blue-400/30 rounded-full"
+            className="absolute w-0.5 h-0.5 bg-white rounded-full"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -125,7 +125,7 @@ const LandingPage = ({ onNavigate }) => {
       <div className="relative z-10 text-center max-w-4xl px-8">
         <h1
           ref={titleRef}
-          className="text-7xl md:text-8xl font-bold tracking-wider text-blue-50 mb-6"
+          className="text-7xl md:text-8xl bg-linear-to-r from-green-500 via-cyan-400 to-blue-500 font-bold tracking-wider bg-clip-text text-transparent mb-6"
           style={{ fontFamily: "Oxanium, sans-serif" }}
         >
           INGENIUM

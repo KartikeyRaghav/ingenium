@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { Clock, Calendar, Rocket, Users, Phone, ArrowLeft } from "lucide-react";
+import { Clock, Calendar, Rocket, Phone, ArrowLeft } from "lucide-react";
 
 const Navigation = ({ onNavigate }) => {
   const containerRef = useRef(null);
@@ -14,35 +14,40 @@ const Navigation = ({ onNavigate }) => {
       id: "past",
       label: "PAST",
       position: { x: 20, y: 50 },
-      icon: <Clock className="w-6 h-6" />,
+      icon: <Clock className="w-8 h-8" />,
+      color: "green",
       description: "Origins & Culture",
     },
     {
       id: "present",
       label: "PRESENT",
       position: { x: 50, y: 50 },
-      icon: <Calendar className="w-6 h-6" />,
+      icon: <Calendar className="w-8 h-8" />,
+      color: "cyan",
       description: "Events & Schedule",
     },
     {
       id: "future",
       label: "FUTURE",
       position: { x: 80, y: 50 },
-      icon: <Rocket className="w-6 h-6" />,
+      icon: <Rocket className="w-8 h-8" />,
+      color: "cyan",
       description: "Vision & Sponsors",
     },
     {
       id: "countdown",
       label: "TIME CORE",
       position: { x: 50, y: 25 },
-      icon: <Clock className="w-5 h-5" />,
+      icon: <Clock className="w-8 h-8" />,
+      color: "cyan",
       description: "Countdown",
     },
     {
       id: "contact",
       label: "CONTACT",
       position: { x: 50, y: 75 },
-      icon: <Phone className="w-5 h-5" />,
+      icon: <Phone className="w-8 h-8" />,
+      color: "blue",
       description: "Team & Reach",
     },
   ];
@@ -148,7 +153,7 @@ const Navigation = ({ onNavigate }) => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-screen bg-[#0a0e1a] overflow"
+      className="relative w-full h-screen bg-transparent overflow"
     >
       {/* Technical Grid Background */}
       <div className="absolute inset-0 opacity-10">
@@ -165,15 +170,18 @@ const Navigation = ({ onNavigate }) => {
       </div>
 
       {/* Header */}
-      <div className="absolute top-8 left-8 z-20 flex gap-2 justify-center items-center">
+      <div className="absolute top-8 left-8 z-20 flex gap-6 justify-center items-center">
         <button className="cursor-pointer" onClick={onNavigate}>
-          <ArrowLeft />
+          <ArrowLeft className="w-8 h-8" />
         </button>
         <div>
-          <h2 className="text-2xl font-light tracking-wider text-blue-100">
+          <h2
+            className="text-4xl bg-linear-to-r from-green-500 via-cyan-400 to-blue-500 font-semibold tracking-wider bg-clip-text text-transparent"
+            style={{ fontFamily: "Oxanium, sans-serif" }}
+          >
             INGENIUM
           </h2>
-          <p className="text-sm text-blue-300/60 tracking-wide">
+          <p className="text-lg text-blue-300/60 tracking-wide">
             CHRONOVERSE NAVIGATION
           </p>
         </div>
@@ -258,12 +266,12 @@ const Navigation = ({ onNavigate }) => {
               {/* Node Circle */}
               <div
                 className={`
-                  w-20 h-20 border flex items-center justify-center
+                  w-25 h-25 border flex items-center justify-center
                   transition-all duration-300
                   ${
                     hoveredNode === node.id || selectedNode === node.id
                       ? "border-blue-400/80 bg-blue-500/10 shadow-[0_0_30px_rgba(59,130,246,0.3)]"
-                      : "border-blue-400/40 bg-blue-500/5 shadow-[0_0_15px_rgba(59,130,246,0.1)]"
+                      : `border-blue-400/40 bg-blue-500/5 shadow-[0_0_15px_rgba(59,130,246,0.1)]"`
                   }
                 `}
                 style={{
@@ -276,10 +284,13 @@ const Navigation = ({ onNavigate }) => {
 
               {/* Node Label */}
               <div className="mt-4 text-center">
-                <p className="text-sm tracking-wider text-blue-100 font-semibold">
+                <p
+                  className="text-md tracking-wider text-blue-100 font-semibold"
+                  style={{ fontFamily: "Oxanium, sans-serif" }}
+                >
                   {node.label}
                 </p>
-                <p className="text-xs tracking-wide text-blue-400/60 mt-1">
+                <p className="text-md tracking-wide text-blue-400/60 mt-1">
                   {node.description}
                 </p>
               </div>
@@ -305,7 +316,7 @@ const Navigation = ({ onNavigate }) => {
 
       {/* Instructions */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
-        <p className="text-blue-400/40 text-xs tracking-wider uppercase">
+        <p className="text-blue-400/40 text-md tracking-wider uppercase">
           Select a node to explore
         </p>
       </div>
