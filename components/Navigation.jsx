@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { Clock, Calendar, Rocket, Users, Phone } from "lucide-react";
+import { Clock, Calendar, Rocket, Users, Phone, ArrowLeft } from "lucide-react";
 
-const Navigation = ({ onNodeSelect }) => {
+const Navigation = ({ onNavigate }) => {
   const containerRef = useRef(null);
   const [hoveredNode, setHoveredNode] = useState(null);
   const [selectedNode, setSelectedNode] = useState(null);
@@ -142,9 +142,7 @@ const Navigation = ({ onNodeSelect }) => {
     }
 
     // Trigger content panel opening
-    setTimeout(() => {
-      onNodeSelect(nodeId);
-    }, 400);
+    setTimeout(() => {}, 400);
   };
 
   return (
@@ -167,13 +165,18 @@ const Navigation = ({ onNodeSelect }) => {
       </div>
 
       {/* Header */}
-      <div className="absolute top-8 left-8 z-20">
-        <h2 className="text-2xl font-light tracking-wider text-blue-100">
-          INGENIUM
-        </h2>
-        <p className="text-sm text-blue-300/60 tracking-wide">
-          CHRONOVERSE NAVIGATION
-        </p>
+      <div className="absolute top-8 left-8 z-20 flex gap-2 justify-center items-center">
+        <button className="cursor-pointer" onClick={onNavigate}>
+          <ArrowLeft />
+        </button>
+        <div>
+          <h2 className="text-2xl font-light tracking-wider text-blue-100">
+            INGENIUM
+          </h2>
+          <p className="text-sm text-blue-300/60 tracking-wide">
+            CHRONOVERSE NAVIGATION
+          </p>
+        </div>
       </div>
 
       {/* SVG Connection Lines */}
@@ -273,10 +276,10 @@ const Navigation = ({ onNodeSelect }) => {
 
               {/* Node Label */}
               <div className="mt-4 text-center">
-                <p className="text-xs tracking-widest text-blue-100 font-light">
+                <p className="text-sm tracking-wider text-blue-100 font-semibold">
                   {node.label}
                 </p>
-                <p className="text-[10px] tracking-wide text-blue-400/60 mt-1">
+                <p className="text-xs tracking-wide text-blue-400/60 mt-1">
                   {node.description}
                 </p>
               </div>

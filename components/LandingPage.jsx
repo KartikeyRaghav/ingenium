@@ -125,8 +125,8 @@ const LandingPage = ({ onNavigate }) => {
       <div className="relative z-10 text-center max-w-4xl px-8">
         <h1
           ref={titleRef}
-          className="text-7xl md:text-8xl font-light tracking-wider text-blue-50 mb-6"
-          style={{ fontFamily: "system-ui, sans-serif" }}
+          className="text-7xl md:text-8xl font-bold tracking-wider text-blue-50 mb-6"
+          style={{ fontFamily: "Oxanium, sans-serif" }}
         >
           INGENIUM
         </h1>
@@ -151,7 +151,7 @@ const LandingPage = ({ onNavigate }) => {
           onClick={onNavigate}
           onMouseEnter={() => handleButtonHover(true)}
           onMouseLeave={() => handleButtonHover(false)}
-          className="group relative px-12 py-4 bg-transparent border border-blue-400/40 text-blue-100 
+          className="group relative opacity-0 px-12 py-4 bg-transparent border border-blue-400/40 text-blue-100 
                      tracking-wider text-sm font-light transition-all duration-300 cursor-pointer
                      hover:border-blue-400/70 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)]"
         >

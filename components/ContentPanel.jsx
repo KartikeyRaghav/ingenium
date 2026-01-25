@@ -13,18 +13,18 @@ const contentData = {
         content: [
           "Founded in 2009, IIT Indore stands as a beacon of academic excellence and innovation.",
           "Our techno-cultural heritage blends cutting-edge research with creative expression.",
-          "Pre-Ingenium events laid the foundation for this landmark celebration."
-        ]
+          "Pre-Ingenium events laid the foundation for this landmark celebration.",
+        ],
       },
       {
         heading: "Cultural Heritage",
         content: [
           "A tradition of interdisciplinary collaboration.",
           "Student-driven innovation across all domains.",
-          "Community building through shared experiences."
-        ]
-      }
-    ]
+          "Community building through shared experiences.",
+        ],
+      },
+    ],
   },
   present: {
     title: "PRESENT: EVENTS",
@@ -34,26 +34,26 @@ const contentData = {
         content: [
           "Robotics Challenge: Build autonomous systems",
           "CodeSprint: 24-hour hackathon",
-          "Innovation Showcase: Present your breakthrough ideas"
-        ]
+          "Innovation Showcase: Present your breakthrough ideas",
+        ],
       },
       {
         heading: "Cultural Programs",
         content: [
           "Live Performances: Music, dance, and theater",
           "Art Exhibition: Digital and traditional media",
-          "Film Screening: Student-curated selections"
-        ]
+          "Film Screening: Student-curated selections",
+        ],
       },
       {
         heading: "Schedule",
         content: [
           "Day 1: Opening ceremony and workshops",
           "Day 2: Main competitions and performances",
-          "Day 3: Finals and closing gala"
-        ]
-      }
-    ]
+          "Day 3: Finals and closing gala",
+        ],
+      },
+    ],
   },
   future: {
     title: "FUTURE: VISION",
@@ -63,26 +63,26 @@ const contentData = {
         content: [
           "Ingenium aims to become a premier platform for student innovation.",
           "Fostering collaboration between technology and culture.",
-          "Creating lasting impact through knowledge exchange."
-        ]
+          "Creating lasting impact through knowledge exchange.",
+        ],
       },
       {
         heading: "Key Sponsors",
         content: [
           "Technology Partners: Leading tech companies",
           "Media Partners: National publications",
-          "Academic Partners: Research institutions"
-        ]
+          "Academic Partners: Research institutions",
+        ],
       },
       {
         heading: "What's Next",
         content: [
           "Annual editions with expanding scope",
           "International participation",
-          "Industry partnerships and mentorship programs"
-        ]
-      }
-    ]
+          "Industry partnerships and mentorship programs",
+        ],
+      },
+    ],
   },
   countdown: {
     title: "TIME CORE: COUNTDOWN",
@@ -92,18 +92,18 @@ const contentData = {
         content: [
           "Registration Opens: January 20, 2026",
           "Main Event: February 14-16, 2026",
-          "Awards Ceremony: February 16, 2026"
-        ]
+          "Awards Ceremony: February 16, 2026",
+        ],
       },
       {
         heading: "Important Dates",
         content: [
           "Early Bird Registration: Until January 31",
           "Abstract Submission Deadline: February 5",
-          "Team Formation Deadline: February 10"
-        ]
-      }
-    ]
+          "Team Formation Deadline: February 10",
+        ],
+      },
+    ],
   },
   contact: {
     title: "CONTACT: TEAM",
@@ -113,27 +113,27 @@ const contentData = {
         content: [
           "Overall Coordinator: team@ingenium.iiti.ac.in",
           "Technical Head: tech@ingenium.iiti.ac.in",
-          "Cultural Head: cultural@ingenium.iiti.ac.in"
-        ]
+          "Cultural Head: cultural@ingenium.iiti.ac.in",
+        ],
       },
       {
         heading: "General Inquiries",
         content: [
           "Email: info@ingenium.iiti.ac.in",
           "Phone: +91 731 XXX XXXX",
-          "Location: IIT Indore, Simrol, Madhya Pradesh"
-        ]
+          "Location: IIT Indore, Simrol, Madhya Pradesh",
+        ],
       },
       {
         heading: "Social Media",
         content: [
           "Follow us for updates and announcements",
           "Instagram: @ingenium_iiti",
-          "LinkedIn: Ingenium IIT Indore"
-        ]
-      }
-    ]
-  }
+          "LinkedIn: Ingenium IIT Indore",
+        ],
+      },
+    ],
+  },
 };
 
 const ContentPanel = ({ nodeId, onClose }) => {
@@ -145,18 +145,18 @@ const ContentPanel = ({ nodeId, onClose }) => {
     gsap.from(panelRef.current, {
       x: "100%",
       duration: 0.6,
-      ease: "power3.out"
+      ease: "power3.out",
     });
 
     // Animate sections in sequence
-    const sections = panelRef.current?.querySelectorAll('.content-section');
+    const sections = panelRef.current?.querySelectorAll(".content-section");
     sections?.forEach((section, index) => {
       gsap.from(section, {
         opacity: 0,
         y: 20,
         duration: 0.5,
         delay: 0.3 + index * 0.1,
-        ease: "power2.out"
+        ease: "power2.out",
       });
     });
   }, [nodeId]);
@@ -167,7 +167,7 @@ const ContentPanel = ({ nodeId, onClose }) => {
       x: "100%",
       duration: 0.5,
       ease: "power3.in",
-      onComplete: onClose
+      onComplete: onClose,
     });
   };
 
@@ -180,13 +180,13 @@ const ContentPanel = ({ nodeId, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex">
       {/* Backdrop */}
-      <div 
+      <div
         className="flex-1 bg-black/60 backdrop-blur-sm"
         onClick={handleClose}
       />
 
       {/* Panel */}
-      <div 
+      <div
         ref={panelRef}
         className="w-full max-w-2xl bg-[#0d1117] border-l border-blue-400/20 overflow-y-auto"
       >
@@ -222,7 +222,7 @@ const ContentPanel = ({ nodeId, onClose }) => {
                 </h3>
                 <div className="space-y-3">
                   {section.content.map((item, itemIndex) => (
-                    <div 
+                    <div
                       key={itemIndex}
                       className="flex items-start gap-3 text-blue-100/70 text-sm leading-relaxed"
                     >
@@ -245,6 +245,6 @@ const ContentPanel = ({ nodeId, onClose }) => {
       </div>
     </div>
   );
-}
+};
 
 export default ContentPanel;
