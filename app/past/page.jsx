@@ -247,7 +247,10 @@ export default function PastPage() {
               </span>
             </div>
             <h1 className="text-4xl md:text-6xl font-sans tracking-wider mb-4">
-              <span className="bg-linear-to-r from-amber-400 via-orange-400 to-amber-500 bg-clip-text text-transparent">
+              <span
+                className="bg-linear-to-r from-amber-400 via-orange-400 to-amber-500 bg-clip-text text-transparent"
+                style={{ fontFamily: "Oxanium, sans-serif" }}
+              >
                 Chronicles of Innovation
               </span>
             </h1>

@@ -133,7 +133,10 @@ export default function ContactPage() {
               </span>
             </div>
             <h1 className="text-4xl md:text-6xl font-sans tracking-wider mb-4">
-              <span className="bg-linear-to-r from-emerald-400 via-teal-400 to-emerald-500 bg-clip-text text-transparent">
+              <span
+                className="bg-linear-to-r from-emerald-400 via-teal-400 to-emerald-500 bg-clip-text text-transparent"
+                style={{ fontFamily: "Oxanium, sans-serif" }}
+              >
                 Transmission Hub
               </span>
             </h1>

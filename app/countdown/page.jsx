@@ -168,7 +168,10 @@ export default function TimeCorePage() {
                 </span>
               </div>
               <h1 className="text-4xl md:text-6xl font-sans tracking-wider mb-4">
-                <span className="bg-linear-to-r from-cyan-400 via-primary to-violet-400 bg-clip-text text-transparent">
+                <span
+                  className="bg-linear-to-r from-cyan-400 via-primary to-violet-400 bg-clip-text text-transparent"
+                  style={{ fontFamily: "Oxanium, sans-serif" }}
+                >
                   Countdown to Launch
                 </span>
               </h1>

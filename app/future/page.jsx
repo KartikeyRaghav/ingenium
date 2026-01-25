@@ -170,7 +170,10 @@ export default function FuturePage() {
               </span>
             </div>
             <h1 className="text-4xl md:text-6xl font-sans tracking-wider mb-4">
-              <span className="bg-linear-to-r from-violet-400 via-purple-400 to-violet-500 bg-clip-text text-transparent">
+              <span
+                className="bg-linear-to-r from-violet-400 via-purple-400 to-violet-500 bg-clip-text text-transparent"
+                style={{ fontFamily: "Oxanium, sans-serif" }}
+              >
                 Vision Beyond Time
               </span>
             </h1>
