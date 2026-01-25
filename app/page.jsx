@@ -1,14 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import gsap from "gsap";
 import LandingPage from "@/components/LandingPage";
 import Navigation from "@/components/Navigation";
 import { StarField } from "@/components/chronoverse";
+import { useSearchParams } from "next/navigation";
 
 export default function App() {
   const [appState, setAppState] = useState("landing");
+  const searchParams = useSearchParams();
 
+  useEffect(() => {
+    const state = searchParams.get("state");
+    console.log();
+    if (state && state == "navigation") {
+      setAppState("navigation");
+    }
+  }, []);
   const handleNavigateToMap = () => {
     const tl = gsap.timeline({
       onComplete: () => setAppState("navigation"),

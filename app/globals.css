@@ -73,7 +73,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: "Share Tech Mono" ,monospace;
+    font-family: "Share Tech Mono", monospace;
   }
 
   html {
@@ -192,4 +192,102 @@
   to {
     transform: rotate(0deg);
   }
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4), 0 0 40px rgba(59, 130, 246, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.6), 0 0 60px rgba(59, 130, 246, 0.3);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes flicker {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  75% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes signal-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-flicker {
+  animation: flicker 0.5s ease-in-out infinite;
+}
+
+.animate-signal-pulse {
+  animation: signal-pulse 1.5s ease-out infinite;
+}
+
+/* Grid Background */
+.chrono-grid {
+  background-image:
+    linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* Glow border */
+.glow-border {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3), inset 0 0 15px rgba(59, 130, 246, 0.05);
 }

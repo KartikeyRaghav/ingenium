@@ -217,7 +217,7 @@ export default function PastPage() {
         <div className="relative z-10 px-4 py-12 md:py-20">
           {/* Back Navigation */}
           <div className="max-w-7xl mx-auto mb-8">
-            <Link href="/">
+            <Link href="/?state=navigation">
               <GlowButton variant="secondary" size="sm">
                 <span className="flex items-center gap-2">
                   <svg
