@@ -4,7 +4,7 @@ import { useState } from "react";
 import gsap from "gsap";
 import LandingPage from "@/components/LandingPage";
 import Navigation from "@/components/Navigation";
-import { StarField } from "@/components/StarField";
+import { StarField } from "@/components/chronoverse";
 
 export default function App() {
   const [appState, setAppState] = useState("landing");

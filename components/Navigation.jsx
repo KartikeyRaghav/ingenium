@@ -3,11 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { Clock, Calendar, Rocket, Phone, ArrowLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const Navigation = ({ onNavigate }) => {
   const containerRef = useRef(null);
   const [hoveredNode, setHoveredNode] = useState(null);
   const [selectedNode, setSelectedNode] = useState(null);
+  const router = useRouter();
 
   const nodes = [
     {
@@ -147,7 +149,9 @@ const Navigation = ({ onNavigate }) => {
     }
 
     // Trigger content panel opening
-    setTimeout(() => {}, 400);
+    setTimeout(() => {
+      router.push(`/${nodeId}`);
+    }, 400);
   };
 
   return (
