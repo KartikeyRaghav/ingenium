@@ -115,6 +115,13 @@ export default function LandingPage({ onNavigate }) {
       {/* The Hyperspace Flash Overlay */}
       <div className="warp-flash absolute inset-0 bg-white opacity-0 pointer-events-none z-50" />
 
+      {/* --- TOP LEFT HEADING (Event Name) --- */}
+      <div className="absolute top-8 left-8 z-30 pointer-events-none mix-blend-screen hidden md:block">
+          <h2 className="text-2xl font-bold tracking-widest text-blue-100/80 uppercase" style={{ fontFamily: "Oxanium, sans-serif" }}>
+              INGENIUM
+          </h2>
+      </div>
+
       {/* --- THE CHRONO GATE (Central 3D Element) --- */}
       <div 
         ref={portalRef}
