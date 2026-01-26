@@ -12,6 +12,7 @@ export default function App() {
 
   useEffect(() => {
     const searchParams = useSearchParams();
+    if (!searchParams) return null;
     const state = searchParams.get("state");
     if (state && state == "navigation") {
       setAppState("navigation");
