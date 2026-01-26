@@ -161,7 +161,7 @@ const NavNode = ({ node, isHovered, onHover, onLeave, onClick }) => {
           {node.sub}
         </div>
         {/* Decorative Line connecting label to orb */}
-        <div className="absolute -top-4 left-1/2 w-px h-4 bg-gradient-to-b from-transparent to-white/20" />
+        <div className="absolute -top-4 left-1/2 w-px h-4 bg-linear-to-b from-transparent to-white/20" />
       </div>
     </div>
   );
@@ -254,7 +254,7 @@ export default function Navigation({ onNavigate }) {
       
       {/* Background Grid (Floor) */}
       <div 
-        className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.1)_1px,transparent_1px)] bg-[size:100px_100px] opacity-20 pointer-events-none" 
+        className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.1)_1px,transparent_1px)] bg-size-[100px_100px] opacity-20 pointer-events-none" 
         style={{ transform: 'perspective(500px) rotateX(60deg) translateY(100px) scale(2)' }} 
       />
 
@@ -277,7 +277,7 @@ export default function Navigation({ onNavigate }) {
          </div>
          <div className="text-right">
              <h2 className="text-3xl font-bold text-white tracking-tighter" style={{ fontFamily: "Oxanium, sans-serif" }}>
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">STARMAP</span> SYSTEM
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-cyan-300">STARMAP</span> SYSTEM
              </h2>
              <p className="text-[10px] text-blue-500/50 font-mono tracking-[0.3em] uppercase mt-1">
                 Ingenium Chronoverse v2.0
@@ -324,7 +324,7 @@ export default function Navigation({ onNavigate }) {
 
         {/* Decorative "Scanner" Line */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-xl border border-white/5">
-             <div className="w-full h-[2px] bg-blue-500/20 shadow-[0_0_15px_rgba(59,130,246,0.5)] absolute top-0 animate-[scan_4s_linear_infinite]" />
+             <div className="w-full h-0.5 bg-blue-500/20 shadow-[0_0_15px_rgba(59,130,246,0.5)] absolute top-0 animate-[scan_4s_linear_infinite]" />
         </div>
 
       </div>

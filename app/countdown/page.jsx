@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import {
   PageTransitionWrapper,
   StarField,
-  GlowButton,
 } from "@/components/chronoverse";
 
 // --- Time Calculation Logic ---
@@ -147,10 +146,10 @@ export default function TimeCorePage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.15)_0%,transparent_60%)] animate-pulse-slow" />
         
         {/* Cyber Grid Perspective */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.05)_1px,transparent_1px)] bg-[size:60px_60px] opacity-30 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.05)_1px,transparent_1px)] bg-size-[60px_60px] opacity-30 mask-[radial-gradient(ellipse_at_center,black_40%,transparent_100%)]" />
 
         {/* Central Rotating Core (Behind Content) */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-20 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 opacity-20 pointer-events-none">
            <div className="absolute inset-0 border border-cyan-500/10 rounded-full animate-[spin_60s_linear_infinite]" />
            <div className="absolute inset-10 border border-blue-500/10 rounded-full animate-[spin_40s_linear_infinite_reverse]" />
            <div className="absolute inset-20 border border-cyan-500/10 rounded-full animate-[spin_20s_linear_infinite]" />
@@ -183,13 +182,13 @@ export default function TimeCorePage() {
 
           {/* Title Section */}
           <div className="text-center mb-16 relative">
-            <div className="absolute -inset-x-20 top-1/2 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
+            <div className="absolute -inset-x-20 top-1/2 h-px bg-linear-to-r from-transparent via-cyan-500/30 to-transparent" />
             
             <div className="inline-block relative bg-[#02040a] px-8">
               <span className="block text-cyan-400 text-xs font-mono tracking-[0.5em] mb-2 uppercase">Target Coordinates Locked</span>
               <h1 className="text-5xl md:text-8xl font-black text-white tracking-tighter drop-shadow-[0_0_25px_rgba(6,182,212,0.4)]">
                 INGENIUM
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600"> 26</span>
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-600"> 26</span>
               </h1>
             </div>
             

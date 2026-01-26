@@ -1,159 +1,36 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { PageTransitionWrapper, StarField } from "@/components/chronoverse";
 import {
-  PageTransitionWrapper,
-  StarField,
-  GlassPanel,
-} from "@/components/chronoverse";
-
-// --- Data Constants ---
-const culturalEvents = [
-  {
-    name: "Rhythm of Souls",
-    year: "2024",
-    description: "A mesmerizing dance competition featuring classical and contemporary styles from across India.",
-    id: "REC-24-A"
-  },
-  {
-    name: "Melody Nights",
-    year: "2024",
-    description: "Musical extravaganza showcasing talented vocalists and instrumentalists.",
-    id: "REC-24-B"
-  },
-  {
-    name: "Drama Fest",
-    year: "2023",
-    description: "Theatre competition exploring social themes through powerful performances.",
-    id: "REC-23-A"
-  },
-  {
-    name: "Art Canvas",
-    year: "2023",
-    description: "Exhibition of student artworks including paintings, sculptures, and digital art.",
-    id: "REC-23-B"
-  },
-  {
-    name: "Fashion Forward",
-    year: "2022",
-    description: "Annual fashion show celebrating creativity and sustainable fashion.",
-    id: "REC-22-A"
-  },
-  {
-    name: "Literary League",
-    year: "2022",
-    description: "Debates, poetry slams, and creative writing competitions.",
-    id: "REC-22-B"
-  },
-];
-
-const technicalEvents = [
-  {
-    name: "Code Storm",
-    year: "2024",
-    description: "24-hour hackathon challenging participants to build innovative solutions.",
-    id: "TECH-24-X"
-  },
-  {
-    name: "Robo Wars",
-    year: "2024",
-    description: "Intense robot combat competition with custom-built machines.",
-    id: "TECH-24-Y"
-  },
-  {
-    name: "AI Summit",
-    year: "2023",
-    description: "Workshop and competition focused on machine learning applications.",
-    id: "TECH-23-X"
-  },
-  {
-    name: "Circuit Breaker",
-    year: "2023",
-    description: "Electronics design challenge pushing the boundaries of innovation.",
-    id: "TECH-23-Y"
-  },
-  {
-    name: "Web Wizards",
-    year: "2022",
-    description: "Full-stack web development competition with real-world problems.",
-    id: "TECH-22-X"
-  },
-  {
-    name: "Cyber Quest",
-    year: "2022",
-    description: "Capture the flag cybersecurity competition.",
-    id: "TECH-22-Y"
-  },
-];
-
-const flagshipFests = [
-  {
-    name: "INGENIUM 2024",
-    year: "2024",
-    description: "The grandest edition yet with over 10,000 participants from 200+ colleges.",
-    id: "FLG-24"
-  },
-  {
-    name: "INGENIUM 2023",
-    year: "2023",
-    description: "Post-pandemic revival bringing back the spirit of innovation.",
-    id: "FLG-23"
-  },
-  {
-    name: "INGENIUM 2022",
-    year: "2022",
-    description: "Virtual edition connecting students across the globe.",
-    id: "FLG-22"
-  },
-  {
-    name: "INGENIUM 2019",
-    year: "2019",
-    description: "Record-breaking participation with international collaborations.",
-    id: "FLG-19"
-  },
-];
-
-const legacyHighlights = [
-  {
-    name: "Industry Connect",
-    year: "2024",
-    description: "Partnership with Fortune 500 companies for mentorship and internships.",
-    id: "LGC-01"
-  },
-  {
-    name: "Innovation Award",
-    year: "2023",
-    description: "Student project recognized at National Technology Summit.",
-    id: "LGC-02"
-  },
-  {
-    name: "Alumni Network",
-    year: "2022",
-    description: "Establishing connections with 5000+ alumni worldwide.",
-    id: "LGC-03"
-  },
-  {
-    name: "Research Excellence",
-    year: "2021",
-    description: "Student papers published in international journals.",
-    id: "LGC-04"
-  },
-];
-
-// --- Sub-Components ---
+  culturalEvents,
+  technicalEvents,
+  flagshipFests,
+  legacyHighlights,
+} from "@/data/past";
 
 // Amber Tech Corner
 const TechCorner = ({ className }) => (
-  <svg className={`absolute w-3 h-3 text-amber-500/60 ${className}`} viewBox="0 0 24 24" fill="none">
-    <path d="M2 2h20v20" stroke="currentColor" strokeWidth="2.5" strokeLinecap="square" className="opacity-0 group-hover:opacity-100 transition-opacity" />
+  <svg
+    className={`absolute w-3 h-3 text-amber-500/60 ${className}`}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <path
+      d="M2 2h20v20"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="square"
+      className="opacity-0 group-hover:opacity-100 transition-opacity"
+    />
     <path d="M2 2h6M2 2v6" stroke="currentColor" strokeWidth="2.5" />
   </svg>
 );
 
 // Scanline Animation for Cards
 const ScanOverlay = () => (
-  <div className="absolute inset-0 pointer-events-none opacity-10 bg-[linear-gradient(transparent_50%,rgba(245,158,11,0.2)_50%)] bg-[length:100%_4px]" />
+  <div className="absolute inset-0 pointer-events-none opacity-10 bg-[linear-gradient(transparent_50%,rgba(245,158,11,0.2)_50%)] bg-size-[100%_4px]" />
 );
 
 export default function PastPage() {
@@ -170,19 +47,40 @@ export default function PastPage() {
   };
 
   const categories = [
-    { id: "cultural", label: "Cultural Archives", icon: "M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" },
-    { id: "technical", label: "Tech Logs", icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" },
-    { id: "flagship", label: "Flagship Data", icon: "M3 21v-8a2 2 0 012-2h14a2 2 0 012 2v8M3 13V6a2 2 0 012-2h14a2 2 0 012 2v7m-6 3a2 2 0 012-2h2a2 2 0 012 2v3h-6v-3z" },
-    { id: "legacy", label: "Legacy Core", icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" },
+    {
+      id: "cultural",
+      label: "Cultural Archives",
+      icon: "M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3",
+    },
+    {
+      id: "technical",
+      label: "Tech Logs",
+      icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
+    },
+    {
+      id: "flagship",
+      label: "Flagship Data",
+      icon: "M3 21v-8a2 2 0 012-2h14a2 2 0 012 2v8M3 13V6a2 2 0 012-2h14a2 2 0 012 2v7m-6 3a2 2 0 012-2h2a2 2 0 012 2v3h-6v-3z",
+    },
+    {
+      id: "legacy",
+      label: "Legacy Core",
+      icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
+    },
   ];
 
   const getData = () => {
-    switch(activeTab) {
-      case "cultural": return culturalEvents;
-      case "technical": return technicalEvents;
-      case "flagship": return flagshipFests;
-      case "legacy": return legacyHighlights;
-      default: return [];
+    switch (activeTab) {
+      case "cultural":
+        return culturalEvents;
+      case "technical":
+        return technicalEvents;
+      case "flagship":
+        return flagshipFests;
+      case "legacy":
+        return legacyHighlights;
+      default:
+        return [];
     }
   };
 
@@ -190,23 +88,32 @@ export default function PastPage() {
     <PageTransitionWrapper>
       <main className="relative min-h-screen bg-[#080500] overflow-hidden selection:bg-amber-500/30">
         <StarField />
-        
+
         {/* Background: Amber Noise & Grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(245,158,11,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(245,158,11,0.03)_1px,transparent_1px)] bg-[size:30px_30px] opacity-40" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(245,158,11,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(245,158,11,0.03)_1px,transparent_1px)] bg-size-[30px_30px] opacity-40" />
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay pointer-events-none" />
-        
+
         {/* Ambient Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-amber-600/5 blur-[100px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 bg-amber-600/5 blur-[100px] rounded-full pointer-events-none" />
 
         <div className="relative z-10 px-4 py-8 md:py-16">
-          
           {/* Top Nav */}
           <div className="max-w-7xl mx-auto mb-10 flex justify-between items-center border-b border-amber-500/20 pb-4">
             <Link href="/?state=navigation">
               <button className="group flex items-center gap-3 text-amber-500/70 hover:text-amber-300 transition-colors uppercase text-xs tracking-[0.2em]">
                 <div className="w-8 h-8 flex items-center justify-center border border-amber-500/30 rounded-sm group-hover:bg-amber-500/10 transition-all">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M11 19l-7-7 7-7m8 14l-7-7 7-7"
+                    />
                   </svg>
                 </div>
                 <span>Rewind to Present</span>
@@ -220,24 +127,42 @@ export default function PastPage() {
 
           {/* Hero Section */}
           <header className="max-w-7xl mx-auto mb-16 relative">
-             <div className="absolute top-0 right-0 hidden md:block opacity-20">
-               <svg width="200" height="100" viewBox="0 0 200 100">
-                  <path d="M0 0 H200 V100 H180 V20 H0 Z" fill="none" stroke="#f59e0b" strokeWidth="1" />
-                  <text x="120" y="40" className="font-mono text-[10px] fill-amber-500">SYS.LOG.001</text>
-               </svg>
-             </div>
+            <div className="absolute top-0 right-0 hidden md:block opacity-20">
+              <svg width="200" height="100" viewBox="0 0 200 100">
+                <path
+                  d="M0 0 H200 V100 H180 V20 H0 Z"
+                  fill="none"
+                  stroke="#f59e0b"
+                  strokeWidth="1"
+                />
+                <text
+                  x="120"
+                  y="40"
+                  className="font-mono text-[10px] fill-amber-500"
+                >
+                  SYS.LOG.001
+                </text>
+              </svg>
+            </div>
 
-             <div className="pl-4 border-l-2 border-amber-500/30">
-               <div className="flex items-center gap-2 mb-3">
-                  <span className="px-2 py-0.5 bg-amber-500/10 text-amber-500 text-[10px] font-mono tracking-widest border border-amber-500/20">CLASSIFIED_HISTORY</span>
-               </div>
-               <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-transparent bg-clip-text bg-gradient-to-r from-amber-100 via-amber-400 to-orange-500 font-sans">
-                  CHRONICLES <span className="text-amber-500/40 font-mono text-4xl align-top">_EXT</span>
-               </h1>
-               <p className="text-amber-200/50 max-w-xl text-sm md:text-base leading-relaxed font-light">
-                  Accessing the Ingenium digital archives. These memory modules contain the legacy events and milestones that forged our current timeline.
-               </p>
-             </div>
+            <div className="pl-4 border-l-2 border-amber-500/30">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="px-2 py-0.5 bg-amber-500/10 text-amber-500 text-[10px] font-mono tracking-widest border border-amber-500/20">
+                  CLASSIFIED_HISTORY
+                </span>
+              </div>
+              <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-transparent bg-clip-text bg-linear-to-r from-amber-100 via-amber-400 to-orange-500 font-sans">
+                CHRONICLES{" "}
+                <span className="text-amber-500/40 font-mono text-4xl align-top">
+                  _EXT
+                </span>
+              </h1>
+              <p className="text-amber-200/50 max-w-xl text-sm md:text-base leading-relaxed font-light">
+                Accessing the Ingenium digital archives. These memory modules
+                contain the legacy events and milestones that forged our current
+                timeline.
+              </p>
+            </div>
           </header>
 
           {/* Navigation Deck (Tabs) */}
@@ -248,16 +173,28 @@ export default function PastPage() {
                   key={cat.id}
                   onClick={() => handleTabChange(cat.id)}
                   className={`relative overflow-hidden group px-4 py-4 rounded flex flex-col items-center justify-center gap-2 transition-all duration-300 border ${
-                    activeTab === cat.id 
-                      ? "bg-amber-500/10 border-amber-500 text-amber-300 shadow-[0_0_15px_rgba(245,158,11,0.2)]" 
+                    activeTab === cat.id
+                      ? "bg-amber-500/10 border-amber-500 text-amber-300 shadow-[0_0_15px_rgba(245,158,11,0.2)]"
                       : "border-transparent text-amber-500/40 hover:text-amber-400 hover:bg-amber-500/5"
                   }`}
                 >
-                  <svg className={`w-5 h-5 ${activeTab === cat.id ? "text-amber-400" : "text-amber-500/40"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={cat.icon} />
+                  <svg
+                    className={`w-5 h-5 ${activeTab === cat.id ? "text-amber-400" : "text-amber-500/40"}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d={cat.icon}
+                    />
                   </svg>
-                  <span className="text-[10px] font-bold tracking-widest uppercase">{cat.label}</span>
-                  
+                  <span className="text-[10px] font-bold tracking-widest uppercase">
+                    {cat.label}
+                  </span>
+
                   {/* Active Indicator */}
                   {activeTab === cat.id && (
                     <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/3 h-0.5 bg-amber-500 shadow-[0_0_10px_#f59e0b]" />
@@ -268,59 +205,79 @@ export default function PastPage() {
           </section>
 
           {/* Dynamic Content Grid */}
-          <section className="max-w-7xl mx-auto min-h-[400px]">
-             <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-opacity duration-300 ${isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}>
-                {getData().map((item, index) => (
-                  <div key={index} className="group relative bg-[#0c0802] border border-amber-900/40 hover:border-amber-500/50 transition-all duration-500 overflow-hidden rounded-sm hover:shadow-[0_4px_20px_rgba(245,158,11,0.1)]">
-                     <ScanOverlay />
-                     
-                     {/* Card Header (Tape Label Style) */}
-                     <div className="bg-amber-950/30 border-b border-amber-500/10 p-4 flex justify-between items-center relative z-10">
-                        <div className="flex items-center gap-2">
-                           <div className="w-2 h-2 bg-amber-700/50 rounded-full group-hover:bg-amber-500 group-hover:shadow-[0_0_8px_#f59e0b] transition-all" />
-                           <span className="text-[10px] font-mono text-amber-500/50">{item.id}</span>
-                        </div>
-                        <span className="font-mono text-xl font-bold text-amber-500/20 group-hover:text-amber-400 transition-colors">{item.year}</span>
-                     </div>
+          <section className="max-w-7xl mx-auto min-h-100">
+            <div
+              className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-opacity duration-300 ${isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"}`}
+            >
+              {getData().map((item, index) => (
+                <div
+                  key={index}
+                  className="group relative bg-[#0c0802] border border-amber-900/40 hover:border-amber-500/50 transition-all duration-500 overflow-hidden rounded-sm hover:shadow-[0_4px_20px_rgba(245,158,11,0.1)]"
+                >
+                  <ScanOverlay />
 
-                     <div className="p-6 relative z-10">
-                        <TechCorner className="top-0 left-0 rotate-0" />
-                        <TechCorner className="bottom-0 right-0 rotate-180" />
-                        
-                        <h3 className="text-xl font-bold text-amber-100 mb-3 group-hover:text-amber-400 transition-colors font-sans tracking-wide">
-                          {item.name}
-                        </h3>
-                        
-                        <p className="text-sm text-amber-200/50 leading-relaxed font-light border-l border-amber-500/20 pl-3">
-                          {item.description}
-                        </p>
-                     </div>
-
-                     {/* Footer Info */}
-                     <div className="px-6 py-3 border-t border-amber-500/10 flex justify-between items-center bg-amber-500/5">
-                        <span className="text-[9px] uppercase tracking-wider text-amber-600">Archived Memory</span>
-                        <svg className="w-4 h-4 text-amber-800 group-hover:text-amber-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                        </svg>
-                     </div>
+                  {/* Card Header (Tape Label Style) */}
+                  <div className="bg-amber-950/30 border-b border-amber-500/10 p-4 flex justify-between items-center relative z-10">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-amber-700/50 rounded-full group-hover:bg-amber-500 group-hover:shadow-[0_0_8px_#f59e0b] transition-all" />
+                      <span className="text-[10px] font-mono text-amber-500/50">
+                        {item.id}
+                      </span>
+                    </div>
+                    <span className="font-mono text-xl font-bold text-amber-500/20 group-hover:text-amber-400 transition-colors">
+                      {item.year}
+                    </span>
                   </div>
-                ))}
-             </div>
+
+                  <div className="p-6 relative z-10">
+                    <TechCorner className="top-0 left-0 rotate-0" />
+                    <TechCorner className="bottom-0 right-0 rotate-180" />
+
+                    <h3 className="text-xl font-bold text-amber-100 mb-3 group-hover:text-amber-400 transition-colors font-sans tracking-wide">
+                      {item.name}
+                    </h3>
+
+                    <p className="text-sm text-amber-200/50 leading-relaxed font-light border-l border-amber-500/20 pl-3">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  {/* Footer Info */}
+                  <div className="px-6 py-3 border-t border-amber-500/10 flex justify-between items-center bg-amber-500/5">
+                    <span className="text-[9px] uppercase tracking-wider text-amber-600">
+                      Archived Memory
+                    </span>
+                    <svg
+                      className="w-4 h-4 text-amber-800 group-hover:text-amber-500 transition-colors"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              ))}
+            </div>
           </section>
 
           {/* Footer Timeline Graphic */}
           <div className="mt-20 border-t border-amber-500/20 pt-8 max-w-7xl mx-auto flex justify-center opacity-60">
-             <div className="flex items-end gap-1 h-12">
-                {[...Array(20)].map((_, i) => (
-                   <div 
-                      key={i} 
-                      className="w-1 bg-amber-500/20 hover:bg-amber-500 transition-colors duration-300"
-                      style={{ height: `${Math.random() * 100}%` }}
-                   />
-                ))}
-             </div>
+            <div className="flex items-end gap-1 h-12">
+              {[...Array(20)].map((_, i) => (
+                <div
+                  key={i}
+                  className="w-1 bg-amber-500/20 hover:bg-amber-500 transition-colors duration-300"
+                  style={{ height: `${Math.random() * 100}%` }}
+                />
+              ))}
+            </div>
           </div>
-
         </div>
       </main>
     </PageTransitionWrapper>

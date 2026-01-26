@@ -9,15 +9,20 @@ import { useSearchParams } from "next/navigation";
 
 export default function App() {
   const [appState, setAppState] = useState("landing");
+  const [searchParams] = useSearchParams();
 
-  useEffect(() => {
-    const searchParams = useSearchParams();
+  const stateChange = () => {
     if (!searchParams) return null;
     const state = searchParams.get("state");
     if (state && state == "navigation") {
       setAppState("navigation");
     }
+  };
+
+  useEffect(() => {
+    stateChange();
   }, []);
+
   const handleNavigateToMap = () => {
     const tl = gsap.timeline({
       onComplete: () => setAppState("navigation"),
