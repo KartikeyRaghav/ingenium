@@ -9,7 +9,7 @@ import { useSearchParams } from "next/navigation";
 
 export default function MainPage() {
   const [appState, setAppState] = useState("landing");
-  const [searchParams] = useSearchParams();
+  const searchParams = useSearchParams();
 
   const stateChange = () => {
     if (!searchParams) return null;
