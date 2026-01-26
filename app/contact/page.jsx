@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import {
   PageTransitionWrapper,
   StarField,
@@ -8,21 +9,28 @@ import {
   GlowButton,
 } from "@/components/chronoverse";
 
+// --- Data Constants ---
 const coreTeam = [
   {
     name: "Dr. Priya Sharma",
     role: "Faculty Advisor",
     department: "Computer Science",
+    id: "FAC-001",
+    clearance: "Lvl 5",
   },
   {
     name: "Prof. Rajesh Kumar",
     role: "Technical Mentor",
     department: "Electronics",
+    id: "MNT-042",
+    clearance: "Lvl 5",
   },
   {
     name: "Dr. Anita Desai",
     role: "Cultural Coordinator",
     department: "Humanities",
+    id: "CLT-007",
+    clearance: "Lvl 5",
   },
 ];
 
@@ -31,362 +39,334 @@ const coordinators = [
     name: "Arjun Mehta",
     role: "Overall Coordinator",
     contact: "arjun@ingenium.in",
+    status: "Online",
   },
-  { name: "Sneha Patel", role: "Technical Head", contact: "sneha@ingenium.in" },
+  {
+    name: "Sneha Patel",
+    role: "Technical Head",
+    contact: "sneha@ingenium.in",
+    status: "Coding",
+  },
   {
     name: "Vikram Singh",
     role: "Cultural Head",
     contact: "vikram@ingenium.in",
+    status: "Active",
   },
-  { name: "Priya Nair", role: "Marketing Lead", contact: "priya@ingenium.in" },
+  {
+    name: "Priya Nair",
+    role: "Marketing Lead",
+    contact: "priya@ingenium.in",
+    status: "Away",
+  },
   {
     name: "Rohit Sharma",
     role: "Sponsorship Head",
     contact: "rohit@ingenium.in",
+    status: "Meeting",
   },
   {
     name: "Ananya Gupta",
     role: "Operations Lead",
     contact: "ananya@ingenium.in",
+    status: "Active",
   },
 ];
 
 const socialLinks = [
-  {
-    name: "Twitter",
-    icon: (
-      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-      </svg>
-    ),
-    href: "#",
-  },
-  {
-    name: "Instagram",
-    icon: (
-      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" />
-      </svg>
-    ),
-    href: "#",
-  },
-  {
-    name: "LinkedIn",
-    icon: (
-      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-      </svg>
-    ),
-    href: "#",
-  },
-  {
-    name: "YouTube",
-    icon: (
-      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-      </svg>
-    ),
-    href: "#",
-  },
+  { name: "Twitter", href: "#", code: "TWT-LINK" },
+  { name: "Instagram", href: "#", code: "INS-FEED" },
+  { name: "LinkedIn", href: "#", code: "LNK-PROF" },
+  { name: "YouTube", href: "#", code: "YTB-CHAN" },
 ];
 
+// --- Sub-Components for Advanced UI ---
+
+// A tech-styled corner bracket for cards
+const TechCorner = ({ className }) => (
+  <svg
+    className={`absolute w-4 h-4 text-emerald-500/50 ${className}`}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <path
+      d="M2 2h20v20"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="square"
+      className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+    />
+    <path d="M2 2h10M2 2v10" stroke="currentColor" strokeWidth="2" />
+  </svg>
+);
+
+// Animated Scanning Line
+const ScannerLine = () => (
+  <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-xl">
+    <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent absolute top-0 -translate-y-full animate-scan-fast" />
+  </div>
+);
+
 export default function ContactPage() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <PageTransitionWrapper>
-      <main className="relative min-h-screen bg-background overflow-hidden">
+      <main className="relative min-h-screen bg-[#050505] overflow-hidden selection:bg-emerald-500/30">
         <StarField />
-        <div className="absolute inset-0 chrono-grid" />
+        
+        {/* Advanced Background Grid: Perspective Plane */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_100%)] opacity-50" />
+        
+        {/* Ambient Glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />
 
-        {/* Emerald/Teal gradient for Contact theme */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.1)_0%,transparent_50%)]" />
-
-        <div className="relative z-10 px-4 py-12 md:py-20">
-          {/* Back Navigation */}
-          <div className="max-w-7xl mx-auto mb-8">
+        <div className="relative z-10 px-4 py-8 md:py-16">
+          
+          {/* Top Navigation Bar */}
+          <div className="max-w-7xl mx-auto mb-12 flex justify-between items-center border-b border-emerald-500/20 pb-4">
             <Link href="/?state=navigation">
-              <GlowButton variant="secondary" size="sm">
-                <span className="flex items-center gap-2">
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                    />
+              <button className="group flex items-center gap-3 text-emerald-400/80 hover:text-emerald-300 transition-colors uppercase text-xs tracking-[0.2em]">
+                <div className="w-8 h-8 rounded-full border border-emerald-500/30 flex items-center justify-center group-hover:bg-emerald-500/10 transition-all">
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
                   </svg>
-                  Chronoverse
-                </span>
-              </GlowButton>
+                </div>
+                <span>Return to Chronoverse</span>
+              </button>
             </Link>
+            <div className="hidden md:flex items-center gap-2 text-xs font-mono text-emerald-500/40">
+              <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+              SYSTEM STATUS: ONLINE
+            </div>
           </div>
 
-          {/* Hero Section */}
-          <header className="max-w-7xl mx-auto text-center mb-16">
-            <div className="inline-block mb-4">
-              <span className="px-4 py-1 rounded-full text-sm tracking-widest uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                Contact
-              </span>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-sans tracking-wider mb-4">
-              <span
-                className="bg-linear-to-r from-emerald-400 via-teal-400 to-emerald-500 bg-clip-text text-transparent"
-                style={{ fontFamily: "Oxanium, sans-serif" }}
-              >
-                Transmission Hub
-              </span>
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Connect with us across the temporal plane. Our team is ready to
-              assist you with any queries about INGENIUM.
-            </p>
-
-            {/* Signal animation */}
-            <div className="mt-8 flex items-center justify-center">
-              <div className="relative">
-                <div className="w-4 h-4 rounded-full bg-emerald-500" />
-                <div className="absolute inset-0 w-4 h-4 rounded-full bg-emerald-500 animate-signal-pulse" />
+          {/* Hero Section: Glitch & Terminal Style */}
+          <header className="max-w-7xl mx-auto mb-20 relative">
+            <div className="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-emerald-500/50 to-transparent" />
+            
+            <div className="pl-6 md:pl-10">
+              <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded border border-emerald-500/30 bg-emerald-500/5 backdrop-blur-sm">
+                <span className="text-[10px] font-mono text-emerald-300 tracking-widest uppercase">Channel: Secure_Uplink</span>
               </div>
-              <div className="ml-4 h-0.5 w-32 bg-linear-to-r from-emerald-500 to-transparent animate-flicker" />
+              
+              <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-transparent bg-clip-text bg-gradient-to-r from-emerald-100 via-emerald-400 to-teal-500 font-sans">
+                TRANSMISSION <span className="text-emerald-500/50">HUB</span>
+              </h1>
+              
+              <p className="text-lg text-emerald-100/60 max-w-2xl font-light tracking-wide border-l-2 border-emerald-500/20 pl-4 py-2">
+                Initiating connection protocols. Select a frequency below to establish communication with the <span className="text-emerald-400 font-medium">INGENIUM</span> command center.
+              </p>
             </div>
           </header>
 
-          {/* Core Team Section */}
-          <section className="max-w-7xl mx-auto mb-16">
-            <h2 className="text-2xl font-sans tracking-wider text-foreground mb-8 text-center">
-              Core Team
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* SECTION 1: CORE COMMAND (The Core Team) */}
+          <section className="max-w-7xl mx-auto mb-24">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
+              <h2 className="text-sm font-mono text-emerald-400 tracking-[0.3em] uppercase">Core Command Manifest</h2>
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {coreTeam.map((member, index) => (
-                <GlassPanel
-                  key={index}
-                  glowOnHover
-                  className="text-center group"
-                >
-                  {/* Avatar placeholder */}
-                  <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-linear-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 flex items-center justify-center group-hover:shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all">
-                    <span className="text-3xl font-sans text-emerald-400">
-                      {member.name
-                        .split(" ")
-                        .map((n) => n[0])
-                        .join("")}
-                    </span>
+                <div key={index} className="group relative">
+                  {/* Holographic Card Background */}
+                  <div className="absolute inset-0 bg-emerald-900/10 backdrop-blur-sm border border-emerald-500/20 clip-path-polygon" 
+                       style={{ clipPath: 'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)' }}></div>
+                  
+                  {/* Hover Glow Effect */}
+                  <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                       style={{ clipPath: 'polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)' }} />
+
+                  <div className="relative p-6 flex flex-col items-center text-center z-10">
+                    <TechCorner className="top-0 left-0 rotate-0" />
+                    <TechCorner className="top-0 right-0 rotate-90" />
+                    <TechCorner className="bottom-0 right-0 rotate-180" />
+                    <TechCorner className="bottom-0 left-0 -rotate-90" />
+                    
+                    {/* Hexagon Avatar */}
+                    <div className="relative mb-6">
+                      <div className="w-28 h-28 bg-emerald-950 clip-path-hexagon flex items-center justify-center relative z-10 border-2 border-emerald-500/30 group-hover:border-emerald-400 transition-colors"
+                           style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}>
+                        <span className="text-3xl font-bold text-emerald-400">{member.name[0]}</span>
+                      </div>
+                      {/* Rotating Ring */}
+                      <div className="absolute inset-[-4px] border border-dashed border-emerald-500/40 rounded-full animate-[spin_10s_linear_infinite]" />
+                    </div>
+
+                    <h3 className="text-xl font-bold text-white tracking-wide mb-1 group-hover:text-emerald-300 transition-colors">{member.name}</h3>
+                    <div className="text-xs font-mono text-emerald-500 mb-4 px-2 py-0.5 bg-emerald-500/10 rounded border border-emerald-500/20">{member.role}</div>
+                    
+                    {/* Fake Data Metrics */}
+                    <div className="w-full space-y-2 mt-2">
+                      <div className="flex justify-between text-[10px] text-emerald-500/60 font-mono">
+                        <span>ID: {member.id}</span>
+                        <span>CLR: {member.clearance}</span>
+                      </div>
+                      <div className="h-1 w-full bg-emerald-900/50 rounded-full overflow-hidden">
+                        <div className="h-full bg-emerald-500 w-[85%] group-hover:animate-pulse" />
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-lg font-sans tracking-wide text-foreground">
-                    {member.name}
-                  </h3>
-                  <p className="text-emerald-400 text-sm mb-1">{member.role}</p>
-                  <p className="text-muted-foreground text-sm">
-                    {member.department}
-                  </p>
-                </GlassPanel>
+                  <ScannerLine />
+                </div>
               ))}
             </div>
           </section>
 
-          {/* Coordinators Section */}
-          <section className="max-w-7xl mx-auto mb-16">
-            <h2 className="text-2xl font-sans tracking-wider text-foreground mb-8 text-center">
-              Coordinators
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {coordinators.map((coordinator, index) => (
-                <GlassPanel
-                  key={index}
-                  className="group hover:glow-border transition-all"
-                >
-                  <div className="flex items-start gap-4">
-                    {/* Avatar */}
-                    <div className="w-12 h-12 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center shrink-0">
-                      <span className="text-lg font-sans text-emerald-400">
-                        {coordinator.name.charAt(0)}
-                      </span>
+          {/* SECTION 2: FIELD OPERATIVES (Coordinators) */}
+          <section className="max-w-7xl mx-auto mb-24">
+             <div className="flex items-center justify-between mb-8">
+                <h2 className="text-2xl font-sans text-white tracking-wide flex items-center gap-3">
+                  <span className="w-1 h-8 bg-emerald-500"></span>
+                  Field Operatives
+                </h2>
+                <span className="text-xs font-mono text-emerald-500/50 border border-emerald-500/20 px-3 py-1 rounded-full">
+                  {coordinators.length} UNITS ACTIVE
+                </span>
+             </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {coordinators.map((co, index) => (
+                <div key={index} className="group relative bg-black/40 border border-emerald-500/10 hover:border-emerald-500/40 transition-all duration-300 overflow-hidden rounded-lg">
+                  <div className="absolute top-0 right-0 p-2 opacity-50 group-hover:opacity-100">
+                     <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full shadow-[0_0_8px_rgba(52,211,153,0.8)] animate-ping" />
+                  </div>
+                  
+                  <div className="p-5 flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-500/20 to-transparent rounded flex items-center justify-center font-mono text-emerald-400 text-lg border border-emerald-500/20">
+                      {co.name.charAt(0)}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-sans tracking-wide text-foreground truncate">
-                        {coordinator.name}
-                      </h3>
-                      <p className="text-emerald-400 text-sm mb-1">
-                        {coordinator.role}
-                      </p>
-                      <a
-                        href={`mailto:${coordinator.contact}`}
-                        className="text-muted-foreground text-sm hover:text-primary transition-colors flex items-center gap-1"
-                      >
-                        <svg
-                          className="w-4 h-4 shrink-0"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                          />
-                        </svg>
-                        <span className="truncate">{coordinator.contact}</span>
-                      </a>
+                      <h3 className="text-white font-medium truncate group-hover:text-emerald-300 transition-colors">{co.name}</h3>
+                      <p className="text-xs text-emerald-500/70 uppercase tracking-wider mb-2">{co.role}</p>
+                      
+                      <div className="flex items-center gap-2 mt-3">
+                        <a href={`mailto:${co.contact}`} className="text-xs flex items-center gap-2 px-3 py-1.5 bg-emerald-500/5 hover:bg-emerald-500/20 border border-emerald-500/20 rounded-md text-emerald-400 transition-all group-hover:w-full justify-center">
+                           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                           <span>Connect</span>
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </GlassPanel>
+                  {/* Bottom Tech Bar */}
+                  <div className="h-0.5 w-0 group-hover:w-full bg-emerald-500 transition-all duration-500 ease-out" />
+                </div>
               ))}
             </div>
           </section>
 
-          {/* Contact Details & Social */}
-          <section className="max-w-5xl mx-auto mb-16">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Contact Info */}
-              <GlassPanel className="space-y-6">
-                <h3 className="text-xl font-sans tracking-wider text-foreground mb-6">
-                  Contact Details
+          {/* SECTION 3: DATA UPLINK (Form & Info) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-7xl mx-auto">
+            
+            {/* Left: Interactive Info Panel */}
+            <div className="lg:col-span-5 space-y-6">
+              <GlassPanel className="p-8 border-l-4 border-l-emerald-500 relative overflow-hidden">
+                <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-emerald-500/20 blur-xl rounded-full" />
+                
+                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                  <svg className="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                  H.Q. Coordinates
                 </h3>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center shrink-0">
-                    <svg
-                      className="w-5 h-5 text-emerald-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
+                <div className="space-y-6 font-mono text-sm">
+                  <div className="group flex items-start gap-4 p-3 hover:bg-emerald-500/5 rounded transition-colors cursor-crosshair">
+                    <span className="text-emerald-500/50">LOC:</span>
+                    <div>
+                      <p className="text-emerald-300">IIT Indore, Simrol</p>
+                      <p className="text-emerald-500/60">Sector 453552, MP, Earth</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-1">Email</p>
-                    <a
-                      href="mailto:contact@ingenium.in"
-                      className="text-foreground hover:text-emerald-400 transition-colors"
-                    >
-                      contact@ingenium.in
-                    </a>
+
+                  <div className="group flex items-start gap-4 p-3 hover:bg-emerald-500/5 rounded transition-colors cursor-pointer">
+                    <span className="text-emerald-500/50">COM:</span>
+                    <div>
+                      <p className="text-emerald-300">contact@ingenium.in</p>
+                      <p className="text-emerald-500/60">Encrypted Channel</p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center shrink-0">
-                    <svg
-                      className="w-5 h-5 text-emerald-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                      />
-                    </svg>
+                <div className="mt-8 pt-6 border-t border-emerald-500/20">
+                  <p className="text-xs text-emerald-500/40 mb-4 uppercase tracking-widest">Secure Frequencies</p>
+                  <div className="flex gap-3">
+                    {socialLinks.map((link, i) => (
+                      <a key={i} href={link.href} className="w-10 h-10 rounded border border-emerald-500/30 flex items-center justify-center text-emerald-400 hover:bg-emerald-500 hover:text-black hover:shadow-[0_0_15px_rgba(16,185,129,0.6)] transition-all duration-300">
+                         <span className="font-bold text-xs">{link.name[0]}</span>
+                      </a>
+                    ))}
                   </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-1">Phone</p>
-                    <a
-                      href="tel:+911234567890"
-                      className="text-foreground hover:text-emerald-400 transition-colors"
-                    >
-                      +91 123 456 7890
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center shrink-0">
-                    <svg
-                      className="w-5 h-5 text-emerald-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-1">
-                      Location
-                    </p>
-                    <p className="text-foreground">
-                      IIT Indore, Simrol
-                      <br />
-                      Indore, MP 453552
-                    </p>
-                  </div>
-                </div>
-              </GlassPanel>
-
-              {/* Social Links */}
-              <GlassPanel>
-                <h3 className="text-xl font-sans tracking-wider text-foreground mb-6">
-                  Connect With Us
-                </h3>
-                <p className="text-muted-foreground mb-6">
-                  Follow us on social media for the latest updates,
-                  behind-the-scenes content, and announcements.
-                </p>
-                <div className="grid grid-cols-2 gap-4">
-                  {socialLinks.map((social, index) => (
-                    <a
-                      key={index}
-                      href={social.href}
-                      className="flex items-center gap-3 p-4 rounded-lg bg-muted/30 hover:bg-emerald-500/10 hover:border-emerald-500/30 border border-transparent transition-all group"
-                    >
-                      <span className="text-muted-foreground group-hover:text-emerald-400 transition-colors">
-                        {social.icon}
-                      </span>
-                      <span className="font-sans tracking-wide text-foreground">
-                        {social.name}
-                      </span>
-                    </a>
-                  ))}
                 </div>
               </GlassPanel>
             </div>
-          </section>
 
-          {/* Newsletter CTA */}
-          <section className="max-w-3xl mx-auto text-center">
-            <GlassPanel className="py-10">
-              <h2 className="text-2xl font-sans tracking-wider text-foreground mb-4">
-                Stay Connected
-              </h2>
-              <p className="text-muted-foreground mb-6">
-                Subscribe to receive transmission updates directly to your
-                inbox.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 rounded-lg bg-muted/50 border border-border focus:border-emerald-500/50 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 text-foreground placeholder:text-muted-foreground"
-                />
-                <GlowButton variant="accent">Subscribe</GlowButton>
-              </div>
-            </GlassPanel>
-          </section>
+            {/* Right: The Terminal Form */}
+            <div className="lg:col-span-7">
+               <div className="relative bg-black/80 border border-emerald-500/30 rounded-xl p-1 overflow-hidden">
+                 {/* Terminal Header */}
+                 <div className="bg-emerald-500/10 px-4 py-2 flex items-center justify-between border-b border-emerald-500/20">
+                    <div className="flex gap-2">
+                       <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                       <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                       <div className="w-3 h-3 rounded-full bg-emerald-500/50" />
+                    </div>
+                    <div className="text-[10px] font-mono text-emerald-500/60">bash --login</div>
+                 </div>
+
+                 <div className="p-8">
+                    <h3 className="text-emerald-400 font-mono mb-6 text-sm">
+                      <span className="text-emerald-600 mr-2">$</span>
+                      initiate_newsletter_sequence.exe
+                    </h3>
+
+                    <div className="space-y-4">
+                      <p className="text-emerald-500/60 text-sm font-mono">
+                        // Enter your designation to receive updates...
+                      </p>
+                      <div className="relative group">
+                        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-emerald-500/50 font-mono">
+                          {'>'}
+                        </div>
+                        <input
+                          type="email"
+                          className="w-full bg-emerald-950/30 border border-emerald-500/30 rounded-none py-4 pl-10 pr-32 text-emerald-300 placeholder-emerald-800 font-mono focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400/50 transition-all"
+                          placeholder="email_address..."
+                        />
+                        <button className="absolute right-2 top-2 bottom-2 px-6 bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs tracking-wider uppercase transition-colors">
+                          Execute
+                        </button>
+                      </div>
+                      <div className="flex justify-between text-[10px] text-emerald-700 font-mono pt-2">
+                         <span>STATUS: WAITING FOR INPUT</span>
+                         <span>LATENCY: 12ms</span>
+                      </div>
+                    </div>
+                 </div>
+
+                 {/* Scan line overlay for terminal */}
+                 <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,18,18,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-20 bg-[length:100%_2px,3px_100%] opacity-20" />
+               </div>
+            </div>
+          </div>
         </div>
+        
+        {/* Inline Styles for Custom Keyframes that Tailwind might miss */}
+        <style jsx global>{`
+          @keyframes scan-fast {
+            0% { top: 0%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+          }
+          .animate-scan-fast {
+            animation: scan-fast 3s linear infinite;
+          }
+        `}</style>
       </main>
     </PageTransitionWrapper>
   );
