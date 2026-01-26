@@ -9,11 +9,10 @@ import { useSearchParams } from "next/navigation";
 
 export default function App() {
   const [appState, setAppState] = useState("landing");
-  const searchParams = useSearchParams();
 
   useEffect(() => {
+    const searchParams = useSearchParams();
     const state = searchParams.get("state");
-    console.log();
     if (state && state == "navigation") {
       setAppState("navigation");
     }
