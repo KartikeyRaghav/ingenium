@@ -23,27 +23,30 @@ export function StarField() {
 
     const spawnShootingStar = () => {
       const id = Date.now();
+      const duration = Math.random() * 1000 + 2000; // 2000ms - 3000ms
+
       const newStar = {
         id: id,
-        x: Math.random() * 90 + 5,
-        y: Math.random() * 50, // Top half
-        angle: Math.random() * 30 + 120, // 120-150 degrees
+        x: Math.random() * 50 + 50, // Start in right half (50-100%)
+        y: Math.random() * 50,      // Start in top half (0-50%)
+        angle: 135,                 // Fixed diagonal (Top-Right -> Bottom-Left)
         size: Math.random() * 2 + 1,
+        duration: duration / 1000 + 's',
       };
 
       setShootingStars((prev) => {
-        // Auto-cleanup phantom stars if list gets too big (safety net)
         if (prev.length > 5) return [newStar];
         return [...prev, newStar];
       });
 
-      // Cleanup fallback in case onAnimationEnd misses
+      // Cleanup
       setTimeout(() => {
         setShootingStars((prev) => prev.filter(s => s.id !== id));
-      }, 2000);
+      }, duration + 500);
 
-      // Schedule next spawn after animation (1.5s) + random delay (0.5 - 2.5s)
-      const nextDelay = 1500 + (Math.random() * 2000 + 500);
+      // Schedule next
+      // Wait for current to finish (duration) + gap (0.5s - 2s)
+      const nextDelay = duration + (Math.random() * 1500 + 500);
       timeoutId = setTimeout(spawnShootingStar, nextDelay);
     };
 
@@ -87,6 +90,7 @@ export function StarField() {
             height: `${star.size}px`,
             transform: `rotate(${star.angle}deg)`,
             boxShadow: `0 0 10px 2px rgba(255, 255, 255, 0.4)`,
+            animationDuration: star.duration,
           }}
           onAnimationEnd={() => handleAnimationEnd(star.id)}
         >

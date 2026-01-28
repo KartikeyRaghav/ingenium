@@ -325,3 +325,24 @@
 .animate-shooting-star {
   animation: shooting-star 2.5s linear forwards;
 }
+
+@keyframes shooting-star {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120vh);
+    opacity: 0;
+  }
+}
+
+.animate-shooting-star {
+  animation: shooting-star 2.5s linear forwards;
+}
