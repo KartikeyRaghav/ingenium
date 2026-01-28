@@ -143,11 +143,10 @@ export default function PresentPage() {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-6 py-2 rounded text-xs font-bold uppercase tracking-widest transition-all duration-300 relative overflow-hidden ${
-                    activeTab === tab
-                      ? "bg-blue-600 text-white shadow-[0_0_15px_rgba(37,99,235,0.5)]"
-                      : "text-blue-500/50 hover:text-blue-300 hover:bg-blue-500/10"
-                  }`}
+                  className={`px-6 py-2 rounded text-xs font-bold uppercase tracking-widest transition-all duration-300 relative overflow-hidden ${activeTab === tab
+                    ? "bg-blue-600 text-white shadow-[0_0_15px_rgba(37,99,235,0.5)]"
+                    : "text-blue-500/50 hover:text-blue-300 hover:bg-blue-500/10"
+                    }`}
                 >
                   {activeTab === tab && (
                     <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent animate-scan-fast" />
@@ -470,14 +469,16 @@ export default function PresentPage() {
                             </div>
                           )}
 
-                          <button
-                            disabled={isFull}
-                            className={`w-full mt-4 py-3 text-xs font-bold uppercase tracking-widest transition-all ${isFull ? "bg-gray-800 text-gray-500 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-500 text-white shadow-lg hover:shadow-blue-500/50"}`}
-                          >
-                            {isFull
-                              ? "Access Denied"
-                              : "Initialize Registration"}
-                          </button>
+                          <Link href={isFull ? '#' : `/present/registration?event=${encodeURIComponent(reg.name)}`}>
+                            <button
+                              disabled={isFull}
+                              className={`w-full mt-4 py-3 text-xs font-bold uppercase tracking-widest transition-all ${isFull ? "bg-gray-800 text-gray-500 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-500 text-white shadow-lg hover:shadow-blue-500/50"}`}
+                            >
+                              {isFull
+                                ? "Access Denied"
+                                : "Initialize Registration"}
+                            </button>
+                          </Link>
                         </div>
                       </div>
                     </div>

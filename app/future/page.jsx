@@ -124,32 +124,33 @@ export default function FuturePage() {
                     </div>
 
                     {/* Card */}
-                    <div className="h-full bg-violet-900/5 border border-violet-500/10 hover:border-violet-500/40 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group-hover:bg-violet-900/10">
-                      <TechCorner className="top-0 left-0 rotate-0" />
-                      <TechCorner className="bottom-0 right-0 rotate-180" />
+                    <Link href={`/future/${["global-expansion", "innovation-district", "ai-research-center", "sustainability-campus"][index]}`}>
+                      <div className="h-full bg-violet-900/5 border border-violet-500/10 hover:border-violet-500/40 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group-hover:bg-violet-900/10 cursor-pointer">
+                        <TechCorner className="top-0 left-0 rotate-0" />
+                        <TechCorner className="bottom-0 right-0 rotate-180" />
 
-                      <div className="flex justify-between items-start mb-4">
-                        <span className="text-4xl font-bold text-violet-500/20 group-hover:text-violet-400/80 transition-colors font-mono">
-                          {item.year}
-                        </span>
-                        <span
-                          className={`text-[10px] font-mono px-2 py-0.5 rounded border ${
-                            index === 3
-                              ? "border-red-500/30 text-red-400"
-                              : "border-violet-500/30 text-violet-400"
-                          }`}
-                        >
-                          {item.status}
-                        </span>
+                        <div className="flex justify-between items-start mb-4">
+                          <span className="text-4xl font-bold text-violet-500/20 group-hover:text-violet-400/80 transition-colors font-mono">
+                            {item.year}
+                          </span>
+                          <span
+                            className={`text-[10px] font-mono px-2 py-0.5 rounded border ${index === 3
+                                ? "border-red-500/30 text-red-400"
+                                : "border-violet-500/30 text-violet-400"
+                              }`}
+                          >
+                            {item.status}
+                          </span>
+                        </div>
+
+                        <h3 className="text-xl text-white font-medium mb-2 group-hover:text-violet-300 transition-colors">
+                          {item.title} <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
+                        </h3>
+                        <p className="text-sm text-violet-200/50 leading-relaxed">
+                          {item.description}
+                        </p>
                       </div>
-
-                      <h3 className="text-xl text-white font-medium mb-2">
-                        {item.title}
-                      </h3>
-                      <p className="text-sm text-violet-200/50 leading-relaxed">
-                        {item.description}
-                      </p>
-                    </div>
+                    </Link>
                   </div>
                 ))}
               </div>
