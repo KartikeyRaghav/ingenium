@@ -191,6 +191,17 @@ export default function FuturePage() {
                       );
                     }
                     if (index === 2) { // AI Research
+                      // Matrix Rain Effect - Client Side Only to fix hydration mismatch
+                      const [matrixChars, setMatrixChars] = useState([]);
+
+                      useEffect(() => {
+                        // Generate random characters only on the client
+                        const chars = Array.from({ length: 120 }).map(() =>
+                          String.fromCharCode(0x30A0 + Math.random() * 96)
+                        );
+                        setMatrixChars(chars);
+                      }, []);
+
                       return (
                         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 group-hover:opacity-50 transition-opacity font-mono text-[8px] text-green-500 leading-none select-none mask-gradient">
                           <div className="flex justify-between">
@@ -199,7 +210,7 @@ export default function FuturePage() {
                               <div key={i} className="flex flex-col animate-matrix-rain" style={{ animationDuration: `${2 + i * 0.5}s`, animationDelay: `-${i}s` }}>
                                 {Array.from({ length: 20 }).map((_, j) => (
                                   <span key={j} className={j % 5 === 0 ? "text-green-300 font-bold" : "opacity-60"}>
-                                    {String.fromCharCode(0x30A0 + Math.random() * 96)}
+                                    {matrixChars[i * 20 + j] || ""}
                                   </span>
                                 ))}
                               </div>
@@ -209,22 +220,30 @@ export default function FuturePage() {
                       );
                     }
                     if (index === 3) { // Sustainability
+                      // Firefly Effect - Client Side Only to fix hydration mismatch
+                      const [fireflies, setFireflies] = useState([]);
+
+                      useEffect(() => {
+                        const flies = Array.from({ length: 8 }).map(() => ({
+                          width: Math.random() * 3 + 1 + 'px',
+                          height: Math.random() * 3 + 1 + 'px',
+                          top: Math.random() * 100 + '%',
+                          left: Math.random() * 100 + '%',
+                          animationDuration: (Math.random() * 5 + 5) + 's',
+                          animationDelay: (Math.random() * 5) + 's',
+                          opacity: Math.random() * 0.5 + 0.3
+                        }));
+                        setFireflies(flies);
+                      }, []);
+
                       return (
                         <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30 group-hover:opacity-60 transition-opacity">
                           {/* Firefly Swarm */}
-                          {[...Array(8)].map((_, i) => (
+                          {fireflies.map((style, i) => (
                             <div
                               key={i}
                               className="absolute bg-emerald-400 rounded-full blur-[1px] animate-firefly"
-                              style={{
-                                width: Math.random() * 3 + 1 + 'px',
-                                height: Math.random() * 3 + 1 + 'px',
-                                top: Math.random() * 100 + '%',
-                                left: Math.random() * 100 + '%',
-                                animationDuration: (Math.random() * 5 + 5) + 's',
-                                animationDelay: (Math.random() * 5) + 's',
-                                opacity: Math.random() * 0.5 + 0.3
-                              }}
+                              style={style}
                             />
                           ))}
                           {/* Breathing Glow */}
