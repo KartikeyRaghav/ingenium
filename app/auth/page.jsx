@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { Lock, Mail, User, Fingerprint, Cpu, ArrowRight } from "lucide-react";
-import { StarField } from "@/components/chronoverse";
 
 export default function AuthTerminal() {
   const [isLogin, setIsLogin] = useState(true);
@@ -24,9 +23,7 @@ export default function AuthTerminal() {
   }, []);
 
   return (
-    <div className="relative min-h-screen w-full bg-[#02040a] flex items-center justify-center overflow-hidden font-mono">
-      <StarField />
-
+    <div className="relative min-h-screen w-full bg-black/30 flex items-center justify-center overflow-hidden font-mono">
       {/* Background Decorative HUD */}
       <div className="absolute inset-0 pointer-events-none opacity-20">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 border border-blue-500/20 rounded-full animate-[spin_60s_linear_infinite]" />

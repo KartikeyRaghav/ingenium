@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { StarField } from "@/components/chronoverse";
 import {
   Shield,
   Settings,
@@ -19,9 +18,7 @@ export default function ProfilePage() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#02040a] text-white font-mono overflow-hidden">
-      <StarField />
-
+    <div className="relative min-h-screen bg-black/30 text-white font-mono overflow-hidden">
       {/* HUD Grid Overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(17,24,39,0)_0%,rgba(2,4,10,1)_100%)] z-10" />
 

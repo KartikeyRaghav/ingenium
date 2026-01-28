@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { PageTransitionWrapper, StarField } from "@/components/chronoverse";
-import NeuralLink from "@/components/NeuralLink";
+import { PageTransitionWrapper } from "@/components/chronoverse";
 
 const PlasmaFlow = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
@@ -42,10 +41,8 @@ const PlasmaFlow = () => (
 export default function CleanEnergyPage() {
   return (
     <PageTransitionWrapper>
-      <main className="relative min-h-screen bg-[#000810] overflow-hidden selection:bg-cyan-500/30 font-sans">
-        <StarField />
+      <main className="relative min-h-screen bg-black/30 overflow-hidden selection:bg-cyan-500/30 font-sans">
         <PlasmaFlow />
-        <NeuralLink />
         {/* Back Link */}
         <div className="absolute top-8 left-8 z-50">
           <Link href="/future">

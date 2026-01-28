@@ -54,8 +54,8 @@ export default function MainPage() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-[#0a0e1a]">
-      <StarField />
-      <NeuralLink />
+      {/* <StarField />
+      <NeuralLink /> */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.15)_0%,transparent_70%)]" />
       {appState === "landing" && (
         <div className="landing-container">

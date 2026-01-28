@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { PageTransitionWrapper, StarField } from "@/components/chronoverse";
-import NeuralLink from "@/components/NeuralLink";
+import { PageTransitionWrapper } from "@/components/chronoverse";
 
 const DNAStrand = () => (
   <div className="flex items-center gap-2 h-100 animate-fade-in">
@@ -45,9 +44,7 @@ const DNAStrand = () => (
 export default function BioTechPage() {
   return (
     <PageTransitionWrapper>
-      <main className="relative min-h-screen bg-[#050002] overflow-hidden selection:bg-rose-500/30 font-sans">
-        <StarField />
-        <NeuralLink />
+      <main className="relative min-h-screen bg-black/30 overflow-hidden selection:bg-rose-500/30 font-sans">
         {/* Background Gradients */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(244,63,94,0.1),transparent_70%)] pointer-events-none" />
 

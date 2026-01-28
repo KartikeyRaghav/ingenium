@@ -233,15 +233,15 @@ export default function Navigation({ onNavigate }) {
 
   const handleNodeClick = (nodeId) => {
     // Zoom out effect
-    gsap.to(mapRef.current, {
-      scale: 3,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power2.in",
-      onComplete: () => {
-         router.push(`/${nodeId}`);
-      }
-    });
+    // gsap.to(mapRef.current, {
+    //   scale: 3,
+    //   opacity: 0,
+    //   duration: 0.8,
+    //   ease: "power2.in",
+    //   onComplete: () => {
+    //   }
+    // });
+    router.push(`/${nodeId}`);
   };
 
   return (
@@ -250,7 +250,7 @@ export default function Navigation({ onNavigate }) {
       onMouseMove={handleMouseMove}
       className="relative w-full h-screen bg-[#02040a] overflow-hidden flex items-center justify-center perspective-1000"
     >
-      <StarField />
+      {/* <StarField /> */}
       
       {/* Background Grid (Floor) */}
       <div 

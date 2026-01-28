@@ -101,7 +101,7 @@ export function StarField() {
           >
             {/* Tail */}
             <div
-              className="absolute top-1/2 left-0 w-[500px] h-[1px] bg-linear-to-r from-transparent to-white -translate-y-1/2 -translate-x-full origin-right"
+              className="absolute top-1/2 left-0 w-125 h-px bg-linear-to-r from-transparent to-white -translate-y-1/2 -translate-x-full origin-right"
             />
           </div>
         </div>

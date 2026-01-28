@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { PageTransitionWrapper, StarField } from "@/components/chronoverse";
+import { PageTransitionWrapper } from "@/components/chronoverse";
 import {
   ongoingEvents,
   upcomingEvents,
@@ -67,9 +67,7 @@ export default function PresentPage() {
 
   return (
     <PageTransitionWrapper>
-      <main className="relative min-h-screen bg-[#030712] overflow-hidden selection:bg-blue-500/30">
-        <StarField />
-        <NeuralLink />
+      <main className="relative min-h-screen bg-black/30 overflow-hidden selection:bg-blue-500/30">
         {/* Background: Blue Hex Grid & Radar */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-size-[50px_50px] opacity-40" />
         <div className="absolute top-0 left-0 w-full h-125 bg-linear-to-b from-blue-900/20 to-transparent pointer-events-none" />

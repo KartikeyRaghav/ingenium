@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { PageTransitionWrapper, StarField } from "@/components/chronoverse";
-import NeuralLink from "@/components/NeuralLink";
 
 const QBitVisualization = () => {
   const canvasRef = useRef(null);
@@ -99,10 +98,8 @@ const QBitVisualization = () => {
 export default function QuantumPage() {
   return (
     <PageTransitionWrapper>
-      <main className="relative min-h-screen bg-[#05030a] overflow-hidden selection:bg-violet-500/30 font-sans">
-        <StarField />
+      <main className="relative min-h-screen bg-black/30 overflow-hidden selection:bg-violet-500/30 font-sans">
         <QBitVisualization />
-        <NeuralLink />
         {/* Overlay Gradient */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#05030a_90%)] pointer-events-none" />
 

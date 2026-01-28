@@ -2,9 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { PageTransitionWrapper, StarField } from "@/components/chronoverse";
+import { PageTransitionWrapper } from "@/components/chronoverse";
 import gsap from "gsap";
-import NeuralLink from "@/components/NeuralLink";
 
 const UniversityNode = ({ cx, cy, delay, name }) => (
   <g className="group cursor-pointer">
@@ -98,10 +97,8 @@ export default function GlobalExpansionPage() {
     <PageTransitionWrapper>
       <main
         ref={mapRef}
-        className="relative min-h-screen bg-[#050308] overflow-hidden selection:bg-violet-500/30 font-sans"
+        className="relative min-h-screen bg-black/30 overflow-hidden selection:bg-violet-500/30 font-sans"
       >
-        <StarField />
-        <NeuralLink />
         {/* Background Grid */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)] bg-size-[60px_60px] opacity-30" />
 

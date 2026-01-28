@@ -2,8 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { PageTransitionWrapper, StarField } from "@/components/chronoverse";
-import NeuralLink from "@/components/NeuralLink";
+import { PageTransitionWrapper } from "@/components/chronoverse";
 
 export default function AIResearchPage() {
   const canvasRef = useRef(null);
@@ -53,10 +52,9 @@ export default function AIResearchPage() {
 
   return (
     <PageTransitionWrapper>
-      <main className="relative min-h-screen bg-black overflow-hidden font-mono selection:bg-green-500/30">
+      <main className="relative min-h-screen bg-black/30 overflow-hidden font-mono selection:bg-green-500/30">
         {/* Canvas Background */}
         <canvas ref={canvasRef} className="absolute inset-0 opacity-30" />
-        <NeuralLink />
         {/* Navigation */}
         <div className="absolute top-8 left-8 z-50">
           <Link href="/future">

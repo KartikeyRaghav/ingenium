@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { PageTransitionWrapper, StarField } from "@/components/chronoverse";
-import NeuralLink from "@/components/NeuralLink";
+import { PageTransitionWrapper } from "@/components/chronoverse";
 
 // --- Time Calculation Logic ---
 function calculateTimeLeft() {
@@ -151,10 +150,7 @@ export default function TimeCorePage() {
 
   return (
     <PageTransitionWrapper>
-      <main className="relative min-h-screen bg-[#02040a] overflow-hidden flex flex-col items-center justify-center">
-        {/* --- Background Layers --- */}
-        <StarField density={2000} /> {/* Increased density for warp effect */}
-        <NeuralLink />
+      <main className="relative min-h-screen bg-black/30 overflow-hidden flex flex-col items-center justify-center">
         {/* Radial Energy Burst */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.15)_0%,transparent_60%)] animate-pulse-slow" />
         {/* Cyber Grid Perspective */}

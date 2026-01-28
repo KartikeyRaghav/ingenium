@@ -2,8 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { PageTransitionWrapper, StarField } from "@/components/chronoverse";
-import NeuralLink from "@/components/NeuralLink";
+import { PageTransitionWrapper } from "@/components/chronoverse";
 
 const Particles = () => {
   const canvasRef = useRef(null);
@@ -147,11 +146,9 @@ export default function SustainabilityPage() {
   return (
     <PageTransitionWrapper>
       <main
-        className={`relative min-h-screen overflow-hidden selection:bg-emerald-500/30 font-sans transition-colors duration-1000 ${isCycled ? "bg-[#020502]" : "bg-[#051005]"}`}
+        className={`relative min-h-screen overflow-hidden selection:bg-emerald-500/30 font-sans transition-colors duration-1000 ${isCycled ? "bg-black/30" : "bg-black/50"}`}
       >
-        <StarField />
         <Particles />
-        <NeuralLink />
         {/* Organic Gradient Background */}
         <div
           className={`absolute inset-0 transition-opacity duration-1000 ${isCycled ? "opacity-40" : "opacity-100"} bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.15),transparent_60%)] pointer-events-none`}

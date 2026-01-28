@@ -2,9 +2,8 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { PageTransitionWrapper, StarField } from "@/components/chronoverse";
+import { PageTransitionWrapper } from "@/components/chronoverse";
 import { visionTimeline, futureTechnologies, sponsors } from "@/data/future";
-import NeuralLink from "@/components/NeuralLink";
 
 // Violet stylized corner bracket (Defaults to Violet, but customizable)
 const TechCorner = ({ className, color = "text-violet-500/50" }) => (
@@ -40,9 +39,7 @@ export default function FuturePage() {
 
   return (
     <PageTransitionWrapper>
-      <main className="relative min-h-screen bg-[#050308] overflow-hidden selection:bg-violet-500/30">
-        <StarField />
-        <NeuralLink />
+      <main className="relative min-h-screen bg-black/30 overflow-hidden selection:bg-violet-500/30">
         {/* Advanced Background Grid: Perspective Plane (Violet) */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)] bg-size-[40px_40px] mask-[radial-gradient(ellipse_at_center,black_40%,transparent_100%)] opacity-50" />
 

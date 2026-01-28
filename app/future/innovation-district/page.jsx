@@ -2,9 +2,8 @@
 
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
-import { PageTransitionWrapper, StarField } from "@/components/chronoverse";
+import { PageTransitionWrapper } from "@/components/chronoverse";
 import gsap from "gsap";
-import NeuralLink from "@/components/NeuralLink";
 
 const BlueprintZone = ({
   x,
@@ -140,9 +139,7 @@ export default function InnovationDistrictPage() {
 
   return (
     <PageTransitionWrapper>
-      <main className="relative min-h-screen bg-[#02040a] overflow-hidden selection:bg-blue-500/30 font-sans">
-        <StarField />
-        <NeuralLink />
+      <main className="relative min-h-screen bg-black/30 overflow-hidden selection:bg-blue-500/30 font-sans">
         {/* Blueprint Grid Background */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.1)_1px,transparent_1px)] bg-size-[20px_20px] opacity-20" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.2)_1px,transparent_1px)] bg-size-[100px_100px] opacity-20" />

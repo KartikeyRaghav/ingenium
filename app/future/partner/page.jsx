@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { PageTransitionWrapper, StarField } from "@/components/chronoverse";
+import { PageTransitionWrapper } from "@/components/chronoverse";
 import Link from "next/link";
-import NeuralLink from "@/components/NeuralLink";
 
 // Simple corner accent component
 const TechCorner = ({ className, color = "text-violet-500" }) => (
@@ -50,9 +49,7 @@ export default function PartnerPage() {
 
   return (
     <PageTransitionWrapper>
-      <main className="min-h-screen bg-[#050308] text-violet-100 relative overflow-hidden selection:bg-violet-500/30 selection:text-white">
-        <StarField count={800} />
-        <NeuralLink />
+      <main className="min-h-screen bg-black/30 text-violet-100 relative overflow-hidden selection:bg-violet-500/30 selection:text-white">
         {/* Background Gradients */}
         <div className="fixed inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-200 h-125 bg-violet-900/10 blur-[120px] rounded-full" />

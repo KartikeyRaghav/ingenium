@@ -3,8 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { PageTransitionWrapper, StarField } from "@/components/chronoverse";
-import NeuralLink from "@/components/NeuralLink";
+import { PageTransitionWrapper } from "@/components/chronoverse";
 
 // Loading component for Suspense
 function RegistrationContent() {
@@ -248,9 +247,7 @@ function RegistrationContent() {
 export default function RegistrationPage() {
   return (
     <PageTransitionWrapper>
-      <main className="relative min-h-screen bg-[#030712] overflow-hidden flex items-center justify-center p-4">
-        <StarField />
-        <NeuralLink />
+      <main className="relative min-h-screen bg-black/30 overflow-hidden flex items-center justify-center p-4">
         {/* Background: Blue Hex Grid & Radar */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-size-[50px_50px] opacity-40 pointer-events-none" />
 

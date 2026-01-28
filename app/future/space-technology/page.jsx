@@ -1,9 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
-import { PageTransitionWrapper, StarField } from "@/components/chronoverse";
-import NeuralLink from "@/components/NeuralLink";
+import { PageTransitionWrapper } from "@/components/chronoverse";
 
 const Orbit = ({ radius, speed, delay, color }) => (
   <div
@@ -41,9 +39,7 @@ const Orbit = ({ radius, speed, delay, color }) => (
 export default function SpacePage() {
   return (
     <PageTransitionWrapper>
-      <main className="relative min-h-screen bg-[#000005] overflow-hidden selection:bg-blue-500/30 font-sans">
-        <StarField />
-        <NeuralLink />
+      <main className="relative min-h-screen bg-black/30 overflow-hidden selection:bg-blue-500/30 font-sans">
         {/* Deep Space Gradient */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,#0c1220_0%,transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,#1e1b4b_0%,transparent_50%)] opacity-30" />
