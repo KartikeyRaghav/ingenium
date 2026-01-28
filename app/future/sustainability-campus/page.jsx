@@ -1,17 +1,128 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { PageTransitionWrapper, StarField } from "@/components/chronoverse";
 
+const Particles = () => {
+    const canvasRef = useRef(null);
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        let animationFrameId;
+
+        const particles = [];
+        const particleCount = 30;
+
+        const resize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
+        resize();
+        window.addEventListener('resize', resize);
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.opacity = Math.random() * 0.5 + 0.1;
+                this.color = `rgba(16, 185, 129, ${this.opacity})`; // Emerald green
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width) this.x = 0;
+                else if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                else if (this.y < 0) this.y = canvas.height;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        const animate = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            animationFrameId = requestAnimationFrame(animate);
+        };
+        animate();
+
+        return () => {
+            window.removeEventListener('resize', resize);
+            cancelAnimationFrame(animationFrameId);
+        };
+    }, []);
+
+    return <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" />;
+};
+
+const EnergyChart = () => {
+    // Simulated SVG Chart
+    const points = 20;
+    const height = 100;
+    const width = 300;
+    const [data, setData] = useState(Array.from({ length: points }, () => Math.random() * 40 + 30));
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setData(prev => {
+                const newData = [...prev.slice(1), Math.random() * 40 + 30]; // Moving window
+                return newData;
+            });
+        }, 500);
+        return () => clearInterval(interval);
+    }, []);
+
+    const pathD = `M 0 ${height} ` + data.map((val, i) => `L ${(i / (points - 1)) * width} ${height - val}`).join(" ") + ` L ${width} ${height} Z`;
+    const lineD = data.map((val, i) => `${i === 0 ? 'M' : 'L'} ${(i / (points - 1)) * width} ${height - val}`).join(" ");
+
+    return (
+        <div className="w-full h-32 bg-[#051505] border border-emerald-500/30 rounded-lg overflow-hidden relative">
+            <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-full" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="rgba(16,185,129,0.4)" />
+                        <stop offset="100%" stopColor="rgba(16,185,129,0)" />
+                    </linearGradient>
+                </defs>
+                <path d={pathD} fill="url(#chartFill)" />
+                <path d={lineD} fill="none" stroke="#10b981" strokeWidth="2" vectorEffect="non-scaling-stroke" />
+            </svg>
+            <div className="absolute top-2 left-2 text-[8px] font-mono text-emerald-500">REAL-TIME ENERGY OUTPUT</div>
+            <div className="absolute bottom-2 right-2 text-[8px] font-mono text-emerald-400 animate-pulse">LIVE</div>
+        </div>
+    );
+};
+
 export default function SustainabilityPage() {
+    const [isCycled, setIsCycled] = useState(false);
+
     return (
         <PageTransitionWrapper>
-            <main className="relative min-h-screen bg-[#051005] overflow-hidden selection:bg-emerald-500/30 font-sans">
+            <main className={`relative min-h-screen overflow-hidden selection:bg-emerald-500/30 font-sans transition-colors duration-1000 ${isCycled ? 'bg-[#020502]' : 'bg-[#051005]'}`}>
                 <StarField />
+                <Particles />
 
                 {/* Organic Gradient Background */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.15),transparent_60%)] pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-full h-1/2 bg-linear-to-t from-emerald-900/20 to-transparent pointer-events-none" />
+                <div className={`absolute inset-0 transition-opacity duration-1000 ${isCycled ? 'opacity-40' : 'opacity-100'} bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.15),transparent_60%)] pointer-events-none`} />
 
                 {/* Back Link */}
                 <div className="absolute top-8 left-8 z-50">
@@ -29,11 +140,15 @@ export default function SustainabilityPage() {
 
                 <div className="relative z-10 container mx-auto px-4 py-20 min-h-screen flex flex-col items-center justify-center text-center">
 
-                    <div className="mb-6 inline-flex overflow-hidden rounded-full border border-emerald-500/30 p-1 bg-emerald-950/30">
-                        <span className="px-4 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-[10px] font-bold tracking-widest uppercase">
-                            TARGET 2030
+                    <button
+                        onClick={() => setIsCycled(!isCycled)}
+                        className="mb-6 inline-flex overflow-hidden rounded-full border border-emerald-500/30 p-1 bg-emerald-950/30 hover:border-emerald-400 cursor-pointer transition-colors"
+                        title="Toggle Cycle"
+                    >
+                        <span className={`px-4 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase transition-colors ${isCycled ? 'text-emerald-500' : 'bg-emerald-500/10 text-emerald-300'}`}>
+                            TARGET 2030 {isCycled ? '(NIGHT MODE)' : '(DAY MODE)'}
                         </span>
-                    </div>
+                    </button>
 
                     <h1 className="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-linear-to-r from-emerald-200 via-emerald-400 to-cyan-400 mb-8 tracking-tight">
                         SUSTAINABILITY <br /> CAMPUS
@@ -44,8 +159,12 @@ export default function SustainabilityPage() {
                         Where technology meets biology to create a regenerative future for Ingenium.
                     </p>
 
-                    {/* Energy Dashboard Cards */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl items-center">
+                        {/* Chart Card (Takes up 2 slots on larger screens) */}
+                        <div className="md:col-span-2 lg:col-span-2">
+                            <EnergyChart />
+                        </div>
+
                         {/* Solar Card */}
                         <div className="bg-[#0a1a0a]/80 border border-emerald-500/20 p-6 rounded-2xl backdrop-blur-sm group hover:border-emerald-400/50 transition-all">
                             <div className="w-12 h-12 mb-4 bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform">
@@ -67,33 +186,6 @@ export default function SustainabilityPage() {
                             <div className="text-3xl font-mono font-bold text-white mb-1">Zero</div>
                             <div className="text-xs text-emerald-400/60 uppercase tracking-wider">Carbon Footprint</div>
                         </div>
-
-                        {/* Waste Card */}
-                        <div className="bg-[#0a1a0a]/80 border border-emerald-500/20 p-6 rounded-2xl backdrop-blur-sm group hover:border-emerald-400/50 transition-all">
-                            <div className="w-12 h-12 mb-4 bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform">
-                                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                                </svg>
-                            </div>
-                            <div className="text-3xl font-mono font-bold text-white mb-1">Circular</div>
-                            <div className="text-xs text-emerald-400/60 uppercase tracking-wider">Waste Economy</div>
-                        </div>
-                    </div>
-
-                    {/* Leaf Particles Simulation (CSS only) */}
-                    <div className="absolute inset-0 pointer-events-none opacity-20">
-                        {[...Array(10)].map((_, i) => (
-                            <div
-                                key={i}
-                                className="absolute w-2 h-2 bg-emerald-500 rounded-full animate-float"
-                                style={{
-                                    top: `${Math.random() * 100}%`,
-                                    left: `${Math.random() * 100}%`,
-                                    animationDelay: `${Math.random() * 5}s`,
-                                    animationDuration: `${5 + Math.random() * 5}s`
-                                }}
-                            />
-                        ))}
                     </div>
 
                 </div>
