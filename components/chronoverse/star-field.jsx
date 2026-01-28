@@ -82,22 +82,28 @@ export function StarField() {
       {shootingStars.map((star) => (
         <div
           key={star.id}
-          className="absolute bg-white/80 animate-shooting-star"
+          className="absolute"
           style={{
             left: `${star.x}%`,
             top: `${star.y}%`,
+            transform: `rotate(${star.angle}deg)`,
             width: `${star.size}px`,
             height: `${star.size}px`,
-            transform: `rotate(${star.angle}deg)`,
-            boxShadow: `0 0 10px 2px rgba(255, 255, 255, 0.4)`,
-            animationDuration: star.duration,
           }}
-          onAnimationEnd={() => handleAnimationEnd(star.id)}
         >
-          {/* Tail */}
           <div
-            className="absolute top-1/2 left-0 w-[100px] h-[1px] bg-linear-to-r from-transparent to-white -translate-y-1/2 -translate-x-full origin-right"
-          />
+            className="w-full h-full bg-white/80 animate-shooting-star"
+            style={{
+              boxShadow: `0 0 10px 2px rgba(255, 255, 255, 0.4)`,
+              animationDuration: star.duration,
+            }}
+            onAnimationEnd={() => handleAnimationEnd(star.id)}
+          >
+            {/* Tail */}
+            <div
+              className="absolute top-1/2 left-0 w-[500px] h-[1px] bg-linear-to-r from-transparent to-white -translate-y-1/2 -translate-x-full origin-right"
+            />
+          </div>
         </div>
       ))}
     </div>
