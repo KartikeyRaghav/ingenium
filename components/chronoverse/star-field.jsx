@@ -29,7 +29,7 @@ export function StarField() {
             width: `${star.size}px`,
             height: `${star.size}px`,
             opacity: star.opacity,
-            animation: `flicker ${star.animationDuration}s ease-in-out infinite`,
+            animation: `twinkle ${star.animationDuration}s ease-in-out infinite`,
           }}
         />
       ))}
