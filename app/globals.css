@@ -257,10 +257,13 @@
 }
 
 @keyframes twinkle {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.2;
     transform: scale(0.8);
   }
+
   50% {
     opacity: 1;
     transform: scale(1.2);
@@ -301,4 +304,24 @@
 /* Glow border */
 .glow-border {
   box-shadow: 0 0 15px rgba(59, 130, 246, 0.3), inset 0 0 15px rgba(59, 130, 246, 0.05);
+}
+@keyframes shooting-star {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120vh);
+    opacity: 0;
+  }
+}
+
+.animate-shooting-star {
+  animation: shooting-star 2.5s linear forwards;
 }
