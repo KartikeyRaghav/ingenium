@@ -9,6 +9,7 @@ import {
   scheduleData,
   registrations,
 } from "@/data/present";
+import NeuralLink from "@/components/NeuralLink";
 
 // Blue stylized corner for the dashboard feel
 const OpsCorner = ({ className }) => (
@@ -68,7 +69,7 @@ export default function PresentPage() {
     <PageTransitionWrapper>
       <main className="relative min-h-screen bg-[#030712] overflow-hidden selection:bg-blue-500/30">
         <StarField />
-
+        <NeuralLink />
         {/* Background: Blue Hex Grid & Radar */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-size-[50px_50px] opacity-40" />
         <div className="absolute top-0 left-0 w-full h-125 bg-linear-to-b from-blue-900/20 to-transparent pointer-events-none" />
@@ -143,10 +144,11 @@ export default function PresentPage() {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-6 py-2 rounded text-xs font-bold uppercase tracking-widest transition-all duration-300 relative overflow-hidden ${activeTab === tab
-                    ? "bg-blue-600 text-white shadow-[0_0_15px_rgba(37,99,235,0.5)]"
-                    : "text-blue-500/50 hover:text-blue-300 hover:bg-blue-500/10"
-                    }`}
+                  className={`px-6 py-2 rounded text-xs font-bold uppercase tracking-widest transition-all duration-300 relative overflow-hidden ${
+                    activeTab === tab
+                      ? "bg-blue-600 text-white shadow-[0_0_15px_rgba(37,99,235,0.5)]"
+                      : "text-blue-500/50 hover:text-blue-300 hover:bg-blue-500/10"
+                  }`}
                 >
                   {activeTab === tab && (
                     <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent animate-scan-fast" />
@@ -469,7 +471,13 @@ export default function PresentPage() {
                             </div>
                           )}
 
-                          <Link href={isFull ? '#' : `/present/registration?event=${encodeURIComponent(reg.name)}`}>
+                          <Link
+                            href={
+                              isFull
+                                ? "#"
+                                : `/present/registration?event=${encodeURIComponent(reg.name)}`
+                            }
+                          >
                             <button
                               disabled={isFull}
                               className={`w-full mt-4 py-3 text-xs font-bold uppercase tracking-widest transition-all ${isFull ? "bg-gray-800 text-gray-500 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-500 text-white shadow-lg hover:shadow-blue-500/50"}`}

@@ -9,6 +9,7 @@ import {
   flagshipFests,
   legacyHighlights,
 } from "@/data/past";
+import NeuralLink from "@/components/NeuralLink";
 
 // Amber Tech Corner
 const TechCorner = ({ className }) => (
@@ -88,7 +89,7 @@ export default function PastPage() {
     <PageTransitionWrapper>
       <main className="relative min-h-screen bg-[#080500] overflow-hidden selection:bg-amber-500/30">
         <StarField />
-
+        <NeuralLink />
         {/* Background: Amber Noise & Grid */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(245,158,11,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(245,158,11,0.03)_1px,transparent_1px)] bg-size-[30px_30px] opacity-40" />
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay pointer-events-none" />

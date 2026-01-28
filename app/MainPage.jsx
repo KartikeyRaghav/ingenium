@@ -6,6 +6,7 @@ import LandingPage from "@/components/LandingPage";
 import Navigation from "@/components/Navigation";
 import { StarField } from "@/components/chronoverse";
 import { useSearchParams } from "next/navigation";
+import NeuralLink from "@/components/NeuralLink";
 
 export default function MainPage() {
   const [appState, setAppState] = useState("landing");
@@ -54,6 +55,7 @@ export default function MainPage() {
   return (
     <div className="relative w-full h-screen overflow-hidden bg-[#0a0e1a]">
       <StarField />
+      <NeuralLink />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.15)_0%,transparent_70%)]" />
       {appState === "landing" && (
         <div className="landing-container">

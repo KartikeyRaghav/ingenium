@@ -8,8 +8,8 @@ export const coreTeam = [
   },
   {
     name: "Kavyansh Raj Singh",
-    role: "Chemical Engineering",
-    department: "Public Relations and Outreach Head",
+    role: "Public Relations and Outreach Head",
+    department: "Chemical Engineering",
     id: "MNT-042",
     clearance: "Lvl 5",
   },

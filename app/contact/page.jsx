@@ -8,6 +8,7 @@ import {
   GlassPanel,
 } from "@/components/chronoverse";
 import { coreTeam, coordinators, socialLinks } from "@/data/contact";
+import NeuralLink from "@/components/NeuralLink";
 
 // A tech-styled corner bracket for cards
 const TechCorner = ({ className }) => (
@@ -45,7 +46,7 @@ export default function ContactPage() {
     <PageTransitionWrapper>
       <main className="relative min-h-screen bg-[#050505] overflow-hidden selection:bg-emerald-500/30">
         <StarField />
-
+        <NeuralLink />
         {/* Advanced Background Grid: Perspective Plane */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-size-[40px_40px] mask-[radial-gradient(ellipse_at_center,black_40%,transparent_100%)] opacity-50" />
 

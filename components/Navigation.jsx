@@ -277,7 +277,7 @@ export default function Navigation({ onNavigate }) {
          </div>
          <div className="text-right">
              <h2 className="text-3xl font-bold text-white tracking-tighter" style={{ fontFamily: "Oxanium, sans-serif" }}>
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-cyan-300">STARMAP</span> SYSTEM
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-cyan-300">NAVIGATOR</span> SYSTEM
              </h2>
              <p className="text-[10px] text-blue-500/50 font-mono tracking-[0.3em] uppercase mt-1">
                 Ingenium Chronoverse v2.0
