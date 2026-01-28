@@ -7,7 +7,7 @@ import { StarField } from "@/components/chronoverse";
 // --- Sub-Components ---
 
 // The Rotating Time Rings
-const PortalRing = ({ color, size, duration, direction, delay }) => (
+const PortalRing = ({ color, size, duration, direction, delay, planetSize, planetColor }) => (
   <div
     className={`absolute rounded-full border border-dashed opacity-60 ${direction === "clock" ? "animate-[spin_linear_infinite]" : "animate-[spin_linear_infinite_reverse]"}`}
     style={{
@@ -18,7 +18,22 @@ const PortalRing = ({ color, size, duration, direction, delay }) => (
       animationDelay: `${delay}s`,
       boxShadow: `0 0 15px ${color}40`,
     }}
-  />
+  >
+    {planetColor && (
+      <div
+        className="absolute rounded-full"
+        style={{
+          width: planetSize || "12px",
+          height: planetSize || "12px",
+          backgroundColor: planetColor,
+          top: "50%",
+          left: "0",
+          transform: "translate(-50%, -50%)",
+          boxShadow: `0 0 10px ${planetColor}`,
+        }}
+      />
+    )}
+  </div>
 );
 
 export default function LandingPage({ onNavigate }) {
@@ -150,6 +165,16 @@ export default function LandingPage({ onNavigate }) {
         </h2>
       </div>
 
+      {/* --- TOP RIGHT HEADING (College Name) --- */}
+      <div className="absolute top-8 right-8 z-30 pointer-events-none mix-blend-screen hidden md:block">
+        <h2
+          className="text-2xl font-bold tracking-widest text-blue-100/80 uppercase"
+          style={{ fontFamily: "Oxanium, sans-serif" }}
+        >
+          IIT INDORE
+        </h2>
+      </div>
+
       {/* --- THE CHRONO GATE (Central 3D Element) --- */}
       <div
         ref={portalRef}
@@ -165,6 +190,8 @@ export default function LandingPage({ onNavigate }) {
           duration={40}
           direction="clock"
           delay={0}
+          planetSize="20px"
+          planetColor="#f59e0b"
         />
 
         {/* Ring 2: Future (Violet) - Medium, Medium */}
@@ -174,6 +201,8 @@ export default function LandingPage({ onNavigate }) {
           duration={25}
           direction="counter"
           delay={-5}
+          planetSize="16px"
+          planetColor="#8b5cf6"
         />
 
         {/* Ring 3: Present (Cyan) - Small, Fast */}
@@ -183,6 +212,8 @@ export default function LandingPage({ onNavigate }) {
           duration={15}
           direction="clock"
           delay={-2}
+          planetSize="12px"
+          planetColor="#06b6d4"
         />
 
         {/* Central Singularity */}
