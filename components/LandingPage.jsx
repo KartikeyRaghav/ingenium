@@ -135,7 +135,7 @@ export default function LandingPage({ onNavigate }) {
         // 3. Flash to white (simulating warp entry)
         .to(
           ".warp-flash",
-          { opacity: 1, duration: 0.1, ease: "power1.in" },
+          { opacity: 0, duration: 0.1, ease: "power1.in" },
           "-=0.5",
         );
     }, containerRef);
@@ -145,7 +145,7 @@ export default function LandingPage({ onNavigate }) {
     <div
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative w-full h-screen bg-[#02040a] overflow-hidden flex items-center justify-center perspective-1000"
+      className="relative w-full h-screen bg-black/30 overflow-hidden flex items-center justify-center perspective-1000"
     >
       {/* Backgrounds */}
       {/* <StarField /> */}

@@ -248,7 +248,7 @@ export default function Navigation({ onNavigate }) {
     <div
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative w-full h-screen bg-[#02040a] overflow-hidden flex items-center justify-center perspective-1000"
+      className="relative w-full h-screen bg-black/30 overflow-hidden flex items-center justify-center perspective-1000"
     >
       {/* <StarField /> */}
       
