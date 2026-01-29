@@ -4,6 +4,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { Lock, Mail, User, Fingerprint, Cpu, ArrowRight } from "lucide-react";
+// import dotenv from "dotenv";
+
+// dotenv.config({});
 
 export default function AuthTerminal() {
   const [isLogin, setIsLogin] = useState(true);
@@ -20,7 +23,36 @@ export default function AuthTerminal() {
     e.preventDefault();
     setLoading(true);
     try {
-      
+      if (isLogin) {
+        const response = await fetch(`http://localhost:5000/api/user/login`, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+          }),
+        });
+
+        const data = await response.json();
+        console.log(data);
+      } else {
+        const response = await fetch(
+          `${process.env.BACKEND_URL}/api/user/signup`,
+          {
+            method: "POST",
+            body: JSON.stringify({
+              name: formData.name,
+              email: formData.email,
+              password: formData.password,
+            }),
+          },
+        );
+
+        const data = await response.json();
+        console.log(data);
+      }
     } catch (error) {
       console.error(error);
     } finally {
