@@ -189,90 +189,95 @@ export default function PresentPage() {
                   </div>
 
                   {/* Live Cards */}
-                  {ongoingEvents.map((event, i) => (
-                    <div
-                      key={i}
-                      className="group relative bg-[#050a14] border border-blue-500/30 rounded-lg overflow-hidden hover:border-blue-400 transition-all duration-300"
-                    >
-                      {/* Monitor Scan Line */}
-                      <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.4)_50%)] bg-size-[100%_4px] opacity-20 pointer-events-none z-10" />
-                      <div className="absolute inset-0 bg-linear-to-r from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-0" />
+                  {ongoingEvents.map((event, i) => {
+                    const themeColors = { cyan: "blue", violet: "purple", crimson: "red", emerald: "green", amber: "yellow" };
+                    const color = themeColors[event.theme || "cyan"];
+                    return (
+                      <Link href={`/present/event/${event.id}`} key={i} className="block w-full">
+                        <div
+                          className={`group relative bg-[#050a14] border border-${color}-500/30 rounded-lg overflow-hidden hover:border-${color}-400 transition-all duration-300 mb-6`}
+                        >
+                          {/* Monitor Scan Line */}
+                          <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.4)_50%)] bg-size-[100%_4px] opacity-20 pointer-events-none z-10" />
+                          <div className={`absolute inset-0 bg-linear-to-r from-${color}-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-0`} />
 
-                      <div className="p-6 relative z-20 flex flex-col md:flex-row gap-6">
-                        {/* Simulated Video Thumbnail */}
-                        <div className="w-full md:w-48 h-32 bg-blue-900/20 rounded border border-blue-500/20 flex items-center justify-center relative overflow-hidden">
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-12 h-12 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:border-blue-400 group-hover:scale-110 transition-all cursor-pointer">
-                              <svg
-                                className="w-4 h-4 text-white ml-1"
-                                fill="currentColor"
-                                viewBox="0 0 24 24"
-                              >
-                                <path d="M8 5v14l11-7z" />
-                              </svg>
+                          <div className="p-6 relative z-20 flex flex-col md:flex-row gap-6">
+                            {/* Simulated Video Thumbnail */}
+                            <div className={`w-full md:w-48 h-32 bg-${color}-900/20 rounded border border-${color}-500/20 flex items-center justify-center relative overflow-hidden`}>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <div className={`w-12 h-12 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:border-${color}-400 group-hover:scale-110 transition-all cursor-pointer`}>
+                                  <svg
+                                    className="w-4 h-4 text-white ml-1"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M8 5v14l11-7z" />
+                                  </svg>
+                                </div>
+                              </div>
+                              <div className="absolute top-2 left-2">
+                                <LiveIndicator />
+                              </div>
+                            </div>
+
+                            {/* Info */}
+                            <div className="flex-1">
+                              <div className="flex justify-between items-start mb-2">
+                                <h3 className={`text-xl font-bold text-white group-hover:text-${color}-300 transition-colors`}>
+                                  {event.name}
+                                </h3>
+                                <AudioWave />
+                              </div>
+
+                              <div className={`flex flex-wrap gap-4 text-xs font-mono text-${color}-400/60 mb-4`}>
+                                <span className="flex items-center gap-1">
+                                  <span className={`w-1.5 h-1.5 bg-${color}-500 rounded-full`} />{" "}
+                                  {event.venue}
+                                </span>
+                                <span className="flex items-center gap-1">
+                                  <svg
+                                    className="w-3 h-3"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth={2}
+                                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                                    />
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth={2}
+                                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                                    />
+                                  </svg>{" "}
+                                  {event.viewers}
+                                </span>
+                              </div>
+
+                              <p className="text-sm text-gray-400 mb-4">
+                                {event.description}
+                              </p>
+
+                              {/* Bandwidth Bar */}
+                              <div className={`w-full h-1 bg-${color}-900/30 rounded-full overflow-hidden flex items-center`}>
+                                <div
+                                  className={`h-full bg-${color}-500`}
+                                  style={{ width: event.bandwidth }}
+                                />
+                              </div>
+                              <div className={`text-[9px] text-right text-${color}-500/40 font-mono mt-1`}>
+                                STREAM STABILITY: {event.bandwidth}
+                              </div>
                             </div>
                           </div>
-                          <div className="absolute top-2 left-2">
-                            <LiveIndicator />
-                          </div>
                         </div>
-
-                        {/* Info */}
-                        <div className="flex-1">
-                          <div className="flex justify-between items-start mb-2">
-                            <h3 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors">
-                              {event.name}
-                            </h3>
-                            <AudioWave />
-                          </div>
-
-                          <div className="flex flex-wrap gap-4 text-xs font-mono text-blue-400/60 mb-4">
-                            <span className="flex items-center gap-1">
-                              <span className="w-1.5 h-1.5 bg-blue-500 rounded-full" />{" "}
-                              {event.venue}
-                            </span>
-                            <span className="flex items-center gap-1">
-                              <svg
-                                className="w-3 h-3"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                                />
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  strokeWidth={2}
-                                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                                />
-                              </svg>{" "}
-                              {event.viewers}
-                            </span>
-                          </div>
-
-                          <p className="text-sm text-gray-400 mb-4">
-                            {event.description}
-                          </p>
-
-                          {/* Bandwidth Bar */}
-                          <div className="w-full h-1 bg-blue-900/30 rounded-full overflow-hidden flex items-center">
-                            <div
-                              className="h-full bg-blue-500"
-                              style={{ width: event.bandwidth }}
-                            />
-                          </div>
-                          <div className="text-[9px] text-right text-blue-500/40 font-mono mt-1">
-                            STREAM STABILITY: {event.bandwidth}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+                      </Link>
+                    )
+                  })}
                 </div>
 
                 {/* Side Panel (Right Col) */}
@@ -282,27 +287,32 @@ export default function PresentPage() {
                       Upcoming Transmissions
                     </h3>
                     <div className="space-y-4">
-                      {upcomingEvents.map((ev, i) => (
-                        <div
-                          key={i}
-                          className="flex items-center gap-3 group cursor-pointer hover:bg-blue-500/5 p-2 rounded transition-colors"
-                        >
-                          <div
-                            className={`w-1 h-8 rounded-full ${ev.priority === "MAX" ? "bg-red-500" : ev.priority === "HIGH" ? "bg-orange-500" : "bg-blue-500"} group-hover:h-10 transition-all`}
-                          />
-                          <div className="flex-1">
-                            <div className="text-sm font-bold text-gray-200 group-hover:text-blue-300">
-                              {ev.name}
+                      {upcomingEvents.map((ev, i) => {
+                        const themeColors = { cyan: "blue", violet: "purple", crimson: "red", emerald: "green", amber: "yellow" };
+                        const color = themeColors[ev.theme || "cyan"];
+                        return (
+                          <Link href={`/present/event/${ev.id}`} key={i} className="block">
+                            <div
+                              className="flex items-center gap-3 group cursor-pointer hover:bg-blue-500/5 p-2 rounded transition-colors"
+                            >
+                              <div
+                                className={`w-1 h-8 rounded-full ${ev.priority === "MAX" ? "bg-red-500" : ev.priority === "HIGH" ? "bg-orange-500" : "bg-blue-500"} group-hover:h-10 transition-all`}
+                              />
+                              <div className="flex-1">
+                                <div className={`text-sm font-bold text-gray-200 group-hover:text-${color}-300`}>
+                                  {ev.name}
+                                </div>
+                                <div className="text-[10px] font-mono text-blue-500/50">
+                                  {ev.time} | {ev.venue}
+                                </div>
+                              </div>
+                              <button className={`text-${color}-500 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] border border-${color}-500 px-2 py-1 rounded hover:bg-${color}-500 hover:text-white`}>
+                                VIEW
+                              </button>
                             </div>
-                            <div className="text-[10px] font-mono text-blue-500/50">
-                              {ev.time} | {ev.venue}
-                            </div>
-                          </div>
-                          <button className="text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] border border-blue-500 px-2 py-1 rounded hover:bg-blue-500 hover:text-white">
-                            NOTIFY
-                          </button>
-                        </div>
-                      ))}
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
 
@@ -365,29 +375,35 @@ export default function PresentPage() {
                         </div>
                       )}
 
-                      {day.events.map((ev, j) => (
-                        <div
-                          key={j}
-                          className="flex gap-3 relative z-0 opacity-90 hover:opacity-100 transition-opacity"
-                        >
-                          <div className="w-12 text-[10px] font-mono text-blue-400 pt-1 text-right">
-                            {ev.time}
-                          </div>
-                          <div className="relative flex-1 pb-4 border-l border-blue-500/10 pl-4">
+                      {day.events.map((ev, j) => {
+                        const themeColors = { cyan: "blue", violet: "purple", crimson: "red", emerald: "green", amber: "yellow" };
+                        const color = themeColors[ev.theme || "cyan"];
+
+                        return (
+                          <Link href={`/present/event/${ev.id}`} key={j} className="block mb-4">
                             <div
-                              className={`absolute -left-1.25 top-1.5 w-2.5 h-2.5 rounded-full border-2 ${ev.status === "Live" ? "bg-red-500 border-red-500 animate-pulse" : ev.status === "Done" ? "bg-blue-900 border-blue-700" : "bg-black border-blue-500/30"}`}
-                            />
-                            <h4
-                              className={`text-sm font-medium ${ev.status === "Live" ? "text-white" : "text-gray-400"}`}
+                              className="flex gap-3 relative z-0 opacity-90 hover:opacity-100 transition-opacity group cursor-pointer"
                             >
-                              {ev.name}
-                            </h4>
-                            <p className="text-[10px] text-blue-500/50">
-                              {ev.venue}
-                            </p>
-                          </div>
-                        </div>
-                      ))}
+                              <div className={`w-12 text-[10px] font-mono text-${color}-400 pt-1 text-right group-hover:text-${color}-300`}>
+                                {ev.time}
+                              </div>
+                              <div className={`relative flex-1 pb-4 border-l border-${color}-500/10 pl-4 group-hover:border-${color}-500/30 transition-colors`}>
+                                <div
+                                  className={`absolute -left-1.25 top-1.5 w-2.5 h-2.5 rounded-full border-2 ${ev.status === "Live" ? "bg-red-500 border-red-500 animate-pulse" : ev.status === "Done" ? `bg-${color}-900 border-${color}-700` : `bg-black border-${color}-500/30`}`}
+                                />
+                                <h4
+                                  className={`text-sm font-medium ${ev.status === "Live" ? "text-white" : "text-gray-400"} group-hover:text-${color}-200`}
+                                >
+                                  {ev.name}
+                                </h4>
+                                <p className={`text-[10px] text-${color}-500/50`}>
+                                  {ev.venue}
+                                </p>
+                              </div>
+                            </div>
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                 ))}
