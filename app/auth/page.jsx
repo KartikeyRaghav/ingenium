@@ -9,6 +9,24 @@ export default function AuthTerminal() {
   const [isLogin, setIsLogin] = useState(true);
   const terminalRef = useRef(null);
   const scanLineRef = useRef(null);
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const handleLoginSignup = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Background Scanning Effect
   useEffect(() => {
@@ -72,6 +90,10 @@ export default function AuthTerminal() {
                   <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-500" />
                   <input
                     type="text"
+                    value={formData.name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
                     placeholder="CITIZEN NAME"
                     className="w-full bg-black/50 border border-blue-500/20 rounded-lg py-3 pl-10 pr-4 text-sm text-blue-100 placeholder:text-blue-900 focus:outline-none focus:border-blue-400 transition-colors"
                   />
@@ -82,6 +104,10 @@ export default function AuthTerminal() {
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-500" />
                 <input
                   type="email"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                   placeholder="NEURAL-MAIL ID"
                   className="w-full bg-black/50 border border-blue-500/20 rounded-lg py-3 pl-10 pr-4 text-sm text-blue-100 placeholder:text-blue-900 focus:outline-none focus:border-blue-400 transition-colors"
                 />
@@ -91,12 +117,19 @@ export default function AuthTerminal() {
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-500" />
                 <input
                   type="password"
+                  value={formData.password}
+                  onChange={(e) =>
+                    setFormData({ ...formData, password: e.target.value })
+                  }
                   placeholder="ENCRYPTION KEY"
                   className="w-full bg-black/50 border border-blue-500/20 rounded-lg py-3 pl-10 pr-4 text-sm text-blue-100 placeholder:text-blue-900 focus:outline-none focus:border-blue-400 transition-colors"
                 />
               </div>
 
-              <button className="relative w-full group overflow-hidden py-4 bg-blue-600/20 border border-blue-500/50 rounded-lg text-blue-400 font-bold tracking-widest hover:bg-blue-600/30 transition-all active:scale-95">
+              <button
+                onClick={handleLoginSignup}
+                className="relative w-full group overflow-hidden py-4 bg-blue-600/20 border border-blue-500/50 rounded-lg text-blue-400 font-bold tracking-widest hover:bg-blue-600/30 transition-all active:scale-95"
+              >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   {isLogin ? "INITIALIZE SESSION" : "RESERVE TIMELINE"}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
