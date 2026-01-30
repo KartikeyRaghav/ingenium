@@ -20,7 +20,7 @@ export default function NeuralLink({ isLoggedIn = false }) {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => router.push(isLoggedIn ? "/profile" : "/auth")}
-        className="relative w-14 h-14 bg-black/80 backdrop-blur-xl border border-blue-400/50 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(59,130,246,0.3)] overflow-hidden"
+        className="relative w-14 h-14 bg-black/80 backdrop-blur-xl border cursor-pointer border-blue-400/50 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(59,130,246,0.3)] overflow-hidden"
       >
         {/* Status Light */}
         <div

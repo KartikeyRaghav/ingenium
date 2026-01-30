@@ -36,22 +36,24 @@ export default function AuthTerminal() {
         });
 
         const data = await response.json();
-        console.log(data);
+        localStorage.setItem("access_token", data.access_token);
+        localStorage.setItem("refresh_token", data.refresh_token);
       } else {
-        const response = await fetch(
-          `${process.env.BACKEND_URL}/api/user/signup`,
-          {
-            method: "POST",
-            body: JSON.stringify({
-              name: formData.name,
-              email: formData.email,
-              password: formData.password,
-            }),
+        const response = await fetch(`http://localhost:5000/api/user/signup`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
           },
-        );
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            password: formData.password,
+          }),
+        });
 
         const data = await response.json();
-        console.log(data);
+        localStorage.setItem("access_token", data.access_token);
+        localStorage.setItem("refresh_token", data.refresh_token);
       }
     } catch (error) {
       console.error(error);
@@ -175,7 +177,7 @@ export default function AuthTerminal() {
           <div className="mt-8 text-center">
             <button
               onClick={() => setIsLogin(!isLogin)}
-              className="text-[10px] text-blue-500/60 hover:text-blue-400 transition-colors flex items-center justify-center gap-2 mx-auto uppercase tracking-tighter"
+              className="text-[10px] text-blue-500/60 cursor-pointer hover:text-blue-400 transition-colors flex items-center justify-center gap-2 mx-auto uppercase tracking-tighter"
             >
               <Cpu className="w-3 h-3" />
               {isLogin
