@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { PageTransitionWrapper } from "@/frontend/components/chronoverse";
+import { PageTransitionWrapper } from "@/components/chronoverse";
 
 // --- Time Calculation Logic ---
 function calculateTimeLeft() {

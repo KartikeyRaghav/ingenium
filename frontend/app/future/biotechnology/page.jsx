@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { PageTransitionWrapper } from "@/frontend/components/chronoverse";
+import { PageTransitionWrapper } from "@/components/chronoverse";
 
 const DNAStrand = () => (
   <div className="flex items-center gap-2 h-100 animate-fade-in">

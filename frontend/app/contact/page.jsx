@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { PageTransitionWrapper, GlassPanel } from "@/frontend/components/chronoverse";
-import { coreTeam, coordinators, socialLinks } from "@/frontend/data/contact";
+import { PageTransitionWrapper, GlassPanel } from "@/components/chronoverse";
+import { coreTeam, coordinators, socialLinks } from "@/data/contact";
 
 // A tech-styled corner bracket for cards
 const TechCorner = ({ className }) => (

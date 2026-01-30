@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
-import { PageTransitionWrapper } from "@/frontend/components/chronoverse";
+import { PageTransitionWrapper } from "@/components/chronoverse";
 import gsap from "gsap";
 
 const BlueprintZone = ({

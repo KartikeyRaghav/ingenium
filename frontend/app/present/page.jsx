@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { PageTransitionWrapper } from "@/frontend/components/chronoverse";
+import { PageTransitionWrapper } from "@/components/chronoverse";
 import {
   ongoingEvents,
   upcomingEvents,
   scheduleData,
   registrations,
-} from "@/frontend/data/present";
-import NeuralLink from "@/frontend/components/NeuralLink";
+} from "@/data/present";
+import NeuralLink from "@/components/NeuralLink";
 
 // Blue stylized corner for the dashboard feel
 const OpsCorner = ({ className }) => (

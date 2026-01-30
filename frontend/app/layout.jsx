@@ -1,8 +1,8 @@
 import { Oxanium, Share_Tech_Mono } from "next/font/google";
 import "./globals.css";
-import { StarField } from "@/frontend/components/chronoverse";
-import TerminalTransition from "@/frontend/components/TerminalTransition";
-import NeuralLink from "@/frontend/components/NeuralLink";
+import { StarField } from "@/components/chronoverse";
+import TerminalTransition from "@/components/TerminalTransition";
+import NeuralLink from "@/components/NeuralLink";
 
 const oxanium = Oxanium({
   subsets: ["latin"],

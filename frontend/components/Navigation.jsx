@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { Clock, Calendar, Rocket, Phone, ArrowLeft, Zap, Globe, Cpu } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { StarField } from "@/frontend/components/chronoverse"; // Assuming existing component
+import { StarField } from "@/components/chronoverse"; // Assuming existing component
 
 // --- Configuration ---
 const NODES = [

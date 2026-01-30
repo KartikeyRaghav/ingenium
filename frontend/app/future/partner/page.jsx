@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { PageTransitionWrapper } from "@/frontend/components/chronoverse";
+import { PageTransitionWrapper } from "@/components/chronoverse";
 import Link from "next/link";
 
 // Simple corner accent component

@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import gsap from "gsap";
-import LandingPage from "@/frontend/components/LandingPage";
-import Navigation from "@/frontend/components/Navigation";
+import LandingPage from "@/components/LandingPage";
+import Navigation from "@/components/Navigation";
 import { useSearchParams } from "next/navigation";
 
 export default function MainPage() {

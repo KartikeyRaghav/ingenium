@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { StarField } from "@/frontend/components/chronoverse";
+import { StarField } from "@/components/chronoverse";
 
 // --- Sub-Components ---
 

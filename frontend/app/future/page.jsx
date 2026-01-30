@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { PageTransitionWrapper } from "@/frontend/components/chronoverse";
-import { visionTimeline, futureTechnologies, sponsors } from "@/frontend/data/future";
+import { PageTransitionWrapper } from "@/components/chronoverse";
+import { visionTimeline, futureTechnologies, sponsors } from "@/data/future";
 
 // Violet stylized corner bracket (Defaults to Violet, but customizable)
 const TechCorner = ({ className, color = "text-violet-500/50" }) => (

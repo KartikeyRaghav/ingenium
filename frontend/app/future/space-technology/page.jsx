@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { PageTransitionWrapper } from "@/frontend/components/chronoverse";
+import { PageTransitionWrapper } from "@/components/chronoverse";
 
 const Orbit = ({ radius, speed, delay, color }) => (
   <div

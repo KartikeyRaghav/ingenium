@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { Lock, Mail, User, Fingerprint, Cpu, ArrowRight } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
+import api from "@/lib/api";
 // import dotenv from "dotenv";
 
 // dotenv.config({});
@@ -27,46 +28,13 @@ export default function AuthTerminal() {
     setLoading(true);
     try {
       if (isLogin) {
-        const response = await fetch(`http://localhost:5000/api/user/login`, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          method: "POST",
-          body: JSON.stringify({
-            email: formData.email,
-            password: formData.password,
-          }),
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-          localStorage.setItem("access_token", data.access_token);
-          localStorage.setItem("refresh_token", data.refresh_token);
-
-          router.push(searchParams.get("path"));
-        }
+        const res = await api.post("/user/login", formData);
+        localStorage.setItem("access_token", res.data.access_token);
       } else {
-        const response = await fetch(`http://localhost:5000/api/user/signup`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            password: formData.password,
-          }),
-        });
-
-        const data = await response.json();
-        if (response.ok) {
-          localStorage.setItem("access_token", data.access_token);
-          localStorage.setItem("refresh_token", data.refresh_token);
-
-          router.push(searchParams("path"));
-        }
+        const res = await api.post("/user/signup", formData);
+        localStorage.setItem("access_token", res.data.access_token);
       }
+      router.push(searchParams.get("path"));
     } catch (error) {
       console.error(error);
     } finally {

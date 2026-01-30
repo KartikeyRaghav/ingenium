@@ -3,13 +3,13 @@
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { StarField } from "@/frontend/components/chronoverse";
+import { StarField } from "@/components/chronoverse";
 import {
     ongoingEvents,
     upcomingEvents,
     scheduleData,
     registrations,
-} from "@/frontend/data/present";
+} from "@/data/present";
 
 const themes = {
     cyan: {

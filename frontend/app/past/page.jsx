@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { PageTransitionWrapper } from "@/frontend/components/chronoverse";
+import { PageTransitionWrapper } from "@/components/chronoverse";
 import {
   culturalEvents,
   technicalEvents,
   flagshipFests,
   legacyHighlights,
-} from "@/frontend/data/past";
+} from "@/data/past";
 
 // Amber Tech Corner
 const TechCorner = ({ className }) => (

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { PageTransitionWrapper } from "@/frontend/components/chronoverse";
+import { PageTransitionWrapper } from "@/components/chronoverse";
 
 const PlasmaFlow = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
