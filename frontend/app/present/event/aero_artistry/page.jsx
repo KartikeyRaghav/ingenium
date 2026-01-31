@@ -13,7 +13,6 @@ import {
   ChevronRight,
   ChevronLeft,
 } from "lucide-react";
-import { StarField } from "@/components/chronoverse";
 import { useRouter } from "next/navigation";
 
 export default function AeroAirtistryPS() {
@@ -47,9 +46,8 @@ export default function AeroAirtistryPS() {
   return (
     <div
       ref={containerRef}
-      className="relative min-h-screen bg-[#02040a] text-blue-100 font-mono overflow-hidden"
+      className="relative min-h-screen bg-black/30 text-blue-100 font-mono overflow-hidden"
     >
-      <StarField />
 
       {/* HUD Overlay Elements */}
       <div className="absolute inset-0 pointer-events-none border border-blue-500/10 m-4 z-50 rounded-3xl" />

@@ -3,19 +3,15 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Infinity as InfinityIcon,
   Zap,
   Timer,
-  Hash,
   Binary,
   Trophy,
-  BarChart,
   Target,
   Sigma,
   Pi,
   ChevronLeft,
 } from "lucide-react";
-import { StarField } from "@/components/chronoverse";
 import { useRouter } from "next/navigation";
 
 export default function MatiksPS() {
@@ -53,9 +49,7 @@ export default function MatiksPS() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#02040a] text-rose-100 font-mono p-4 md:p-8 overflow-hidden">
-      <StarField />
-
+    <div className="relative min-h-screen bg-black/30 text-rose-100 font-mono p-4 md:p-8 overflow-hidden">
       {/* Fractal Geometry Background Decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-250 h-250 opacity-10 pointer-events-none">
         <motion.div

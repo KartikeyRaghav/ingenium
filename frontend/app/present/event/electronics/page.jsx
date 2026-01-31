@@ -10,7 +10,6 @@ import {
   Trophy,
   ChevronLeft,
 } from "lucide-react";
-import { StarField } from "@/components/chronoverse";
 import { useRouter } from "next/navigation";
 
 export default function ElectronicsPS() {
@@ -118,8 +117,7 @@ export default function ElectronicsPS() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#02040a] text-amber-100 font-mono p-4 md:p-8 overflow-hidden">
-      <StarField />
+    <div className="relative min-h-screen bg-black/30 text-amber-100 font-mono p-4 md:p-8 overflow-hidden">
 
       {/* Background Oscilloscope Animation */}
       <div className="absolute inset-0 pointer-events-none opacity-10">

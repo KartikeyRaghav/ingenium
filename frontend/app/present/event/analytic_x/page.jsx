@@ -14,7 +14,6 @@ import {
   ShieldCheck,
   ChevronLeft,
 } from "lucide-react";
-import { StarField } from "@/components/chronoverse";
 import { useRouter } from "next/navigation";
 
 export default function AnalyticXPS() {
@@ -79,8 +78,7 @@ export default function AnalyticXPS() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#02040a] text-cyan-100 font-mono p-4 md:p-8">
-      <StarField />
+    <div className="relative min-h-screen bg-black/30 text-cyan-100 font-mono p-4 md:p-8">
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* --- TOP HUD BAR --- */}

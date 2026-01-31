@@ -11,7 +11,6 @@ import {
   Zap,
   ChevronLeft,
 } from "lucide-react";
-import { StarField } from "@/components/chronoverse";
 import { useRouter } from "next/navigation";
 
 export default function SolveXBioPS() {
@@ -68,8 +67,7 @@ export default function SolveXBioPS() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#02040a] text-emerald-100 font-mono p-4 md:p-8 overflow-hidden">
-      <StarField />
+    <div className="relative min-h-screen bg-black/30 text-emerald-100 font-mono p-4 md:p-8 overflow-hidden">
 
       {/* Bio-Waveform Animation Background */}
       <div className="absolute bottom-0 left-0 w-full h-32 opacity-20 pointer-events-none">

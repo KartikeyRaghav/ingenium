@@ -8,14 +8,10 @@ import {
   Gamepad2,
   Database,
   Network,
-  Wand2,
-  Dna,
   Trophy,
-  Code2,
   Share2,
   ChevronLeft,
 } from "lucide-react";
-import { StarField } from "@/components/chronoverse";
 import { useRouter } from "next/navigation";
 
 export default function FluxusGDGPS() {
@@ -88,9 +84,7 @@ export default function FluxusGDGPS() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#02040a] text-purple-100 font-mono p-4 md:p-8 overflow-hidden">
-      <StarField />
-
+    <div className="relative min-h-screen bg-black/30 text-purple-100 font-mono p-4 md:p-8 overflow-hidden">
       {/* Glitchy Data Stream Background */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-linear-to-l from-purple-500/5 to-transparent pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-full h-px bg-purple-500/20 shadow-[0_0_20px_rgba(168,85,247,0.5)]" />

@@ -10,12 +10,9 @@ import {
   Trophy,
   Layers,
   Activity,
-  Maximize2,
   Share2,
-  Atom,
   ChevronLeft,
 } from "lucide-react";
-import { StarField } from "@/components/chronoverse";
 import { useRouter } from "next/navigation";
 
 export default function QuantumHackathonPS() {
@@ -67,8 +64,7 @@ export default function QuantumHackathonPS() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#02040a] text-cyan-100 font-mono p-4 md:p-8 overflow-hidden">
-      <StarField />
+    <div className="relative min-h-screen bg-black/30 text-cyan-100 font-mono p-4 md:p-8 overflow-hidden">
 
       {/* Bloch Sphere Background Decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 opacity-10 pointer-events-none">

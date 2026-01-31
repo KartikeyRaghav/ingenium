@@ -2,12 +2,17 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { StarField } from "@/components/chronoverse";
-
-// --- Sub-Components ---
 
 // The Rotating Time Rings
-const PortalRing = ({ color, size, duration, direction, delay, planetSize, planetColor }) => (
+const PortalRing = ({
+  color,
+  size,
+  duration,
+  direction,
+  delay,
+  planetSize,
+  planetColor,
+}) => (
   <div
     className={`absolute rounded-full border border-dashed opacity-60 ${direction === "clock" ? "animate-[spin_linear_infinite]" : "animate-[spin_linear_infinite_reverse]"}`}
     style={{
@@ -148,7 +153,6 @@ export default function LandingPage({ onNavigate }) {
       className="relative w-full h-screen bg-black/30 overflow-hidden flex items-center justify-center perspective-1000"
     >
       {/* Backgrounds */}
-      {/* <StarField /> */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1)_0%,transparent_70%)] opacity-40" />
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none" />
 

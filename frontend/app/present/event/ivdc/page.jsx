@@ -11,11 +11,9 @@ import {
   Navigation,
   Layers,
   Trophy,
-  Scan,
   Maximize,
   ChevronLeft,
 } from "lucide-react";
-import { StarField } from "@/components/chronoverse";
 import { useRouter } from "next/navigation";
 
 export default function IVDCPS() {
@@ -88,8 +86,7 @@ export default function IVDCPS() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#02040a] text-blue-100 font-mono p-4 md:p-8 overflow-hidden">
-      <StarField />
+    <div className="relative min-h-screen bg-black/30 text-blue-100 font-mono p-4 md:p-8 overflow-hidden">
 
       {/* Real-time Grid Background Overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-size-[50px_50px] mask-[radial-gradient(ellipse_at_center,black,transparent_80%)] pointer-events-none" />

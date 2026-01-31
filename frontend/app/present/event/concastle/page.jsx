@@ -2,19 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Mountain,
-  Droplets,
-  Map as MapIcon,
-  Construction,
-  Layout,
-  Users,
-  Compass,
-  Trophy,
-  HardHat,
-  ChevronLeft,
-} from "lucide-react";
-import { StarField } from "@/components/chronoverse";
+import { Droplets, Layout, Compass, Trophy, ChevronLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function ConCastlePS() {
@@ -64,8 +52,7 @@ export default function ConCastlePS() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#02040a] text-emerald-100 font-mono p-4 md:p-8">
-      <StarField />
+    <div className="relative min-h-screen bg-black/30 text-emerald-100 font-mono p-4 md:p-8">
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* --- ARCHITECTURAL HEADER --- */}

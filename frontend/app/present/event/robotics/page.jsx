@@ -10,12 +10,9 @@ import {
   Cpu,
   Activity,
   Zap,
-  Trophy,
-  Wrench,
   Crosshair,
   ChevronLeft,
 } from "lucide-react";
-import { StarField } from "@/components/chronoverse";
 import { useRouter } from "next/navigation";
 
 export default function RoboticsPS() {
@@ -103,8 +100,7 @@ export default function RoboticsPS() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#02040a] text-white font-mono p-4 md:p-8 overflow-hidden">
-      <StarField />
+    <div className="relative min-h-screen bg-black/30 text-white font-mono p-4 md:p-8 overflow-hidden">
 
       {/* Industrial Warning Overlay */}
       <div className="absolute top-0 left-0 w-full h-2 bg-[repeating-linear-gradient(45deg,#f43f5e,#f43f5e_10px,#000_10px,#000_20px)] opacity-40" />
