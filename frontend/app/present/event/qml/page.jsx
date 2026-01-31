@@ -12,12 +12,18 @@ import {
   Activity,
   Share2,
   ChevronLeft,
+  Terminal,
+  Target,
+  Zap,
+  Globe,
+  Award,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function QuantumHackathonPS() {
   const [activeLayer, setActiveLayer] = useState(0);
   const router = useRouter();
+
   const pipelineStages = [
     {
       id: 1,
@@ -25,12 +31,12 @@ export default function QuantumHackathonPS() {
       sub: "Superposition Encoding",
       icon: <Cpu className="w-5 h-5" />,
       context:
-        "Design quantum circuits where qubit connectivity and state preparation encode 'territorial' information into the system.",
+        "Design quantum circuits where qubit connectivity and state preparation encode 'territorial' information into the quantum system.",
       technical: [
-        "Define input-output pipelines.",
-        "Implement state preparation logic.",
-        "Explore creative circuit structures.",
-        "Handle Qiskit-based hardware synthesis.",
+        "Define input-output pipelines for map data.",
+        "Implement state preparation logic for 'territorial' info.",
+        "Innovate on encoding strategies beyond original research.",
+        "Synthesize hardware-ready circuits using Qiskit.",
       ],
     },
     {
@@ -39,12 +45,12 @@ export default function QuantumHackathonPS() {
       sub: "Probabilistic Outcomes",
       icon: <Activity className="w-5 h-5" />,
       context:
-        "Execute circuits to obtain measurement statistics that represent the generative landscape.",
+        "Execute the circuits to obtain probabilistic measurement statistics that represent the generative landscape.",
       technical: [
-        "Obtain measurement outcomes.",
-        "Analyze probabilistic distributions.",
-        "Iterate on encoding strategies.",
-        "Minimize decoherence in simulation.",
+        "Obtain measurement outcomes from quantum systems.",
+        "Analyze probabilistic distributions as spatial data.",
+        "Iterate on circuit structure for non-repetitive terrains.",
+        "Minimize noise/decoherence during state measurement.",
       ],
     },
     {
@@ -53,233 +59,275 @@ export default function QuantumHackathonPS() {
       sub: "Procedural Synthesis",
       icon: <Layers className="w-5 h-5" />,
       context:
-        "Map quantum measurement statistics onto a classical 2D grid to visualize coherent map structures.",
+        "Map the quantum measurement statistics onto a classical 2D grid to visualize a coherent map structure.",
       technical: [
-        "Apply post-processing algorithms.",
-        "Translate statistics to territorial data.",
-        "Generate 2D spatial representations.",
-        "Ensure visual clarity and structure.",
+        "Apply classical post-processing algorithms.",
+        "Translate statistics to 2D territorial data.",
+        "Ensure visual clarity and structure of generated maps.",
+        "Develop end-to-end procedural pipelines.",
       ],
     },
   ];
 
   return (
-    <div className="relative min-h-screen bg-black/30 text-cyan-100 font-mono p-4 md:p-8 overflow-hidden">
-
-      {/* Bloch Sphere Background Decoration */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 opacity-10 pointer-events-none">
-        <motion.div
-          animate={{ rotateY: 360, rotateX: 360 }}
-          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-          className="w-full h-full border border-cyan-500 rounded-full border-dashed flex items-center justify-center"
-        >
-          <div className="w-[70%] h-[70%] border border-cyan-400 rounded-full" />
-          <div className="absolute w-full h-px bg-cyan-500/50" />
-          <div className="absolute h-full w-px bg-cyan-500/50" />
-        </motion.div>
-      </div>
-
+    <div className="relative min-h-screen text-cyan-100 font-mono p-4 md:p-8">
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* --- QUANTUM HEADER --- */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 border-b border-cyan-500/20 pb-8">
-          <div className="space-y-1">
+        {/* --- DYNAMIC HEADER SYSTEM --- */}
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 border-b border-cyan-500/30 pb-8 gap-6">
+          <div className="space-y-2">
             <button
               onClick={() => router.back()}
-              className="flex items-center gap-2 text-cyan-400"
+              className="flex items-center gap-2 text-cyan-400 hover:text-white transition-colors group"
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               <span className="text-[10px] tracking-[0.6em] uppercase font-bold">
                 Return to Events
               </span>
             </button>
-            <h1 className="text-5xl font-black tracking-tighter text-white">
-              QUANTUM <span className="text-cyan-500 italic">MAP_GEN</span>
-            </h1>
-            <p className="text-[10px] text-cyan-500/60 mt-2 tracking-[0.3em] uppercase">
-              Procedural Content Generation (Q-PCG)
+            <div className="flex items-center gap-4">
+              <h1 className="text-5xl md:text-6xl font-black tracking-tighter text-white">
+                Q-<span className="text-cyan-500">MAP</span> GEN
+              </h1>
+              <div className="px-3 py-1 bg-cyan-500 text-black text-[10px] font-bold -skew-x-12">
+                HACKATHON v3.0
+              </div>
+            </div>
+            <p className="text-[11px] text-cyan-500/80 tracking-[0.3em] uppercase flex items-center gap-2">
+              <Terminal className="w-3 h-3" /> Quantum Procedural Content
+              Generation (Q-PCG)
             </p>
           </div>
-          <div className="mt-6 lg:mt-0 flex gap-4">
+
+          <div className="flex flex-wrap gap-3">
             <HeaderNode icon={<Orbit />} label="Duration" value="24-48 Hours" />
             <HeaderNode
               icon={<Binary />}
-              label="Language"
-              value="Python / Qiskit "
+              label="Stack"
+              value="Python / Qiskit"
             />
-            <HeaderNode
-              icon={<Share2 />}
-              label="Format"
-              value="Online Hackathon"
-            />
+            <HeaderNode icon={<Globe />} label="Mode" value="Online" />
+            <button className="bg-cyan-500 hover:bg-cyan-400 text-black px-6 py-3 rounded-lg font-black text-xs uppercase tracking-widest transition-all hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] active:scale-95">
+              Register_Now
+            </button>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* --- PIPELINE NAVIGATOR --- */}
-          <div className="lg:col-span-4 space-y-4">
-            <h3 className="text-[10px] text-cyan-500 uppercase tracking-widest mb-4">
-              Synthesis_Pipeline
-            </h3>
-            {pipelineStages.map((stage, idx) => (
-              <button
-                key={stage.id}
-                onClick={() => setActiveLayer(idx)}
-                className={`w-full p-6 text-left rounded-2xl border transition-all duration-500 relative overflow-hidden group ${
-                  activeLayer === idx
-                    ? "bg-cyan-500/10 border-cyan-500/50 shadow-[0_0_25px_rgba(6,182,212,0.2)]"
-                    : "bg-black/40 border-white/5 hover:border-cyan-500/30"
-                }`}
-              >
-                <div className="flex items-center gap-4">
-                  <div
-                    className={`p-3 rounded-lg transition-colors ${activeLayer === idx ? "bg-cyan-500 text-black" : "bg-white/5 text-cyan-500"}`}
-                  >
-                    {stage.icon}
-                  </div>
-                  <div>
-                    <span className="text-[9px] text-cyan-500/50 uppercase tracking-widest font-bold">
-                      Stage_0{stage.id}
-                    </span>
-                    <h4 className="text-white font-bold uppercase tracking-tighter group-hover:text-cyan-400 transition-colors">
-                      {stage.title}
-                    </h4>
-                    <p className="text-[8px] text-gray-500 uppercase tracking-tighter">
-                      {stage.sub}
-                    </p>
-                  </div>
-                </div>
-              </button>
-            ))}
+          {/* --- LEFT COLUMN: INTEL & REQS --- */}
+          <div className="lg:col-span-4 space-y-6">
+            {/* Background & Objective Module */}
+            <div className="p-6 bg-black/40 border border-cyan-500/20 rounded-2xl backdrop-blur-md">
+              <h3 className="text-[10px] text-cyan-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+                <Target className="w-4 h-4" /> Operational_Brief
+              </h3>
+              <p className="text-xs leading-relaxed text-gray-300">
+                Bridge the gap between theoretical knowledge and practical
+                implementation. Targeting{" "}
+                <span className="text-cyan-400">UG/PG Students</span> to explore
+                probabilistic outcomes over traditional classical methods.
+              </p>
+            </div>
 
-            {/* Research Basis */}
-            <div className="p-6 bg-cyan-950/20 border border-cyan-500/10 rounded-2xl mt-8 relative">
-              <div className="absolute top-2 right-2">
-                {/* <Maximize2 className="w-3 h-3 text-cyan-800" /> */}
-              </div>
-              <h4 className="text-[10px] text-cyan-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+            {/* Pipeline Navigation */}
+            <div className="space-y-3">
+              <h3 className="text-[10px] text-cyan-500 uppercase tracking-widest ml-2 mb-2">
+                Technical_Stages
+              </h3>
+              {pipelineStages.map((stage, idx) => (
+                <button
+                  key={stage.id}
+                  onClick={() => setActiveLayer(idx)}
+                  className={`w-full p-5 text-left rounded-xl border transition-all duration-300 group relative ${
+                    activeLayer === idx
+                      ? "bg-cyan-500/20 border-cyan-500 shadow-[0_0_15px_rgba(6,182,212,0.15)]"
+                      : "bg-white/5 border-white/10 hover:border-cyan-500/40"
+                  }`}
+                >
+                  <div className="flex items-center gap-4">
+                    <div
+                      className={`p-2 rounded-md ${activeLayer === idx ? "bg-cyan-500 text-black" : "bg-cyan-900/50 text-cyan-500"}`}
+                    >
+                      {stage.icon}
+                    </div>
+                    <div>
+                      <h4 className="text-[11px] font-bold uppercase text-white tracking-tight">
+                        {stage.title}
+                      </h4>
+                      <p className="text-[9px] text-cyan-500/60 uppercase">
+                        {stage.sub}
+                      </p>
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            {/* Research Anchor */}
+            <div className="p-6 bg-cyan-950/30 border-l-4 border-cyan-500 rounded-r-2xl">
+              <h4 className="text-[10px] text-cyan-400 uppercase font-bold mb-2 flex items-center gap-2">
                 <Dna className="w-3 h-3" /> Research_Anchor
               </h4>
               <p className="text-[10px] leading-relaxed text-gray-400 italic">
-                Inspired by "A Quantum Procedure for Map Generation". Focus on probabilistic outcomes over
-                rule-based random methods.
+                "A Quantum Procedure for Map Generation" (arXiv: 2005.10327).
+                Focus on translating theoretical concepts into complete,
+                end-to-end implementations.
               </p>
             </div>
           </div>
 
-          {/* --- DYNAMIC LOGIC VIEW --- */}
+          {/* --- RIGHT COLUMN: EXECUTION & REWARDS --- */}
           <div className="lg:col-span-8 space-y-8">
+            {/* Main Stage Display */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeLayer}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                className="bg-black/40 border border-cyan-500/20 rounded-3xl p-8 backdrop-blur-xl relative min-h-100"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="bg-black/60 border border-cyan-500/20 rounded-3xl p-8 backdrop-blur-2xl relative min-h-105"
               >
-                <div className="relative z-10">
-                  <h2 className="text-2xl font-black text-white uppercase tracking-tighter mb-4">
-                    {pipelineStages[activeLayer].title}
-                  </h2>
-                  <p className="text-sm leading-relaxed text-cyan-100/70 mb-8 p-4 bg-cyan-500/5 border-l-2 border-cyan-500">
+                <div className="flex justify-between items-start mb-6">
+                  <div>
+                    <h2 className="text-3xl font-black text-white uppercase tracking-tighter">
+                      {pipelineStages[activeLayer].title}
+                    </h2>
+                    <p className="text-cyan-500 text-[10px] tracking-widest uppercase">
+                      System_Logic_Phase_0{activeLayer + 1}
+                    </p>
+                  </div>
+                  <Zap className="text-cyan-500 w-6 h-6 animate-pulse" />
+                </div>
+
+                <div className="bg-cyan-500/10 border-l-2 border-cyan-500 p-4 mb-8">
+                  <p className="text-sm leading-relaxed text-cyan-50 font-medium">
                     {pipelineStages[activeLayer].context}
                   </p>
+                </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {pipelineStages[activeLayer].technical.map((item, i) => (
-                      <div
-                        key={i}
-                        className="flex gap-4 p-4 bg-white/5 border border-white/5 rounded-xl group hover:bg-cyan-500/5 transition-all"
-                      >
-                        <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 mt-1.5 shrink-0 group-hover:scale-125 transition-transform" />
-                        <span className="text-[11px] leading-relaxed text-gray-400 group-hover:text-white transition-colors">
-                          {item}
-                        </span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {pipelineStages[activeLayer].technical.map((item, i) => (
+                    <div
+                      key={i}
+                      className="flex gap-4 p-4 bg-white/5 border border-white/5 rounded-xl hover:bg-cyan-500/5 transition-colors group"
+                    >
+                      <div className="text-cyan-500 text-[10px] font-bold mt-0.5">
+                        0{i + 1}
                       </div>
-                    ))}
-                  </div>
+                      <span className="text-[11px] leading-relaxed text-gray-300 group-hover:text-white transition-colors">
+                        {item}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             </AnimatePresence>
 
-            {/* --- BOUNTY CORE --- */}
-            <div className="bg-cyan-500/5 border border-cyan-500/20 rounded-3xl p-8 relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-5">
-                <Trophy className="w-32 h-32" />
+            {/* Judging & Rewards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
+                <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-4 flex items-center gap-2">
+                  <Award className="w-4 h-4 text-cyan-500" /> Evaluation_Metrics
+                </h3>
+                <ul className="space-y-3">
+                  {[
+                    {
+                      l: "Technical Depth",
+                      d: "Understanding of quantum encoding",
+                    },
+                    {
+                      l: "Visualization",
+                      d: "Clarity of the final generated map",
+                    },
+                    {
+                      l: "Innovation",
+                      d: "Creativity beyond baseline",
+                    },
+                    {
+                      l: "Presentation",
+                      d: "Soundness of the generative approach",
+                    },
+                  ].map((item, i) => (
+                    <li
+                      key={i}
+                      className="flex flex-col border-b border-white/5 pb-2"
+                    >
+                      <span className="text-[10px] font-bold text-cyan-400 uppercase">
+                        {item.l}
+                      </span>
+                      <span className="text-[9px] text-gray-500 uppercase">
+                        {item.d}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              <div className="flex flex-col md:flex-row justify-between items-center relative z-10 gap-8">
-                <div className="text-center md:text-left">
-                  <h3 className="text-lg font-black text-white uppercase tracking-[0.2em]">
-                    Bounty_Registry
-                  </h3>
-                  <p className="text-[10px] text-cyan-500 uppercase tracking-widest italic">
-                    QML_Track_Allocation
+              {/* Bounty Registry  */}
+              <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-2xl p-6 relative overflow-hidden">
+                <div className="absolute -right-4 -bottom-4 opacity-10">
+                  <Trophy className="w-24 h-24 text-cyan-500" />
+                </div>
+                <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-4 flex items-center gap-2">
+                  <Trophy className="w-4 h-4 text-cyan-500" /> Bounty_Allocation
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-end">
+                    <span className="text-[10px] text-gray-400 uppercase">
+                      Prize Pool
+                    </span>
+                    <span className="text-2xl font-black text-white italic">
+                      ₹15,000{" "}
+                    </span>
+                  </div>
+                  <div className="pt-4 border-t border-cyan-500/30">
+                    <p className="text-[9px] text-cyan-500/60 leading-tight uppercase">
+                      Total event allocation including digital certificates
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Footer Action */}
+            <div className="flex justify-between items-center p-6 bg-white/5 rounded-2xl border border-white/10">
+              <div className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center border border-cyan-500/40">
+                  <Share2 className="w-5 h-5 text-cyan-400" />
+                </div>
+                <div>
+                  <p className="text-[10px] text-gray-400 uppercase">
+                    Organizer
+                  </p>
+                  <p className="text-xs font-bold text-white uppercase tracking-tight">
+                    Quantum Computing Club, IIT Indore
                   </p>
                 </div>
-
-                <div className="flex gap-8">
-                  <PrizeBox rank="01" amount="7,000" label="Primary Rank" />
-                  <PrizeBox rank="02" amount="5,000" label="Secondary Rank" />
-                  <PrizeBox rank="03" amount="3,000" label="Tertiary Rank" />
-                </div>
-
-                <div className="px-6 py-3 bg-cyan-500/10 border border-cyan-500/30 rounded-xl text-center">
-                  <span className="text-[9px] text-cyan-500 uppercase block mb-1">
-                    Total Pool
-                  </span>
-                  <span className="text-2xl font-black text-cyan-400 italic">
-                    ₹15,000
-                  </span>
-                </div>
               </div>
+              <button className="bg-white text-black px-8 py-3 rounded-lg font-black text-xs uppercase tracking-tighter hover:bg-cyan-400 transition-all active:scale-95">
+                Register_Now
+              </button>
             </div>
           </div>
         </div>
       </div>
-
-      <style jsx global>{`
-        .animate-spin-slow {
-          animation: spin 8s linear infinite;
-        }
-        @keyframes spin {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-      `}</style>
     </div>
   );
 }
-
-// --- Internal Components ---
 
 function HeaderNode({ icon, label, value }) {
   return (
-    <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-lg">
-      <div className="text-cyan-500">{icon}</div>
+    <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl backdrop-blur-sm">
+      <div className="text-cyan-500 p-1.5 bg-cyan-500/10 rounded-lg">
+        {icon}
+      </div>
       <div>
-        <span className="text-[8px] text-gray-500 uppercase block mb-0.5">
+        <span className="text-[8px] text-gray-500 uppercase block mb-0.5 tracking-widest font-bold">
           {label}
         </span>
-        <span className="text-xs font-bold text-white tracking-tighter uppercase">
+        <span className="text-[10px] font-bold text-white tracking-tighter uppercase">
           {value}
         </span>
       </div>
-    </div>
-  );
-}
-
-function PrizeBox({ rank, amount, label }) {
-  return (
-    <div className="text-center">
-      <div className="text-[8px] text-cyan-500 uppercase mb-1 font-bold tracking-widest">
-        {rank}_Access
-      </div>
-      <div className="text-xl font-black text-white italic">₹{amount}</div>
-      <div className="text-[8px] text-gray-600 uppercase mt-1">{label}</div>
     </div>
   );
 }

@@ -12,6 +12,10 @@ import {
   Trophy,
   ChevronRight,
   ChevronLeft,
+  Cpu,
+  Zap,
+  Navigation,
+  ExternalLink,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -23,19 +27,17 @@ export default function AeroAirtistryPS() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Entrance "Flicker" Animation
       gsap.from(headerRef.current, {
         opacity: 0,
-        y: -50,
+        y: -30,
         filter: "blur(10px)",
         duration: 1,
-        ease: "power4.out",
+        ease: "expo.out",
       });
 
-      // Periodic "Scanning" light on the dashboard
-      gsap.to(".scan-beam", {
-        left: "100%",
-        duration: 3,
+      gsap.to(".scan-line", {
+        top: "100%",
+        duration: 4,
         repeat: -1,
         ease: "none",
       });
@@ -46,146 +48,162 @@ export default function AeroAirtistryPS() {
   return (
     <div
       ref={containerRef}
-      className="relative min-h-screen bg-black/30 text-blue-100 font-mono overflow-hidden"
+      className="relative min-h-screen text-blue-100 font-mono p-4 md:p-8"
     >
+      {/* HUD Corner Accents */}
+      <div className="fixed top-0 left-0 w-32 h-32 border-t-2 border-l-2 border-blue-500/30 rounded-tl-3xl pointer-events-none" />
+      <div className="fixed bottom-0 right-0 w-32 h-32 border-b-2 border-r-2 border-blue-500/30 rounded-br-3xl pointer-events-none" />
 
-      {/* HUD Overlay Elements */}
-      <div className="absolute inset-0 pointer-events-none border border-blue-500/10 m-4 z-50 rounded-3xl" />
       <button
         onClick={() => router.back()}
-        className="absolute top-10 left-10 z-50 flex items-center gap-2"
+        className="relative z-50 flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/30 rounded-full hover:bg-blue-500/20 transition-all mb-8 group"
       >
-        <ChevronLeft className="w-6 h-6 rounded-full animate-pulse" />
-        <span className="text-sm uppercase text-blue-500/70">
-          RETURN TO EVENTS
+        <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+        <span className="text-[10px] uppercase tracking-[0.3em]">
+          System_Return
         </span>
       </button>
 
-      <main className="relative z-10 max-w-7xl mx-auto px-8 pt-24 pb-12">
+      <main className="max-w-7xl mx-auto">
         {/* Header Section */}
-        <header
-          ref={headerRef}
-          className="mb-12 border-b border-blue-500/20 pb-8 relative"
-        >
-          <div className="flex flex-col md:flex-row justify-between items-end gap-6">
-            <div>
-              <h1 className="text-5xl font-black tracking-tighter text-white uppercase italic">
-                Aero <span className="text-blue-500">-</span> Airtistry
+        <header ref={headerRef} className="mb-16 relative">
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8">
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-blue-500 mb-2">
+                <Cpu className="w-4 h-4 animate-spin-slow" />
+                <span className="text-[10px] tracking-[0.5em] uppercase">
+                  Aerospace_Division_2026
+                </span>
+              </div>
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white uppercase italic leading-none">
+                AERO<span className="text-blue-500">.</span>AIR
               </h1>
-              <p className="mt-4 max-w-2xl text-sm text-blue-400/80 leading-relaxed uppercase tracking-wider">
-                A fixed-wing RC aircraft competition testing aerodynamics,
-                structural integrity, and real-world flight performance.
+              <p className="max-w-xl text-xs md:text-sm text-blue-400/70 leading-relaxed uppercase tracking-widest">
+                Fixed-wing RC aircraft competition blending
+                engineering precision with piloting skill. Testing aerodynamics,
+                structural integrity, and flight performance.
               </p>
             </div>
-            <div className="flex gap-4">
+
+            <div className="flex flex-wrap gap-3">
               <CategoryBtn
                 active={activeCategory === 1}
                 onClick={() => setActiveCategory(1)}
-                label="RC GLIDER"
-                icon={<Wind />}
+                label="01. GLIDER_SOAR"
+                icon={<Wind className="w-4 h-4" />}
               />
               <CategoryBtn
                 active={activeCategory === 2}
                 onClick={() => setActiveCategory(2)}
-                label="PAYLOAD DROP"
-                icon={<Target />}
+                label="02. PAYLOAD_DROP"
+                icon={<Target className="w-4 h-4" />}
               />
             </div>
           </div>
-          <div className="scan-beam absolute bottom-0 left-0 w-24 h-0.5 bg-blue-400 shadow-[0_0_15px_#3b82f6]" />
         </header>
 
         {/* Dynamic Content Grid */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeCategory}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, filter: "blur(20px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0, filter: "blur(20px)" }}
+            transition={{ duration: 0.4 }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-8"
           >
-            {/* Left Column: Objective & Stats */}
+            {/* Sidebar Column */}
             <div className="lg:col-span-4 space-y-6">
-              <SectionBox title="Mission_Objective">
-                <p className="text-sm leading-relaxed text-blue-200">
+              <SectionBox title="Mission_Parameters">
+                <p className="text-xs md:text-sm leading-relaxed text-blue-200/90 italic">
                   {activeCategory === 1
-                    ? "Optimize fixed-wing aircraft for maximum gliding efficiency and energy management."
-                    : "Design an aircraft capable of carrying, sustaining, and accurately dropping payloads."}
+                    ? "Optimize fixed-wing aircraft for maximum gliding efficiency and energy management through aerodynamic excellence."
+                    : "Design a fixed-wing RC aircraft capable of carrying, sustaining, and accurately dropping payloads with precision."}
                 </p>
               </SectionBox>
 
-              <SectionBox title="Hardware_Specs">
-                <div className="space-y-3">
-                  <SpecRow
-                    label="Category"
-                    value={
-                      activeCategory === 1
-                        ? "Soaring Challenge"
-                        : "Precision Drop"
-                    }
-                  />
-                  <SpecRow label="System" value="Fixed-Wing RC " />
-                  <SpecRow label="Evaluation" value="Multi-Stage " />
-                </div>
-              </SectionBox>
+              <div className="grid grid-cols-2 gap-4">
+                <StatCard label="Phase_Count" value="03" sub="Sequential" />
+                <StatCard label="Airframe" value="Fixed" sub="Wing_RC" />
+              </div>
 
               {activeCategory === 2 && (
-                <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-xl">
-                  <h4 className="text-[10px] text-blue-400 uppercase mb-2 flex items-center gap-2">
+                <div className="p-6 bg-blue-900/20 border border-blue-500/40 rounded-2xl relative overflow-hidden group">
+                  <div className="scan-line absolute left-0 top-0 w-full h-1 bg-blue-400/30 blur-sm pointer-events-none" />
+                  <h4 className="text-[10px] text-blue-400 uppercase mb-4 flex items-center gap-2">
                     <Box className="w-3 h-3" /> Payload_Intel
                   </h4>
-                  <p className="text-xs text-blue-200/80">
-                    Organizers provide golf balls (45g, 42mm radius). Only arena
-                    landings count.
-                  </p>
+                  <ul className="space-y-2 text-[11px] text-blue-200/70">
+                    <li className="flex justify-between">
+                      <span>Object:</span>{" "}
+                      <span className="text-white">Golf Ball</span>
+                    </li>
+                    <li className="flex justify-between">
+                      <span>Mass:</span> <span className="text-white">45g</span>
+                    </li>
+                    <li className="flex justify-between">
+                      <span>Radius:</span>{" "}
+                      <span className="text-white">42mm</span>
+                    </li>
+                  </ul>
                 </div>
               )}
+
+              <button className="w-full py-6 bg-blue-600 text-white rounded-2xl font-black italic tracking-widest flex items-center justify-center gap-3 hover:bg-blue-500 transition-all group overflow-hidden relative">
+                <span className="relative z-10 uppercase">
+                  Initiate_Registration
+                </span>
+                <ExternalLink className="w-5 h-5 relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+              </button>
             </div>
 
-            {/* Right Column: Stage Timeline */}
-            <div className="lg:col-span-8">
-              <div className="bg-black/40 border border-blue-500/20 rounded-2xl p-8 backdrop-blur-xl relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-4 opacity-10">
-                  <Plane className="w-32 h-32 rotate-12" />
+            {/* Main Content Column */}
+            <div className="lg:col-span-8 space-y-8">
+              <div className="bg-white/5 border border-blue-500/20 rounded-3xl p-8 backdrop-blur-md relative">
+                <div className="absolute top-8 right-8 text-blue-500/20">
+                  <Navigation className="w-24 h-24 rotate-45" />
                 </div>
 
-                <h3 className="text-lg font-bold tracking-[0.3em] uppercase mb-8 flex items-center gap-3">
-                  <Layers className="text-blue-500" /> Operational_Stages
+                <h3 className="text-xl font-bold tracking-[0.4em] uppercase mb-12 flex items-center gap-4 text-white">
+                  <Layers className="text-blue-500 w-5 h-5" />{" "}
+                  Operational_Stages
                 </h3>
 
-                <div className="space-y-12 relative">
-                  <div className="absolute left-3.75 top-2 bottom-2 w-px bg-blue-500/20" />
-
+                <div className="space-y-12">
                   {getStages(activeCategory).map((stage, idx) => (
-                    <div key={idx} className="relative pl-12 group">
-                      <div className="absolute left-0 top-0 w-8 h-8 rounded-full bg-black border border-blue-500/50 flex items-center justify-center z-10 group-hover:border-blue-400 transition-colors">
-                        <span className="text-[10px] text-blue-400">
-                          {idx + 1}
+                    <div key={idx} className="relative pl-16 group">
+                      <div className="absolute left-0 top-0 w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center z-10 group-hover:scale-110 transition-transform">
+                        <span className="text-sm font-bold text-blue-400">
+                          0{idx + 1}
                         </span>
                       </div>
-                      <h4 className="text-blue-400 font-bold uppercase tracking-widest text-sm mb-1">
-                        {stage.title}
-                      </h4>
-                      <p className="text-[10px] text-blue-500/50 uppercase mb-3">
-                        {stage.meta}
-                      </p>
-                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
+                        <h4 className="text-white font-bold uppercase tracking-widest text-base">
+                          {stage.title}
+                        </h4>
+                        <span className="text-[9px] px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full border border-blue-500/20 self-start">
+                          {stage.meta}
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
                         {stage.details.map((detail, i) => (
-                          <li
+                          <div
                             key={i}
-                            className="text-[11px] text-blue-100/60 flex items-start gap-2"
+                            className="flex items-center gap-3 text-[11px] text-blue-200/60 uppercase group-hover:text-blue-100 transition-colors"
                           >
-                            <span className="text-blue-500 mt-1">▪</span>{" "}
+                            <Zap className="w-2.5 h-2.5 text-blue-500" />
                             {detail}
-                          </li>
+                          </div>
                         ))}
-                      </ul>
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
-              <PrizePool activeCategory={activeCategory} />
+
+              {/* Prize Pool Integration */}
+              <PrizeSection />
             </div>
           </motion.div>
         </AnimatePresence>
@@ -194,20 +212,28 @@ export default function AeroAirtistryPS() {
   );
 }
 
-// --- Helper Components ---
+// --- Specialized UI Components ---
 
 function CategoryBtn({ active, onClick, label, icon }) {
   return (
     <button
       onClick={onClick}
-      className={`px-6 py-3 rounded-xl flex items-center gap-3 border transition-all duration-300 ${
+      className={`px-8 py-4 rounded-2xl flex items-center gap-4 border-2 transition-all duration-500 relative overflow-hidden ${
         active
-          ? "bg-blue-600/20 border-blue-400 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]"
-          : "border-blue-500/20 text-blue-500 hover:border-blue-500/50"
+          ? "border-blue-500 bg-blue-500/10 text-white"
+          : "border-blue-500/20 text-blue-500/50 hover:border-blue-500/50"
       }`}
     >
-      {React.cloneElement(icon, { className: "w-4 h-4" })}
-      <span className="text-xs font-bold tracking-widest uppercase">
+      {active && (
+        <motion.div
+          layoutId="activeTab"
+          className="absolute inset-0 bg-blue-500/10"
+          initial={false}
+          transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+        />
+      )}
+      <span className="relative z-10">{icon}</span>
+      <span className="text-[10px] font-black tracking-[0.3em] relative z-10">
         {label}
       </span>
     </button>
@@ -216,8 +242,10 @@ function CategoryBtn({ active, onClick, label, icon }) {
 
 function SectionBox({ title, children }) {
   return (
-    <div className="p-6 bg-black/40 border border-blue-500/20 rounded-2xl backdrop-blur-md relative group">
-      <div className="absolute -top-px left-4 px-2 bg-[#02040a] text-[9px] text-blue-500 uppercase tracking-[0.2em]">
+    <div className="p-8 bg-white/5 border border-white/10 rounded-3xl relative group overflow-hidden">
+      <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-3xl" />
+      <div className="text-[9px] text-blue-500 uppercase tracking-[0.4em] mb-4 flex items-center gap-2">
+        <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
         {title}
       </div>
       {children}
@@ -225,177 +253,130 @@ function SectionBox({ title, children }) {
   );
 }
 
-function SpecRow({ label, value }) {
+function StatCard({ label, value, sub }) {
   return (
-    <div className="flex justify-between items-center text-[11px] border-b border-white/5 pb-2">
-      <span className="text-blue-500/60 uppercase">{label}</span>
-      <span className="text-blue-200 font-bold">{value}</span>
+    <div className="p-4 bg-white/5 border border-white/10 rounded-2xl">
+      <div className="text-[8px] text-blue-500/60 uppercase tracking-widest mb-1">
+        {label}
+      </div>
+      <div className="text-2xl font-black text-white italic leading-none">
+        {value}
+      </div>
+      <div className="text-[8px] text-gray-500 uppercase mt-1">{sub}</div>
     </div>
   );
 }
 
-// Data Mapping from source
+function PrizeSection() {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {[
+        {
+          rank: "ALPHA",
+          prize: "15,000",
+          label: "First Place",
+          color: "from-yellow-400/20",
+        },
+        {
+          rank: "BETA",
+          prize: "7,000",
+          label: "Second Place",
+          color: "from-gray-400/20",
+        },
+        {
+          rank: "GAMMA",
+          prize: "3,000",
+          label: "Third Place",
+          color: "from-orange-400/20",
+        },
+      ].map((p, i) => (
+        <div
+          key={i}
+          className={`p-6 bg-linear-to-br ${p.color} to-transparent border border-white/10 rounded-2xl hover:border-blue-500/40 transition-all`}
+        >
+          <Trophy className="w-4 h-4 text-blue-400 mb-4" />
+          <div className="text-[10px] text-blue-500 uppercase tracking-tighter mb-1">
+            {p.rank}_STATUS
+          </div>
+          <div className="text-3xl font-black text-white italic tracking-tighter">
+            ₹{p.prize}
+          </div>
+          <div className="text-[9px] text-gray-400 uppercase mt-2">
+            {p.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 const getStages = (cat) => {
   if (cat === 1)
     return [
       {
         title: "Design & Analysis",
-        meta: "Online | Before Feb End",
+        meta: "Deadline: Feb End",
         details: [
-          "Aircraft configuration",
-          "Materials selection",
-          "Propulsion system",
-          "Structural analysis",
-          "BOM & Cost",
+          "Materials & Configuration",
+          "Structural/Aero Analysis",
+          "Dimensional Constraints",
+          "Bill of Materials (BOM)",
         ],
       },
       {
         title: "Qualifying Flight",
-        meta: "Offline | Ingenium Day Time",
+        meta: "Offline | Ingenium",
         details: [
-          "2 attempts per team ",
-          "3min max flight window ",
-          "Min 45s airborne time ",
-          "No marks (Qualifying only)",
+          "2 Official Attempts",
+          "3min Flight Window",
+          "45s Min. Airborne",
+          "Pass/Fail Evaluation",
         ],
       },
       {
-        title: "Final Gliding Round",
-        meta: "Offline | Ingenium Day Time",
+        title: "Final Soaring",
+        meta: "Offline | Main Event",
         details: [
-          "Motor ON for 30s",
-          "Complete throttle cut",
-          "Pure gliding phase",
-          "Duration is primary score",
+          "30s Powered Flight",
+          "Total Throttle Cut",
+          "Pure Gliding Phase",
+          "Duration-Based Scoring",
         ],
       },
     ];
   return [
     {
-      title: "Mechanism Submission",
-      meta: "Online | Before Feb End",
+      title: "Payload Strategy",
+      meta: "Deadline: Feb End",
       details: [
-        "Payload integration",
-        "Dropping mechanism",
-        "Structural strength",
-        "Compliance & Size",
-        "Cost Analysis",
+        "Dropping Mechanism",
+        "Strength Analysis",
+        "T/W Ratio Compliance",
+        "Integration Strategy",
       ],
     },
     {
-      title: "Carrying Qualification",
-      meta: "Offline | Ingenium Day Time",
+      title: "Carrying Quals",
+      meta: "Offline | Ingenium",
       details: [
-        "30s flight with payload",
-        "Mechanism inspection",
-        "No drop allowed yet",
-        "Higher weight = Higher score",
+        "30s Weighted Flight",
+        "Mechanism Inspection",
+        "Zero Drop Protocol",
+        "Weight/Count Scoring",
       ],
     },
     {
-      title: "Final Precision Drop",
-      meta: "Offline | Ingenium Day Time",
+      title: "Precision Drop",
+      meta: "Offline |  Main Event",
       details: [
-        "30s initial flight",
-        "10m diameter target",
-        "Arena landing required",
-        "No drops in first 30s",
+        "10m Target Arena",
+        "Valid Arena Landing",
+        "No-Drop First 30s",
+        "Accuracy Rules Apply",
       ],
     },
   ];
 };
 
-function PrizePool({ activeCategory }) {
-  // Prize data from your specifications
-  const prizeData = {
-    1: { first: "15,000", second: "7,000", third: "3,000", total: "25,000" }, // RC Glider
-    2: { first: "15,000", second: "7,000", third: "3,000", total: "25,000" }, // Payload Drop
-  };
 
-  const currentPrizes = prizeData[activeCategory];
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="mt-12 p-8 bg-black/40 border border-cyan-500/20 rounded-2xl backdrop-blur-xl relative overflow-hidden"
-    >
-      {/* Decorative Background Elements */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 rounded-full blur-[100px] -mr-32 -mt-32" />
-
-      <div className="relative z-10">
-        <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-cyan-500/10 rounded-lg border border-cyan-500/30">
-              <Trophy className="w-5 h-5 text-cyan-400" />
-            </div>
-            <div>
-              <h3 className="text-lg font-bold tracking-[0.3em] uppercase text-white">
-                Reward_Allocation
-              </h3>
-              <p className="text-[10px] text-cyan-500/60 uppercase tracking-widest">
-                Temporal_Bounty_Distribution
-              </p>
-            </div>
-          </div>
-          <div className="text-right">
-            <span className="text-[10px] text-gray-500 uppercase block">
-              Total Pool
-            </span>
-            <span className="text-2xl font-black text-cyan-400 tracking-tighter">
-              ₹{currentPrizes.total}
-            </span>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <PrizeCard
-            rank="01"
-            amount={currentPrizes.first}
-            label="First Prize"
-            color="text-yellow-400"
-          />
-          <PrizeCard
-            rank="02"
-            amount={currentPrizes.second}
-            label="Second Prize"
-            color="text-gray-300"
-          />
-          <PrizeCard
-            rank="03"
-            amount={currentPrizes.third}
-            label="Third Prize"
-            color="text-orange-400"
-          />
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-function PrizeCard({ rank, amount, label, color }) {
-  return (
-    <div className="group relative p-6 bg-white/5 border border-white/10 rounded-xl hover:border-cyan-500/40 transition-all duration-500">
-      <div
-        className={`text-[10px] font-bold mb-1 tracking-widest uppercase ${color}`}
-      >
-        {rank}_Rank
-      </div>
-      <div className="flex items-end gap-2 mb-4">
-        <span className="text-2xl font-black text-white italic">₹{amount}</span>
-        <span className="text-[10px] text-gray-500 mb-1">INR</span>
-      </div>
-      <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: "100%" }}
-          className={`h-full bg-linear-to-r from-transparent to-cyan-500/50`}
-        />
-      </div>
-      <div className="mt-4 flex items-center justify-between text-[10px] text-gray-400 uppercase tracking-tighter group-hover:text-white transition-colors">
-        <span>{label}</span>
-        <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-      </div>
-    </div>
-  );
-}
+// Could you please upgrade the ui of this page according to the document provided. Try to keep as much info provided in the document on the page. Keep the theme same and don't add any background as I already have background set in the parent component. Make it as futuristic as possible. Also try to add a register now button for each PS.

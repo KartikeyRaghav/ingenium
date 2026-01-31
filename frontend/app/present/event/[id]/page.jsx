@@ -183,7 +183,7 @@ export default function EventDynamicPage() {
                                 <ul className="space-y-4">
                                     {event.details.schedule.map((item, i) => (
                                         <li key={i} className="relative pl-4 border-l border-white/20">
-                                            <div className={`absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full ${theme.accent}`} />
+                                            <div className={`absolute -left-1.25 top-1.5 w-2.5 h-2.5 rounded-full ${theme.accent}`} />
                                             <span className="text-xs text-gray-400 block">{item}</span>
                                         </li>
                                     ))}

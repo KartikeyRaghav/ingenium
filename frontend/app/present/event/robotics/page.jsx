@@ -12,287 +12,435 @@ import {
   Zap,
   Crosshair,
   ChevronLeft,
+  Users,
+  Maximize,
+  Trophy,
+  Info,
+  AlertTriangle,
+  Target,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function RoboticsPS() {
   const [activeBattle, setActiveBattle] = useState(0);
   const router = useRouter();
+
   const combatModules = [
     {
       id: "RW",
       title: "ROBOWARS",
       sub: "Heavy Combat Division",
-      icon: <ShieldAlert className="w-6 h-6" />,
+      icon: <ShieldAlert className="w-8 h-8" />,
       color: "rose",
+      teamSize: "4-6 members",
       objective:
         "To design a combat-capable robot that can withstand physical impacts, effectively disable opponents, and maintain mobility throughout the match duration.",
+      philosophy:
+        "Provides hands-on exposure to real-world combat robotics, integrating mechanical design, electronics, and power management under extreme operating conditions.",
       constraints: [
-        "Weight: Max 10 kg (inc. weapons) ",
-        "Dimensions: 500x450x500 mm ",
-        "Wireless remote with mandatory fail-safe",
-        "Mechanical/Electric/Pneumatic weapons",
+        { label: "Max Weight", val: "10 kg", detail: "Inc. battery/weapons" },
+        { label: "Dimensions", val: "500x450x500 mm", detail: "Max limit" },
+        { label: "Power", val: "On-board", detail: "Battery only" },
+        { label: "Control", val: "Wireless", detail: "Mandatory fail-safe" },
       ],
-      stages: [
-        "Stage 1: Design Proposal & BOM Submission",
-        "Stage 2: Safety Scrutiny & Cutoff Check",
-        "Stage 3: 1v1 Knockout Battle Rounds",
-      ],
-      prizes: {
-        first: "45,000",
-        second: "25,000",
-        third: "15,000",
-        total: "85,000",
+      weapons: {
+        allowed: "Mechanical, Electric, Pneumatic",
+        prohibited: "Explosives, Fire, Corrosive liquids",
       },
+      arena: {
+        size: "4m x 4m",
+        type: "Fully Enclosed",
+        floor: "Reinforced Metal",
+      },
+      stages: [
+        {
+          title: "Design Proposal",
+          meta: "Online | Pre-Event",
+          details: "Concept, BOM, and safety strategy.",
+        },
+        {
+          title: "Safety Scrutiny",
+          meta: "Offline | Pre-Match",
+          details: "Mechanical robustness and electrical isolation check.",
+        },
+        {
+          title: "Knockout Battles",
+          meta: "Offline | Event Days",
+          details: "One-on-one combat with fixed durations.",
+        },
+      ],
+      prizes: [
+        { name: "First Prize", amount: "45,000" },
+        { name: "Second Prize", amount: "25,000" },
+        { name: "Third Prize", amount: "15,000" },
+      ],
     },
     {
       id: "RS",
       title: "ROBOSOCCER",
       sub: "Tactical Sports Logic",
-      icon: <Gamepad className="w-6 h-6" />,
+      icon: <Gamepad className="w-8 h-8" />,
       color: "blue",
+      teamSize: "2-4 members",
       objective:
-        "Design a robot to detect the ball, navigate efficiently, and coordinate movements to score goals against an opposing team.",
+        "To design a robot that can detect the ball, navigate efficiently, and coordinate movements to score goals.",
+      philosophy:
+        "Introduces competitive robotics in a strategy-driven environment, strengthening understanding of semi-autonomous systems.",
       constraints: [
-        "Weight: Max 4 kg ",
-        "Dimensions: 250x200x200 mm",
-        "Wheeled-only drive mechanism ",
-        "Manual or semi-autonomous control",
+        { label: "Max Weight", val: "4 kg", detail: "Total mass" },
+        { label: "Dimensions", val: "250x200x200 mm", detail: "Max footprint" },
+        { label: "Drive", val: "Wheeled", detail: "Only" },
+        { label: "Control", val: "Manual/Semi", detail: "Wireless control" },
       ],
-      stages: [
-        "Stage 1: System Design & Block Diagram",
-        "Stage 2: Mobility & Ball Detection Verification",
-        "Stage 3: Team vs Team League/Knockout matches",
-      ],
-      prizes: {
-        first: "20,000",
-        second: "10,000",
-        third: "5,000",
-        total: "35,000",
+      arena: {
+        size: "4m x 6m",
+        type: "Flat Surface",
+        floor: "Non-reflective",
       },
+      stages: [
+        {
+          title: "System Design",
+          meta: "Online | Pre-Event",
+          details: "Block diagrams and control strategy.",
+        },
+        {
+          title: "Functional Verification",
+          meta: "Offline | Pre-Match",
+          details: "Mobility and ball detection testing.",
+        },
+        {
+          title: "Match Rounds",
+          meta: "Offline | Event Days",
+          details: "League or knockout team matches.",
+        },
+      ],
+      prizes: [
+        { name: "First Prize", amount: "20,000" },
+        { name: "Second Prize", amount: "10,000" },
+        { name: "Third Prize", amount: "5,000" },
+      ],
     },
     {
       id: "LF",
       title: "LINE FOLLOWER",
       sub: "Autonomous Path Precision",
-      icon: <Orbit className="w-6 h-6" />,
+      icon: <Orbit className="w-8 h-8" />,
       color: "emerald",
+      teamSize: "1-3 members",
       objective:
-        "Design an autonomous robot capable of accurately following a predefined path with high stability.",
+        "To design an autonomous robot that follows a given line track with high accuracy and stability.",
+      philosophy:
+        "Serves as a strong foundation for autonomous robotics, focusing on feedback control and precision motion.",
       constraints: [
-        "Weight: Max 3 kg",
-        "Dimensions: 200x150x150 mm",
-        "Fully autonomous control",
-        "IR or optical sensors only",
+        { label: "Max Weight", val: "3 kg", detail: "Total mass" },
+        { label: "Dimensions", val: "200x150x150 mm", detail: "Compact build" },
+        { label: "Sensors", val: "IR/Optical", detail: "Only" },
+        { label: "Control", val: "Autonomous", detail: "Fully automated" },
       ],
-      stages: [
-        "Stage 1: PID/Logic-based Control submission",
-        "Stage 2: Sensor Calibration & Inspection",
-        "Stage 3: Timed track runs on 3m x 3m arena",
-      ],
-      prizes: {
-        first: "15,000",
-        second: "7,000",
-        third: "3,000",
-        total: "25,000",
+      arena: {
+        size: "3m x 3m",
+        type: "Black on White",
+        floor: "20-25mm Track Width",
       },
+      stages: [
+        {
+          title: "Logic Submission",
+          meta: "Online | Pre-Event",
+          details: "Sensor placement and PID/Logic overview.",
+        },
+        {
+          title: "Calibration",
+          meta: "Offline | Pre-Run",
+          details: "Sensor alignment and logic verification.",
+        },
+        {
+          title: "Timed Track Runs",
+          meta: "Offline | Event Days",
+          details: "Autonomous run with multiple turns.",
+        },
+      ],
+      prizes: [
+        { name: "First Prize", amount: "15,000" },
+        { name: "Second Prize", amount: "7,000" },
+        { name: "Third Prize", amount: "3,000" },
+      ],
     },
   ];
 
+  const active = combatModules[activeBattle];
+
   return (
-    <div className="relative min-h-screen bg-black/30 text-white font-mono p-4 md:p-8 overflow-hidden">
-
-      {/* Industrial Warning Overlay */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-[repeating-linear-gradient(45deg,#f43f5e,#f43f5e_10px,#000_10px,#000_20px)] opacity-40" />
-      <div className="absolute bottom-0 left-0 w-full h-2 bg-[repeating-linear-gradient(45deg,#f43f5e,#f43f5e_10px,#000_10px,#000_20px)] opacity-40" />
-
+    <div className="relative min-h-screen text-white font-mono p-4 md:p-8">
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* --- COLISEUM HEADER --- */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 border-b border-white/10 pb-8">
-          <div>
+        {/* --- HEADER --- */}
+        <header className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-8 border-b border-white/10 pb-6">
+          <motion.div
+            initial={{ x: -20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+          >
             <button
               onClick={() => router.back()}
-              className="flex items-center gap-2 text-rose-500 mb-2"
+              className="flex items-center gap-2 text-rose-500 mb-4 group"
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               <span className="text-[10px] tracking-[0.5em] uppercase font-bold">
                 Return to Events
               </span>
             </button>
-            <h1 className="text-6xl font-black tracking-tighter uppercase italic">
-              Steel <span className="text-rose-500">&</span> Silicon
+            <h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase italic leading-none">
+              {combatModules[activeBattle].title}
             </h1>
-          </div>
-          <div className="flex gap-4 mt-6 lg:mt-0">
+          </motion.div>
+
+          <div className="flex flex-wrap gap-3 mt-8 lg:mt-0">
             {combatModules.map((module, idx) => (
               <button
                 key={module.id}
                 onClick={() => setActiveBattle(idx)}
-                className={`px-8 py-3 border-2 transition-all duration-300 font-black tracking-tighter ${
+                className={`relative px-6 py-2 border-2 transition-all duration-300 font-black flex items-center gap-3 ${
                   activeBattle === idx
-                    ? "bg-rose-500 border-rose-500 text-black -translate-y-1 shadow-[0_8px_0_#9f1239]"
-                    : "bg-transparent border-white/20 text-white hover:border-rose-500/50"
+                    ? "bg-rose-500 border-rose-500 text-black shadow-[4px_4px_0px_white]"
+                    : "bg-black/40 border-white/20 text-white hover:border-rose-500/50"
                 }`}
               >
-                {module.id}
+                <span className="text-xs">{module.id}</span>
+                <span className="text-[10px] hidden md:block">
+                  {module.title}
+                </span>
               </button>
             ))}
           </div>
-        </div>
+        </header>
 
-        {/* --- COMBAT INTERFACE --- */}
+        {/* --- MAIN TERMINAL --- */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeBattle}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.05 }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-6"
           >
-            {/* Left Column: Tech Specs */}
-            <div className="lg:col-span-5 space-y-6">
-              <div className="p-8 bg-black/60 border-l-4 border-rose-500 rounded-r-2xl backdrop-blur-xl">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 bg-rose-500/20 text-rose-500 rounded-lg">
-                    {combatModules[activeBattle].icon}
+            {/* LEFT: CORE SPECS */}
+            <div className="lg:col-span-4 space-y-6">
+              {/* Objective Card */}
+              <div className="p-6 bg-white/5 border border-white/10 rounded-xl relative overflow-hidden group">
+                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:rotate-12 transition-transform">
+                  {active.icon}
+                </div>
+                <h3 className="text-rose-500 text-[10px] font-black tracking-[0.2em] mb-2 uppercase flex items-center gap-2">
+                  <Target className="w-3 h-3" /> Mission_Objective
+                </h3>
+                <p className="text-sm leading-relaxed text-gray-300 italic">
+                  "{active.objective}"
+                </p>
+                <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+                  <span className="text-[10px] text-gray-500 uppercase">
+                    Deployment Team
+                  </span>
+                  <span className="text-xs font-bold text-rose-500 uppercase flex items-center gap-2">
+                    <Users className="w-3 h-3" /> {active.teamSize}
+                  </span>
+                </div>
+              </div>
+
+              {/* Technical Grid */}
+              <div className="grid grid-cols-2 gap-4">
+                {active.constraints.map((c, i) => (
+                  <div
+                    key={i}
+                    className="p-4 bg-black/40 border border-white/5 rounded-lg group hover:border-rose-500/40 transition-all"
+                  >
+                    <p className="text-[8px] text-gray-500 uppercase font-black mb-1">
+                      {c.label}
+                    </p>
+                    <p className="text-sm font-black text-white">{c.val}</p>
+                    <p className="text-[9px] text-rose-400/60 mt-1 italic">
+                      {c.detail}
+                    </p>
                   </div>
-                  <div>
-                    <h2 className="text-3xl font-black uppercase tracking-tighter leading-none">
-                      {combatModules[activeBattle].title}
-                    </h2>
-                    <span className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">
-                      {combatModules[activeBattle].sub}
+                ))}
+              </div>
+
+              {/* Arena Card */}
+              <div className="p-6 bg-black/60 border-l-2 border-rose-500 rounded-r-xl">
+                <h3 className="text-[10px] font-black tracking-[0.2em] mb-4 uppercase text-gray-400">
+                  Arena_Specifications
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-[10px] uppercase text-gray-500">
+                      Dimensions
+                    </span>
+                    <span className="text-xs font-bold">
+                      {active.arena.size}
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[10px] uppercase text-gray-500">
+                      Environment
+                    </span>
+                    <span className="text-xs font-bold">
+                      {active.arena.type}
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[10px] uppercase text-gray-500">
+                      Surface
+                    </span>
+                    <span className="text-xs font-bold">
+                      {active.arena.floor}
                     </span>
                   </div>
                 </div>
-                <p className="text-sm leading-relaxed text-gray-400 italic mb-8 border-b border-white/5 pb-8">
-                  "{combatModules[activeBattle].objective}"
-                </p>
-                <div className="grid grid-cols-2 gap-4">
-                  {combatModules[activeBattle].constraints.map((c, i) => (
-                    <div
-                      key={i}
-                      className="flex gap-2 items-start text-[10px] uppercase font-bold text-rose-400"
-                    >
-                      <Settings className="w-3 h-3 mt-0.5 shrink-0" />
-                      {c}
+              </div>
+            </div>
+
+            {/* MIDDLE: PHASES & WEAPONS */}
+            <div className="lg:col-span-5 space-y-6">
+              {/* Progression Tracker */}
+              <div className="p-6 bg-white/5 border border-white/10 rounded-xl">
+                <h3 className="text-[10px] font-black tracking-[0.2em] mb-6 uppercase flex items-center gap-2">
+                  <Activity className="w-3 h-3 text-rose-500" />{" "}
+                  Operational_Phases
+                </h3>
+                <div className="space-y-6">
+                  {active.stages.map((stage, i) => (
+                    <div key={i} className="flex gap-4 group">
+                      <div className="flex flex-col items-center">
+                        <div className="w-6 h-6 rounded-full border border-rose-500 flex items-center justify-center text-[10px] font-black group-hover:bg-rose-500 group-hover:text-black transition-all">
+                          {i + 1}
+                        </div>
+                        {i !== active.stages.length - 1 && (
+                          <div className="w-px h-full bg-white/10 my-1" />
+                        )}
+                      </div>
+                      <div className="pb-4">
+                        <p className="text-xs font-black uppercase text-white leading-none mb-1">
+                          {stage.title}
+                        </p>
+                        <p className="text-[9px] text-rose-500 font-bold mb-2 uppercase">
+                          {stage.meta}
+                        </p>
+                        <p className="text-[10px] text-gray-400 leading-relaxed">
+                          {stage.details}
+                        </p>
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* BOUNTY MODULE */}
-              <div className="p-8 bg-rose-500/10 border-2 border-rose-500/20 rounded-2xl relative overflow-hidden">
-                <div className="flex justify-between items-end mb-8 relative z-10">
+              {/* Prohibited/Allowed (Conditional for Robowars) */}
+              {active.id === "RW" && (
+                <div className="p-4 bg-rose-500/5 border border-rose-500/20 rounded-xl grid grid-cols-2 gap-4">
                   <div>
-                    <h3 className="text-lg font-black uppercase tracking-tighter text-white">
-                      Bounty_Pool
-                    </h3>
-                    <p className="text-[10px] text-rose-500 uppercase tracking-widest italic">
-                      Combat_Incentive_Package
+                    <h4 className="text-[9px] font-black text-emerald-500 uppercase mb-2">
+                      Approved_Armament
+                    </h4>
+                    <p className="text-[10px] text-gray-400">
+                      {active.weapons.allowed}
                     </p>
                   </div>
-                  <div className="text-right">
-                    <span className="text-2xl font-black text-rose-500 italic">
-                      ₹{combatModules[activeBattle].prizes.total}
-                    </span>
+                  <div>
+                    <h4 className="text-[9px] font-black text-rose-500 uppercase mb-2">
+                      Illegal_Systems
+                    </h4>
+                    <p className="text-[10px] text-gray-400">
+                      {active.weapons.prohibited}
+                    </p>
                   </div>
                 </div>
-                <div className="space-y-4 relative z-10">
-                  <BountyRow
-                    rank="01"
-                    label="Commander"
-                    amount={combatModules[activeBattle].prizes.first}
-                  />
-                  <BountyRow
-                    rank="02"
-                    label="Veteran"
-                    amount={combatModules[activeBattle].prizes.second}
-                  />
-                  <BountyRow
-                    rank="03"
-                    label="Survivor"
-                    amount={combatModules[activeBattle].prizes.third}
-                  />
-                </div>
-              </div>
+              )}
             </div>
 
-            {/* Right Column: Battle Progression */}
-            <div className="lg:col-span-7 bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-md relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none">
-                <Crosshair className="w-64 h-64 text-rose-500" />
+            {/* RIGHT: WHY & REGISTER */}
+            <div className="lg:col-span-3 space-y-6">
+              {/* Why This Event */}
+              <div className="p-6 bg-white/5 border border-white/10 rounded-xl relative">
+                <div className="absolute -top-3 -right-3">
+                  <Info className="w-6 h-6 text-white/10" />
+                </div>
+                <h3 className="text-[10px] font-black tracking-[0.2em] mb-4 uppercase text-rose-500">
+                  Why_{active.id}?
+                </h3>
+                <p className="text-[11px] text-gray-400 leading-relaxed italic">
+                  {active.philosophy}
+                </p>
               </div>
 
-              <h3 className="text-xl font-black uppercase tracking-widest mb-10 flex items-center gap-4">
-                <Zap className="text-rose-500" /> Progression_Matrix
-              </h3>
-
-              <div className="space-y-8 relative">
-                <div className="absolute left-4.75 top-2 bottom-2 w-0.5 bg-rose-500/20" />
-                {combatModules[activeBattle].stages.map((stage, i) => (
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    key={i}
-                    className="relative pl-12 group"
-                  >
-                    <div className="absolute left-0 top-0 w-10 h-10 bg-black border-2 border-rose-500/50 flex items-center justify-center font-black group-hover:bg-rose-500 group-hover:text-black transition-colors">
-                      {i + 1}
-                    </div>
-                    <div className="bg-white/5 border border-white/5 p-4 rounded-xl group-hover:border-rose-500/30 transition-all">
-                      <p className="text-sm font-bold uppercase tracking-tight text-white">
-                        {stage.split("[")[0]}
-                      </p>
-                      <span className="text-[9px] text-rose-500/60 uppercase font-mono">
-                        Reference_{stage.match(/\[(.*?)\]/)?.[1]}
+              {/* Bounty/Prize Module */}
+              <div className="p-6 bg-linear-to-br from-rose-500 to-rose-700 rounded-xl text-black shadow-lg">
+                <div className="flex items-center gap-2 mb-4">
+                  <Trophy className="w-5 h-5" />
+                  <h3 className="text-sm font-black uppercase italic">
+                    Bounty_Rewards
+                  </h3>
+                </div>
+                <div className="space-y-2">
+                  {active.prizes.map((p, i) => (
+                    <div
+                      key={i}
+                      className="flex justify-between items-center border-b border-black/10 pb-1"
+                    >
+                      <span className="text-[10px] font-bold uppercase">
+                        {p.name}
+                      </span>
+                      <span className="text-xs font-black italic">
+                        ₹{p.amount}
                       </span>
                     </div>
-                  </motion.div>
-                ))}
+                  ))}
+                </div>
               </div>
 
-              <div className="mt-12 grid grid-cols-3 gap-6 pt-8 border-t border-white/5">
-                <Metric icon={<Cpu />} label="Processor" value="ARM/AVR" />
-                <Metric icon={<Activity />} label="Sync" value="2.4GHz" />
-                <Metric icon={<Zap />} label="Power" value="Li-Po" />
+              {/* Action Button */}
+              <button className="w-full py-4 bg-white text-black font-black uppercase italic text-sm tracking-tighter hover:bg-rose-500 hover:text-white transition-all transform hover:-translate-y-1 shadow-[0_4px_20px_rgba(244,63,94,0.3)] flex items-center justify-center gap-3 group">
+                Register_Now
+                <Zap className="w-4 h-4 fill-current group-hover:scale-125 transition-transform" />
+              </button>
+
+              <div className="p-4 border border-white/5 rounded-xl">
+                <div className="flex items-center gap-3 text-gray-500">
+                  <AlertTriangle className="w-4 h-4 text-rose-500" />
+                  <span className="text-[8px] uppercase font-bold leading-tight">
+                    Subject to safety approval and rule compliance verification.
+                  </span>
+                </div>
               </div>
             </div>
           </motion.div>
         </AnimatePresence>
-      </div>
-    </div>
-  );
-}
 
-// --- Coliseum Internal Components ---
-
-function BountyRow({ rank, label, amount }) {
-  return (
-    <div className="flex justify-between items-center bg-black/40 p-4 border border-white/5 rounded-lg group hover:border-rose-500/30 transition-all">
-      <div className="flex items-center gap-4">
-        <span className="text-lg font-black text-rose-500 italic">{rank}</span>
-        <div className="text-[10px] uppercase font-black text-gray-500 group-hover:text-white transition-colors">
-          {label}
-        </div>
+        {/* --- DECORATIVE FOOTER --- */}
+        <footer className="mt-12 flex justify-between items-center opacity-20">
+          <div className="flex gap-8">
+            <Metric icon={<Cpu />} label="System" value="Industrial" />
+            <Metric icon={<Maximize />} label="Scale" value="1:1" />
+            <Metric icon={<Activity />} label="Status" value="Active" />
+          </div>
+          <div className="text-[10px] font-black uppercase tracking-[0.5em]">
+            Ingenium_Secure_Terminal
+          </div>
+        </footer>
       </div>
-      <div className="text-lg font-black italic text-white">₹{amount}</div>
     </div>
   );
 }
 
 function Metric({ icon, label, value }) {
   return (
-    <div className="text-center group">
-      <div className="mx-auto w-10 h-10 flex items-center justify-center rounded-full bg-rose-500/10 text-rose-500 mb-2 group-hover:scale-110 transition-transform">
-        {React.cloneElement(icon, { className: "w-5 h-5" })}
+    <div className="flex items-center gap-2">
+      <div className="text-white">
+        {React.cloneElement(icon, { className: "w-3 h-3" })}
       </div>
-      <div className="text-[8px] text-gray-500 uppercase block mb-1 font-bold">
-        {label}
-      </div>
-      <div className="text-xs font-black text-white uppercase italic">
-        {value}
+      <div className="flex flex-col">
+        <span className="text-[7px] text-gray-500 uppercase font-black">
+          {label}
+        </span>
+        <span className="text-[9px] font-black text-white uppercase italic">
+          {value}
+        </span>
       </div>
     </div>
   );
