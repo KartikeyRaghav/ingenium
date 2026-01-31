@@ -44,7 +44,7 @@ api.interceptors.response.use(
       isRefreshing = true;
 
       try {
-        const res = await api.post("/auth/refresh");
+        const res = await api.post("/user/refresh");
         const newToken = res.data.access_token;
 
         localStorage.setItem("access_token", newToken);
@@ -57,7 +57,7 @@ api.interceptors.response.use(
       } catch (err) {
         processQueue(err, null);
         localStorage.removeItem("access_token");
-        window.location.href = "/login";
+        window.location.href = "/auth";
         return Promise.reject(err);
       } finally {
         isRefreshing = false;

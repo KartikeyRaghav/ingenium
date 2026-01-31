@@ -6,7 +6,7 @@ import { PageTransitionWrapper } from "@/components/chronoverse";
 
 // --- Time Calculation Logic ---
 function calculateTimeLeft() {
-  const targetDate = new Date("2026-02-15T00:00:00");
+  const targetDate = new Date("2026-03-14T18:00:00");
   const now = new Date();
   const difference = targetDate.getTime() - now.getTime();
 
@@ -182,7 +182,7 @@ export default function TimeCorePage() {
                     />
                   </svg>
                 </div>
-                <span>Abort to Main</span>
+                <span>Return to Chronoverse</span>
               </button>
             </Link>
 

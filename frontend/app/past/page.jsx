@@ -114,7 +114,7 @@ export default function PastPage() {
                     />
                   </svg>
                 </div>
-                <span>Rewind to Present</span>
+                <span>Return to Chronoverse</span>
               </button>
             </Link>
             <div className="flex items-center gap-2 text-[10px] font-mono text-amber-500/40">
