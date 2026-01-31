@@ -42,8 +42,6 @@ export default function PartnerPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // In a real app, this would send data to backend
-    console.log("Form submitted:", formData);
     alert("Transmission Received. We will establish a secure channel shortly.");
   };
 

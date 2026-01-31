@@ -3,6 +3,7 @@ import "./globals.css";
 import { StarField } from "@/components/chronoverse";
 import TerminalTransition from "@/components/TerminalTransition";
 import NeuralLink from "@/components/NeuralLink";
+import { AuthProvider } from "@/context/AuthContext";
 
 const oxanium = Oxanium({
   subsets: ["latin"],
@@ -24,26 +25,22 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const isLoggedIn = false;
   return (
     <html lang="en">
       <body
         className={`${oxanium.variable} ${mono.variable} antialiased overflow-x-hidden`}
       >
-        <div className="fixed inset-0 z-0">
-          <StarField />
-        </div>
+        <AuthProvider>
+          <div className="fixed inset-0 z-0">
+            <StarField />
+          </div>
 
-        {/* The Global HUD UI */}
-        <NeuralLink isLoggedIn={isLoggedIn} />
+          <NeuralLink />
 
-        {/* The Transition & Page Content Layer */}
-        <div className="relative z-10">
-          <TerminalTransition>{children}</TerminalTransition>
-        </div>
-
-        {/* Global CRT Noise Overlay (Subtle) */}
-        <div className="fixed inset-0 pointer-events-none z-999 opacity-[0.03] mix-blend-screen bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+          <div className="relative z-10">
+            <TerminalTransition>{children}</TerminalTransition>
+          </div>
+        </AuthProvider>
       </body>
     </html>
   );

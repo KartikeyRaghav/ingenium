@@ -1,10 +1,13 @@
 "use client";
 
+import { AuthContext } from "@/context/AuthContext";
 import { motion } from "framer-motion";
 import { User, Fingerprint } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
+import { useContext } from "react";
 
-export default function NeuralLink({ isLoggedIn = false }) {
+export default function NeuralLink() {
+  const { isLoggedIn, loading } = useContext(AuthContext);
   const router = useRouter();
   const pathname = usePathname();
 
