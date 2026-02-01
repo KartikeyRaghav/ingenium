@@ -312,7 +312,7 @@ export default function Navigation({ onNavigate }) {
             SYSTEM
           </h2>
           <p className="text-[10px] text-blue-500/50 font-mono tracking-[0.3em] uppercase mt-1">
-            Ingenium Chronoverse v2.0
+            Ingenium Chronoverse v3.0.4
           </p>
         </div>
       </div>

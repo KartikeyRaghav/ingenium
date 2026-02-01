@@ -62,7 +62,7 @@ export default function PartnerPage() {
               href="/future"
               className="absolute left-0 top-0 text-violet-500 hover:text-white transition-colors font-mono text-xs flex items-center gap-2"
             >
-              ← RETURN TO NEXUS
+              ← RETURN TO FUTURE
             </Link>
 
             <span className="inline-block py-1 px-3 border border-violet-500/30 rounded-full text-[10px] font-mono text-violet-400 mb-6 bg-violet-500/5 backdrop-blur-sm">
