@@ -127,7 +127,7 @@ export default function ProfilePage() {
       {/* Decorative Frame */}
       <div className="fixed inset-4 border border-blue-500/10 pointer-events-none" />
       <div className="fixed top-8 left-8 text-[10px] text-blue-500/20 font-mono tracking-[0.5em] vertical-text">
-        INGENIUM_OS_v3.0.4
+        INGENIUM_OS
       </div>
     </div>
   );

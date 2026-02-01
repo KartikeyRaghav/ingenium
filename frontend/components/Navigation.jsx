@@ -122,7 +122,7 @@ const ConnectionLine = ({ start, end, active }) => {
 const NavNode = ({ node, isHovered, onHover, onLeave, onClick }) => {
   return (
     <div
-      className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group z-20"
+      className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group z-40"
       style={{ left: `${node.x}%`, top: `${node.y}%` }}
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
@@ -312,7 +312,7 @@ export default function Navigation({ onNavigate }) {
             SYSTEM
           </h2>
           <p className="text-[10px] text-blue-500/50 font-mono tracking-[0.3em] uppercase mt-1">
-            Ingenium Chronoverse v3.0.4
+            Ingenium Chronoverse
           </p>
         </div>
       </div>

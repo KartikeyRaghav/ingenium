@@ -121,7 +121,7 @@ export default function PresentPage() {
         <div className="mt-16 flex justify-center opacity-30">
           <div className="px-6 py-2 border-x border-blue-500/20 flex gap-8 font-mono text-[9px] text-blue-400">
             <span>COORDINATES: 22.52° N, 75.92° E</span>
-            <span>INGENIUM_OS_v3.0.4</span>
+            <span>INGENIUM_OS</span>
             <span>ENCRYPTION: AES-256</span>
           </div>
         </div>
