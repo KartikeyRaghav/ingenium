@@ -1,0 +1,93 @@
+import pool from "../db.js";
+
+export const registerTeam = async (req, res) => {
+  const client = await pool.connect();
+
+  try {
+    const { teamName, psName, participants } = req.body;
+
+    /* ---------- VALIDATION ---------- */
+    if (!teamName || !psName || !participants) {
+      console.log("Hi 1", teamName, psName, participants);
+      return res.status(400).json({ message: "All fields required" });
+    }
+
+    if (!Array.isArray(participants)) {
+      console.log("Hi 2");
+      return res.status(400).json({ message: "Participants must be an array" });
+    }
+
+    if (participants.length < 1 || participants.length > 6) {
+      console.log("Hi 3");
+      return res
+        .status(400)
+        .json({ message: "Team must have 1 to 6 participants" });
+    }
+
+    for (const p of participants) {
+      console.log("Hi 4", p.name, p.email, p.mobile);
+      if (!p.name || !p.email || !p.mobile) {
+        return res.status(400).json({
+          message: "Each participant must have name, email and mobile",
+        });
+      }
+    }
+
+    const team = await client.query(
+      `SELECT * FROM teams WHERE team_name = $1`,
+      [teamName],
+    );
+    if (team.rowCount > 0)
+      return res.status(400).json({
+        message: "A team with this name already exists",
+      });
+
+    /* ---------- TRANSACTION START ---------- */
+    await client.query("BEGIN");
+
+    /* ---------- CREATE TEAM ---------- */
+    const teamResult = await client.query(
+      `INSERT INTO teams (team_name, ps_name)
+       VALUES ($1, $2)
+       RETURNING id`,
+      [teamName, psName],
+    );
+
+    const teamId = teamResult.rows[0].id;
+
+    /* ---------- INSERT PARTICIPANTS ---------- */
+    const participantQuery = `INSERT INTO participants (team_id, name, email, mobile)
+       VALUES ($1, $2, $3, $4)`;
+
+    for (const p of participants) {
+      await client.query(participantQuery, [teamId, p.name, p.email, p.mobile]);
+    }
+
+    /* ---------- COMMIT ---------- */
+    await client.query("COMMIT");
+
+    res.status(201).json({
+      message: "Registration successful",
+      teamId,
+    });
+  } catch (error) {
+    await client.query("ROLLBACK");
+
+    console.error(error);
+
+    // Friendly error messages
+    if (error.code === "23505") {
+      return res.status(400).json({
+        message: "Team name or participant email already exists",
+      });
+    }
+
+    if (error.message.includes("maximum of 6 participants")) {
+      return res.status(400).json({ message: error.message });
+    }
+
+    res.status(500).json({ message: "Internal server error" });
+  } finally {
+    client.release();
+  }
+};

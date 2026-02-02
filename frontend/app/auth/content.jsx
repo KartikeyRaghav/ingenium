@@ -1,13 +1,16 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { Lock, Mail, User, Fingerprint, Cpu, ArrowRight } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import api from "@/lib/api";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function AuthTerminal() {
+  const { isLoggedIn } = useContext(AuthContext);
+
   const [isLogin, setIsLogin] = useState(true);
   const terminalRef = useRef(null);
   const scanLineRef = useRef(null);
