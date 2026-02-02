@@ -1,4 +1,4 @@
-export const events = [
+export const tech_events = [
   {
     id: "solveXBio",
     name: "SolveXBio",
@@ -68,5 +68,22 @@ export const events = [
     tag: "Design",
     folder: "aero_artistry",
     color: "sky",
+  },
+];
+
+export const cult_events = [
+  {
+    id: "VLR",
+    name: "Album Cover Design",
+    tag: "Design",
+    folder: "vlr",
+    color: "emerald",
+  },
+  {
+    id: "canvas",
+    name: "Canvas Painting",
+    tag: "Paint",
+    folder: "kalakriti",
+    color: "blue",
   },
 ];
