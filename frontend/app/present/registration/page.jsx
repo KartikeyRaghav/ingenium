@@ -152,11 +152,11 @@ function RegistrationContent() {
     setFormData({ ...formData, members: updatedMembers });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("processing");
 
-    api
+    await api
       .post("http://localhost:5000/api/registration/register", {
         teamName: formData.teamName,
         psName: eventKey,

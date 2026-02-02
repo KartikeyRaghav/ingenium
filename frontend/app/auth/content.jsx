@@ -3,14 +3,19 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
-import { Lock, Mail, User, Fingerprint, Cpu, ArrowRight } from "lucide-react";
+import {
+  Lock,
+  Mail,
+  User,
+  Fingerprint,
+  Cpu,
+  ArrowRight,
+  FileExclamationPoint,
+} from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import api from "@/lib/api";
-import { AuthContext } from "@/context/AuthContext";
 
 export default function AuthTerminal() {
-  const { isLoggedIn } = useContext(AuthContext);
-
   const [isLogin, setIsLogin] = useState(true);
   const terminalRef = useRef(null);
   const scanLineRef = useRef(null);
@@ -22,9 +27,11 @@ export default function AuthTerminal() {
   });
   const searchParams = useSearchParams();
   const router = useRouter();
+  const [error, setError] = useState(null);
 
   const handleLoginSignup = async (e) => {
     e.preventDefault();
+    setError("");
     setLoading(true);
     try {
       if (isLogin) {
@@ -36,7 +43,8 @@ export default function AuthTerminal() {
       }
       router.push(searchParams.get("path"));
     } catch (error) {
-      console.error(error);
+      console.log(error);
+      setError(error.response?.data?.message || "Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -140,6 +148,16 @@ export default function AuthTerminal() {
                 />
               </div>
 
+              {error && (
+                <div className="relative w-full group overflow-hidden py-4 bg-red-600/20 border border-red-500/50 rounded-lg text-red-400 font-bold tracking-widest hover:bg-red-600/30 transition-all active:scale-95">
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    <FileExclamationPoint className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    {error}
+                  </span>
+                  <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full duration-1000 transition-transform" />
+                </div>
+              )}
+
               <button
                 onClick={handleLoginSignup}
                 className="relative w-full group overflow-hidden py-4 bg-blue-600/20 border border-blue-500/50 rounded-lg text-blue-400 font-bold tracking-widest hover:bg-blue-600/30 transition-all active:scale-95"
@@ -156,7 +174,10 @@ export default function AuthTerminal() {
           {/* Footer Toggle */}
           <div className="mt-8 text-center">
             <button
-              onClick={() => setIsLogin(!isLogin)}
+              onClick={() => {
+                setIsLogin(!isLogin);
+                setError(null);
+              }}
               className="text-[10px] text-blue-500/60 cursor-pointer hover:text-blue-400 transition-colors flex items-center justify-center gap-2 mx-auto uppercase tracking-tighter"
             >
               <Cpu className="w-3 h-3" />

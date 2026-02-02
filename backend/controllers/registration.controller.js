@@ -42,7 +42,7 @@ export const registerTeam = async (req, res) => {
         message: "A team with this name already exists",
       });
     }
-    
+
     for (const p of participants) {
       const exits = await pool.query(
         `SELECT * FROM participants WHERE email = $1`,
@@ -101,5 +101,52 @@ export const registerTeam = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   } finally {
     client.release();
+  }
+};
+
+export const getTeamByParticipantEmail = async (req, res) => {
+  try {
+    const { email } = req.query;
+
+    if (!email) {
+      return res.status(400).json({ message: "Email is required" });
+    }
+
+    /* ---------- FIND TEAM ---------- */
+    const teamResult = await pool.query(
+      `
+      SELECT t.id, t.team_name, t.ps_name
+      FROM teams t
+      JOIN participants p ON p.team_id = t.id
+      WHERE p.email = $1
+      `,
+      [email],
+    );
+
+    if (teamResult.rows.length === 0) {
+      return res.status(404).json({ message: "Participant not found" });
+    }
+
+    const team = teamResult.rows[0];
+
+    /* ---------- GET ALL PARTICIPANTS ---------- */
+    const participantsResult = await pool.query(
+      `
+      SELECT name, email, mobile
+      FROM participants
+      WHERE team_id = $1
+      ORDER BY id
+      `,
+      [team.id],
+    );
+
+    res.status(200).json({
+      team_name: team.team_name,
+      ps_name: team.ps_name,
+      participants: participantsResult.rows,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
   }
 };
