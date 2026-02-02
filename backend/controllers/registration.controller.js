@@ -8,24 +8,20 @@ export const registerTeam = async (req, res) => {
 
     /* ---------- VALIDATION ---------- */
     if (!teamName || !psName || !participants) {
-      console.log("Hi 1", teamName, psName, participants);
       return res.status(400).json({ message: "All fields required" });
     }
 
     if (!Array.isArray(participants)) {
-      console.log("Hi 2");
       return res.status(400).json({ message: "Participants must be an array" });
     }
 
     if (participants.length < 1 || participants.length > 6) {
-      console.log("Hi 3");
       return res
         .status(400)
         .json({ message: "Team must have 1 to 6 participants" });
     }
 
     for (const p of participants) {
-      console.log("Hi 4", p.name, p.email, p.mobile);
       if (!p.name || !p.email || !p.mobile) {
         return res.status(400).json({
           message: "Each participant must have name, email and mobile",
@@ -33,29 +29,21 @@ export const registerTeam = async (req, res) => {
       }
     }
 
-    const team = await pool.query(`SELECT * FROM teams WHERE team_name = $1`, [
-      teamName,
-    ]);
+    /* ---------- TRANSACTION START ---------- */
+    await client.query("BEGIN");
 
-    if (team.rowCount > 0) {
+    /* ---------- TEAM NAME CHECK ---------- */
+    const teamExists = await client.query(
+      `SELECT id FROM teams WHERE team_name = $1`,
+      [teamName],
+    );
+
+    if (teamExists.rowCount > 0) {
+      await client.query("ROLLBACK");
       return res.status(400).json({
         message: "A team with this name already exists",
       });
     }
-
-    for (const p of participants) {
-      const exits = await pool.query(
-        `SELECT * FROM participants WHERE email = $1`,
-        [p.email],
-      );
-      if (exits.rowCount > 0)
-        return res.status(400).json({
-          message: "A participant with this email already exists",
-        });
-    }
-
-    /* ---------- TRANSACTION START ---------- */
-    await client.query("BEGIN");
 
     /* ---------- CREATE TEAM ---------- */
     const teamResult = await client.query(
@@ -67,12 +55,35 @@ export const registerTeam = async (req, res) => {
 
     const teamId = teamResult.rows[0].id;
 
-    /* ---------- INSERT PARTICIPANTS ---------- */
-    const participantQuery = `INSERT INTO participants (team_id, name, email, mobile)
-       VALUES ($1, $2, $3, $4)`;
-
+    /* ---------- HANDLE PARTICIPANTS ---------- */
     for (const p of participants) {
-      await client.query(participantQuery, [teamId, p.name, p.email, p.mobile]);
+      // 1️⃣ Check if participant already exists
+      const existingParticipant = await client.query(
+        `SELECT id FROM participants WHERE email = $1`,
+        [p.email],
+      );
+
+      let participantId;
+
+      if (existingParticipant.rowCount > 0) {
+        participantId = existingParticipant.rows[0].id;
+      } else {
+        // 2️⃣ Create participant
+        const newParticipant = await client.query(
+          `INSERT INTO participants (name, email, mobile)
+           VALUES ($1, $2, $3)
+           RETURNING id`,
+          [p.name, p.email, p.mobile],
+        );
+        participantId = newParticipant.rows[0].id;
+      }
+
+      // 3️⃣ Link participant to team
+      await client.query(
+        `INSERT INTO team_members (team_id, participant_id)
+         VALUES ($1, $2)`,
+        [teamId, participantId],
+      );
     }
 
     /* ---------- COMMIT ---------- */
@@ -84,13 +95,11 @@ export const registerTeam = async (req, res) => {
     });
   } catch (error) {
     await client.query("ROLLBACK");
-
     console.error(error);
 
-    // Friendly error messages
     if (error.code === "23505") {
       return res.status(400).json({
-        message: "Team name or participant email already exists",
+        message: "Duplicate registration detected",
       });
     }
 
@@ -117,25 +126,29 @@ export const getTeamByParticipantEmail = async (req, res) => {
       `
       SELECT t.id, t.team_name, t.ps_name
       FROM teams t
-      JOIN participants p ON p.team_id = t.id
+      JOIN team_members tm ON tm.team_id = t.id
+      JOIN participants p ON p.id = tm.participant_id
       WHERE p.email = $1
       `,
       [email],
     );
 
     if (teamResult.rows.length === 0) {
-      return res.status(404).json({ message: "Participant not found" });
+      return res
+        .status(404)
+        .json({ message: "Participant not found in any team" });
     }
 
     const team = teamResult.rows[0];
 
-    /* ---------- GET ALL PARTICIPANTS ---------- */
+    /* ---------- GET ALL PARTICIPANTS OF TEAM ---------- */
     const participantsResult = await pool.query(
       `
-      SELECT name, email, mobile
-      FROM participants
-      WHERE team_id = $1
-      ORDER BY id
+      SELECT p.name, p.email, p.mobile
+      FROM participants p
+      JOIN team_members tm ON tm.participant_id = p.id
+      WHERE tm.team_id = $1
+      ORDER BY p.id
       `,
       [team.id],
     );
