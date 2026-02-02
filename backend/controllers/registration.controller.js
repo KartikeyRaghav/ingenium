@@ -33,14 +33,26 @@ export const registerTeam = async (req, res) => {
       }
     }
 
-    const team = await client.query(
-      `SELECT * FROM teams WHERE team_name = $1`,
-      [teamName],
-    );
-    if (team.rowCount > 0)
+    const team = await pool.query(`SELECT * FROM teams WHERE team_name = $1`, [
+      teamName,
+    ]);
+
+    if (team.rowCount > 0) {
       return res.status(400).json({
         message: "A team with this name already exists",
       });
+    }
+    
+    for (const p of participants) {
+      const exits = await pool.query(
+        `SELECT * FROM participants WHERE email = $1`,
+        [p.email],
+      );
+      if (exits.rowCount > 0)
+        return res.status(400).json({
+          message: "A participant with this email already exists",
+        });
+    }
 
     /* ---------- TRANSACTION START ---------- */
     await client.query("BEGIN");

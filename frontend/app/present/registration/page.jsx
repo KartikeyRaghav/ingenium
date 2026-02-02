@@ -166,9 +166,9 @@ function RegistrationContent() {
         setStatus("success");
       })
       .catch((error) => {
-        console.error(error);
+        console.log(error);
         setStatus("error");
-        setErrorMsg(error.message);
+        setErrorMsg(error.response?.data?.message || "Something went wrong");
       });
   };
 
