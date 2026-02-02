@@ -173,7 +173,14 @@ export default function ConCastlePS() {
                         {problemStatements[activeProblem].subtitle}
                       </p>
                     </div>
-                    <button className="flex items-center gap-3 bg-emerald-500 text-black px-6 py-3 font-bold text-xs uppercase tracking-widest hover:bg-white transition-colors group">
+                    <button
+                      onClick={() =>
+                        router.push(
+                          `/present/registration?event=${activeProblem == 0 ? "monsoon_water" : "open_ground"}`,
+                        )
+                      }
+                      className="flex items-center gap-3 bg-emerald-500 text-black px-6 py-3 font-bold text-xs uppercase tracking-widest hover:bg-white transition-colors group"
+                    >
                       Initialize Registration
                       <Zap className="w-4 h-4 fill-current group-hover:animate-pulse" />
                     </button>

@@ -95,40 +95,40 @@ export default function IVDCPS() {
         "Algorithm Efficiency & Autonomy.",
       ],
     },
-    {
-      id: 3,
-      title: "Biomimetic Jump-Bot",
-      theme: "Vertical Kinetic Engineering",
-      icon: <ArrowUp className="w-6 h-6" />,
-      motivation:
-        "Encouraged to take inspiration from the world through biomimicry to find kinetic solutions for vertical movement.",
-      problemStatement:
-        "Create a robot capable of jumping vertically as high as possible from a standing position within defined boundaries.",
-      tasks: [
-        {
-          title: "Constraint A",
-          desc: "Push the ground; no propeller-like systems allowed.",
-        },
-        {
-          title: "Constraint B",
-          desc: "Zero mass reduction (unlike rockets) during jump.",
-        },
-      ],
-      deliverables: [
-        "Functional jumping robot.",
-        "Adherence to the defined 3D boundary dimensions.",
-        "Demonstration of maximum vertical height.",
-      ],
-      specs: {
-        hardware: ["Jump Mechanism", "Standing Base", "Height Sensor (below)"],
-        compute: "Stationary vertical logic.",
-      },
-      evaluation: [
-        "Height achieved (Measured via sensor).",
-        "Boundary adherence (No crossing lines).",
-        "Mechanism integrity (No mass reduction).",
-      ],
-    },
+    // {
+    //   id: 3,
+    //   title: "Biomimetic Jump-Bot",
+    //   theme: "Vertical Kinetic Engineering",
+    //   icon: <ArrowUp className="w-6 h-6" />,
+    //   motivation:
+    //     "Encouraged to take inspiration from the world through biomimicry to find kinetic solutions for vertical movement.",
+    //   problemStatement:
+    //     "Create a robot capable of jumping vertically as high as possible from a standing position within defined boundaries.",
+    //   tasks: [
+    //     {
+    //       title: "Constraint A",
+    //       desc: "Push the ground; no propeller-like systems allowed.",
+    //     },
+    //     {
+    //       title: "Constraint B",
+    //       desc: "Zero mass reduction (unlike rockets) during jump.",
+    //     },
+    //   ],
+    //   deliverables: [
+    //     "Functional jumping robot.",
+    //     "Adherence to the defined 3D boundary dimensions.",
+    //     "Demonstration of maximum vertical height.",
+    //   ],
+    //   specs: {
+    //     hardware: ["Jump Mechanism", "Standing Base", "Height Sensor (below)"],
+    //     compute: "Stationary vertical logic.",
+    //   },
+    //   evaluation: [
+    //     "Height achieved (Measured via sensor).",
+    //     "Boundary adherence (No crossing lines).",
+    //     "Mechanism integrity (No mass reduction).",
+    //   ],
+    // },
   ];
 
   return (
@@ -226,7 +226,14 @@ export default function IVDCPS() {
               </div>
 
               {/* Action Button */}
-              <button className="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(59,130,246,0.3)] group transition-all">
+              <button
+                onClick={() =>
+                  router.push(
+                    `/present/registration?event=${activeModule == 0 ? "3d" : "cv"}`,
+                  )
+                }
+                className="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(59,130,246,0.3)] group transition-all"
+              >
                 Register_Now{" "}
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>

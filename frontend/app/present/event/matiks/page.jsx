@@ -152,7 +152,7 @@ export default function MatiksPS() {
               </div>
             </div>
 
-            {/* Logistical Requirements */}
+            {/* Logistical Requirements
             <div className="p-6 border border-white/5 rounded-2xl bg-white/5">
               <h4 className="text-[10px] text-white/40 uppercase tracking-widest mb-4">
                 Logistics_Protocol
@@ -171,7 +171,7 @@ export default function MatiksPS() {
                   <span className="text-white">Matiks Portal</span>
                 </li>
               </ul>
-            </div>
+            </div> */}
           </div>
 
           {/* --- RIGHT COLUMN: DYNAMIC CONTENT --- */}
@@ -219,7 +219,12 @@ export default function MatiksPS() {
                     ))}
                   </div>
 
-                  <button className="w-full bg-rose-600 hover:bg-rose-500 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-all group overflow-hidden relative">
+                  <button
+                    onClick={() =>
+                      router.push(`/present/registration?event=matiks`)
+                    }
+                    className="w-full bg-rose-600 hover:bg-rose-500 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-all group overflow-hidden relative"
+                  >
                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                     <span className="relative z-10 uppercase tracking-[0.2em] text-sm">
                       Initialize Registration Protocol
@@ -272,7 +277,7 @@ export default function MatiksPS() {
         </div>
 
         {/* --- FOOTER COORDINATOR INFO --- */}
-        <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+        {/* <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-4">
             <div className="w-10 h-10 rounded-full bg-rose-500/20 flex items-center justify-center border border-rose-500/40">
               <Cpu className="w-5 h-5 text-rose-500" />
@@ -297,7 +302,7 @@ export default function MatiksPS() {
               Co-Head, Infinitrix // +91 9014153864
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

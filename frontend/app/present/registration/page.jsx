@@ -1,292 +1,329 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { PageTransitionWrapper } from "@/components/chronoverse";
+import { gsap } from "gsap";
+import { motion, AnimatePresence } from "framer-motion";
 
-// Loading component for Suspense
+// Configuration for Events
+const EVENT_CONFIG = {
+  "General Entry": { teamSize: 1, color: "#60a5fa", sector: "GEN-00" },
+  glider: { teamSize: 2, color: "#60a5fa", sector: "AIR-01" },
+  payload: { teamSize: 2, color: "#60a5fa", sector: "AIR-02" },
+  analytic_x: { teamSize: 2, color: "#60a5fa", sector: "ANX-01" },
+  monsoon_water: { teamSize: 2, color: "#60a5fa", sector: "CON-01" },
+  open_ground: { teamSize: 2, color: "#60a5fa", sector: "CON-02" },
+  sa: { teamSize: 2, color: "#60a5fa", sector: "ELE-01" },
+  av: { teamSize: 2, color: "#60a5fa", sector: "ELE-02" },
+  web: { teamSize: 2, color: "#60a5fa", sector: "GDG-01" },
+  ml: { teamSize: 2, color: "#60a5fa", sector: "GDG-02" },
+  game: { teamSize: 2, color: "#60a5fa", sector: "GDG-03" },
+  "3d": { teamSize: 2, color: "#60a5fa", sector: "IVDC-01" },
+  cv: { teamSize: 2, color: "#60a5fa", sector: "IVDC-02" },
+  matiks: { teamSize: 2, color: "#60a5fa", sector: "MAT-01" },
+  qml: { teamSize: 2, color: "#60a5fa", sector: "QML-01" },
+  rw: { teamSize: 2, color: "#60a5fa", sector: "RBT-01" },
+  rs: { teamSize: 2, color: "#60a5fa", sector: "RBT-02" },
+  lf: { teamSize: 2, color: "#60a5fa", sector: "RBT-03" },
+  patient_monitor: { teamSize: 2, color: "#60a5fa", sector: "SXB-01" },
+  screen_addiction: { teamSize: 2, color: "#60a5fa", sector: "SXB-02" },
+};
+
 function RegistrationContent() {
   const searchParams = useSearchParams();
-  const eventName = searchParams.get("event") || "General Entry";
   const router = useRouter();
+  const formRef = useRef(null);
 
+  const eventName = searchParams.get("event") || "General Entry";
+  const config = EVENT_CONFIG[eventName] || EVENT_CONFIG["General Entry"];
+
+  const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    studentId: "",
-    department: "",
+    teamName: "",
+    members: Array.from({ length: config.teamSize }, () => ({
+      name: "",
+      email: "",
+      phone: "",
+    })),
   });
 
-  const [status, setStatus] = useState("idle"); // idle, scanning, transmitting, complete
-  const [glitch, setGlitch] = useState(false);
+  const [status, setStatus] = useState("idle");
 
+  // GSAP Entrance Animation
   useEffect(() => {
-    // Initial scanning effect
-    setStatus("scanning");
-    const timer = setTimeout(() => {
-      setStatus("idle");
-    }, 1500);
-    return () => clearTimeout(timer);
-  }, []);
+    const ctx = gsap.context(() => {
+      gsap.from(".cyber-field", {
+        x: -50,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: "back.out(1.7)",
+      });
+      gsap.from(".data-bar", {
+        scaleX: 0,
+        transformOrigin: "left",
+        duration: 2,
+        ease: "power4.inOut",
+      });
+    }, formRef);
+    return () => ctx.revert();
+  }, [step]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+  const handleMemberChange = (index, field, value) => {
+    const updatedMembers = [...formData.members];
+    updatedMembers[index][field] = value;
+    setFormData({ ...formData, members: updatedMembers });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setStatus("transmitting");
+    setStatus("processing");
 
-    // Simulate network request
+    // Simulate Data Uplink
     setTimeout(() => {
-      setStatus("complete");
-      // Trigger glitch effect on success
-      setGlitch(true);
-      setTimeout(() => setGlitch(false), 500);
-    }, 2000);
+      setStatus("success");
+    }, 2500);
   };
 
   return (
-    <div className="relative z-10 w-full max-w-md mx-auto">
-      {/* HUD Header */}
-      <div className="mb-8 border-b border-blue-500/30 pb-4">
-        <div className="flex justify-between items-end">
-          <div>
-            <div className="text-[10px] text-blue-400/60 font-mono tracking-widest uppercase mb-1">
-              PROTOCOL: SECURE_LINK
-            </div>
-            <h1 className="text-2xl md:text-3xl font-bold text-white tracking-tighter">
-              <span className="text-blue-500">REGISTRATION</span> MODULE
-            </h1>
+    <div ref={formRef} className="relative z-10 w-full max-w-4xl mx-auto p-4">
+      {/* HUD: TOP DECORATION */}
+      <div className="flex justify-between items-end mb-6 font-mono">
+        <div className="space-y-1">
+          <div className="flex items-center gap-2">
+            <span className="w-3 h-3 bg-blue-500 animate-pulse" />
+            <span className="text-blue-400 text-[10px] tracking-[0.3em]">
+              ENCRYPTED_UPLINK // {config.sector}
+            </span>
           </div>
-          <div className="text-right">
-            <div className="text-[10px] text-blue-400/60 font-mono tracking-widest uppercase mb-1">
-              TARGET
-            </div>
-            <div className="text-sm font-bold text-blue-300 uppercase">
-              {eventName}
-            </div>
+          <h1 className="text-4xl md:text-6xl font-black text-white italic tracking-tighter uppercase">
+            {eventName}
+            <span className="text-blue-500">.sys</span>
+          </h1>
+        </div>
+        <div className="hidden md:block text-right">
+          <div className="text-[10px] text-blue-400/40 tracking-widest">
+            TEAM_CAPACITY
+          </div>
+          <div className="text-2xl font-bold text-blue-500 leading-none">
+            0{config.teamSize}
           </div>
         </div>
       </div>
 
-      {/* Main Form Container - Glass Panel */}
-      <div
-        className={`relative bg-[#050a14]/80 backdrop-blur-xl border border-blue-500/30 rounded-xl p-8 overflow-hidden transition-all duration-300 ${status === "transmitting" ? "border-blue-400 shadow-[0_0_30px_rgba(59,130,246,0.3)]" : ""}`}
-      >
-        {/* Scanning Overlay */}
-        {status === "scanning" && (
-          <div className="absolute inset-0 z-50 bg-[#050a14]/90 flex flex-col items-center justify-center">
-            <div className="w-full h-1 bg-blue-900/30 absolute top-1/2 -translate-y-1/2">
-              <div className="h-full bg-blue-500 animate-[scan_1s_ease-in-out_infinite]" />
-            </div>
-            <div className="font-mono text-blue-400 text-xs animate-pulse tracking-widest">
-              INITIALIZING HANDSHAKE...
-            </div>
-          </div>
-        )}
+      <div className="relative border border-blue-500/20 bg-black/60 backdrop-blur-3xl rounded-2xl p-6 md:p-10 shadow-2xl">
+        {/* PROGRESS BAR */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-blue-900/20">
+          <div
+            className="data-bar h-full bg-blue-500 shadow-[0_0_15px_#3b82f6]"
+            style={{ width: `${(step / 2) * 100}%` }}
+          />
+        </div>
 
-        {/* Success Overlay */}
-        {status === "complete" && (
-          <div className="absolute inset-0 z-50 bg-[#050a14]/95 flex flex-col items-center justify-center text-center p-6 animate-fade-in-up">
-            <div className="w-20 h-20 rounded-full border-4 border-green-500 flex items-center justify-center mb-6 relative">
-              <div className="absolute inset-0 rounded-full border-4 border-green-500 animate-ping opacity-20" />
-              <svg
-                className="w-10 h-10 text-green-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={3}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-            </div>
-            <h2
-              className={`text-2xl font-bold text-white mb-2 ${glitch ? "animate-flicker" : ""}`}
+        <AnimatePresence mode="wait">
+          {status === "idle" && (
+            <motion.form
+              key="form"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              onSubmit={handleSubmit}
+              className="space-y-8"
             >
-              TRANSMISSION COMPLETE
-            </h2>
-            <p className="text-blue-400/60 text-sm font-mono mb-8">
-              Your data has been encrypted and stored in the Chronoverse
-              archive.
-            </p>
-            <button
-              onClick={() => router.push("/present")}
-              className="px-8 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded font-bold tracking-widest uppercase text-xs transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)]"
-            >
-              Return to Ops Center
-            </button>
-          </div>
-        )}
-
-        {/* The Form */}
-        <form
-          onSubmit={handleSubmit}
-          className={`space-y-6 ${status !== "idle" ? "opacity-50 pointer-events-none" : ""}`}
-        >
-          {/* Input Group */}
-          {[
-            {
-              id: "fullName",
-              label: "Identity Designation",
-              placeholder: "Enter Full Name",
-              type: "text",
-            },
-            {
-              id: "email",
-              label: "Comms Frequency",
-              placeholder: "Enter Email Address",
-              type: "email",
-            },
-            {
-              id: "studentId",
-              label: "Access ID",
-              placeholder: "Student / ID Number",
-              type: "text",
-            },
-            {
-              id: "department",
-              label: "Sector / Department",
-              placeholder: "e.g., Computer Science",
-              type: "text",
-            },
-          ].map((field) => (
-            <div key={field.id} className="relative group">
-              <label
-                htmlFor={field.id}
-                className="block text-[10px] font-mono text-blue-400/70 uppercase tracking-widest mb-2 group-focus-within:text-blue-300 transition-colors"
-              >
-                {field.label}
-              </label>
-              <input
-                required
-                type={field.type}
-                id={field.id}
-                name={field.id}
-                value={formData[field.id]}
-                onChange={handleChange}
-                placeholder={field.placeholder}
-                className="w-full bg-blue-950/20 border-b border-blue-500/30 text-white px-4 py-3 focus:outline-none focus:border-blue-400 focus:bg-blue-900/20 transition-all font-mono text-sm placeholder:text-blue-500/20"
-              />
-              {/* Corner accents */}
-              <div className="absolute bottom-0 left-0 w-0 h-px bg-blue-400 group-focus-within:w-full transition-all duration-500" />
-            </div>
-          ))}
-
-          {/* Submit Button */}
-          <div className="pt-4">
-            <button
-              type="submit"
-              disabled={status !== "idle"}
-              className="relative w-full overflow-hidden group bg-transparent border border-blue-500/50 text-blue-400 hover:text-white py-4 font-bold tracking-[0.2em] uppercase text-sm transition-all hover:border-blue-400"
-            >
-              <div className="absolute inset-0 bg-blue-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-              <span className="relative z-10 flex items-center justify-center gap-2">
-                {status === "transmitting"
-                  ? "Transmitting Data..."
-                  : "Initiate Sequence"}
-                {status !== "transmitting" && (
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+              {step === 1 ? (
+                /* STEP 1: TEAM DETAILS */
+                <div className="space-y-6">
+                  <div className="cyber-field group">
+                    <label className="text-[10px] text-blue-400 uppercase tracking-widest mb-2 block">
+                      Establish Team Designation
+                    </label>
+                    <input
+                      required
+                      className="w-full bg-blue-500/5 border border-blue-500/30 p-4 text-white font-mono focus:border-blue-400 outline-none transition-all focus:ring-1 focus:ring-blue-500/50"
+                      placeholder="ENTER TEAM ALIAS..."
+                      value={formData.teamName}
+                      onChange={(e) =>
+                        setFormData({ ...formData, teamName: e.target.value })
+                      }
                     />
-                  </svg>
-                )}
-              </span>
-            </button>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => setStep(2)}
+                    className="w-full py-4 bg-blue-600 text-white font-bold tracking-[0.5em] uppercase text-xs hover:bg-blue-500 transition-all clip-path-polygon"
+                  >
+                    Initialize Roster (Step 02)
+                  </button>
+                </div>
+              ) : (
+                /* STEP 2: MEMBER DETAILS (DYNAMIC) */
+                <div className="space-y-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-h-[50vh] overflow-y-auto pr-4 custom-scrollbar">
+                    {formData.members.map((member, idx) => (
+                      <div
+                        key={idx}
+                        className="cyber-field border border-white/5 p-4 rounded bg-white/5"
+                      >
+                        <span className="text-[9px] text-blue-500 font-bold mb-3 block italic tracking-widest">
+                          PERSONNEL_0{idx + 1}
+                        </span>
+                        <div className="space-y-4">
+                          <input
+                            required
+                            placeholder="FULL NAME"
+                            className="w-full bg-transparent border-b border-white/10 py-2 text-sm text-white focus:border-blue-500 outline-none"
+                            onChange={(e) =>
+                              handleMemberChange(idx, "name", e.target.value)
+                            }
+                          />
+                          <input
+                            required
+                            type="email"
+                            placeholder="EMAIL ADDRESS"
+                            className="w-full bg-transparent border-b border-white/10 py-2 text-sm text-white focus:border-blue-500 outline-none"
+                            onChange={(e) =>
+                              handleMemberChange(idx, "email", e.target.value)
+                            }
+                          />
+                          <input
+                            required
+                            type="tel"
+                            placeholder="COMM_LINK (PHONE)"
+                            className="w-full bg-transparent border-b border-white/10 py-2 text-sm text-white focus:border-blue-500 outline-none"
+                            onChange={(e) =>
+                              handleMemberChange(idx, "phone", e.target.value)
+                            }
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex gap-4">
+                    <button
+                      type="button"
+                      onClick={() => setStep(1)}
+                      className="px-6 py-4 border border-white/20 text-white text-xs uppercase tracking-widest hover:bg-white/5"
+                    >
+                      Back
+                    </button>
+                    <button
+                      type="submit"
+                      className="flex-1 py-4 bg-blue-600 text-white font-bold tracking-[0.5em] uppercase text-xs hover:bg-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.4)]"
+                    >
+                      Submit Credentials
+                    </button>
+                  </div>
+                </div>
+              )}
+            </motion.form>
+          )}
+
+          {status === "processing" && (
+            <motion.div
+              key="loading"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="py-20 text-center"
+            >
+              <div className="inline-block relative">
+                <div className="w-24 h-24 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin" />
+                <div className="absolute inset-0 flex items-center justify-center font-mono text-[10px] text-blue-500 animate-pulse">
+                  UPLOADING
+                </div>
+              </div>
+              <p className="mt-8 font-mono text-blue-400 text-xs tracking-[0.3em]">
+                SYNCHRONIZING WITH CHRONOVERSE MAIN_NODE...
+              </p>
+            </motion.div>
+          )}
+
+          {status === "success" && (
+            <motion.div
+              key="success"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="py-10 text-center"
+            >
+              <div className="text-6xl mb-6">⚡</div>
+              <h2 className="text-3xl font-black text-white mb-2 uppercase italic">
+                Registration Validated
+              </h2>
+              <p className="text-blue-400/60 font-mono text-sm mb-10 tracking-tighter">
+                Your presence has been etched into the timeline.
+              </p>
+              <button
+                onClick={() => router.push("/present")}
+                className="px-10 py-4 border-2 border-blue-500 text-blue-500 font-bold uppercase text-xs hover:bg-blue-500 hover:text-white transition-all shadow-[0_0_30px_rgba(59,130,246,0.2)]"
+              >
+                Return to Command Center
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* FOOTER DATA READOUT */}
+      <div className="mt-6 grid grid-cols-3 gap-4">
+        {[1, 2, 3].map((i) => (
+          <div key={i} className="h-1 bg-white/5 overflow-hidden">
+            <div
+              className={`h-full bg-blue-500/20 animate-[loading_2s_infinite]`}
+              style={{ animationDelay: `${i * 0.5}s` }}
+            />
           </div>
-        </form>
-
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 p-2 opacity-50">
-          <div className="w-2 h-2 bg-blue-500/50 rounded-full animate-ping" />
-        </div>
+        ))}
       </div>
-
-      {/* Footer Status */}
-      <div className="mt-4 flex justify-between text-[9px] font-mono text-blue-500/40 uppercase tracking-widest">
-        <span>Secure Connection: TLS 1.3</span>
-        <span>Node: Alpha-7</span>
-      </div>
-
-      <style jsx>{`
-        @keyframes scan {
-          0% {
-            width: 0;
-            opacity: 0;
-          }
-          50% {
-            width: 100%;
-            opacity: 1;
-          }
-          100% {
-            width: 0;
-            left: 100%;
-            opacity: 0;
-          }
-        }
-      `}</style>
     </div>
   );
 }
 
+// MAIN PAGE COMPONENT
 export default function RegistrationPage() {
   return (
-    <PageTransitionWrapper>
-      <main className="relative min-h-screen bg-black/30 overflow-hidden flex items-center justify-center p-4">
-        {/* Background: Blue Hex Grid & Radar */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-size-[50px_50px] opacity-40 pointer-events-none" />
+    <main className="min-h-screen bg-black/30 text-white flex items-center justify-center relative overflow-hidden font-sans">
+      {/* BACKGROUND FX */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/10 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-600/10 blur-[120px] rounded-full" />
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-50" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-50 pointer-events-none bg-size-[100%_2px,3px_100%]" />
+      </div>
 
-        {/* Back Link */}
-        <div className="fixed top-6 left-6 z-20">
-          <Link href="/present">
-            <button className="flex items-center gap-2 text-blue-400/60 hover:text-white transition-colors group">
-              <div className="w-8 h-8 border border-blue-500/30 rounded flex items-center justify-center group-hover:bg-blue-500/20">
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 19l-7-7 7-7"
-                  />
-                </svg>
-              </div>
-              <span className="text-[10px] font-mono tracking-widest uppercase hidden md:block">
-                Abort Sequence
-              </span>
-            </button>
-          </Link>
-        </div>
+      <Suspense
+        fallback={
+          <div className="font-mono animate-pulse">BOOTING_CORE...</div>
+        }
+      >
+        <RegistrationContent />
+      </Suspense>
 
-        <Suspense
-          fallback={
-            <div className="text-blue-500 font-mono text-xs animate-pulse">
-              LOADING MODULE...
-            </div>
+      <style jsx global>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: rgba(255, 255, 255, 0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #3b82f6;
+        }
+
+        @keyframes loading {
+          0% {
+            transform: translateX(-100%);
           }
-        >
-          <RegistrationContent />
-        </Suspense>
-      </main>
-    </PageTransitionWrapper>
+          100% {
+            transform: translateX(100%);
+          }
+        }
+
+        .clip-path-polygon {
+          clip-path: polygon(5% 0, 100% 0, 100% 70%, 95% 100%, 0 100%, 0% 30%);
+        }
+      `}</style>
+    </main>
   );
 }

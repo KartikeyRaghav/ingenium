@@ -6,11 +6,9 @@ import {
   ShieldAlert,
   Gamepad,
   Orbit,
-  Settings,
   Cpu,
   Activity,
   Zap,
-  Crosshair,
   ChevronLeft,
   Users,
   Maximize,
@@ -395,7 +393,14 @@ export default function RoboticsPS() {
               </div>
 
               {/* Action Button */}
-              <button className="w-full py-4 bg-white text-black font-black uppercase italic text-sm tracking-tighter hover:bg-rose-500 hover:text-white transition-all transform hover:-translate-y-1 shadow-[0_4px_20px_rgba(244,63,94,0.3)] flex items-center justify-center gap-3 group">
+              <button
+                onClick={() =>
+                  router.push(
+                    `/present/registration?event=${activeBattle == 0 ? "rw" : activeBattle == 1 ? "rs" : "lf"}`,
+                  )
+                }
+                className="w-full py-4 bg-white text-black font-black uppercase italic text-sm tracking-tighter hover:bg-rose-500 hover:text-white transition-all transform hover:-translate-y-1 shadow-[0_4px_20px_rgba(244,63,94,0.3)] flex items-center justify-center gap-3 group"
+              >
                 Register_Now
                 <Zap className="w-4 h-4 fill-current group-hover:scale-125 transition-transform" />
               </button>

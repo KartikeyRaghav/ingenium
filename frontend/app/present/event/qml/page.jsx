@@ -106,7 +106,10 @@ export default function QuantumHackathonPS() {
               value="Python / Qiskit"
             />
             <HeaderNode icon={<Globe />} label="Mode" value="Online" />
-            <button className="bg-cyan-500 hover:bg-cyan-400 text-black px-6 py-3 rounded-lg font-black text-xs uppercase tracking-widest transition-all hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] active:scale-95">
+            <button
+              onClick={() => router.push(`/present/registration?event=qml`)}
+              className="bg-cyan-500 hover:bg-cyan-400 text-black px-6 py-3 rounded-lg font-black text-xs uppercase tracking-widest transition-all hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] active:scale-95"
+            >
               Register_Now
             </button>
           </div>
@@ -303,7 +306,10 @@ export default function QuantumHackathonPS() {
                   </p>
                 </div>
               </div>
-              <button className="bg-white text-black px-8 py-3 rounded-lg font-black text-xs uppercase tracking-tighter hover:bg-cyan-400 transition-all active:scale-95">
+              <button
+                onClick={() => router.push(`/present/registration?event=qml`)}
+                className="bg-white text-black px-8 py-3 rounded-lg font-black text-xs uppercase tracking-tighter hover:bg-cyan-400 transition-all active:scale-95"
+              >
                 Register_Now
               </button>
             </div>

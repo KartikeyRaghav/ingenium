@@ -183,7 +183,14 @@ export default function FluxusGDGPS() {
                 <p className="text-sm text-slate-400 leading-relaxed font-sans border-l-2 border-white/10 pl-4 mb-6">
                   {problemStatements[activePS].context}
                 </p>
-                <button className="w-full py-4 bg-purple-600 hover:bg-purple-500 text-white font-black uppercase tracking-widest transition-all flex items-center justify-center gap-2 shadow-[0_5px_15px_rgba(147,51,234,0.4)]">
+                <button
+                  onClick={() =>
+                    router.push(
+                      `/present/registration?event=${activePS == 0 ? "web" : activePS == 1 ? "ml" : "game"}`,
+                    )
+                  }
+                  className="w-full py-4 bg-purple-600 hover:bg-purple-500 text-white font-black uppercase tracking-widest transition-all flex items-center justify-center gap-2 shadow-[0_5px_15px_rgba(147,51,234,0.4)]"
+                >
                   Register Now <ExternalLink className="w-4 h-4" />
                 </button>
               </div>

@@ -110,7 +110,12 @@ export default function AnalyticXPS() {
               <Globe className="w-3 h-3" /> Operational Excellence Challenge
             </p>{" "}
           </div>
-          <div className="mt-6 md:mt-0 flex gap-4">
+          <div
+            onClick={() =>
+              router.push(`/present/registration?event=analytic_x`)
+            }
+            className="mt-6 md:mt-0 flex gap-4"
+          >
             <div className="px-6 py-3 bg-cyan-500 text-black font-black text-sm rounded-sm -skew-x-12 hover:bg-white transition-colors cursor-pointer flex items-center gap-2">
               <Rocket className="w-4 h-4" /> REGISTER
             </div>

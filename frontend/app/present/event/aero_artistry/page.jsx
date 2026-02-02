@@ -4,13 +4,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import {
-  Plane,
   Target,
   Wind,
   Layers,
   Box,
   Trophy,
-  ChevronRight,
   ChevronLeft,
   Cpu,
   Zap,
@@ -79,9 +77,9 @@ export default function AeroAirtistryPS() {
                 AERO<span className="text-blue-500">.</span>AIR
               </h1>
               <p className="max-w-xl text-xs md:text-sm text-blue-400/70 leading-relaxed uppercase tracking-widest">
-                Fixed-wing RC aircraft competition blending
-                engineering precision with piloting skill. Testing aerodynamics,
-                structural integrity, and flight performance.
+                Fixed-wing RC aircraft competition blending engineering
+                precision with piloting skill. Testing aerodynamics, structural
+                integrity, and flight performance.
               </p>
             </div>
 
@@ -149,7 +147,14 @@ export default function AeroAirtistryPS() {
                 </div>
               )}
 
-              <button className="w-full py-6 bg-blue-600 text-white rounded-2xl font-black italic tracking-widest flex items-center justify-center gap-3 hover:bg-blue-500 transition-all group overflow-hidden relative">
+              <button
+                onClick={() =>
+                  router.push(
+                    `/present/registration?event=${activeCategory == 1 ? "glider" : "payload"}`,
+                  )
+                }
+                className="w-full py-6 bg-blue-600 text-white rounded-2xl font-black italic tracking-widest flex items-center justify-center gap-3 hover:bg-blue-500 transition-all group overflow-hidden relative"
+              >
                 <span className="relative z-10 uppercase">
                   Initiate_Registration
                 </span>
@@ -377,6 +382,5 @@ const getStages = (cat) => {
     },
   ];
 };
-
 
 // Could you please upgrade the ui of this page according to the document provided. Try to keep as much info provided in the document on the page. Keep the theme same and don't add any background as I already have background set in the parent component. Make it as futuristic as possible. Also try to add a register now button for each PS.

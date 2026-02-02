@@ -223,7 +223,14 @@ export default function ElectronicsPS() {
               </div>
             </section>
 
-            <button className="w-full group relative overflow-hidden bg-amber-500 py-4 rounded-sm transition-transform active:scale-95">
+            <button
+              onClick={() =>
+                router.push(
+                  `/present/registration?event=${activeTab == 0 ? "sa" : "av"}`,
+                )
+              }
+              className="w-full group relative overflow-hidden bg-amber-500 py-4 rounded-sm transition-transform active:scale-95"
+            >
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
               <div className="relative flex items-center justify-center gap-2 text-black font-black uppercase tracking-[0.3em] text-sm">
                 Register_Now <ExternalLink className="w-4 h-4" />
