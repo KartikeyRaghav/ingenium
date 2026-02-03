@@ -22,6 +22,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function QuantumHackathonPS() {
   const [activeLayer, setActiveLayer] = useState(0);
@@ -141,7 +142,7 @@ export default function QuantumHackathonPS() {
               <h3 className="text-[10px] text-cyan-500 uppercase tracking-widest mb-4">
                 Phase_Cycle
               </h3>
-              <div className="space-y-4">
+              <div className="space-y-4 mb-4">
                 {[
                   { p: "Phase 1", d: "Registration & PS Release" },
                   { p: "Phase 2", d: "Development & Implementation" },
@@ -160,6 +161,13 @@ export default function QuantumHackathonPS() {
                   </div>
                 ))}
               </div>
+              <Link
+                href={"/PS/QML_track.pdf"}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Rules
+              </Link>
             </div>
 
             {/* Research Anchor */}

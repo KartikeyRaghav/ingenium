@@ -20,6 +20,7 @@ import {
   AlertTriangle,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function AeroAirtistryPS() {
   const [activeCategory, setActiveCategory] = useState(1); // 1: Glider, 2: Payload
@@ -135,13 +136,24 @@ export default function AeroAirtistryPS() {
               </SectionBox>
 
               <SectionBox title="Scoring_Algorithm">
-                <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl">
+                <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl mb-4">
                   <code className="text-[10px] text-blue-300 wrap-break-word leading-loose">
                     {activeCategory === 1
                       ? "TOTAL = (Round_1_Pts) + [(Glide_Time_R3 * 2) - Penalties]"
                       : "TOTAL = Stage_1 + Stage_2 + Stage_3"}
                   </code>
                 </div>
+                <Link
+                  href={
+                    activeCategory == 1
+                      ? "/PS/Glider_Soaring.pdf"
+                      : "/PS/Payload_Drop.pdf"
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Rules
+                </Link>
               </SectionBox>
 
               {activeCategory === 1 && (
@@ -149,7 +161,7 @@ export default function AeroAirtistryPS() {
                   <h4 className="text-[10px] text-red-400 uppercase mb-3 flex items-center gap-2">
                     <AlertTriangle className="w-3 h-3" /> Critical_Penalties
                   </h4>
-                  <ul className="text-[9px] space-y-2 text-red-200/60 uppercase">
+                  <ul className="text-[9px] space-y-2 text-red-200/60 uppercase mb-4">
                     <li>▪ Nose-first crash (-20 pts)</li>
                     <li>▪ Structural failure on landing (-20 pts)</li>
                     <li>▪ Battery/Motor thermal event (-20 pts)</li>

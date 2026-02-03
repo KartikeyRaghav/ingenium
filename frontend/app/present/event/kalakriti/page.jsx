@@ -20,6 +20,7 @@ import {
   ExternalLink, // Added for icon consistency
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function KalakritiPS() {
   const router = useRouter();
@@ -120,6 +121,13 @@ export default function KalakritiPS() {
                       prohibited
                     />
                   </div>
+                  <Link
+                    href={"/PS/Kalakriti_Canvas.pdf"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Rules
+                  </Link>
                 </div>
               </div>
             </section>

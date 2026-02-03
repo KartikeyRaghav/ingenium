@@ -18,6 +18,7 @@ import {
   Award,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function AlbumCoverPS() {
   const router = useRouter();
@@ -143,6 +144,13 @@ export default function AlbumCoverPS() {
                   disqualification. Uncredited external assets will not be
                   considered.
                 </p>
+                <Link
+                  href={"/PS/VLR_Album_Cover.pdf"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Rules
+                </Link>
               </div>
             </section>
           </div>

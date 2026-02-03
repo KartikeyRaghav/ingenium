@@ -18,6 +18,7 @@ import {
   FileText,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function SolveXBioPS() {
   const [activeTab, setActiveTab] = useState(0);
@@ -29,6 +30,7 @@ export default function SolveXBioPS() {
       title: "Low-Cost Patient Monitor",
       theme: "Frugal Biomedical Engineering",
       icon: <HeartPulse className="w-6 h-6" />,
+      href: "/PS/Low_Cost_Monitoring_Device_Ingenium.pdf",
       background:
         "In resource-limited environments like rural clinics and ambulances, access to advanced monitoring is restricted by cost and portability constraints.",
       challenge:
@@ -63,6 +65,7 @@ export default function SolveXBioPS() {
       title: "Screen Addiction Mitigation",
       theme: "Health-Tech Behavioral Intervention",
       icon: <Smartphone className="w-6 h-6" />,
+      href: "/PS/Screen_Addiction_SolveXBio.pdf",
       background:
         "Excessive screen time contributes to mental health issues and sleep disorders. Current tools lack active intervention.",
       challenge:
@@ -242,6 +245,13 @@ export default function SolveXBioPS() {
                   Mandatory via Google Form before deadline.
                 </li>
               </ul>
+              <Link
+                href={medicalBriefs[activeTab].href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Rules
+              </Link>
             </div>
           </div>
 

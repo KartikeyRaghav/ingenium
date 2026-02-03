@@ -18,6 +18,7 @@ import {
   Layout,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function MatiksPS() {
   const [activePhase, setActivePhase] = useState(0);
@@ -140,12 +141,19 @@ export default function MatiksPS() {
               <h4 className="text-[10px] text-rose-500 uppercase tracking-widest mb-4 flex items-center gap-2">
                 <Layout className="w-3 h-3" /> Evaluation_Vector
               </h4>
-              <div className="space-y-3">
+              <div className="space-y-3 mb-4">
                 <EvaluationRow label="Solution Accuracy" value="Primary" />
                 <EvaluationRow label="Response Speed" value="Critical" />
                 <EvaluationRow label="Logical Reasoning" value="High" />
                 <EvaluationRow label="Consistency" value="Required" />
               </div>
+              <Link
+                href={"/PS/Matiks.pdf"}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Rules
+              </Link>
             </div>
           </div>
 
@@ -196,9 +204,7 @@ export default function MatiksPS() {
 
                   <button
                     onClick={() =>
-                      router.push(
-                        `/present/registration?event=matiks`,
-                      )
+                      router.push(`/present/registration?event=matiks`)
                     }
                     className="w-full bg-rose-600 hover:bg-rose-500 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-all group overflow-hidden relative"
                   >

@@ -17,6 +17,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function QuizPS() {
   const router = useRouter();
@@ -152,7 +153,7 @@ export default function QuizPS() {
               <h4 className="text-[10px] text-gray-500 uppercase tracking-widest mb-4 flex items-center gap-2 font-bold">
                 <Network className="w-3 h-3" /> Data_Sectors
               </h4>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mb-4">
                 {knowledgeDomains.map((tag) => (
                   <span
                     key={tag}
@@ -166,6 +167,13 @@ export default function QuizPS() {
                   General Knowledge
                 </span>
               </div>
+              <Link
+                href={"/PS/Quiz_Club.pdf"}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Rules
+              </Link>
               <div className="mt-4 text-[7px] text-amber-500/40 italic uppercase tracking-tighter"></div>
             </div>
           </div>

@@ -15,6 +15,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function AsianParliamentaryDebatePS() {
   const [activePhase, setActivePhase] = useState(0);
@@ -130,7 +131,7 @@ export default function AsianParliamentaryDebatePS() {
               <h4 className="text-[10px] text-gray-500 uppercase tracking-widest mb-4 flex items-center gap-2 font-bold">
                 <BookOpen className="w-3 h-3" /> Motion_Spectrum
               </h4>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mb-4">
                 {[
                   "Public Policy",
                   "Ethics",
@@ -145,6 +146,13 @@ export default function AsianParliamentaryDebatePS() {
                   </span>
                 ))}
               </div>
+              <Link
+                href={"/PS/APD.pdf"}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Rules
+              </Link>
             </div>
           </div>
 

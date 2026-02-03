@@ -165,7 +165,7 @@ export default function AnalyticXPS() {
             <h4 className="text-[10px] text-red-500 uppercase tracking-widest mb-4 flex items-center gap-2">
               <FileWarning className="w-3 h-3" /> RULES_&_COMPLIANCE
             </h4>
-            <ul className="text-[10px] space-y-2 text-red-100/60 uppercase">
+            <ul className="text-[10px] space-y-2 text-red-100/60 uppercase mb-4">
               <li className="flex gap-2">
                 <Zap className="w-2 h-2 mt-1 shrink-0" /> Rule changes are
                 subject to organizer discretion.
@@ -179,6 +179,13 @@ export default function AnalyticXPS() {
                 format requirements.
               </li>
             </ul>
+            <Link
+              href={"/PS/AnalyticX.pdf"}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Rules
+            </Link>
           </div>
         </div>
 

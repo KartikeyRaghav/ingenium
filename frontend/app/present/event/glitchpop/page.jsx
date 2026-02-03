@@ -17,6 +17,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function GlitchpopEsportsPS() {
   const [activeGame, setActiveGame] = useState(0);
@@ -166,6 +167,13 @@ export default function GlitchpopEsportsPS() {
                 </div>
               </button>
             ))}
+            <Link
+              href={"/PS/Glitchpop X Ingenium Proposal.pdf"}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Rules
+            </Link>
           </div>
 
           {/* --- TOURNAMENT BRACKET VIEW --- */}

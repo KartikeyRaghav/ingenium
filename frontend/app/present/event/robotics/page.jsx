@@ -21,6 +21,7 @@ import {
   Scale,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function RoboticsPS() {
   const [activeBattle, setActiveBattle] = useState(0);
@@ -33,6 +34,7 @@ export default function RoboticsPS() {
       sub: "Combat Robotics Competition",
       icon: <ShieldAlert className="w-8 h-8" />,
       color: "rose",
+      href: "/PS/Robowars.pdf",
       teamSize: "4 to 6 members", //
       objective:
         "To design a combat-capable robot that can withstand physical impacts, effectively disable opponents, and maintain mobility throughout the match duration.",
@@ -98,6 +100,7 @@ export default function RoboticsPS() {
       sub: "Autonomous & Semi-Autonomous",
       icon: <Gamepad className="w-8 h-8" />,
       color: "blue",
+      href: "/PS/Robosoccer.pdf",
       teamSize: "2 to 4 members", //
       objective:
         "To design a robot capable of detecting the ball, navigating efficiently, and coordinating movements to score goals.",
@@ -154,7 +157,8 @@ export default function RoboticsPS() {
       sub: "Autonomous Robotics Competition",
       icon: <Orbit className="w-8 h-8" />,
       color: "emerald",
-      teamSize: "1 to 3 members", //
+      href: "/PS/Line_Follower.pdf",
+      teamSize: "1 to 3 members",
       objective:
         "To design an autonomous robot that can follow a given line track with high accuracy, stability, and minimal deviation.",
       philosophy:
@@ -374,7 +378,7 @@ export default function RoboticsPS() {
                   <ShieldCheck className="w-3 h-3 text-emerald-500" />{" "}
                   Protocol_Compliance
                 </h3>
-                <ul className="space-y-2">
+                <ul className="space-y-2 mb-4">
                   {active.id === "RW" && (
                     <>
                       <li className="text-[10px] text-gray-400 flex gap-2">
@@ -417,6 +421,13 @@ export default function RoboticsPS() {
                     change at organizers' discretion
                   </li>
                 </ul>
+                <Link
+                  href={active.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Rules
+                </Link>
               </div>
             </div>
 

@@ -19,6 +19,7 @@ import {
   Info,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function FluxusGDGPS() {
   const [activePS, setActivePS] = useState(0);
@@ -31,6 +32,7 @@ export default function FluxusGDGPS() {
       title: "Scalable Video Streaming",
       sub: "Distributed Systems & Recommendation Logic",
       icon: <Server className="w-6 h-6" />,
+      href: "/PS/Scalastream.pdf",
       context:
         "Design and implement a highly available platform for concurrent video uploads, transcoding, and low-latency delivery. Architecture must prioritize distributed design and cost-efficient storage.",
       objectives: [
@@ -67,6 +69,7 @@ export default function FluxusGDGPS() {
       title: "Intelligent Narrative Synthesis",
       sub: "Autonomous Agentic Presentation Engine",
       icon: <BrainCircuit className="w-6 h-6" />,
+      href: "/PS/Narrativa.pdf",
       context:
         "Build an Autonomous Narrative Engine functioning as a researcher, copywriter, and visual designer to transform vague topics into professional decks.",
       objectives: [
@@ -102,6 +105,7 @@ export default function FluxusGDGPS() {
       title: "Thematic Game Challenge",
       sub: "Gameplay Systems & Creative Design",
       icon: <Gamepad2 className="w-6 h-6" />,
+      href: "/PS/ThemeForge.pdf",
       context:
         "Develop a game expressing abstract themes through systemic design where mechanics actively influence player experience.",
       objectives: [
@@ -263,7 +267,7 @@ export default function FluxusGDGPS() {
                 <h3 className="text-[10px] font-bold text-red-400 uppercase tracking-widest mb-4 flex items-center gap-2">
                   <ShieldAlert className="w-4 h-4" /> Compliance_Protocols
                 </h3>
-                <div className="space-y-3">
+                <div className="space-y-3 mb-4">
                   {problemStatements[activePS].rules.map((rule, i) => (
                     <div
                       key={i}
@@ -273,6 +277,13 @@ export default function FluxusGDGPS() {
                     </div>
                   ))}
                 </div>
+                <Link
+                  href={problemStatements[activePS].href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Rules
+                </Link>
               </div>
             </div>
 

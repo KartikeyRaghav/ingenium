@@ -24,6 +24,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function IVDCPS() {
   const [activeModule, setActiveModule] = useState(0);
@@ -35,6 +36,7 @@ export default function IVDCPS() {
       title: "3D Reconstruction: IITI CDF",
       theme: "Simulation & Autonomous Navigation",
       icon: <Box className="w-6 h-6" />,
+      href: "/PS/3D_Design_IVDC.pdf",
       motivation:
         "Modern technology leaders use high-fidelity 3D reconstruction and virtual simulation to experiment without the cost of physical prototypes. Virtual environments enable rapid iteration and robust validation of real-world systems.",
       problemStatement:
@@ -82,6 +84,7 @@ export default function IVDCPS() {
       title: "CV Based Obstacourse",
       theme: "Autonomous Vision Navigation",
       icon: <Eye className="w-6 h-6" />,
+      href: "/PS/CV_Obstacourse.pdf",
       motivation:
         "This competition integrates image processing and sensor-driven navigation, emphasizing precise path tracking and obstacle avoidance at high speeds.",
       problemStatement:
@@ -251,7 +254,7 @@ export default function IVDCPS() {
                   <h4 className="text-[10px] text-red-400 uppercase tracking-widest mb-4 flex items-center gap-2">
                     <ShieldCheck className="w-3 h-3" /> Rules_&_Compliance
                   </h4>
-                  <ul className="space-y-3">
+                  <ul className="space-y-3 mb-4">
                     {challenges[activeModule].rules.map((rule, i) => (
                       <li
                         key={i}
@@ -262,6 +265,13 @@ export default function IVDCPS() {
                       </li>
                     ))}
                   </ul>
+                  <Link
+                    href={challenges[activeModule].href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Rules
+                  </Link>
                 </div>
 
                 {/* TASKS */}

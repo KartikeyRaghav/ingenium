@@ -17,6 +17,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function LiteraryCompetitionsPS() {
   const [activeTab, setActiveTab] = useState(0);
@@ -225,9 +226,16 @@ export default function LiteraryCompetitionsPS() {
                     <span className="text-[10px] text-amber-500/60 uppercase font-bold">
                       Submission Method
                     </span>
-                    <span className="text-xs text-white uppercase font-black">
+                    <span className="text-xs text-white uppercase font-black mb-4">
                       Offline Manifest
                     </span>
+                    <Link
+                      href={"/PS/Literary_Competitions.pdf"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View Rules
+                    </Link>
                   </div>
                 </div>
 

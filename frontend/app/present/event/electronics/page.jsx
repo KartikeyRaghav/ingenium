@@ -18,6 +18,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function ElectronicsPS() {
   const [activeTab, setActiveTab] = useState(0);
@@ -30,6 +31,7 @@ export default function ElectronicsPS() {
       theme: "The HDL Hackathon",
       sub: "Digital Design, Computer Architecture, and FPGA Prototyping",
       icon: <Cpu className="w-6 h-6" />,
+      href: "/PS/Silicon_Architects.pdf",
       objective:
         "Bridge the gap between theoretical digital logic and physical FPGA implementation, optimizing designs for speed, power, and area.",
       audience:
@@ -98,6 +100,7 @@ export default function ElectronicsPS() {
       theme: "The Circuit Design Challenge",
       sub: "Analog Signal Processing, Simulation, and PCB Design",
       icon: <Radio className="w-6 h-6" />,
+      href: "/PS/Analog_Verse.pdf",
       objective:
         "Simulate real-world R&D environments where noise performance, signal integrity, and PCB layout critically impact systems.",
       audience:
@@ -327,7 +330,7 @@ export default function ElectronicsPS() {
               <h3 className="text-[10px] font-black text-amber-500 uppercase tracking-widest mb-4 flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4" /> Compliance_Protocol
               </h3>
-              <ul className="grid grid-cols-1 gap-3">
+              <ul className="grid grid-cols-1 gap-3 mb-4">
                 {events[activeTab].rules.map((rule, i) => (
                   <li
                     key={i}
@@ -337,6 +340,13 @@ export default function ElectronicsPS() {
                   </li>
                 ))}
               </ul>
+              <Link
+                href={events[activeTab].href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Rules
+              </Link>
             </section>
           </div>
 

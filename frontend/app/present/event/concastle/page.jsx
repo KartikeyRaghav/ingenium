@@ -16,6 +16,7 @@ import {
   Monitor,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function ConCastlePS() {
   const [activeProblem, setActiveProblem] = useState(0);
@@ -27,6 +28,7 @@ export default function ConCastlePS() {
       title: "Monsoon Water Management",
       subtitle: "Hydrological Mobility Planning",
       icon: <Droplets className="w-5 h-5" />,
+      href: "/PS/Water_Management_Concastle.pdf",
       context:
         "During monsoon season, IIT Indore experiences temporary surface water accumulation affecting drainage efficiency, pedestrian comfort, and vehicular mobility. Apply civil engineering principles to optimize campus accessibility.",
       tasks: [
@@ -57,6 +59,7 @@ export default function ConCastlePS() {
       title: "Open Ground Utilization",
       subtitle: "Hostel Cluster Strategic Planning",
       icon: <Layout className="w-5 h-5" />,
+      href: "/PS/Open__Spaces_Management_Concastle.pdf",
       context:
         "IIT Indore hostel clusters have open spaces with potential for enhancing student life and sustainability. Focus on scientific planning to create future-ready, functional utilization.",
       tasks: [
@@ -182,10 +185,17 @@ export default function ConCastlePS() {
               <h4 className="text-[10px] text-red-500 uppercase tracking-widest mb-2 flex items-center gap-2">
                 <AlertTriangle className="w-3 h-3" /> Critical_Compliance
               </h4>
-              <p className="text-[9px] text-gray-500 leading-relaxed italic">
+              <p className="text-[9px] text-gray-500 leading-relaxed italic mb-4">
                 Plagiarism or uncustomized AI-generated content leads to
                 immediate disqualification. Late submissions are not accepted.
               </p>
+              <Link
+                href={problemStatements[activeProblem].href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Rules
+              </Link>
             </div>
           </div>
 

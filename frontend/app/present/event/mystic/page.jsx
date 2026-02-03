@@ -18,6 +18,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function ShutterUpPS() {
   const [activeTheme, setActiveTheme] = useState(0);
@@ -152,12 +153,19 @@ export default function ShutterUpPS() {
               <h4 className="text-[10px] text-white/60 uppercase tracking-widest mb-4 flex items-center gap-2">
                 <FileSearch className="w-3 h-3" /> EXIF_Validation_Required
               </h4>
-              <div className="space-y-3">
+              <div className="space-y-3 mb-4">
                 <RequirementRow text="Original (Unedited) Version" />
                 <RequirementRow text="Edited Version (Global Only)" />
                 <RequirementRow text="Min Res: 1080x1080 Pixels" />
                 <RequirementRow text="30-50 Word Concept Story" />
               </div>
+              <Link
+                href={"/PS/Shutter_Up.pdf"}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Rules
+              </Link>
             </div>
           </div>
 

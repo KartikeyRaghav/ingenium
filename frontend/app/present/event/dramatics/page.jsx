@@ -14,6 +14,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function HunkaarDramaticsPS() {
   const [activeTab, setActiveTab] = useState(0);
@@ -251,6 +252,13 @@ export default function HunkaarDramaticsPS() {
                   </span>
                 </div>
               </div>
+              <Link
+                href={"/PS/Monoact_and_Nukkad.pdf"}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Rules
+              </Link>
             </div>
 
             {/* Deployment Phase */}

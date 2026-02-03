@@ -16,6 +16,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function BattleOfBandsPS() {
   const [activePhase, setActivePhase] = useState(0);
@@ -146,7 +147,7 @@ export default function BattleOfBandsPS() {
               <h4 className="text-[10px] text-gray-500 uppercase tracking-widest mb-4 flex items-center gap-2 font-bold">
                 <Radio className="w-3 h-3" /> Frequency_Bands (Genres)
               </h4>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mb-4">
                 {[
                   "Rock",
                   "Indie",
@@ -164,6 +165,13 @@ export default function BattleOfBandsPS() {
                   </span>
                 ))}
               </div>
+              <Link
+                href={"/PS/Battle_of_Bands.pdf"}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Rules
+              </Link>
             </div>
           </div>
 
