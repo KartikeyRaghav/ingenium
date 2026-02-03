@@ -196,7 +196,9 @@ export default function MatiksPS() {
 
                   <button
                     onClick={() =>
-                      router.push(`/present/registration?event=matiks`)
+                      router.push(
+                        `/present/registration?event=matiks`,
+                      )
                     }
                     className="w-full bg-rose-600 hover:bg-rose-500 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-all group overflow-hidden relative"
                   >

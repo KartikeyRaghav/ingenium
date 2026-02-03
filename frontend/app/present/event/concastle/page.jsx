@@ -10,8 +10,6 @@ import {
   Hexagon,
   Users,
   Zap,
-  Calendar,
-  ShieldCheck,
   FileText,
   AlertTriangle,
   Scale,
@@ -211,8 +209,15 @@ export default function ConCastlePS() {
                         {problemStatements[activeProblem].subtitle}
                       </p>
                     </div>
-                    <button className="flex items-center gap-3 bg-emerald-500 text-black px-6 py-4 font-black text-xs uppercase tracking-[0.2em] hover:bg-white transition-all shadow-[0_0_20px_rgba(16,185,129,0.4)]">
-                      Initialize Entry
+                    <button
+                      onClick={() =>
+                        router.push(
+                          `/present/registration?event=${activeProblem === 0 ? "monsoon_water" : "open_ground"}`,
+                        )
+                      }
+                      className="flex items-center gap-3 bg-emerald-500 text-black px-6 py-4 font-black text-xs uppercase tracking-[0.2em] hover:bg-white transition-all shadow-[0_0_20px_rgba(16,185,129,0.4)]"
+                    >
+                      Register Now
                       <Zap className="w-4 h-4 fill-current" />
                     </button>
                   </div>

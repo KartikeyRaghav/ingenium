@@ -116,7 +116,9 @@ export default function AnalyticXPS() {
           </div>
           <div className="mt-6 md:mt-0">
             <button
-              onClick={() => router.push("/register")}
+              onClick={() =>
+                router.push(`/present/registration?event=analytic_x`)
+              }
               className="px-8 py-4 bg-cyan-500 text-black font-black text-sm rounded-sm -skew-x-12 hover:bg-white transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] flex items-center gap-2"
             >
               <Rocket className="w-4 h-4" /> REGISTER_NOW
@@ -344,7 +346,9 @@ export default function AnalyticXPS() {
                 </span>
               </div>
               <button
-                onClick={() => router.push("/register")}
+                onClick={() =>
+                  router.push(`/present/registration?event=analytic_x`)
+                }
                 className="mt-4 w-full py-3 bg-cyan-500 text-black font-black text-[10px] uppercase tracking-widest hover:bg-white transition-all"
               >
                 APPLY_FOR_BOUNTY

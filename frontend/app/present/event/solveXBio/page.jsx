@@ -312,7 +312,14 @@ export default function SolveXBioPS() {
                   </div>
 
                   <div className="shrink-0 w-full md:w-auto">
-                    <button className="w-full md:w-auto px-10 py-5 bg-emerald-500 hover:bg-emerald-400 text-black font-black rounded-xl flex items-center justify-center gap-3 transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(16,185,129,0.3)]">
+                    <button
+                      onClick={() =>
+                        router.push(
+                          `/present/registration?event=${activeTab === 0 ? "patient_monitor" : "screen_addiction"}`,
+                        )
+                      }
+                      className="w-full md:w-auto px-10 py-5 bg-emerald-500 hover:bg-emerald-400 text-black font-black rounded-xl flex items-center justify-center gap-3 transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(16,185,129,0.3)]"
+                    >
                       <Cpu size={18} />
                       INITIALIZE REGISTRATION
                       <ArrowRight size={16} />

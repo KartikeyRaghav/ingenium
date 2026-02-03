@@ -268,10 +268,10 @@ export default function ElectronicsPS() {
 
             <button
               onClick={() =>
-                router.push(
-                  `/registration?event=${events[activeTab].id.toLowerCase()}`,
-                )
-              }
+                  router.push(
+                    `/present/registration?event=${activeTab === 0 ? "sa" : "av"}`,
+                  )
+                }
               className="w-full group relative overflow-hidden bg-amber-500 py-6 rounded-sm transition-transform active:scale-95 shadow-[0_0_30px_rgba(245,158,11,0.2)]"
             >
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />

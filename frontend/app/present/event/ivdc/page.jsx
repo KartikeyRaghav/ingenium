@@ -234,7 +234,7 @@ export default function IVDCPS() {
               <button
                 onClick={() =>
                   router.push(
-                    `/present/registration?event=${challenges[activeModule].id}`,
+                    `/present/registration?event=${activeModule === 0 ? "3d" : "cv"}`,
                   )
                 }
                 className="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(59,130,246,0.3)] transition-all"

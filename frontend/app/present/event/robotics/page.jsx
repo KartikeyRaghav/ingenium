@@ -468,7 +468,9 @@ export default function RoboticsPS() {
 
               <button
                 onClick={() =>
-                  router.push(`/registration?event=${active.id.toLowerCase()}`)
+                  router.push(
+                    `/present/registration?event=${activeBattle === 0 ? "rw" : activeBattle == 1 ? "rs" : "lf"}`,
+                  )
                 }
                 className="w-full py-4 bg-white text-black font-black uppercase italic text-sm tracking-tighter hover:bg-rose-500 hover:text-white transition-all transform hover:-translate-y-1 shadow-[0_4px_20px_rgba(244,63,94,0.3)] flex items-center justify-center gap-3 group"
               >
