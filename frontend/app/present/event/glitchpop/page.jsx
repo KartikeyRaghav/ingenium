@@ -13,6 +13,8 @@ import {
   Activity,
   Layers,
   ChevronLeft,
+  ChevronRight,
+  ExternalLink,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -28,6 +30,7 @@ export default function GlitchpopEsportsPS() {
       teamSize: "5 (+1 Substitute)",
       mode: "Online Prelims & Offline LAN",
       format: "Bo1 Prelims -> Group Stage (RR) -> Bo3 Semi/Finals",
+      registrationPath: "/present/registration?event=valorant",
       objective:
         "Filter top 8/16 teams via online knockout for a 3-day LAN final at IIT Indore.",
       prizes: "Part of 100K Cumulative Pool",
@@ -40,6 +43,7 @@ export default function GlitchpopEsportsPS() {
       teamSize: "4 (+1 Substitute)",
       mode: "Online Prelims & Offline LAN",
       format: "Online Knockout -> Multi-Match Point System Finals",
+      registrationPath: "/present/registration?event=bgmi",
       objective:
         "Point-based final standings for the top 8-16 teams following online qualification.",
       prizes: "Part of 100K Cumulative Pool",
@@ -52,6 +56,7 @@ export default function GlitchpopEsportsPS() {
       teamSize: "1 (Solo)",
       mode: "Offline Matches (IIT Indore)",
       format: "Group Stage (Bo1) -> Double Elimination Finale (Bo3/Bo5)",
+      registrationPath: "/present/registration?event=eafc",
       objective:
         "Intense offline brackets starting with a 2-day group stage followed by a Bo5 finale.",
       prizes: "Part of 100K Cumulative Pool",
@@ -64,6 +69,7 @@ export default function GlitchpopEsportsPS() {
       teamSize: "5 (+1 Substitute)",
       mode: "Online Prelims & Offline LAN",
       format: "Bo1 Knockout -> Group Stage -> Single Elimination Finals",
+      registrationPath: "/present/registration?event=moba",
       objective:
         "Orchestrated group league format leading to a grand final on Day 3.",
       prizes: "Part of 100K Cumulative Pool",
@@ -84,7 +90,7 @@ export default function GlitchpopEsportsPS() {
           <div className="space-y-1">
             <button
               onClick={() => router.back()}
-              className="flex items-center gap-2 text-cyan-400"
+              className="flex items-center gap-2 text-cyan-400 mb-4"
             >
               <ChevronLeft className="w-4 h-4 animate-pulse" />
               <span className="text-[10px] tracking-[0.5em] uppercase font-bold">
@@ -98,12 +104,29 @@ export default function GlitchpopEsportsPS() {
               Pro-Level Gaming Collaboration
             </p>
           </div>
-          <div className="mt-6 lg:mt-0 flex gap-4">
-            <StatNode
-              icon={<Zap />}
-              label="Status"
-              value="Online/Offline Hybrid"
-            />
+          <div className="mt-6 lg:mt-0 flex flex-col items-end gap-6">
+            <div className="flex gap-4">
+              <StatNode
+                icon={<Zap />}
+                label="Status"
+                value="Online/Offline Hybrid"
+              />
+            </div>
+            {/* Primary Registration Button */}
+            <button
+              onClick={() =>
+                router.push(esportsData[activeGame].registrationPath)
+              }
+              className="group relative px-8 py-3 bg-cyan-600 hover:bg-cyan-500 transition-all rounded-sm overflow-hidden"
+            >
+              <div className="absolute inset-0 w-full h-full bg-white/10 -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+              <div className="relative flex items-center gap-3">
+                <span className="text-xs font-black tracking-[0.2em] text-white uppercase">
+                  Register
+                </span>
+                <ExternalLink className="w-4 h-4 text-white" />
+              </div>
+            </button>
           </div>
         </div>
 
@@ -163,7 +186,7 @@ export default function GlitchpopEsportsPS() {
                     "{esportsData[activeGame].objective}"
                   </p>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                     <RequirementCard
                       label="Participants"
                       value={esportsData[activeGame].teamSize}
@@ -178,6 +201,17 @@ export default function GlitchpopEsportsPS() {
                       full
                     />
                   </div>
+
+                  {/* Secondary Inline CTA */}
+                  <button
+                    onClick={() =>
+                      router.push(esportsData[activeGame].registrationPath)
+                    }
+                    className="text-[10px] font-bold text-cyan-400 uppercase tracking-[0.4em] hover:text-white transition-colors flex items-center gap-2 group"
+                  >
+                    Authorize deployment for {esportsData[activeGame].id}{" "}
+                    <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                  </button>
                 </div>
               </motion.div>
             </AnimatePresence>

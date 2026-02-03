@@ -13,12 +13,14 @@ import {
   Activity,
   ChevronRight,
   ChevronLeft,
+  ExternalLink,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function BattleOfBandsPS() {
   const [activePhase, setActivePhase] = useState(0);
   const router = useRouter();
+
   const competitionData = {
     title: "Battle of Bands",
     org: "Music Club, IIT Indore",
@@ -26,6 +28,7 @@ export default function BattleOfBandsPS() {
     teamSize: "10-12 Members",
     duration: "15-20 Minutes",
     mode: "Offline (Live Performance)",
+    registrationPath: "/present/registration?event=bands",
     prizes: {
       first: "20,000",
       second: "12,000",
@@ -70,7 +73,7 @@ export default function BattleOfBandsPS() {
           <div className="space-y-1">
             <button
               onClick={() => router.back()}
-              className="flex items-center gap-2 text-purple-400"
+              className="flex items-center gap-2 text-purple-400 mb-4"
             >
               <ChevronLeft className="w-4 h-4" />
               <span className="text-[10px] tracking-[0.5em] uppercase font-bold">
@@ -84,22 +87,39 @@ export default function BattleOfBandsPS() {
               Live Musical Expression & Strategic Synergy
             </p>
           </div>
-          <div className="mt-6 lg:mt-0 flex gap-4">
-            <StatNode
-              icon={<Users />}
-              label="Team Size"
-              value={competitionData.teamSize}
-            />
-            <StatNode
-              icon={<Volume2 />}
-              label="Performance"
-              value={competitionData.duration}
-            />
-            <StatNode
-              icon={<Activity />}
-              label="Mode"
-              value={competitionData.mode}
-            />
+
+          <div className="mt-6 lg:mt-0 flex flex-col items-end gap-6">
+            <div className="flex gap-4">
+              <StatNode
+                icon={<Users />}
+                label="Team Size"
+                value={competitionData.teamSize}
+              />
+              <StatNode
+                icon={<Volume2 />}
+                label="Performance"
+                value={competitionData.duration}
+              />
+              <StatNode
+                icon={<Activity />}
+                label="Mode"
+                value={competitionData.mode}
+              />
+            </div>
+
+            {/* Primary Registration Button */}
+            <button
+              onClick={() => router.push(competitionData.registrationPath)}
+              className="group relative px-8 py-3 bg-purple-600 hover:bg-purple-500 transition-all rounded-sm overflow-hidden border border-purple-400/30"
+            >
+              <div className="absolute inset-0 w-full h-full bg-white/10 -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+              <div className="relative flex items-center gap-3">
+                <span className="text-xs font-black tracking-[0.2em] text-white uppercase">
+                  Register
+                </span>
+                <ExternalLink className="w-4 h-4 text-white" />
+              </div>
+            </button>
           </div>
         </div>
 
@@ -176,11 +196,20 @@ export default function BattleOfBandsPS() {
                   ))}
                 </div>
 
-                <div className="p-6 bg-purple-500/5 border-l-2 border-purple-500 rounded-r-xl">
+                <div className="p-6 bg-purple-500/5 border-l-2 border-purple-500 rounded-r-xl mb-8">
                   <p className="text-sm text-purple-100/80 leading-relaxed italic">
                     {competitionData.phases[activePhase].detail}
                   </p>
                 </div>
+
+                {/* Secondary CTA */}
+                <button
+                  onClick={() => router.push(competitionData.registrationPath)}
+                  className="text-[10px] font-bold text-purple-400 uppercase tracking-[0.4em] hover:text-white transition-colors flex items-center gap-2 group"
+                >
+                  Authorize band deployment to the mainstage{" "}
+                  <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </button>
               </div>
 
               {/* Judging Criteria Matrix */}

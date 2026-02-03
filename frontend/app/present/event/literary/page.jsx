@@ -13,6 +13,8 @@ import {
   Sparkles,
   Terminal,
   ChevronLeft,
+  ChevronRight,
+  ExternalLink,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -25,6 +27,7 @@ export default function LiteraryCompetitionsPS() {
       title: "Poetry Slam",
       sub: "Spoken Word Synthesis",
       icon: <Mic2 className="w-5 h-5" />,
+      registrationPath: "/present/registration?event=ps",
       description:
         "A competitive performance-based event where poets recite original work focused on rhythm and delivery.",
       prizes: {
@@ -39,6 +42,7 @@ export default function LiteraryCompetitionsPS() {
       title: "Fiction Relay",
       sub: "Collaborative Narrative",
       icon: <BookCopy className="w-5 h-5" />,
+      registrationPath: "/present/registration?event=fr",
       description:
         "A multi-stage storytelling relay where participants build upon preceding narrative fragments.",
       prizes: {
@@ -53,6 +57,7 @@ export default function LiteraryCompetitionsPS() {
       title: "Poetry Writing",
       sub: "Pure Lexical Artistry",
       icon: <PenTool className="w-5 h-5" />,
+      registrationPath: "/present/registration?event=pw",
       description:
         "A traditional writing competition focusing on structural integrity, imagery, and thematic depth.",
       prizes: {
@@ -76,7 +81,7 @@ export default function LiteraryCompetitionsPS() {
           <div className="space-y-1">
             <button
               onClick={() => router.back()}
-              className="flex items-center gap-2 text-amber-500/60"
+              className="flex items-center gap-2 text-amber-500/60 mb-4"
             >
               <ChevronLeft className="w-4 h-4" />
               <span className="text-[10px] tracking-[0.5em] uppercase font-bold">
@@ -90,17 +95,34 @@ export default function LiteraryCompetitionsPS() {
               Encouraging Creativity & Literary Expression
             </p>
           </div>
-          <div className="mt-6 lg:mt-0 flex gap-4">
-            <StatusNode
-              icon={<MapPin />}
-              label="Deployment"
-              value="Offline Mode"
-            />
-            <StatusNode
-              icon={<Sparkles />}
-              label="Objective"
-              value="Active Participation"
-            />
+          <div className="mt-6 lg:mt-0 flex flex-col items-end gap-6">
+            <div className="flex gap-4">
+              <StatusNode
+                icon={<MapPin />}
+                label="Deployment"
+                value="Offline Mode"
+              />
+              <StatusNode
+                icon={<Sparkles />}
+                label="Objective"
+                value="Active Participation"
+              />
+            </div>
+            {/* Primary Registration Button */}
+            <button
+              onClick={() =>
+                router.push(literaryData[activeTab].registrationPath)
+              }
+              className="group relative px-8 py-3 bg-amber-600 hover:bg-amber-500 transition-all rounded-sm overflow-hidden border border-amber-400/30"
+            >
+              <div className="absolute inset-0 w-full h-full bg-white/10 -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+              <div className="relative flex items-center gap-3">
+                <span className="text-xs font-black tracking-[0.2em] text-white uppercase">
+                  Register
+                </span>
+                <ExternalLink className="w-4 h-4 text-white" />
+              </div>
+            </button>
           </div>
         </div>
 
@@ -177,7 +199,7 @@ export default function LiteraryCompetitionsPS() {
                   "{literaryData[activeTab].description}"
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   <div className="space-y-4">
                     <h4 className="text-[10px] text-amber-500 uppercase tracking-[0.2em] font-bold">
                       Lexical_Focus
@@ -208,6 +230,17 @@ export default function LiteraryCompetitionsPS() {
                     </span>
                   </div>
                 </div>
+
+                {/* Secondary CTA */}
+                <button
+                  onClick={() =>
+                    router.push(literaryData[activeTab].registrationPath)
+                  }
+                  className="text-[10px] font-bold text-amber-400 uppercase tracking-[0.4em] hover:text-white transition-colors flex items-center gap-2 group"
+                >
+                  Commit entry to the manuscript registry{" "}
+                  <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </button>
               </motion.div>
             </AnimatePresence>
 

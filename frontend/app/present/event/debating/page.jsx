@@ -12,12 +12,14 @@ import {
   Activity,
   ChevronRight,
   ChevronLeft,
+  ExternalLink,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function AsianParliamentaryDebatePS() {
   const [activePhase, setActivePhase] = useState(0);
   const router = useRouter();
+
   const competitionData = {
     title: "Asian Parliamentary Debate",
     org: "Debating Society, IIT Indore",
@@ -64,7 +66,7 @@ export default function AsianParliamentaryDebatePS() {
           <div className="space-y-1">
             <button
               onClick={() => router.back()}
-              className="flex items-center gap-2 text-blue-400"
+              className="flex items-center gap-2 text-blue-400 mb-4"
             >
               <ChevronLeft className="w-4 h-4" />
               <span className="text-[10px] tracking-[0.5em] uppercase font-bold">
@@ -78,14 +80,30 @@ export default function AsianParliamentaryDebatePS() {
               Intellectual & Cultural Synthesis
             </p>
           </div>
-          <div className="mt-6 lg:mt-0 flex gap-4">
-            <StatNode
-              icon={<Users />}
-              label="Team Structure"
-              value="3 Speakers"
-            />
-            <StatNode icon={<Mic2 />} label="Format" value="APD (3v3)" />
-            <StatNode icon={<Activity />} label="Status" value="Offline" />
+
+          <div className="mt-6 lg:mt-0 flex flex-col items-end gap-6">
+            <div className="flex gap-4">
+              <StatNode
+                icon={<Users />}
+                label="Team Structure"
+                value="3 Speakers"
+              />
+              <StatNode icon={<Mic2 />} label="Format" value="APD (3v3)" />
+              <StatNode icon={<Activity />} label="Status" value="Offline" />
+            </div>
+            {/* Primary Registration Button */}
+            <button
+              onClick={() => router.push(`/present/registration?event=apd`)}
+              className="group relative px-8 py-3 bg-blue-600 hover:bg-blue-500 transition-all rounded-sm overflow-hidden"
+            >
+              <div className="absolute inset-0 w-full h-full bg-white/10 -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+              <div className="relative flex items-center gap-3">
+                <span className="text-xs font-black tracking-[0.2em] text-white uppercase">
+                  Register
+                </span>
+                <ExternalLink className="w-4 h-4 text-white" />
+              </div>
+            </button>
           </div>
         </div>
 
@@ -231,6 +249,17 @@ export default function AsianParliamentaryDebatePS() {
                   </span>
                 </div>
               </div>
+            </div>
+
+            {/* Secondary CTA */}
+            <div className="flex justify-center pt-4">
+              <button
+                onClick={() => router.push(`/present/registration?event=apd`)}
+                className="text-[10px] font-bold text-blue-400 uppercase tracking-[0.4em] hover:text-white transition-colors flex items-center gap-2 group"
+              >
+                Secure your slot in the registry{" "}
+                <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
           </div>
         </div>

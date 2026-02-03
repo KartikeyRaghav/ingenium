@@ -87,7 +87,10 @@ export default function AlbumCoverPS() {
               label="Format"
               value={eventData.mode}
             />
-            <button className="bg-purple-600 hover:bg-purple-500 text-white px-8 py-4 rounded-xl font-black italic tracking-widest flex items-center gap-3 shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all hover:scale-105 active:scale-95">
+            <button
+              onClick={() => router.push("/present/registration?event=vlr")}
+              className="bg-purple-600 hover:bg-purple-500 text-white px-8 py-4 rounded-xl font-black italic tracking-widest flex items-center gap-3 shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all hover:scale-105 active:scale-95"
+            >
               <Zap className="w-5 h-5 fill-current" /> REGISTER NOW
             </button>
           </div>

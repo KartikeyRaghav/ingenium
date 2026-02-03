@@ -10,12 +10,14 @@ import {
   Trophy,
   Wifi,
   ChevronLeft,
+  ChevronRight, // Added for secondary button
   Layers,
   Ban,
   Gamepad2,
   Zap,
   Info,
   ShieldAlert,
+  ExternalLink, // Added for icon consistency
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -28,6 +30,7 @@ export default function KalakritiPS() {
     teamSize: "Individual",
     duration: "4 Hours",
     format: "Single Round (Offline Finals)",
+    registrationPath: "/present/registration?event=canvas",
     prizes: {
       first: "7,000",
       second: "5,000",
@@ -75,20 +78,17 @@ export default function KalakritiPS() {
               icon={<Clock className="w-4 h-4" />}
               label="Window"
               value={eventData.duration}
-            />{" "}
-            {/*  */}
+            />
             <HeaderStat
               icon={<User className="w-4 h-4" />}
               label="Entity"
               value={eventData.teamSize}
-            />{" "}
-            {/*  */}
+            />
             <HeaderStat
               icon={<Layers className="w-4 h-4" />}
               label="Phase"
               value={eventData.format}
-            />{" "}
-            {/*  */}
+            />
           </motion.div>
         </div>
 
@@ -103,8 +103,7 @@ export default function KalakritiPS() {
                   </h3>
                   <p className="text-sm leading-relaxed text-orange-100/70 italic border-l-2 border-orange-500 pl-4">
                     "Individual competition where participants create artwork on
-                    a given theme using paints. Theme provided on-site."{" "}
-                    {/*  */}
+                    a given theme using paints. Theme provided on-site."
                   </p>
                 </div>
 
@@ -113,21 +112,21 @@ export default function KalakritiPS() {
                     Standard_Operating_Rules
                   </h3>
                   <div className="grid gap-3">
-                    <RuleItem text="A3-sized canvas provided by HQ" /> {/*  */}
-                    <RuleItem text="BYO paints, brushes, & palettes" /> {/*  */}
-                    <RuleItem text="Network data (Internet) allowed for ref" />{" "}
-                    {/*  */}
+                    <RuleItem text="A3-sized canvas provided by HQ" />
+                    <RuleItem text="BYO paints, brushes, & palettes" />
+                    <RuleItem text="Network data (Internet) allowed for ref" />
                     <RuleItem
                       text="Manual scales strictly prohibited"
                       prohibited
-                    />{" "}
-                    {/*  */}
+                    />
                   </div>
                 </div>
               </div>
             </section>
 
+            {/* Primary Registration Button */}
             <motion.button
+              onClick={() => router.push(eventData.registrationPath)}
               whileHover={{
                 scale: 1.02,
                 boxShadow: "0 0 20px rgba(249,115,22,0.4)",
@@ -166,52 +165,64 @@ export default function KalakritiPS() {
                 </h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <ScoreCard label="Technical Skill" weight="40%" />{" "}
-                  <ThemeCard label="Depiction of Theme" weight="40%" />{" "}
-                  <ScoreCard label="Overall Neatness" weight="20%" />{" "}
+                  <ScoreCard label="Technical Skill" weight="40%" />
+                  <ThemeCard label="Depiction of Theme" weight="40%" />
+                  <ScoreCard label="Overall Neatness" weight="20%" />
                 </div>
 
                 <div className="mt-10 flex items-center gap-4 p-4 bg-orange-500/5 border border-orange-500/10 rounded-2xl">
                   <Wifi className="w-6 h-6 text-orange-500 animate-pulse" />
                   <p className="text-[10px] text-gray-400 uppercase leading-relaxed tracking-widest">
                     External Reference Uplink:{" "}
-                    <span className="text-orange-500">Authorized</span>.{" "}
-                    {/*  */}
+                    <span className="text-orange-500">Authorized</span>.
                   </p>
                 </div>
               </div>
             </div>
 
             {/* PRIZE POOL TERMINAL */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <div className="md:col-span-3 bg-linear-to-r from-orange-600/10 to-transparent border border-orange-500/20 rounded-2xl p-6 flex flex-col md:flex-row justify-around items-center gap-6">
-                <PrizeSlot
-                  rank="01"
-                  amount={eventData.prizes.first}
-                  label="Alpha Unit"
-                />
-                <div className="h-12 w-px bg-orange-500/20 hidden md:block" />
-                <PrizeSlot
-                  rank="02"
-                  amount={eventData.prizes.second}
-                  label="Beta Unit"
-                />
-                <div className="h-12 w-px bg-orange-500/20 hidden md:block" />
-                <PrizeSlot
-                  rank="03"
-                  amount={eventData.prizes.third}
-                  label="Gamma Unit"
-                />
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div className="md:col-span-3 bg-linear-to-r from-orange-600/10 to-transparent border border-orange-500/20 rounded-2xl p-6 flex flex-col md:flex-row justify-around items-center gap-6">
+                  <PrizeSlot
+                    rank="01"
+                    amount={eventData.prizes.first}
+                    label="Alpha Unit"
+                  />
+                  <div className="h-12 w-px bg-orange-500/20 hidden md:block" />
+                  <PrizeSlot
+                    rank="02"
+                    amount={eventData.prizes.second}
+                    label="Beta Unit"
+                  />
+                  <div className="h-12 w-px bg-orange-500/20 hidden md:block" />
+                  <PrizeSlot
+                    rank="03"
+                    amount={eventData.prizes.third}
+                    label="Gamma Unit"
+                  />
+                </div>
+
+                <div className="bg-orange-500 p-6 rounded-2xl flex flex-col justify-center items-center shadow-xl shadow-orange-950/40">
+                  <Trophy className="w-6 h-6 text-black mb-2" />
+                  <span className="text-[9px] text-black font-black uppercase mb-1">
+                    Total Bounty
+                  </span>
+                  <span className="text-2xl font-black text-black italic">
+                    ₹{eventData.prizes.total}
+                  </span>
+                </div>
               </div>
 
-              <div className="bg-orange-500 p-6 rounded-2xl flex flex-col justify-center items-center shadow-xl shadow-orange-950/40">
-                <Trophy className="w-6 h-6 text-black mb-2" />
-                <span className="text-[9px] text-black font-black uppercase mb-1">
-                  Total Bounty
-                </span>
-                <span className="text-2xl font-black text-black italic">
-                  ₹{eventData.prizes.total}
-                </span>
+              {/* Secondary CTA */}
+              <div className="flex justify-center">
+                <button
+                  onClick={() => router.push(eventData.registrationPath)}
+                  className="text-[10px] font-bold text-orange-400 uppercase tracking-[0.4em] hover:text-white transition-colors flex items-center gap-2 group"
+                >
+                  Initiate deployment into the registry{" "}
+                  <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                </button>
               </div>
             </div>
           </div>

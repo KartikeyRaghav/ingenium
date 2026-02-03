@@ -9,12 +9,13 @@ import {
   Image as ImageIcon,
   Eye,
   FileSearch,
-  Info,
   Trophy,
   Ban,
   Maximize2,
   CheckCircle2,
   ChevronLeft,
+  ChevronRight,
+  ExternalLink,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -26,6 +27,7 @@ export default function ShutterUpPS() {
     category: "Photography",
     mode: "Online Submission",
     participation: "Individual",
+    registrationPath: "/present/registration?event=shutter",
     themes: [
       {
         id: "TL-01",
@@ -68,7 +70,7 @@ export default function ShutterUpPS() {
           <div className="space-y-1">
             <button
               onClick={() => router.back()}
-              className="flex items-center gap-2 text-white/60"
+              className="flex items-center gap-2 text-white/60 mb-4"
             >
               <ChevronLeft className="w-4 h-4" />
               <span className="text-[10px] tracking-[0.5em] uppercase font-bold">
@@ -82,13 +84,30 @@ export default function ShutterUpPS() {
               Theme-Based Storytelling Competition
             </p>
           </div>
-          <div className="mt-6 lg:mt-0 flex gap-4">
-            <StatusNode label="Category" value={competitionData.category} />
-            <StatusNode
-              label="Participation"
-              value={competitionData.participation}
-            />
-            <StatusNode label="Mode" value={competitionData.mode} />
+
+          <div className="mt-6 lg:mt-0 flex flex-col items-end gap-6">
+            <div className="flex gap-4">
+              <StatusNode label="Category" value={competitionData.category} />
+              <StatusNode
+                label="Participation"
+                value={competitionData.participation}
+              />
+              <StatusNode label="Mode" value={competitionData.mode} />
+            </div>
+
+            {/* Primary Registration Button */}
+            <button
+              onClick={() => router.push(competitionData.registrationPath)}
+              className="group relative px-8 py-3 bg-white hover:bg-white/90 transition-all rounded-sm overflow-hidden"
+            >
+              <div className="absolute inset-0 w-full h-full bg-black/10 -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+              <div className="relative flex items-center gap-3">
+                <span className="text-xs font-black tracking-[0.2em] text-black uppercase">
+                  REGISTER
+                </span>
+                <ExternalLink className="w-4 h-4 text-black" />
+              </div>
+            </button>
           </div>
         </div>
 
@@ -184,6 +203,15 @@ export default function ShutterUpPS() {
                   </div>
                 </div>
               </div>
+
+              {/* Secondary CTA */}
+              <button
+                onClick={() => router.push(competitionData.registrationPath)}
+                className="text-[10px] font-bold text-white uppercase tracking-[0.4em] hover:text-white/60 transition-colors flex items-center gap-2 group mb-8"
+              >
+                Sync your narrative with the optical registry{" "}
+                <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+              </button>
 
               {/* Judging Matrix */}
               <div className="pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-5 gap-4">

@@ -10,6 +10,8 @@ import {
   Trophy,
   Volume2,
   ChevronLeft,
+  ChevronRight,
+  ExternalLink,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -62,7 +64,7 @@ export default function HunkaarDramaticsPS() {
           <div className="space-y-1">
             <button
               onClick={() => router.back()}
-              className="flex items-center gap-2 text-orange-400"
+              className="flex items-center gap-2 text-orange-400 mb-4"
             >
               <ChevronLeft className="w-4 h-4" />
               <span className="text-[10px] tracking-[0.5em] uppercase font-bold">
@@ -76,7 +78,7 @@ export default function HunkaarDramaticsPS() {
               Celebrating Social Reflection & Creativity
             </p>
           </div>
-          <div className="mt-6 lg:mt-0 flex gap-4">
+          <div className="mt-6 lg:mt-0 flex flex-col items-end gap-6">
             <div className="flex gap-2">
               {competitionData.map((tab, idx) => (
                 <button
@@ -92,6 +94,24 @@ export default function HunkaarDramaticsPS() {
                 </button>
               ))}
             </div>
+
+            {/* Primary Registration Button */}
+            <button
+              onClick={() =>
+                router.push(
+                  `/present/registration?event=${activeTab == 0 ? "nukkad" : "mono"}`,
+                )
+              }
+              className="group relative px-8 py-3 bg-orange-600 hover:bg-orange-500 transition-all rounded-sm overflow-hidden"
+            >
+              <div className="absolute inset-0 w-full h-full bg-white/10 -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
+              <div className="relative flex items-center gap-3">
+                <span className="text-xs font-black tracking-[0.2em] text-white uppercase">
+                  Register
+                </span>
+                <ExternalLink className="w-4 h-4 text-white" />
+              </div>
+            </button>
           </div>
         </div>
 
@@ -245,6 +265,21 @@ export default function HunkaarDramaticsPS() {
                 label="Final Showcase"
                 detail="Final performances in front of live audience."
               />
+            </div>
+
+            {/* Secondary CTA */}
+            <div className="flex justify-center pt-4">
+              <button
+                onClick={() =>
+                  router.push(
+                    `/present/registration?event=${activeTab == 0 ? "nukkad" : "mono"}`,
+                  )
+                }
+                className="text-[10px] font-bold text-orange-400 uppercase tracking-[0.4em] hover:text-white transition-colors flex items-center gap-2 group"
+              >
+                Secure your position in the performative core{" "}
+                <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
           </div>
         </div>
