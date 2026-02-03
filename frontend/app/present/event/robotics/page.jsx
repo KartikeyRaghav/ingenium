@@ -16,6 +16,9 @@ import {
   Info,
   AlertTriangle,
   Target,
+  FileText,
+  ShieldCheck,
+  Scale,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -27,44 +30,59 @@ export default function RoboticsPS() {
     {
       id: "RW",
       title: "ROBOWARS",
-      sub: "Heavy Combat Division",
+      sub: "Combat Robotics Competition",
       icon: <ShieldAlert className="w-8 h-8" />,
       color: "rose",
-      teamSize: "4-6 members",
+      teamSize: "4 to 6 members", //
       objective:
         "To design a combat-capable robot that can withstand physical impacts, effectively disable opponents, and maintain mobility throughout the match duration.",
       philosophy:
-        "Provides hands-on exposure to real-world combat robotics, integrating mechanical design, electronics, and power management under extreme operating conditions.",
+        "Evaluates mechanical strength, electronics reliability, power management, and strategic control under aggressive real-world combat conditions.",
       constraints: [
-        { label: "Max Weight", val: "10 kg", detail: "Inc. battery/weapons" },
-        { label: "Dimensions", val: "500x450x500 mm", detail: "Max limit" },
+        {
+          label: "Max Weight",
+          val: "10 kg",
+          detail: "Including battery & weapons",
+        },
+        {
+          label: "Dimensions",
+          val: "500 x 450 x 500 mm",
+          detail: "Maximum Volume",
+        },
         { label: "Power", val: "On-board", detail: "Battery only" },
-        { label: "Control", val: "Wireless", detail: "Mandatory fail-safe" },
+        {
+          label: "Control",
+          val: "Wireless",
+          detail: "Mandatory fail-safe required",
+        },
       ],
       weapons: {
-        allowed: "Mechanical, Electric, Pneumatic",
-        prohibited: "Explosives, Fire, Corrosive liquids",
+        allowed: "Mechanical, Electric, or Pneumatic",
+        prohibited: "Explosives, fire-based weapons, corrosive liquids",
       },
       arena: {
         size: "4m x 4m",
-        type: "Fully Enclosed",
-        floor: "Reinforced Metal",
+        type: "Fully enclosed with safety shielding",
+        floor: "Reinforced metal or composite", //
       },
       stages: [
         {
           title: "Design Proposal",
-          meta: "Online | Pre-Event",
-          details: "Concept, BOM, and safety strategy.",
+          meta: "Online | Pre-Competition",
+          details:
+            "Submit concept, drive system, weapon mechanism, safety strategy, and preliminary BOM.",
         },
         {
           title: "Safety Scrutiny",
           meta: "Offline | Pre-Match",
-          details: "Mechanical robustness and electrical isolation check.",
+          details:
+            "Chassis inspection, weapon locking verification, and emergency cutoff checks.",
         },
         {
-          title: "Knockout Battles",
+          title: "Battle Rounds",
           meta: "Offline | Event Days",
-          details: "One-on-one combat with fixed durations.",
+          details:
+            "1v1 knockout matches with fixed duration leading to finals.",
         },
       ],
       prizes: [
@@ -72,44 +90,55 @@ export default function RoboticsPS() {
         { name: "Second Prize", amount: "25,000" },
         { name: "Third Prize", amount: "15,000" },
       ],
+      totalPool: "85,000",
     },
     {
       id: "RS",
       title: "ROBOSOCCER",
-      sub: "Tactical Sports Logic",
+      sub: "Autonomous & Semi-Autonomous",
       icon: <Gamepad className="w-8 h-8" />,
       color: "blue",
-      teamSize: "2-4 members",
+      teamSize: "2 to 4 members", //
       objective:
-        "To design a robot that can detect the ball, navigate efficiently, and coordinate movements to score goals.",
+        "To design a robot capable of detecting the ball, navigating efficiently, and coordinating movements to score goals.",
       philosophy:
-        "Introduces competitive robotics in a strategy-driven environment, strengthening understanding of semi-autonomous systems.",
+        "Emphasizes navigation, sensing, actuation, and real-time control strategies against opposing robots.",
       constraints: [
-        { label: "Max Weight", val: "4 kg", detail: "Total mass" },
-        { label: "Dimensions", val: "250x200x200 mm", detail: "Max footprint" },
-        { label: "Drive", val: "Wheeled", detail: "Only" },
-        { label: "Control", val: "Manual/Semi", detail: "Wireless control" },
+        { label: "Max Weight", val: "4 kg", detail: "Total robot mass" },
+        {
+          label: "Dimensions",
+          val: "250 x 200 x 200 mm",
+          detail: "Max robot size",
+        },
+        { label: "Drive", val: "Wheeled", detail: "Wheeled mechanisms only" },
+        {
+          label: "Power",
+          val: "Rechargeable",
+          detail: "On-board battery only",
+        },
       ],
       arena: {
         size: "4m x 6m",
-        type: "Flat Surface",
-        floor: "Non-reflective",
+        type: "Controlled Arena",
+        floor: "Flat, non-reflective surface with fixed goals",
       },
       stages: [
         {
           title: "System Design",
-          meta: "Online | Pre-Event",
-          details: "Block diagrams and control strategy.",
+          meta: "Online | Pre-Competition",
+          details:
+            "Submit block diagram, sensor/actuation strategy, and power management description.",
         },
         {
           title: "Functional Verification",
           meta: "Offline | Pre-Match",
-          details: "Mobility and ball detection testing.",
+          details:
+            "Mobility testing, ball detection verification, and wireless safety checks.",
         },
         {
           title: "Match Rounds",
           meta: "Offline | Event Days",
-          details: "League or knockout team matches.",
+          details: "Team-vs-team matches in league or knockout format.",
         },
       ],
       prizes: [
@@ -117,44 +146,60 @@ export default function RoboticsPS() {
         { name: "Second Prize", amount: "10,000" },
         { name: "Third Prize", amount: "5,000" },
       ],
+      totalPool: "35,000",
     },
     {
       id: "LF",
       title: "LINE FOLLOWER",
-      sub: "Autonomous Path Precision",
+      sub: "Autonomous Robotics Competition",
       icon: <Orbit className="w-8 h-8" />,
       color: "emerald",
-      teamSize: "1-3 members",
+      teamSize: "1 to 3 members", //
       objective:
-        "To design an autonomous robot that follows a given line track with high accuracy and stability.",
+        "To design an autonomous robot that can follow a given line track with high accuracy, stability, and minimal deviation.",
       philosophy:
-        "Serves as a strong foundation for autonomous robotics, focusing on feedback control and precision motion.",
+        "Challenges participants in sensor integration, control algorithm design, and performance optimization.",
       constraints: [
-        { label: "Max Weight", val: "3 kg", detail: "Total mass" },
-        { label: "Dimensions", val: "200x150x150 mm", detail: "Compact build" },
-        { label: "Sensors", val: "IR/Optical", detail: "Only" },
-        { label: "Control", val: "Autonomous", detail: "Fully automated" },
+        { label: "Max Weight", val: "3 kg", detail: "Total robot mass" },
+        {
+          label: "Dimensions",
+          val: "200 x 150 x 150 mm",
+          detail: "Compact footprint",
+        },
+        {
+          label: "Sensors",
+          val: "IR/Optical",
+          detail: "IR or Optical sensors only",
+        },
+        {
+          label: "Control",
+          val: "Autonomous",
+          detail: "Fully autonomous only",
+        },
       ],
       arena: {
         size: "3m x 3m",
-        type: "Black on White",
-        floor: "20-25mm Track Width",
+        type: "High Contrast Track",
+        floor: "Black line (20-25mm) on white background",
       },
       stages: [
         {
           title: "Logic Submission",
-          meta: "Online | Pre-Event",
-          details: "Sensor placement and PID/Logic overview.",
+          meta: "Online | Pre-Competition",
+          details:
+            "Submit sensor configuration, control logic (PID/logic), and motor description.",
         },
         {
           title: "Calibration",
-          meta: "Offline | Pre-Run",
-          details: "Sensor alignment and logic verification.",
+          meta: "Offline | Before Runs",
+          details:
+            "Verification of sensor alignment, control logic, and safety systems.",
         },
         {
-          title: "Timed Track Runs",
+          title: "Timed Runs",
           meta: "Offline | Event Days",
-          details: "Autonomous run with multiple turns.",
+          details:
+            "Autonomous navigation on predefined track with turns and checkpoints.",
         },
       ],
       prizes: [
@@ -162,13 +207,14 @@ export default function RoboticsPS() {
         { name: "Second Prize", amount: "7,000" },
         { name: "Third Prize", amount: "3,000" },
       ],
+      totalPool: "25,000",
     },
   ];
 
   const active = combatModules[activeBattle];
 
   return (
-    <div className="relative min-h-screen text-white font-mono p-4 md:p-8">
+    <div className="relative min-h-screen text-white font-mono p-4 md:p-8 bg-black/30">
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* --- HEADER --- */}
         <header className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-8 border-b border-white/10 pb-6">
@@ -186,7 +232,7 @@ export default function RoboticsPS() {
               </span>
             </button>
             <h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase italic leading-none">
-              {combatModules[activeBattle].title}
+              {active.title}
             </h1>
           </motion.div>
 
@@ -202,9 +248,6 @@ export default function RoboticsPS() {
                 }`}
               >
                 <span className="text-xs">{module.id}</span>
-                <span className="text-[10px] hidden md:block">
-                  {module.title}
-                </span>
               </button>
             ))}
           </div>
@@ -219,9 +262,8 @@ export default function RoboticsPS() {
             exit={{ opacity: 0, y: -20 }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-6"
           >
-            {/* LEFT: CORE SPECS */}
+            {/* LEFT: CORE SPECS & OBJECTIVES */}
             <div className="lg:col-span-4 space-y-6">
-              {/* Objective Card */}
               <div className="p-6 bg-white/5 border border-white/10 rounded-xl relative overflow-hidden group">
                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:rotate-12 transition-transform">
                   {active.icon}
@@ -233,8 +275,8 @@ export default function RoboticsPS() {
                   "{active.objective}"
                 </p>
                 <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
-                  <span className="text-[10px] text-gray-500 uppercase">
-                    Deployment Team
+                  <span className="text-[10px] text-gray-500 uppercase font-bold">
+                    Team Composition
                   </span>
                   <span className="text-xs font-bold text-rose-500 uppercase flex items-center gap-2">
                     <Users className="w-3 h-3" /> {active.teamSize}
@@ -242,7 +284,6 @@ export default function RoboticsPS() {
                 </div>
               </div>
 
-              {/* Technical Grid */}
               <div className="grid grid-cols-2 gap-4">
                 {active.constraints.map((c, i) => (
                   <div
@@ -260,13 +301,12 @@ export default function RoboticsPS() {
                 ))}
               </div>
 
-              {/* Arena Card */}
               <div className="p-6 bg-black/60 border-l-2 border-rose-500 rounded-r-xl">
-                <h3 className="text-[10px] font-black tracking-[0.2em] mb-4 uppercase text-gray-400">
-                  Arena_Specifications
+                <h3 className="text-[10px] font-black tracking-[0.2em] mb-4 uppercase text-gray-400 flex items-center gap-2">
+                  <Maximize className="w-3 h-3" /> Arena_Specifications
                 </h3>
                 <div className="space-y-3">
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center border-b border-white/5 pb-2">
                     <span className="text-[10px] uppercase text-gray-500">
                       Dimensions
                     </span>
@@ -274,7 +314,7 @@ export default function RoboticsPS() {
                       {active.arena.size}
                     </span>
                   </div>
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center border-b border-white/5 pb-2">
                     <span className="text-[10px] uppercase text-gray-500">
                       Environment
                     </span>
@@ -284,9 +324,9 @@ export default function RoboticsPS() {
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-[10px] uppercase text-gray-500">
-                      Surface
+                      Surface Detail
                     </span>
-                    <span className="text-xs font-bold">
+                    <span className="text-[10px] font-bold text-right ml-4">
                       {active.arena.floor}
                     </span>
                   </div>
@@ -294,9 +334,8 @@ export default function RoboticsPS() {
               </div>
             </div>
 
-            {/* MIDDLE: PHASES & WEAPONS */}
+            {/* MIDDLE: PHASES & COMPLIANCE */}
             <div className="lg:col-span-5 space-y-6">
-              {/* Progression Tracker */}
               <div className="p-6 bg-white/5 border border-white/10 rounded-xl">
                 <h3 className="text-[10px] font-black tracking-[0.2em] mb-6 uppercase flex items-center gap-2">
                   <Activity className="w-3 h-3 text-rose-500" />{" "}
@@ -317,7 +356,7 @@ export default function RoboticsPS() {
                         <p className="text-xs font-black uppercase text-white leading-none mb-1">
                           {stage.title}
                         </p>
-                        <p className="text-[9px] text-rose-500 font-bold mb-2 uppercase">
+                        <p className="text-[9px] text-rose-500 font-bold mb-2 uppercase italic">
                           {stage.meta}
                         </p>
                         <p className="text-[10px] text-gray-400 leading-relaxed">
@@ -329,53 +368,88 @@ export default function RoboticsPS() {
                 </div>
               </div>
 
-              {/* Prohibited/Allowed (Conditional for Robowars) */}
-              {active.id === "RW" && (
-                <div className="p-4 bg-rose-500/5 border border-rose-500/20 rounded-xl grid grid-cols-2 gap-4">
-                  <div>
-                    <h4 className="text-[9px] font-black text-emerald-500 uppercase mb-2">
-                      Approved_Armament
-                    </h4>
-                    <p className="text-[10px] text-gray-400">
-                      {active.weapons.allowed}
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="text-[9px] font-black text-rose-500 uppercase mb-2">
-                      Illegal_Systems
-                    </h4>
-                    <p className="text-[10px] text-gray-400">
-                      {active.weapons.prohibited}
-                    </p>
-                  </div>
-                </div>
-              )}
+              {/* Rules & Compliance Section */}
+              <div className="p-6 bg-black/40 border border-white/10 rounded-xl">
+                <h3 className="text-[10px] font-black tracking-[0.2em] mb-4 uppercase text-gray-400 flex items-center gap-2">
+                  <ShieldCheck className="w-3 h-3 text-emerald-500" />{" "}
+                  Protocol_Compliance
+                </h3>
+                <ul className="space-y-2">
+                  {active.id === "RW" && (
+                    <>
+                      <li className="text-[10px] text-gray-400 flex gap-2">
+                        <div className="w-1 h-1 bg-rose-500 mt-1 shrink-0" />{" "}
+                        Prohibited: {active.weapons.prohibited}
+                      </li>
+                      <li className="text-[10px] text-gray-400 flex gap-2">
+                        <div className="w-1 h-1 bg-rose-500 mt-1 shrink-0" />{" "}
+                        Mandatory weapon locking and emergency cutoffs{" "}
+                      </li>
+                    </>
+                  )}
+                  {active.id === "RS" && (
+                    <>
+                      <li className="text-[10px] text-gray-400 flex gap-2">
+                        <div className="w-1 h-1 bg-blue-500 mt-1 shrink-0" />{" "}
+                        Wheeled-only drive mechanisms permitted
+                      </li>
+                      <li className="text-[10px] text-gray-400 flex gap-2">
+                        <div className="w-1 h-1 bg-blue-500 mt-1 shrink-0" />{" "}
+                        Robot must manage ball detection & scoring
+                        autonomously/semi-autonomously
+                      </li>
+                    </>
+                  )}
+                  {active.id === "LF" && (
+                    <>
+                      <li className="text-[10px] text-gray-400 flex gap-2">
+                        <div className="w-1 h-1 bg-emerald-500 mt-1 shrink-0" />{" "}
+                        Manual intervention results in penalties{" "}
+                      </li>
+                      <li className="text-[10px] text-gray-400 flex gap-2">
+                        <div className="w-1 h-1 bg-emerald-500 mt-1 shrink-0" />{" "}
+                        Only IR or Optical sensors permitted
+                      </li>
+                    </>
+                  )}
+                  <li className="text-[10px] text-rose-500/80 italic flex gap-2">
+                    <Scale className="w-3 h-3 shrink-0" /> Rules are subject to
+                    change at organizers' discretion
+                  </li>
+                </ul>
+              </div>
             </div>
 
-            {/* RIGHT: WHY & REGISTER */}
+            {/* RIGHT: PRIZES & ACTION */}
             <div className="lg:col-span-3 space-y-6">
-              {/* Why This Event */}
-              <div className="p-6 bg-white/5 border border-white/10 rounded-xl relative">
-                <div className="absolute -top-3 -right-3">
-                  <Info className="w-6 h-6 text-white/10" />
-                </div>
-                <h3 className="text-[10px] font-black tracking-[0.2em] mb-4 uppercase text-rose-500">
-                  Why_{active.id}?
+              <div className="p-6 bg-white/5 border border-white/10 rounded-xl relative group">
+                <h3 className="text-[10px] font-black tracking-[0.2em] mb-4 uppercase text-rose-500 flex items-center gap-2">
+                  <Info className="w-3 h-3" /> System_Overview
                 </h3>
-                <p className="text-[11px] text-gray-400 leading-relaxed italic">
+                <p className="text-[11px] text-gray-400 leading-relaxed italic group-hover:text-gray-200 transition-colors">
                   {active.philosophy}
                 </p>
               </div>
 
               {/* Bounty/Prize Module */}
-              <div className="p-6 bg-linear-to-br from-rose-500 to-rose-700 rounded-xl text-black shadow-lg">
-                <div className="flex items-center gap-2 mb-4">
-                  <Trophy className="w-5 h-5" />
-                  <h3 className="text-sm font-black uppercase italic">
-                    Bounty_Rewards
-                  </h3>
+              <div className="p-6 bg-linear-to-br from-rose-500 to-rose-700 rounded-xl text-black shadow-lg shadow-rose-500/10">
+                <div className="flex justify-between items-center mb-6">
+                  <div className="flex items-center gap-2">
+                    <Trophy className="w-5 h-5" />
+                    <h3 className="text-sm font-black uppercase italic">
+                      Bounty_Pool
+                    </h3>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-[8px] font-black uppercase leading-none">
+                      Total Value
+                    </p>
+                    <p className="text-lg font-black italic">
+                      ₹{active.totalPool}
+                    </p>
+                  </div>
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-3">
                   {active.prizes.map((p, i) => (
                     <div
                       key={i}
@@ -384,7 +458,7 @@ export default function RoboticsPS() {
                       <span className="text-[10px] font-bold uppercase">
                         {p.name}
                       </span>
-                      <span className="text-xs font-black italic">
+                      <span className="text-sm font-black italic">
                         ₹{p.amount}
                       </span>
                     </div>
@@ -392,24 +466,22 @@ export default function RoboticsPS() {
                 </div>
               </div>
 
-              {/* Action Button */}
               <button
                 onClick={() =>
-                  router.push(
-                    `/present/registration?event=${activeBattle == 0 ? "rw" : activeBattle == 1 ? "rs" : "lf"}`,
-                  )
+                  router.push(`/registration?event=${active.id.toLowerCase()}`)
                 }
                 className="w-full py-4 bg-white text-black font-black uppercase italic text-sm tracking-tighter hover:bg-rose-500 hover:text-white transition-all transform hover:-translate-y-1 shadow-[0_4px_20px_rgba(244,63,94,0.3)] flex items-center justify-center gap-3 group"
               >
-                Register_Now
+                Initiate_Registration
                 <Zap className="w-4 h-4 fill-current group-hover:scale-125 transition-transform" />
               </button>
 
-              <div className="p-4 border border-white/5 rounded-xl">
-                <div className="flex items-center gap-3 text-gray-500">
-                  <AlertTriangle className="w-4 h-4 text-rose-500" />
+              <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl">
+                <div className="flex items-center gap-3 text-rose-500">
+                  <AlertTriangle className="w-5 h-5 shrink-0" />
                   <span className="text-[8px] uppercase font-bold leading-tight">
-                    Subject to safety approval and rule compliance verification.
+                    Safety protocols mandatory. Non-compliance results in
+                    immediate disqualification.
                   </span>
                 </div>
               </div>
@@ -418,14 +490,17 @@ export default function RoboticsPS() {
         </AnimatePresence>
 
         {/* --- DECORATIVE FOOTER --- */}
-        <footer className="mt-12 flex justify-between items-center opacity-20">
+        <footer className="mt-12 flex flex-col md:flex-row justify-between items-center gap-6 opacity-30 border-t border-white/5 pt-8">
           <div className="flex gap-8">
-            <Metric icon={<Cpu />} label="System" value="Industrial" />
-            <Metric icon={<Maximize />} label="Scale" value="1:1" />
-            <Metric icon={<Activity />} label="Status" value="Active" />
+            <Metric icon={<Cpu />} label="Processor" value="Autonomous" />
+            <Metric icon={<Maximize />} label="Scale" value="Combat Ready" />
+            <Metric icon={<Activity />} label="Sync" value="Real-time" />
           </div>
-          <div className="text-[10px] font-black uppercase tracking-[0.5em]">
-            Ingenium_Secure_Terminal
+          <div className="flex items-center gap-4">
+            <div className="h-4 w-px bg-white/20" />
+            <span className="text-[9px] font-black uppercase tracking-[0.4em]">
+              IIT INDORE // ROBOTICS DIVISION
+            </span>
           </div>
         </footer>
       </div>

@@ -5,10 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   HeartPulse,
   Smartphone,
-  Activity,
-  Dna,
   ClipboardCheck,
-  Zap,
   ChevronLeft,
   ShieldAlert,
   Target,
@@ -17,6 +14,8 @@ import {
   Microscope,
   Globe,
   ArrowRight,
+  AlertTriangle,
+  FileText,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -31,32 +30,32 @@ export default function SolveXBioPS() {
       theme: "Frugal Biomedical Engineering",
       icon: <HeartPulse className="w-6 h-6" />,
       background:
-        "In resource-limited settings like rural clinics and ambulances, expensive monitoring systems are restricted. There is a critical need for frugal solutions that do not compromise accuracy.",
+        "In resource-limited environments like rural clinics and ambulances, access to advanced monitoring is restricted by cost and portability constraints.",
       challenge:
-        "Design a portable, multi-parameter device measuring at least three physiological parameters simultaneously.",
+        "Design a frugal, portable, and accurate multi-parameter solution capable of measuring at least three physiological parameters simultaneously.",
       vitals: ["Heart Rate", "SpO2", "Blood Pressure", "Temperature"],
       requirements: [
         {
           label: "Affordability",
-          desc: "Utilize cost-effective sensors and materials.",
+          desc: "Use cost-effective sensors.",
         },
         {
           label: "Portability",
-          desc: "Compact, battery-operated, or low power consumption.",
+          desc: "Low-power or battery operation.",
         },
         {
           label: "Interface",
-          desc: "LCD screen, mobile app, or LED indicators.",
+          desc: "Simple data display via LCD, App, or LEDs.",
         },
         {
           label: "Feasibility",
-          desc: "Theoretically sound circuitry and viable build.",
+          desc: "Must be theoretically and practically sound.",
         },
       ],
       deliverables: [
-        "Block diagram/schematic of the device.",
-        "Component list (sensors/microcontrollers) with cost estimation.",
-        "Justification of accuracy vs. cost.",
+        "Block diagram or schematic",
+        "Component list with cost estimation",
+        "Design justification (Accuracy vs. Cost)",
       ],
     },
     {
@@ -65,9 +64,9 @@ export default function SolveXBioPS() {
       theme: "Health-Tech Behavioral Intervention",
       icon: <Smartphone className="w-6 h-6" />,
       background:
-        "Excessive screen time leads to mental health issues and sleep disorders. Existing software gaps require interventions combining psychology with biomedical tech.",
+        "Excessive screen time contributes to mental health issues and sleep disorders. Current tools lack active intervention.",
       challenge:
-        "Propose an innovative solution (wearable or bio-feedback) to detect, monitor, and mitigate mobile addiction.",
+        "Combine behavioural psychology with physiological sensing (eye strain, stress, posture) to actively influence user behaviour.",
       vitals: [
         "Eye Strain",
         "Stress Levels",
@@ -77,7 +76,7 @@ export default function SolveXBioPS() {
       requirements: [
         {
           label: "Mechanism",
-          desc: "How it detects addiction (Screen time vs. Stress).",
+          desc: "Clear explanation of detection logic.",
         },
         {
           label: "Intervention",
@@ -85,25 +84,25 @@ export default function SolveXBioPS() {
         },
         {
           label: "User Centricity",
-          desc: "Non-intrusive but effective behavior alteration.",
+          desc: "Non-intrusive long-term modification.",
         },
         {
           label: "Tech Stack",
-          desc: "Integration of software and hardware components.",
+          desc: "Defined software/hardware integration.",
         },
       ],
       deliverables: [
-        "Concept note explaining the tech stack.",
-        "User workflow (Interaction mapping).",
-        "Impact analysis on mental/physical health.",
+        "Concept note of the technology stack ",
+        "User workflow detailing system interaction ",
+        "Impact analysis on mental/physical health ",
       ],
     },
   ];
 
   return (
-    <div className="relative min-h-screen text-emerald-100 font-mono p-4 md:p-8">
+    <div className="relative min-h-screen bg-black/30 text-emerald-100 font-mono p-4 md:p-8">
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* --- DYNAMIC HEADER --- */}
+        {/* --- HEADER --- */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 border-b border-emerald-500/30 pb-8 gap-6">
           <div className="space-y-2">
             <button
@@ -111,19 +110,16 @@ export default function SolveXBioPS() {
               className="flex items-center gap-2 text-emerald-400 hover:text-white transition-colors group"
             >
               <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              <span className="text-[10px] tracking-[0.4em] uppercase font-bold">
+              <span className="text-[10px] tracking-[0.4em] uppercase font-bold text-emerald-500/80">
                 Return to Events
               </span>
             </button>
-            <h1 className="text-6xl font-black tracking-tighter text-white uppercase italic">
-              SolveX<span className="text-emerald-500 animate-pulse">Bio</span>
+            <h1 className="text-5xl md:text-6xl font-black tracking-tighter text-white uppercase italic">
+              SolveX<span className="text-emerald-500">Bio</span>
             </h1>
-            <div className="flex items-center gap-3">
-              <span className="h-px w-12 bg-emerald-500"></span>
-              <p className="text-[10px] text-emerald-500/80 tracking-[0.3em] uppercase">
-                Biocrats Club • IIT Indore
-              </p>
-            </div>
+            <p className="text-[10px] text-emerald-500/60 tracking-[0.3em] uppercase">
+              Biotech & Biomedical Problem-Solving Challenge
+            </p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full lg:w-auto">
@@ -134,7 +130,7 @@ export default function SolveXBioPS() {
             />
             <HeaderTag
               icon={<Globe size={14} />}
-              label="Access"
+              label="Eligibility"
               value="Open to All"
             />
             <HeaderTag
@@ -144,18 +140,18 @@ export default function SolveXBioPS() {
             />
             <HeaderTag
               icon={<ShieldAlert size={14} />}
-              label="Security"
-              value="Plagiarism Check"
+              label="Integrity"
+              value="No Plagiarism"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* --- LEFT COLUMN: NAVIGATION & RULES --- */}
+          {/* --- SIDEBAR: NAVIGATION & SCORING --- */}
           <div className="lg:col-span-4 space-y-6">
             <section>
-              <h3 className="text-[10px] text-emerald-500 uppercase tracking-widest mb-4 flex items-center gap-2">
-                <Microscope className="w-3 h-3" /> Select_Objective
+              <h3 className="text-[10px] text-emerald-500 uppercase tracking-widest mb-4 flex items-center gap-2 font-bold">
+                <Microscope className="w-3 h-3" /> Select_Problem_Statement
               </h3>
               <div className="space-y-3">
                 {medicalBriefs.map((brief, idx) => (
@@ -164,8 +160,8 @@ export default function SolveXBioPS() {
                     onClick={() => setActiveTab(idx)}
                     className={`w-full p-5 text-left rounded-xl border transition-all duration-300 relative overflow-hidden ${
                       activeTab === idx
-                        ? "bg-emerald-500/20 border-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.1)]"
-                        : "bg-black/20 border-emerald-500/10 hover:border-emerald-500/40"
+                        ? "bg-emerald-500/10 border-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.1)]"
+                        : "bg-black/40 border-emerald-500/10 hover:border-emerald-500/40"
                     }`}
                   >
                     <div className="flex items-center gap-4 relative z-10">
@@ -176,78 +172,93 @@ export default function SolveXBioPS() {
                       </div>
                       <div>
                         <p className="text-[9px] text-emerald-500/50 uppercase font-bold tracking-tighter">
-                          Mission_0{brief.id}
+                          PS_0{brief.id}
                         </p>
                         <h4 className="text-sm font-bold text-white uppercase">
                           {brief.title}
                         </h4>
                       </div>
                     </div>
-                    {activeTab === idx && (
-                      <motion.div
-                        layoutId="tab-indicator"
-                        className="absolute inset-0 bg-linear-to-r from-emerald-500/10 to-transparent"
-                      />
-                    )}
                   </button>
                 ))}
               </div>
             </section>
 
-            {/* Protocol Module */}
-            <div className="p-6 bg-black/40 border border-emerald-500/20 rounded-2xl space-y-4">
-              <h4 className="text-[10px] text-emerald-400 uppercase tracking-widest flex items-center gap-2">
-                <Zap className="w-3 h-3" /> Event_Protocols
+            {/* Judging Criteria Table */}
+            <div className="p-6 bg-black/40 border border-emerald-500/20 rounded-2xl">
+              <h4 className="text-[10px] text-emerald-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                <ClipboardCheck className="w-3 h-3" /> Evaluation_Matrix (100
+                Marks)
               </h4>
-              <ul className="space-y-3">
-                <ProtocolItem
-                  label="Prep Phase"
-                  desc="Internet access permitted for research."
-                  color="text-emerald-400"
+              <div className="space-y-3">
+                <RubricRow
+                  label="Problem Understanding"
+                  marks="20"
+                  desc="Clarity of core issue"
                 />
-                <ProtocolItem
+                <RubricRow
+                  label="Innovation"
+                  marks="25"
+                  desc="Novelty/Creativity"
+                />
+                <RubricRow
+                  label="Feasibility"
+                  marks="25"
+                  desc="Practical implementability"
+                />
+                <RubricRow
                   label="Presentation"
-                  desc="No internet access allowed."
-                  color="text-red-400"
+                  marks="15"
+                  desc="Communication style"
                 />
-                <ProtocolItem
-                  label="Q&A Session"
-                  desc="Conceptual clarity defense required."
-                  color="text-blue-400"
+                <RubricRow
+                  label="Teamwork & Q&A"
+                  marks="15"
+                  desc="Idea defense"
                 />
-              </ul>
+              </div>
             </div>
 
-            {/* Evaluation Matrix */}
-            <div className="p-6 bg-emerald-950/10 border border-emerald-500/10 rounded-2xl">
-              <h4 className="text-[10px] text-emerald-400 uppercase tracking-widest mb-4 flex items-center gap-2">
-                <ClipboardCheck className="w-3 h-3" /> Scoring_Rubric
+            {/* Rules Module */}
+            <div className="p-6 bg-emerald-950/20 border border-emerald-500/10 rounded-2xl space-y-4">
+              <h4 className="text-[10px] text-red-400 uppercase tracking-widest flex items-center gap-2 font-bold">
+                <AlertTriangle className="w-3 h-3" /> Compliance_Protocols
               </h4>
-              <div className="space-y-2">
-                <RubricRow label="Problem Understanding" marks="20" />
-                <RubricRow label="Innovation & Novelty" marks="25" />
-                <RubricRow label="Feasibility" marks="25" />
-                <RubricRow label="Presentation" marks="15" />
-                <RubricRow label="Teamwork & Q&A" marks="15" />
-              </div>
+              <ul className="space-y-3 text-[10px]">
+                <li className="text-gray-400">
+                  <span className="text-emerald-400 font-bold">
+                    PREP PHASE:
+                  </span>{" "}
+                  Internet access allowed for research.
+                </li>
+                <li className="text-gray-400">
+                  <span className="text-red-500 font-bold">LIVE SESSIONS:</span>{" "}
+                  Internet access strictly prohibited.
+                </li>
+                <li className="text-gray-400">
+                  <span className="text-emerald-400 font-bold">
+                    REGISTRATION:
+                  </span>{" "}
+                  Mandatory via Google Form before deadline.
+                </li>
+              </ul>
             </div>
           </div>
 
-          {/* --- RIGHT COLUMN: MISSION DATA --- */}
+          {/* --- MAIN CONTENT: PS DETAILS --- */}
           <div className="lg:col-span-8 space-y-6">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                className="bg-black/40 border border-emerald-500/20 rounded-3xl p-8 backdrop-blur-md"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                className="bg-black/40 border border-emerald-500/20 rounded-3xl p-8 backdrop-blur-sm"
               >
-                {/* Background & Challenge */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   <div className="space-y-4">
                     <h5 className="text-[10px] text-emerald-500 uppercase tracking-widest border-b border-emerald-500/20 pb-2">
-                      01_Background
+                      Contextual_Background
                     </h5>
                     <p className="text-xs leading-relaxed text-gray-400 italic">
                       "{medicalBriefs[activeTab].background}"
@@ -255,7 +266,7 @@ export default function SolveXBioPS() {
                   </div>
                   <div className="space-y-4">
                     <h5 className="text-[10px] text-emerald-500 uppercase tracking-widest border-b border-emerald-500/20 pb-2">
-                      02_The_Challenge
+                      The_Challenge
                     </h5>
                     <p className="text-xs leading-relaxed text-emerald-50">
                       {medicalBriefs[activeTab].challenge}
@@ -263,21 +274,20 @@ export default function SolveXBioPS() {
                   </div>
                 </div>
 
-                {/* Requirements Grid */}
                 <div className="mb-8">
                   <h5 className="text-[10px] text-emerald-500 uppercase tracking-widest mb-4">
-                    03_Technical_Requirements
+                    Technical_Specs & Requirements
                   </h5>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {medicalBriefs[activeTab].requirements.map((req, i) => (
                       <div
                         key={i}
-                        className="flex flex-col p-4 bg-emerald-500/5 border border-white/5 rounded-xl hover:border-emerald-500/30 transition-colors"
+                        className="flex flex-col p-4 bg-emerald-500/5 border border-white/5 rounded-xl"
                       >
                         <span className="text-[10px] font-bold text-emerald-400 uppercase mb-1">
                           {req.label}
                         </span>
-                        <span className="text-[11px] text-gray-400 leading-tight">
+                        <span className="text-[11px] text-gray-400">
                           {req.desc}
                         </span>
                       </div>
@@ -285,11 +295,10 @@ export default function SolveXBioPS() {
                   </div>
                 </div>
 
-                {/* Deliverables & Actions */}
                 <div className="flex flex-col md:flex-row gap-6 items-center border-t border-emerald-500/20 pt-8">
                   <div className="flex-1 space-y-3 w-full">
-                    <h5 className="text-[10px] text-emerald-500 uppercase tracking-widest">
-                      Required_Deliverables
+                    <h5 className="text-[10px] text-emerald-500 uppercase tracking-widest flex items-center gap-2">
+                      <FileText className="w-3 h-3" /> Required_Deliverables
                     </h5>
                     {medicalBriefs[activeTab].deliverables.map((item, i) => (
                       <div
@@ -303,14 +312,7 @@ export default function SolveXBioPS() {
                   </div>
 
                   <div className="shrink-0 w-full md:w-auto">
-                    <button
-                      onClick={() =>
-                        router.push(
-                          `/present/registration?event=${activeTab == 0 ? "patient_monitor" : "screen_addiction"}`,
-                        )
-                      }
-                      className="w-full md:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-xl flex items-center justify-center gap-3 transition-all transform hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(16,185,129,0.4)]"
-                    >
+                    <button className="w-full md:w-auto px-10 py-5 bg-emerald-500 hover:bg-emerald-400 text-black font-black rounded-xl flex items-center justify-center gap-3 transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(16,185,129,0.3)]">
                       <Cpu size={18} />
                       INITIALIZE REGISTRATION
                       <ArrowRight size={16} />
@@ -320,37 +322,40 @@ export default function SolveXBioPS() {
               </motion.div>
             </AnimatePresence>
 
-            {/* Footer Prize Pool */}
-            <div className="bg-linear-to-r from-emerald-500/10 to-transparent border border-emerald-500/20 rounded-2xl p-6 flex flex-wrap justify-between items-center gap-6">
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-emerald-500/20 rounded-full">
-                  <Activity className="w-6 h-6 text-emerald-400 animate-pulse" />
-                </div>
+            {/* Prize Pool & Incentives */}
+            <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-3xl p-8">
+              <div className="flex flex-col md:flex-row justify-between items-center gap-8">
                 <div>
-                  <h3 className="text-sm font-bold text-white uppercase tracking-widest">
-                    Incentive Registry
+                  <h3 className="text-sm font-black text-white uppercase tracking-[0.2em]">
+                    SolveX_Bounty_Registry
                   </h3>
                   <p className="text-[9px] text-emerald-500/60 uppercase">
-                    Performance-based awards
+                    Reward Distribution per PS
                   </p>
                 </div>
-              </div>
 
-              <div className="flex gap-8">
-                <BountyNode rank="ALPHA" amount="7K" />
-                <BountyNode rank="BETA" amount="5K" />
-                <BountyNode rank="GAMMA" amount="3K" />
-              </div>
+                <div className="flex gap-10">
+                  <BountyNode rank="ALPHA" amount="7,000" color="text-white" />
+                  <BountyNode
+                    rank="BETA"
+                    amount="5,000"
+                    color="text-gray-300"
+                  />
+                  <BountyNode
+                    rank="GAMMA"
+                    amount="3,000"
+                    color="text-gray-400"
+                  />
+                </div>
 
-              <div className="h-10 w-px bg-emerald-500/20 hidden md:block" />
-
-              <div className="text-right">
-                <span className="text-[9px] text-emerald-500 uppercase block font-bold">
-                  Total Pool
-                </span>
-                <span className="text-2xl font-black text-white tracking-tighter">
-                  ₹15,000
-                </span>
+                <div className="px-6 py-4 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-center">
+                  <span className="text-[9px] text-emerald-500 uppercase block font-bold mb-1">
+                    Total Pool
+                  </span>
+                  <span className="text-2xl font-black text-emerald-400 italic font-mono">
+                    ₹15,000
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -360,14 +365,12 @@ export default function SolveXBioPS() {
   );
 }
 
-// --- Internal Augmented Components ---
-
 function HeaderTag({ icon, label, value }) {
   return (
-    <div className="flex items-center gap-3 bg-emerald-500/5 border border-emerald-500/10 p-3 rounded-xl">
+    <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl">
       <div className="text-emerald-500">{icon}</div>
       <div>
-        <span className="text-[7px] text-gray-500 uppercase block leading-none mb-1 tracking-widest">
+        <span className="text-[7px] text-gray-500 uppercase block leading-none mb-1">
           {label}
         </span>
         <span className="text-[10px] font-bold text-white uppercase whitespace-nowrap">
@@ -378,33 +381,29 @@ function HeaderTag({ icon, label, value }) {
   );
 }
 
-function ProtocolItem({ label, desc, color }) {
+function RubricRow({ label, marks, desc }) {
   return (
-    <li className="flex flex-col gap-1">
-      <span className={`text-[9px] font-bold uppercase ${color}`}>{label}</span>
-      <span className="text-[10px] text-gray-500 leading-none">{desc}</span>
-    </li>
-  );
-}
-
-function RubricRow({ label, marks }) {
-  return (
-    <div className="flex justify-between items-center text-[10px] group border-b border-white/5 pb-1">
-      <span className="text-gray-500 group-hover:text-emerald-300 transition-colors uppercase">
-        {label}
-      </span>
-      <span className="text-emerald-500 font-bold">{marks}</span>
+    <div className="group space-y-1">
+      <div className="flex justify-between items-center text-[10px] border-b border-white/5 pb-1">
+        <span className="text-gray-400 uppercase font-bold">{label}</span>
+        <span className="text-emerald-500 font-bold">{marks} Marks</span>
+      </div>
+      <p className="text-[9px] text-gray-500 italic hidden group-hover:block transition-all">
+        {desc}
+      </p>
     </div>
   );
 }
 
-function BountyNode({ rank, amount }) {
+function BountyNode({ rank, amount, color }) {
   return (
     <div className="text-center">
-      <div className="text-[7px] text-emerald-500/70 uppercase mb-1 font-bold tracking-tighter">
-        {rank}
+      <div className="text-[8px] text-emerald-500/70 uppercase mb-1 font-bold">
+        {rank}_Tier
       </div>
-      <div className="text-lg font-black text-white italic">₹{amount}</div>
+      <div className={`text-xl font-black ${color} italic font-mono`}>
+        ₹{amount}
+      </div>
     </div>
   );
 }

@@ -5,18 +5,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Zap,
   Timer,
-  Binary,
-  Trophy,
   Target,
   Sigma,
-  Pi,
   ChevronLeft,
   Users,
-  Cpu,
   Globe,
   Award,
   BookOpen,
   Terminal,
+  ShieldAlert,
+  HardDrive,
+  Layout,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -31,26 +30,26 @@ export default function MatiksPS() {
       subtitle: "Entry Protocol",
       icon: <Users className="w-5 h-5" />,
       context:
-        "Individual participant registration phase. Open to school students (8th standard onwards) and undergraduate students.",
+        "Initial intake for individual participants. Open to School Students (8th standard onwards) and Undergraduate students.",
       specs: [
-        "Individual participation format.",
-        "Targeting 70-100 participants.",
-        "Focus on school and UG demographics.",
-        "Gateway to Ingenium 3.0 technical events.",
+        "Individual participation required.",
+        // "Target audience: 8th grade through UG.",
+        // "Expected footfall: 70-100 participants.",
+        "Registration via portal interface.",
       ],
     },
     {
       id: 2,
       title: "Preliminary Rounds",
-      subtitle: "Rapid-Fire Execution",
+      subtitle: "Brain Blitz Phase",
       icon: <Timer className="w-5 h-5" />,
       context:
-        "Rapid-fire questions testing speed and accuracy via the Matiks online portal in an offline setting.",
+        "A fast-paced knockout stage conducted via the Matiks online portal in an offline setting. Focuses on speed and numerical intuition.",
       specs: [
-        "Short, time-bound questions.",
-        "Tests numerical intuition & pattern recognition.",
-        "Multiple elimination-based rounds.",
-        "Conducted in lecture/seminar halls.",
+        "Rapid-fire questions.",
+        "Tests pattern recognition & intuition.",
+        "Multiple elimination rounds.",
+        "Portal-based offline execution.",
       ],
     },
     {
@@ -59,18 +58,18 @@ export default function MatiksPS() {
       subtitle: "Logic Manifold",
       icon: <Sigma className="w-5 h-5" />,
       context:
-        "The peak of the tournament featuring advanced logical and visual puzzles to determine the ultimate winners.",
+        "The ultimate tier featuring advanced logical and visual puzzles to determine the tournament champions.",
       specs: [
         "Advanced difficulty scaling.",
-        "Emphasis on non-routine problem types.",
-        "Judging based on consistency across rounds.",
-        "Final determination of Matiks Champions.",
+        "Non-routine problem archetypes.",
+        "Visual puzzle solving.",
+        "Real-time reasoning assessment.",
       ],
     },
   ];
 
   return (
-    <div className="relative min-h-screen text-rose-100 font-mono p-4 md:p-8">
+    <div className="relative min-h-screen text-rose-100 font-mono p-4 md:p-8 bg-black/30">
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* --- TACTICAL HEADER --- */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 border-b border-rose-500/30 pb-8">
@@ -85,27 +84,26 @@ export default function MatiksPS() {
               </span>
             </button>
             <div className="flex items-center gap-3">
-              <div className="bg-rose-500 p-2 rounded-sm">
+              <div className="bg-rose-500 p-2 rounded-sm shadow-[0_0_15px_rgba(244,63,94,0.5)]">
                 <Sigma className="w-8 h-8 text-black" />
               </div>
               <h1 className="text-5xl font-black tracking-tighter text-white uppercase">
                 Matiks <span className="text-rose-500 italic">Tournament</span>
               </h1>
             </div>
+            <p className="text-[10px] text-rose-500/80 mt-4 tracking-[0.4em] uppercase font-bold">
+              Infinitrix - The Math Club // Ingenium 3.0
+            </p>
           </div>
 
           <div className="mt-6 lg:mt-0 grid grid-cols-2 gap-3">
-            <HeaderStat
-              icon={<Globe />}
-              label="Mode"
-              value="Offline (Portal)"
-            />
+            <HeaderStat icon={<Globe />} label="Mode" value="Offline Portal" />
             <HeaderStat icon={<Timer />} label="Duration" value="2 Hours" />
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* --- LEFT COLUMN: NAVIGATION & ANALYTICS --- */}
+          {/* --- LEFT COLUMN: INTEL & REQS --- */}
           <div className="lg:col-span-4 space-y-6">
             <div className="space-y-3">
               <h3 className="text-[10px] text-rose-500 uppercase tracking-widest mb-4 flex items-center gap-2">
@@ -127,51 +125,28 @@ export default function MatiksPS() {
                     >
                       0{stage.id}
                     </span>
-                    <div>
-                      <h4
-                        className={`text-sm font-bold uppercase tracking-tighter ${activePhase === idx ? "text-white" : "text-white/60"}`}
-                      >
-                        {stage.title}
-                      </h4>
-                    </div>
+                    <h4
+                      className={`text-sm font-bold uppercase tracking-tighter ${activePhase === idx ? "text-white" : "text-white/60"}`}
+                    >
+                      {stage.title}
+                    </h4>
                   </div>
                 </button>
               ))}
             </div>
 
-            {/* Judging Parameters HUD */}
+            {/* Judging Criteria */}
             <div className="p-6 bg-black/60 border border-rose-500/20 rounded-2xl">
               <h4 className="text-[10px] text-rose-500 uppercase tracking-widest mb-4 flex items-center gap-2">
-                <Target className="w-3 h-3" /> Evaluation_Vector
+                <Layout className="w-3 h-3" /> Evaluation_Vector
               </h4>
               <div className="space-y-3">
                 <EvaluationRow label="Solution Accuracy" value="Primary" />
                 <EvaluationRow label="Response Speed" value="Critical" />
                 <EvaluationRow label="Logical Reasoning" value="High" />
-                <EvaluationRow label="Round Consistency" value="Required" />
+                <EvaluationRow label="Consistency" value="Required" />
               </div>
             </div>
-
-            {/* Logistical Requirements
-            <div className="p-6 border border-white/5 rounded-2xl bg-white/5">
-              <h4 className="text-[10px] text-white/40 uppercase tracking-widest mb-4">
-                Logistics_Protocol
-              </h4>
-              <ul className="text-[11px] space-y-2 text-rose-100/60">
-                <li className="flex justify-between">
-                  <span>Venue:</span>{" "}
-                  <span className="text-white">Lecture Hall</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>Infrastructure:</span>{" "}
-                  <span className="text-white">Power/Net</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>System:</span>{" "}
-                  <span className="text-white">Matiks Portal</span>
-                </li>
-              </ul>
-            </div> */}
           </div>
 
           {/* --- RIGHT COLUMN: DYNAMIC CONTENT --- */}
@@ -182,7 +157,7 @@ export default function MatiksPS() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
-                className="bg-black/40 border border-rose-500/20 rounded-3xl p-8 backdrop-blur-md relative overflow-hidden"
+                className="bg-black/60 border border-rose-500/20 rounded-3xl p-8 backdrop-blur-md relative overflow-hidden"
               >
                 <div className="relative z-10">
                   <div className="flex justify-between items-start mb-6">
@@ -209,7 +184,7 @@ export default function MatiksPS() {
                     {eventStages[activePhase].specs.map((spec, i) => (
                       <div
                         key={i}
-                        className="flex gap-4 p-4 bg-white/5 border border-white/5 rounded-xl"
+                        className="flex gap-4 p-4 bg-white/5 border border-white/5 rounded-xl hover:border-rose-500/30 transition-colors"
                       >
                         <Zap className="w-4 h-4 text-rose-500 shrink-0 mt-1" />
                         <span className="text-[11px] text-gray-400">
@@ -235,74 +210,70 @@ export default function MatiksPS() {
               </motion.div>
             </AnimatePresence>
 
-            {/* Outcomes & Rewards Grid */}
+            {/* Prizes & Rules Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Rewards */}
-              <div className="bg-rose-500/10 border border-rose-500/20 rounded-2xl p-6">
+              {/* Bounty Registry */}
+              <div className="bg-rose-500/10 border border-rose-500/20 rounded-2xl p-6 relative overflow-hidden">
                 <div className="flex items-center gap-3 mb-4 text-rose-500">
                   <Award className="w-5 h-5" />
                   <h3 className="text-xs font-bold uppercase tracking-widest">
                     Bounty_Registry
                   </h3>
                 </div>
-                <div className="flex items-end gap-2">
-                  <span className="text-4xl font-black text-white">
-                    ₹10,000
-                  </span>
-                  <span className="text-[10px] text-rose-500 uppercase pb-2">
-                    Cash Prize*
-                  </span>
+                <div className="grid grid-cols-2 gap-4">
+                  <PrizeStat label="Winner" value="₹5,000" />
+                  <PrizeStat label="Runner Up" value="₹3,000" />
+                  <PrizeStat label="3rd Place" value="₹2,000" />
+                  <PrizeStat label="Total Pool" value="₹10,000" highlight />
                 </div>
-                <p className="text-[9px] text-white/40 mt-2 italic">
-                  *Total Prize Pool
-                </p>
               </div>
 
-              {/* Outcomes */}
-              <div className="bg-black/40 border border-white/10 rounded-2xl p-6">
+              {/* Rules & Compliance */}
+              <div className="bg-black/60 border border-white/10 rounded-2xl p-6">
                 <div className="flex items-center gap-3 mb-4 text-rose-500">
-                  <BookOpen className="w-5 h-5" />
+                  <ShieldAlert className="w-5 h-5" />
                   <h3 className="text-xs font-bold uppercase tracking-widest">
-                    Projected_Outcomes
+                    Rules_Compliance
                   </h3>
                 </div>
-                <ul className="text-[10px] space-y-1 text-white/60">
-                  <li>• Improved Speed & Reasoning</li>
-                  <li>• Higher Math Engagement</li>
-                  <li>• Interactive Discipline Perception</li>
+                <ul className="text-[10px] space-y-2 text-white/60">
+                  <li className="flex gap-2">
+                    <span>•</span>{" "}
+                    <span>Individual participation is mandatory.</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span>•</span>{" "}
+                    <span>Rules subject to organizer discretion.</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span>•</span> <span>Must use provided Matiks portal.</span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span>•</span>{" "}
+                    <span>Focus on intuition over lengthy calculation.</span>
+                  </li>
                 </ul>
               </div>
             </div>
+
+            {/* Outcomes Block */}
+            <div className="bg-white/5 border border-white/5 rounded-2xl p-6">
+              <div className="flex items-center gap-3 mb-4 text-rose-500">
+                <BookOpen className="w-5 h-5" />
+                <h3 className="text-xs font-bold uppercase tracking-widest">
+                  Strategic_Impact
+                </h3>
+              </div>
+              <p className="text-[11px] text-white/60 leading-relaxed">
+                MATIKS aims to break the stereotype of rigid mathematical
+                methods by emphasizing speed and practical reasoning. Expected
+                outcomes include improved logical reasoning skills, enhanced
+                student engagement with technical events, and fostering a
+                competitive spirit aligned with Ingenium 3.0.
+              </p>
+            </div>
           </div>
         </div>
-
-        {/* --- FOOTER COORDINATOR INFO --- */}
-        {/* <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 rounded-full bg-rose-500/20 flex items-center justify-center border border-rose-500/40">
-              <Cpu className="w-5 h-5 text-rose-500" />
-            </div>
-            <div>
-              <p className="text-[8px] text-white/40 uppercase tracking-[0.2em]">
-                Submitted_By
-              </p>
-              <p className="text-xs font-bold text-white uppercase">
-                Infinitrix - The Math Club
-              </p>
-            </div>
-          </div>
-          <div className="text-right">
-            <p className="text-[8px] text-white/40 uppercase tracking-[0.2em]">
-              Project_Lead
-            </p>
-            <p className="text-xs font-bold text-rose-500 uppercase">
-              Harshith Jai Surya Ganji
-            </p>
-            <p className="text-[10px] text-white/60 italic">
-              Co-Head, Infinitrix // +91 9014153864
-            </p>
-          </div>
-        </div> */}
       </div>
     </div>
   );
@@ -312,7 +283,7 @@ export default function MatiksPS() {
 
 function HeaderStat({ icon, label, value }) {
   return (
-    <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl">
+    <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl backdrop-blur-sm">
       <div className="text-rose-500 w-4 h-4">{icon}</div>
       <div>
         <span className="text-[8px] text-gray-500 uppercase block leading-none mb-1">
@@ -330,7 +301,22 @@ function EvaluationRow({ label, value }) {
   return (
     <div className="flex justify-between items-center text-[10px] border-b border-white/5 pb-2">
       <span className="text-gray-500 uppercase tracking-tighter">{label}</span>
-      <span className="text-rose-400 font-bold">{value}</span>
+      <span className="text-rose-400 font-bold italic">{value}</span>
+    </div>
+  );
+}
+
+function PrizeStat({ label, value, highlight = false }) {
+  return (
+    <div
+      className={`p-2 rounded-lg ${highlight ? "bg-rose-500/20 border border-rose-500/40" : "bg-white/5"}`}
+    >
+      <span className="text-[8px] text-gray-500 uppercase block">{label}</span>
+      <span
+        className={`text-sm font-black ${highlight ? "text-rose-400" : "text-white"}`}
+      >
+        {value}
+      </span>
     </div>
   );
 }

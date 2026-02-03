@@ -17,6 +17,9 @@ import {
   Zap,
   Globe,
   Award,
+  AlertCircle,
+  Clock,
+  ExternalLink,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -24,6 +27,7 @@ export default function QuantumHackathonPS() {
   const [activeLayer, setActiveLayer] = useState(0);
   const router = useRouter();
 
+  // Integrated Pipeline Stages
   const pipelineStages = [
     {
       id: 1,
@@ -34,7 +38,7 @@ export default function QuantumHackathonPS() {
         "Design quantum circuits where qubit connectivity and state preparation encode 'territorial' information into the quantum system.",
       technical: [
         "Define input-output pipelines for map data.",
-        "Implement state preparation logic for 'territorial' info.",
+        "Implement state preparation logic for spatial info.",
         "Innovate on encoding strategies beyond original research.",
         "Synthesize hardware-ready circuits using Qiskit.",
       ],
@@ -70,7 +74,7 @@ export default function QuantumHackathonPS() {
   ];
 
   return (
-    <div className="relative min-h-screen text-cyan-100 font-mono p-4 md:p-8">
+    <div className="relative min-h-screen bg-black/30 text-cyan-100 font-mono p-4 md:p-8 backdrop-blur-sm">
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* --- DYNAMIC HEADER SYSTEM --- */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 border-b border-cyan-500/30 pb-8 gap-6">
@@ -89,7 +93,7 @@ export default function QuantumHackathonPS() {
                 Q-<span className="text-cyan-500">MAP</span> GEN
               </h1>
               <div className="px-3 py-1 bg-cyan-500 text-black text-[10px] font-bold -skew-x-12">
-                HACKATHON v3.0
+                QML TRACK
               </div>
             </div>
             <p className="text-[11px] text-cyan-500/80 tracking-[0.3em] uppercase flex items-center gap-2">
@@ -99,7 +103,7 @@ export default function QuantumHackathonPS() {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <HeaderNode icon={<Orbit />} label="Duration" value="24-48 Hours" />
+            <HeaderNode icon={<Clock />} label="Duration" value="24-48 Hours" />
             <HeaderNode
               icon={<Binary />}
               label="Stack"
@@ -108,7 +112,7 @@ export default function QuantumHackathonPS() {
             <HeaderNode icon={<Globe />} label="Mode" value="Online" />
             <button
               onClick={() => router.push(`/present/registration?event=qml`)}
-              className="bg-cyan-500 hover:bg-cyan-400 text-black px-6 py-3 rounded-lg font-black text-xs uppercase tracking-widest transition-all hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] active:scale-95"
+              className="bg-cyan-500 hover:bg-cyan-400 text-black px-6 py-4 rounded-lg font-black text-xs uppercase tracking-widest transition-all hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] active:scale-95 border-b-4 border-cyan-700"
             >
               Register_Now
             </button>
@@ -126,55 +130,53 @@ export default function QuantumHackathonPS() {
               <p className="text-xs leading-relaxed text-gray-300">
                 Bridge the gap between theoretical knowledge and practical
                 implementation. Targeting{" "}
-                <span className="text-cyan-400">UG/PG Students</span> to explore
-                probabilistic outcomes over traditional classical methods.
+                <span className="text-cyan-400 font-bold">UG/PG Students</span>{" "}
+                to explore probabilistic outcomes over traditional classical
+                methods in game development.
               </p>
             </div>
 
-            {/* Pipeline Navigation */}
-            <div className="space-y-3">
-              <h3 className="text-[10px] text-cyan-500 uppercase tracking-widest ml-2 mb-2">
-                Technical_Stages
+            {/* Event Structure */}
+            <div className="p-6 bg-white/5 border border-white/10 rounded-2xl">
+              <h3 className="text-[10px] text-cyan-500 uppercase tracking-widest mb-4">
+                Phase_Cycle
               </h3>
-              {pipelineStages.map((stage, idx) => (
-                <button
-                  key={stage.id}
-                  onClick={() => setActiveLayer(idx)}
-                  className={`w-full p-5 text-left rounded-xl border transition-all duration-300 group relative ${
-                    activeLayer === idx
-                      ? "bg-cyan-500/20 border-cyan-500 shadow-[0_0_15px_rgba(6,182,212,0.15)]"
-                      : "bg-white/5 border-white/10 hover:border-cyan-500/40"
-                  }`}
-                >
-                  <div className="flex items-center gap-4">
-                    <div
-                      className={`p-2 rounded-md ${activeLayer === idx ? "bg-cyan-500 text-black" : "bg-cyan-900/50 text-cyan-500"}`}
-                    >
-                      {stage.icon}
-                    </div>
+              <div className="space-y-4">
+                {[
+                  { p: "Phase 1", d: "Registration & PS Release" },
+                  { p: "Phase 2", d: "Development & Implementation" },
+                  { p: "Phase 3", d: "Final Submission & Evaluation" },
+                ].map((phase, i) => (
+                  <div key={i} className="flex gap-4 items-center">
+                    <div className="w-2 h-2 rounded-full bg-cyan-500" />
                     <div>
-                      <h4 className="text-[11px] font-bold uppercase text-white tracking-tight">
-                        {stage.title}
-                      </h4>
-                      <p className="text-[9px] text-cyan-500/60 uppercase">
-                        {stage.sub}
+                      <p className="text-[10px] font-bold text-white uppercase">
+                        {phase.p}
+                      </p>
+                      <p className="text-[9px] text-gray-500 uppercase">
+                        {phase.d}
                       </p>
                     </div>
                   </div>
-                </button>
-              ))}
+                ))}
+              </div>
             </div>
 
             {/* Research Anchor */}
-            <div className="p-6 bg-cyan-950/30 border-l-4 border-cyan-500 rounded-r-2xl">
+            <div className="p-6 bg-cyan-950/30 border-l-4 border-cyan-500 rounded-r-2xl relative group">
               <h4 className="text-[10px] text-cyan-400 uppercase font-bold mb-2 flex items-center gap-2">
                 <Dna className="w-3 h-3" /> Research_Anchor
               </h4>
-              <p className="text-[10px] leading-relaxed text-gray-400 italic">
-                "A Quantum Procedure for Map Generation" (arXiv: 2005.10327).
-                Focus on translating theoretical concepts into complete,
-                end-to-end implementations.
+              <p className="text-[10px] leading-relaxed text-gray-400 italic mb-2">
+                "A Quantum Procedure for Map Generation".
               </p>
+              <a
+                href="https://arxiv.org/abs/2005.10327"
+                target="_blank"
+                className="text-[9px] text-cyan-600 flex items-center gap-1 hover:text-cyan-400 transition-colors"
+              >
+                VIEW SOURCE <ExternalLink className="w-2 h-2" />
+              </a>
             </div>
           </div>
 
@@ -187,7 +189,7 @@ export default function QuantumHackathonPS() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="bg-black/60 border border-cyan-500/20 rounded-3xl p-8 backdrop-blur-2xl relative min-h-105"
+                className="bg-black/60 border border-cyan-500/20 rounded-3xl p-8 backdrop-blur-2xl relative min-h-110"
               >
                 <div className="flex justify-between items-start mb-6">
                   <div>
@@ -195,7 +197,7 @@ export default function QuantumHackathonPS() {
                       {pipelineStages[activeLayer].title}
                     </h2>
                     <p className="text-cyan-500 text-[10px] tracking-widest uppercase">
-                      System_Logic_Phase_0{activeLayer + 1}
+                      Core_Module_0{activeLayer + 1}
                     </p>
                   </div>
                   <Zap className="text-cyan-500 w-6 h-6 animate-pulse" />
@@ -211,10 +213,10 @@ export default function QuantumHackathonPS() {
                   {pipelineStages[activeLayer].technical.map((item, i) => (
                     <div
                       key={i}
-                      className="flex gap-4 p-4 bg-white/5 border border-white/5 rounded-xl hover:bg-cyan-500/5 transition-colors group"
+                      className="flex gap-4 p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-cyan-500/10 transition-all group"
                     >
                       <div className="text-cyan-500 text-[10px] font-bold mt-0.5">
-                        0{i + 1}
+                        [0{i + 1}]
                       </div>
                       <span className="text-[11px] leading-relaxed text-gray-300 group-hover:text-white transition-colors">
                         {item}
@@ -222,33 +224,34 @@ export default function QuantumHackathonPS() {
                     </div>
                   ))}
                 </div>
+
+                {/* Pipeline Tabs */}
+                <div className="absolute bottom-6 left-8 right-8 flex gap-2">
+                  {pipelineStages.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveLayer(idx)}
+                      className={`h-1 flex-1 rounded-full transition-all ${activeLayer === idx ? "bg-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.8)]" : "bg-white/10 hover:bg-white/20"}`}
+                    />
+                  ))}
+                </div>
               </motion.div>
             </AnimatePresence>
 
             {/* Judging & Rewards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Evaluation Metrics */}
               <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
                 <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-4 flex items-center gap-2">
-                  <Award className="w-4 h-4 text-cyan-500" /> Evaluation_Metrics
+                  <Award className="w-4 h-4 text-cyan-500" />{" "}
+                  Evaluation_Criteria
                 </h3>
                 <ul className="space-y-3">
                   {[
-                    {
-                      l: "Technical Depth",
-                      d: "Understanding of quantum encoding",
-                    },
-                    {
-                      l: "Visualization",
-                      d: "Clarity of the final generated map",
-                    },
-                    {
-                      l: "Innovation",
-                      d: "Creativity beyond baseline",
-                    },
-                    {
-                      l: "Presentation",
-                      d: "Soundness of the generative approach",
-                    },
+                    { l: "Technical Depth", d: "Encoding & circuit design" },
+                    { l: "Visualization", d: "Map clarity & coherence" },
+                    { l: "Innovation", d: "Creativity beyond baseline" },
+                    { l: "Explanation", d: "Clarity of design choices" },
                   ].map((item, i) => (
                     <li
                       key={i}
@@ -265,53 +268,37 @@ export default function QuantumHackathonPS() {
                 </ul>
               </div>
 
-              {/* Bounty Registry  */}
+              {/* Prize Pool & Compliances */}
               <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-2xl p-6 relative overflow-hidden">
                 <div className="absolute -right-4 -bottom-4 opacity-10">
                   <Trophy className="w-24 h-24 text-cyan-500" />
                 </div>
                 <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-4 flex items-center gap-2">
-                  <Trophy className="w-4 h-4 text-cyan-500" /> Bounty_Allocation
+                  <Trophy className="w-4 h-4 text-cyan-500" /> Bounty_Registry
                 </h3>
                 <div className="space-y-4">
-                  <div className="flex justify-between items-end">
+                  <div className="grid grid-cols-3 gap-2 text-center">
+                    <PrizeTier rank="1st" amount="7,000" />
+                    <PrizeTier rank="2nd" amount="5,000" />
+                    <PrizeTier rank="3rd" amount="3,000" />
+                  </div>
+                  <div className="flex justify-between items-center py-2 border-t border-cyan-500/30">
                     <span className="text-[10px] text-gray-400 uppercase">
-                      Prize Pool
+                      Total Pool
                     </span>
-                    <span className="text-2xl font-black text-white italic">
-                      ₹15,000{" "}
+                    <span className="text-xl font-black text-white italic">
+                      ₹15,000
                     </span>
                   </div>
-                  <div className="pt-4 border-t border-cyan-500/30">
-                    <p className="text-[9px] text-cyan-500/60 leading-tight uppercase">
-                      Total event allocation including digital certificates
+                  <div className="flex items-start gap-2 bg-black/40 p-3 rounded-lg border border-red-500/20">
+                    <AlertCircle className="w-3 h-3 text-red-400 shrink-0 mt-0.5" />
+                    <p className="text-[8px] text-red-200 leading-tight uppercase">
+                      Rules subject to change at organizer's discretion. Stable
+                      internet connectivity required.
                     </p>
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Footer Action */}
-            <div className="flex justify-between items-center p-6 bg-white/5 rounded-2xl border border-white/10">
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center border border-cyan-500/40">
-                  <Share2 className="w-5 h-5 text-cyan-400" />
-                </div>
-                <div>
-                  <p className="text-[10px] text-gray-400 uppercase">
-                    Organizer
-                  </p>
-                  <p className="text-xs font-bold text-white uppercase tracking-tight">
-                    Quantum Computing Club, IIT Indore
-                  </p>
-                </div>
-              </div>
-              <button
-                onClick={() => router.push(`/present/registration?event=qml`)}
-                className="bg-white text-black px-8 py-3 rounded-lg font-black text-xs uppercase tracking-tighter hover:bg-cyan-400 transition-all active:scale-95"
-              >
-                Register_Now
-              </button>
             </div>
           </div>
         </div>
@@ -320,9 +307,11 @@ export default function QuantumHackathonPS() {
   );
 }
 
+// --- Internal Components ---
+
 function HeaderNode({ icon, label, value }) {
   return (
-    <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl backdrop-blur-sm">
+    <div className="flex items-center gap-3 bg-black/40 border border-white/10 p-3 rounded-xl backdrop-blur-sm">
       <div className="text-cyan-500 p-1.5 bg-cyan-500/10 rounded-lg">
         {icon}
       </div>
@@ -334,6 +323,15 @@ function HeaderNode({ icon, label, value }) {
           {value}
         </span>
       </div>
+    </div>
+  );
+}
+
+function PrizeTier({ rank, amount }) {
+  return (
+    <div className="bg-black/20 p-2 rounded border border-white/5">
+      <p className="text-[8px] text-cyan-500 uppercase font-bold">{rank}</p>
+      <p className="text-sm font-black text-white italic">₹{amount}</p>
     </div>
   );
 }

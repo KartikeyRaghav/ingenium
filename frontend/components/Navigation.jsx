@@ -8,18 +8,20 @@ import { useRouter } from "next/navigation";
 // --- Configuration ---
 const NODES = [
   {
-    id: "past",
-    label: "PAST",
+    id: "heritage",
+    location: "past",
+    label: "HERITAGE",
     sub: "Origins",
     x: 20,
     y: 60,
     icon: <Clock className="w-6 h-6" />,
     color: "#f59e0b", // Amber
-    connections: ["present", "countdown"],
+    connections: ["events", "countdown"],
   },
   {
-    id: "present",
-    label: "PRESENT",
+    id: "events",
+    location: "present",
+    label: "EVENTS",
     sub: "Live Ops",
     x: 50,
     y: 50,
@@ -29,6 +31,7 @@ const NODES = [
   },
   {
     id: "future",
+    location: "future",
     label: "FUTURE",
     sub: "Vision",
     x: 80,
@@ -39,16 +42,18 @@ const NODES = [
   },
   {
     id: "countdown",
+    location: "countdown",
     label: "TIME CORE",
     sub: "Reactor",
     x: 50,
     y: 20,
     icon: <Zap className="w-6 h-6" />,
     color: "#06b6d4", // Cyan
-    connections: ["present"],
+    connections: ["events"],
   },
   {
     id: "contact",
+    location: "contact",
     label: "CONTACT",
     sub: "Uplink",
     x: 50,
@@ -351,7 +356,7 @@ export default function Navigation({ onNavigate }) {
             isHovered={hoveredNode === node.id}
             onHover={() => setHoveredNode(node.id)}
             onLeave={() => setHoveredNode(null)}
-            onClick={() => handleNodeClick(node.id)}
+            onClick={() => handleNodeClick(node.location)}
           />
         ))}
 

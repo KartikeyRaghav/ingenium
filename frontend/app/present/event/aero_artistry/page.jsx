@@ -14,6 +14,10 @@ import {
   Zap,
   Navigation,
   ExternalLink,
+  ShieldAlert,
+  Ruler,
+  Weight,
+  AlertTriangle,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -46,40 +50,33 @@ export default function AeroAirtistryPS() {
   return (
     <div
       ref={containerRef}
-      className="relative min-h-screen text-blue-100 font-mono p-4 md:p-8"
+      className="relative min-h-screen text-blue-100 font-mono p-4 md:p-8 bg-black/30"
     >
       {/* HUD Corner Accents */}
       <div className="fixed top-0 left-0 w-32 h-32 border-t-2 border-l-2 border-blue-500/30 rounded-tl-3xl pointer-events-none" />
       <div className="fixed bottom-0 right-0 w-32 h-32 border-b-2 border-r-2 border-blue-500/30 rounded-br-3xl pointer-events-none" />
-
-      <button
-        onClick={() => router.back()}
-        className="relative z-50 flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/30 rounded-full hover:bg-blue-500/20 transition-all mb-8 group"
-      >
-        <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-        <span className="text-[10px] uppercase tracking-[0.3em]">
-          System_Return
-        </span>
-      </button>
 
       <main className="max-w-7xl mx-auto">
         {/* Header Section */}
         <header ref={headerRef} className="mb-16 relative">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8">
             <div className="space-y-2">
-              <div className="flex items-center gap-2 text-blue-500 mb-2">
-                <Cpu className="w-4 h-4 animate-spin-slow" />
+              <button
+                onClick={() => router.back()}
+                className="flex items-center gap-2 text-blue-500 mb-2"
+              >
+                <ChevronLeft className="w-4 h-4 animate-spin-slow" />
                 <span className="text-[10px] tracking-[0.5em] uppercase">
-                  Aerospace_Division_2026
+                  Return to Events
                 </span>
-              </div>
+              </button>
               <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white uppercase italic leading-none">
                 AERO<span className="text-blue-500">.</span>AIR
               </h1>
-              <p className="max-w-xl text-xs md:text-sm text-blue-400/70 leading-relaxed uppercase tracking-widest">
-                Fixed-wing RC aircraft competition blending engineering
-                precision with piloting skill. Testing aerodynamics, structural
-                integrity, and flight performance.
+              <p className="max-w-2xl text-xs md:text-sm text-blue-400/70 leading-relaxed uppercase tracking-widest mt-4">
+                {activeCategory === 1
+                  ? "Aerial Design & Endurance: Fabricate a lightweight, electric RC aircraft optimized for maximum glide time and gentle landings."
+                  : "Precision Payload Challenge: Design a fixed-wing RC aircraft capable of carrying, sustaining, and accurately dropping payloads."}
               </p>
             </div>
 
@@ -87,7 +84,7 @@ export default function AeroAirtistryPS() {
               <CategoryBtn
                 active={activeCategory === 1}
                 onClick={() => setActiveCategory(1)}
-                label="01. GLIDER_SOAR"
+                label="01. RC_GLIDER"
                 icon={<Wind className="w-4 h-4" />}
               />
               <CategoryBtn
@@ -110,39 +107,52 @@ export default function AeroAirtistryPS() {
             transition={{ duration: 0.4 }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-8"
           >
-            {/* Sidebar Column */}
+            {/* Left Sidebar: Constraints & Rules */}
             <div className="lg:col-span-4 space-y-6">
-              <SectionBox title="Mission_Parameters">
-                <p className="text-xs md:text-sm leading-relaxed text-blue-200/90 italic">
-                  {activeCategory === 1
-                    ? "Optimize fixed-wing aircraft for maximum gliding efficiency and energy management through aerodynamic excellence."
-                    : "Design a fixed-wing RC aircraft capable of carrying, sustaining, and accurately dropping payloads with precision."}
-                </p>
+              <SectionBox title="Technical_Constraints">
+                <div className="space-y-4">
+                  <ConstraintRow
+                    icon={<Ruler className="w-4 h-4" />}
+                    label="Max Wingspan"
+                    value={activeCategory === 1 ? "120 cm" : "Compliance Req"}
+                  />
+                  <ConstraintRow
+                    icon={<Weight className="w-4 h-4" />}
+                    label="Max Weight"
+                    value={activeCategory === 1 ? "1000g" : "T/W Compliance"}
+                  />
+                  <ConstraintRow
+                    icon={<Zap className="w-4 h-4" />}
+                    label="Propulsion"
+                    value="Electric Only"
+                  />
+                  <ConstraintRow
+                    icon={<ShieldAlert className="w-4 h-4" />}
+                    label="Prohibited"
+                    value="Metal Airframe/Gyros"
+                  />
+                </div>
               </SectionBox>
 
-              <div className="grid grid-cols-2 gap-4">
-                <StatCard label="Phase_Count" value="03" sub="Sequential" />
-                <StatCard label="Airframe" value="Fixed" sub="Wing_RC" />
-              </div>
+              <SectionBox title="Scoring_Algorithm">
+                <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl">
+                  <code className="text-[10px] text-blue-300 wrap-break-word leading-loose">
+                    {activeCategory === 1
+                      ? "TOTAL = (Round_1_Pts) + [(Glide_Time_R3 * 2) - Penalties]"
+                      : "TOTAL = Stage_1 + Stage_2 + Stage_3"}
+                  </code>
+                </div>
+              </SectionBox>
 
-              {activeCategory === 2 && (
-                <div className="p-6 bg-blue-900/20 border border-blue-500/40 rounded-2xl relative overflow-hidden group">
-                  <div className="scan-line absolute left-0 top-0 w-full h-1 bg-blue-400/30 blur-sm pointer-events-none" />
-                  <h4 className="text-[10px] text-blue-400 uppercase mb-4 flex items-center gap-2">
-                    <Box className="w-3 h-3" /> Payload_Intel
+              {activeCategory === 1 && (
+                <div className="p-6 bg-red-900/10 border border-red-500/30 rounded-2xl">
+                  <h4 className="text-[10px] text-red-400 uppercase mb-3 flex items-center gap-2">
+                    <AlertTriangle className="w-3 h-3" /> Critical_Penalties
                   </h4>
-                  <ul className="space-y-2 text-[11px] text-blue-200/70">
-                    <li className="flex justify-between">
-                      <span>Object:</span>{" "}
-                      <span className="text-white">Golf Ball</span>
-                    </li>
-                    <li className="flex justify-between">
-                      <span>Mass:</span> <span className="text-white">45g</span>
-                    </li>
-                    <li className="flex justify-between">
-                      <span>Radius:</span>{" "}
-                      <span className="text-white">42mm</span>
-                    </li>
+                  <ul className="text-[9px] space-y-2 text-red-200/60 uppercase">
+                    <li>▪ Nose-first crash (-20 pts)</li>
+                    <li>▪ Structural failure on landing (-20 pts)</li>
+                    <li>▪ Battery/Motor thermal event (-20 pts)</li>
                   </ul>
                 </div>
               )}
@@ -150,7 +160,7 @@ export default function AeroAirtistryPS() {
               <button
                 onClick={() =>
                   router.push(
-                    `/present/registration?event=${activeCategory == 1 ? "glider" : "payload"}`,
+                    `/present/registration?event=${activeCategory === 1 ? "glider" : "payload"}`,
                   )
                 }
                 className="w-full py-6 bg-blue-600 text-white rounded-2xl font-black italic tracking-widest flex items-center justify-center gap-3 hover:bg-blue-500 transition-all group overflow-hidden relative"
@@ -163,16 +173,15 @@ export default function AeroAirtistryPS() {
               </button>
             </div>
 
-            {/* Main Content Column */}
+            {/* Right Main Column: Stages & Prizes */}
             <div className="lg:col-span-8 space-y-8">
-              <div className="bg-white/5 border border-blue-500/20 rounded-3xl p-8 backdrop-blur-md relative">
-                <div className="absolute top-8 right-8 text-blue-500/20">
-                  <Navigation className="w-24 h-24 rotate-45" />
+              <div className="bg-white/5 border border-blue-500/20 rounded-3xl p-8 backdrop-blur-md relative overflow-hidden">
+                <div className="absolute top-8 right-8 text-blue-500/10">
+                  <Navigation className="w-32 h-32 rotate-45" />
                 </div>
 
                 <h3 className="text-xl font-bold tracking-[0.4em] uppercase mb-12 flex items-center gap-4 text-white">
-                  <Layers className="text-blue-500 w-5 h-5" />{" "}
-                  Operational_Stages
+                  <Layers className="text-blue-500 w-5 h-5" /> Operational_Flow
                 </h3>
 
                 <div className="space-y-12">
@@ -187,7 +196,7 @@ export default function AeroAirtistryPS() {
                         <h4 className="text-white font-bold uppercase tracking-widest text-base">
                           {stage.title}
                         </h4>
-                        <span className="text-[9px] px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full border border-blue-500/20 self-start">
+                        <span className="text-[9px] px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full border border-blue-500/20 self-start uppercase">
                           {stage.meta}
                         </span>
                       </div>
@@ -195,7 +204,7 @@ export default function AeroAirtistryPS() {
                         {stage.details.map((detail, i) => (
                           <div
                             key={i}
-                            className="flex items-center gap-3 text-[11px] text-blue-200/60 uppercase group-hover:text-blue-100 transition-colors"
+                            className="flex items-center gap-3 text-[11px] text-blue-200/60 uppercase"
                           >
                             <Zap className="w-2.5 h-2.5 text-blue-500" />
                             {detail}
@@ -207,7 +216,7 @@ export default function AeroAirtistryPS() {
                 </div>
               </div>
 
-              {/* Prize Pool Integration */}
+              {/* Prize Pool Section */}
               <PrizeSection />
             </div>
           </motion.div>
@@ -217,7 +226,7 @@ export default function AeroAirtistryPS() {
   );
 }
 
-// --- Specialized UI Components ---
+// --- Helper Components ---
 
 function CategoryBtn({ active, onClick, label, icon }) {
   return (
@@ -229,14 +238,6 @@ function CategoryBtn({ active, onClick, label, icon }) {
           : "border-blue-500/20 text-blue-500/50 hover:border-blue-500/50"
       }`}
     >
-      {active && (
-        <motion.div
-          layoutId="activeTab"
-          className="absolute inset-0 bg-blue-500/10"
-          initial={false}
-          transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-        />
-      )}
       <span className="relative z-10">{icon}</span>
       <span className="text-[10px] font-black tracking-[0.3em] relative z-10">
         {label}
@@ -247,8 +248,7 @@ function CategoryBtn({ active, onClick, label, icon }) {
 
 function SectionBox({ title, children }) {
   return (
-    <div className="p-8 bg-white/5 border border-white/10 rounded-3xl relative group overflow-hidden">
-      <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-3xl" />
+    <div className="p-8 bg-white/5 border border-white/10 rounded-3xl relative overflow-hidden">
       <div className="text-[9px] text-blue-500 uppercase tracking-[0.4em] mb-4 flex items-center gap-2">
         <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
         {title}
@@ -258,16 +258,14 @@ function SectionBox({ title, children }) {
   );
 }
 
-function StatCard({ label, value, sub }) {
+function ConstraintRow({ icon, label, value }) {
   return (
-    <div className="p-4 bg-white/5 border border-white/10 rounded-2xl">
-      <div className="text-[8px] text-blue-500/60 uppercase tracking-widest mb-1">
-        {label}
+    <div className="flex items-center justify-between py-2 border-b border-white/5">
+      <div className="flex items-center gap-3 text-blue-400">
+        {icon}
+        <span className="text-[10px] uppercase text-blue-200/50">{label}</span>
       </div>
-      <div className="text-2xl font-black text-white italic leading-none">
-        {value}
-      </div>
-      <div className="text-[8px] text-gray-500 uppercase mt-1">{sub}</div>
+      <span className="text-[10px] text-white font-bold">{value}</span>
     </div>
   );
 }
@@ -297,7 +295,7 @@ function PrizeSection() {
       ].map((p, i) => (
         <div
           key={i}
-          className={`p-6 bg-linear-to-br ${p.color} to-transparent border border-white/10 rounded-2xl hover:border-blue-500/40 transition-all`}
+          className={`p-6 bg-linear-to-br ${p.color} to-transparent border border-white/10 rounded-2xl`}
         >
           <Trophy className="w-4 h-4 text-blue-400 mb-4" />
           <div className="text-[10px] text-blue-500 uppercase tracking-tighter mb-1">
@@ -319,68 +317,66 @@ const getStages = (cat) => {
   if (cat === 1)
     return [
       {
-        title: "Design & Analysis",
-        meta: "Deadline: Feb End",
+        title: "Technical Abstract",
+        meta: "Online | Round 1",
         details: [
-          "Materials & Configuration",
-          "Structural/Aero Analysis",
-          "Dimensional Constraints",
-          "Bill of Materials (BOM)",
+          "Technical Report (Max 5 pages)",
+          "Construction Images/2D Photos",
+          "Component Analysis",
+          "Evaluation: Creativity/Efficiency",
         ],
       },
       {
-        title: "Qualifying Flight",
-        meta: "Offline | Ingenium",
+        title: "Qualification Flight",
+        meta: "Offline | Round 2",
         details: [
-          "2 Official Attempts",
-          "3min Flight Window",
-          "45s Min. Airborne",
-          "Pass/Fail Evaluation",
+          "Min 30s Flight duration",
+          "Max 3min total window",
+          "2 attempts permitted",
+          "Zero points round",
         ],
       },
       {
-        title: "Final Soaring",
-        meta: "Offline | Main Event",
+        title: "Final Glide Round",
+        meta: "Offline | Round 3",
         details: [
-          "30s Powered Flight",
-          "Total Throttle Cut",
-          "Pure Gliding Phase",
-          "Duration-Based Scoring",
+          "60s Max climb to height",
+          "Propeller cut within 10s",
+          "Glide with motors OFF",
+          "Gentle landing required",
         ],
       },
     ];
   return [
     {
-      title: "Payload Strategy",
-      meta: "Deadline: Feb End",
+      title: "Design & Mechanism",
+      meta: "Online | Stage 1",
       details: [
-        "Dropping Mechanism",
-        "Strength Analysis",
-        "T/W Ratio Compliance",
         "Integration Strategy",
+        "Release Mechanism Design",
+        "Structural/Strength Analysis",
+        "Detailed BOM submission",
       ],
     },
     {
-      title: "Carrying Quals",
-      meta: "Offline | Ingenium",
+      title: "Carrying Qualification",
+      meta: "Offline | Stage 2",
       details: [
-        "30s Weighted Flight",
-        "Mechanism Inspection",
-        "Zero Drop Protocol",
-        "Weight/Count Scoring",
+        "30s flight with payload",
+        "Zero drop allowed in this stage",
+        "Golf ball payloads (45g) 191]",
+        "Scoring: Higher weight/count",
       ],
     },
     {
-      title: "Precision Drop",
-      meta: "Offline |  Main Event",
+      title: "Final Precision Drop",
+      meta: "Offline | Stage 3",
       details: [
-        "10m Target Arena",
-        "Valid Arena Landing",
-        "No-Drop First 30s",
-        "Accuracy Rules Apply",
+        "30s initial stability flight",
+        "10m diameter target arena",
+        "Valid arena landing only",
+        "Penalty: Drop < 30s flight",
       ],
     },
   ];
 };
-
-// Could you please upgrade the ui of this page according to the document provided. Try to keep as much info provided in the document on the page. Keep the theme same and don't add any background as I already have background set in the parent component. Make it as futuristic as possible. Also try to add a register now button for each PS.

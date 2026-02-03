@@ -19,6 +19,9 @@ import {
   FileText,
   Activity,
   ExternalLink,
+  ShieldCheck,
+  Search,
+  AlertCircle,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -30,36 +33,49 @@ export default function IVDCPS() {
     {
       id: 1,
       title: "3D Reconstruction: IITI CDF",
-      theme: "Point Cloud & Drone Navigation",
+      theme: "Simulation & Autonomous Navigation",
       icon: <Box className="w-6 h-6" />,
       motivation:
-        "Tech giants like NVIDIA use 3D rendering to simulate real-world problems. This enables rapid innovation without high physical prototype costs.",
+        "Modern technology leaders use high-fidelity 3D reconstruction and virtual simulation to experiment without the cost of physical prototypes. Virtual environments enable rapid iteration and robust validation of real-world systems.",
       problemStatement:
-        "Harness the potential of virtual 3D simulation, focusing on converting Point Cloud data into models and implementing point-to-point navigation.",
+        "Convert real-world Point Cloud scan data into accurate 3D models and enable autonomous point-to-point navigation within that generated environment.",
       tasks: [
         {
-          title: "Task A",
-          desc: "Convert provided Point Cloud data into accurate 3D models.",
+          title: "Task A: Reconstruction",
+          desc: "Construct an accurate 3D model from provided scan data ensuring geometric consistency and structural correctness.",
         },
         {
-          title: "Task B",
-          desc: "Implement point-to-point navigation with local planners for dynamic obstacles.",
+          title: "Task B: Navigation",
+          desc: "Design a navigation pipeline for a drone within the model, implementing local planners for dynamic obstacles.",
         },
       ],
+      rules: [
+        "Completion of Task A is mandatory to qualify for Task B.",
+        "The entire solution must run on limited computational resources.",
+        "Specific start and end points will be provided only on competition day.",
+        "Solution must be iteratively refined for robustness and accuracy.",
+      ],
       deliverables: [
-        "Complete working pipeline and 3D model output.",
-        "Navigation algorithm and SJTU drone integration.",
-        "Comprehensive documentation (README/Technical).",
+        "Complete working pipeline",
+        "Generated 3D model output",
+        "Navigation algorithm implementation",
+        "Comprehensive README/Technical documentation",
       ],
       specs: {
         hardware: ["GPS", "IMU", "3D-LiDAR"],
-        compute: "Limited computation power requirement.",
+        compute: "Constrained Computational Resources",
       },
       evaluation: [
-        "Robustness of results (Accuracy of conversion).",
-        "Effectiveness of navigation system.",
-        "Novelty and creative approaches.",
+        "Robustness: Accuracy of reconstruction and navigation effectiveness.",
+        "Documentation: Clarity of pipeline and reference explanation.",
+        "Novelty: Innovation in efficiency or navigation performance.",
       ],
+      prizes: {
+        first: "10,000",
+        second: "5,000",
+        third: "3,000",
+        total: "18,000",
+      },
     },
     {
       id: 2,
@@ -67,74 +83,54 @@ export default function IVDCPS() {
       theme: "Autonomous Vision Navigation",
       icon: <Eye className="w-6 h-6" />,
       motivation:
-        "Building vision-based robots gives practical experience in control algorithms, precise path tracking, and obstacle avoidance at high speeds.",
+        "This competition integrates image processing and sensor-driven navigation, emphasizing precise path tracking and obstacle avoidance at high speeds.",
       problemStatement:
-        "Design and build a camera-based robot using computer vision to avoid obstacles and traverse a path autonomously in minimum time.",
+        "Design and build a camera-based robot that uses computer vision to detect obstacles and traverse a defined path autonomously in minimum time.",
       tasks: [
         {
-          title: "Hardware",
-          desc: "Utilize OBCs like NVIDIA Jetson/Raspberry Pi with USB/RPi cameras.",
+          title: "CV Pipeline",
+          desc: "Implement obstacle detection and path traversal using libraries like OpenCV.",
         },
         {
-          title: "Software",
-          desc: "OpenCV-based detection and real-time motor speed adjustment for sharp turns.",
+          title: "Control Logic",
+          desc: "Use control algorithms to compute motion corrections and dynamically adjust motor speeds 99].",
         },
       ],
+      rules: [
+        "Must use an Onboard Computer (NVIDIA Jetson/Raspberry Pi).",
+        "Must use motor drivers (L298) to control standard DC motors.",
+        "The robot must handle sharp turns, intersections, and varying widths.",
+        "A live demonstration of autonomous completion is required.",
+      ],
       deliverables: [
-        "Functional robot with onboard processing.",
-        "Detailed report on CV techniques and PID/Control tuning.",
-        "Autonomous demonstration on the track.",
+        "Functional autonomous robot with onboard processing",
+        "Hardware design and component selection report",
+        "CV methodology and algorithm development process",
+        "Control algorithm design and tuning approach",
       ],
       specs: {
-        hardware: ["Jetson Nano/Pi", "L298 Motor Driver", "DC Motors"],
-        compute: "Onboard computer system (OBC).",
+        hardware: ["Jetson/Pi", "L298 Driver", "USB/Pi Camera", "DC Motors"],
+        compute: "Onboard Image Processing",
       },
       evaluation: [
-        "Completion Time (Total time taken).",
-        "Robot Design (Stability & Compactness).",
-        "Algorithm Efficiency & Autonomy.",
+        "Completion Time: Total time taken to finish the course.",
+        "Robot Design: Stability, compactness, and effective motor control.",
+        "Algorithm Efficiency: Effectiveness of CV and control systems.",
+        "Autonomy: Accuracy of detection and path traversal.",
       ],
+      prizes: {
+        first: "10,000",
+        second: "5,000",
+        third: "3,000",
+        total: "18,000",
+      },
     },
-    // {
-    //   id: 3,
-    //   title: "Biomimetic Jump-Bot",
-    //   theme: "Vertical Kinetic Engineering",
-    //   icon: <ArrowUp className="w-6 h-6" />,
-    //   motivation:
-    //     "Encouraged to take inspiration from the world through biomimicry to find kinetic solutions for vertical movement.",
-    //   problemStatement:
-    //     "Create a robot capable of jumping vertically as high as possible from a standing position within defined boundaries.",
-    //   tasks: [
-    //     {
-    //       title: "Constraint A",
-    //       desc: "Push the ground; no propeller-like systems allowed.",
-    //     },
-    //     {
-    //       title: "Constraint B",
-    //       desc: "Zero mass reduction (unlike rockets) during jump.",
-    //     },
-    //   ],
-    //   deliverables: [
-    //     "Functional jumping robot.",
-    //     "Adherence to the defined 3D boundary dimensions.",
-    //     "Demonstration of maximum vertical height.",
-    //   ],
-    //   specs: {
-    //     hardware: ["Jump Mechanism", "Standing Base", "Height Sensor (below)"],
-    //     compute: "Stationary vertical logic.",
-    //   },
-    //   evaluation: [
-    //     "Height achieved (Measured via sensor).",
-    //     "Boundary adherence (No crossing lines).",
-    //     "Mechanism integrity (No mass reduction).",
-    //   ],
-    // },
   ];
 
   return (
-    <div className="relative min-h-screen text-blue-100 font-mono p-4 md:p-8">
+    <div className="relative min-h-screen bg-black/30 text-blue-100 font-mono p-4 md:p-8">
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* --- DYNAMIC HEADER --- */}
+        {/* --- HEADER --- */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8 border-b border-blue-500/30 pb-6">
           <div className="space-y-1">
             <button
@@ -143,11 +139,11 @@ export default function IVDCPS() {
             >
               <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
               <span className="text-[10px] tracking-[0.4em] uppercase">
-                System_Back
+                Return to Events
               </span>
             </button>
             <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-white uppercase italic">
-              IVDC <span className="text-blue-500"></span>
+              IVDC <span className="text-blue-500">KINETIC</span>
             </h1>
           </div>
 
@@ -158,7 +154,7 @@ export default function IVDCPS() {
                 onClick={() => setActiveModule(idx)}
                 className={`flex-none px-4 py-2 rounded-lg transition-all duration-500 flex items-center gap-3 ${
                   activeModule === idx
-                    ? "bg-blue-600 text-white shadow-[0_0_20px_rgba(59,130,246,0.4)]"
+                    ? "bg-blue-600 text-white shadow-[0_0_20px_#3b82f6]"
                     : "hover:bg-blue-500/10 text-blue-400/60"
                 }`}
               >
@@ -173,31 +169,27 @@ export default function IVDCPS() {
           </div>
         </div>
 
-        {/* --- MAIN INTERFACE GRID --- */}
+        {/* --- MAIN INTERFACE --- */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeModule}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.02 }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-6"
           >
-            {/* LEFT: MISSION CONTROL */}
+            {/* COLUMN 1: MISSION CONTEXT & PRIZES */}
             <div className="lg:col-span-4 space-y-6">
-              {/* Status & Motivation */}
-              <div className="p-6 bg-linear-to-br from-blue-950/40 to-black/40 border border-blue-500/20 rounded-2xl relative overflow-hidden group">
-                <div className="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                  {challenges[activeModule].icon}
-                </div>
+              <div className="p-6 bg-blue-950/20 border border-blue-500/20 rounded-2xl relative group">
                 <div className="flex items-center gap-2 text-blue-400 text-[10px] uppercase tracking-widest mb-4">
-                  <Activity className="w-3 h-3 animate-pulse" /> Mission_Context
+                  <Activity className="w-3 h-3 animate-pulse" /> Mission_Core
                 </div>
-                <p className="text-sm leading-relaxed text-blue-100/70 italic border-l-2 border-blue-500/50 pl-4">
+                <p className="text-sm leading-relaxed text-blue-100/70 italic mb-6">
                   {challenges[activeModule].motivation}
                 </p>
-                <div className="mt-6 space-y-2">
-                  <h4 className="text-[10px] text-blue-500 uppercase font-bold">
-                    Problem Statement
+                <div className="space-y-2 p-4 bg-blue-500/5 rounded-xl border border-blue-500/10">
+                  <h4 className="text-[10px] text-blue-400 uppercase font-bold flex items-center gap-2">
+                    <Search className="w-3 h-3" /> Objective
                   </h4>
                   <p className="text-xs text-white leading-relaxed">
                     {challenges[activeModule].problemStatement}
@@ -205,135 +197,148 @@ export default function IVDCPS() {
                 </div>
               </div>
 
-              {/* Hardware Specs */}
-              <div className="p-6 bg-black/40 border border-blue-500/20 rounded-2xl">
-                <h4 className="text-[10px] text-blue-400 uppercase tracking-widest mb-4 flex items-center gap-2">
-                  <Cpu className="w-3 h-3" /> System_Specifications
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {challenges[activeModule].specs.hardware.map((hw, i) => (
-                    <span
-                      key={i}
-                      className="px-2 py-1 bg-blue-500/10 border border-blue-500/30 rounded text-[10px] text-blue-300"
-                    >
-                      {hw}
-                    </span>
-                  ))}
+              {/* PRIZE POOL CARD */}
+              <div className="p-6 bg-linear-to-br from-yellow-500/10 to-transparent border border-yellow-500/20 rounded-2xl">
+                <div className="flex justify-between items-center mb-6">
+                  <h4 className="text-[10px] text-yellow-500 uppercase tracking-widest font-bold">
+                    Bounty_Pool
+                  </h4>
+                  <Trophy className="w-5 h-5 text-yellow-500 shadow-[0_0_10px_#eab308]" />
                 </div>
-                <p className="mt-4 text-[10px] text-blue-500/60 font-mono">
-                  LOG: {challenges[activeModule].specs.compute}
-                </p>
+                <div className="space-y-3">
+                  <div className="flex justify-between text-xs font-mono">
+                    <span className="text-blue-400/60">Rank_01</span>
+                    <span className="text-white font-black">
+                      ₹{challenges[activeModule].prizes.first}
+                    </span>
+                  </div>
+                  <div className="flex justify-between text-xs font-mono">
+                    <span className="text-blue-400/60">Rank_02</span>
+                    <span className="text-white font-black">
+                      ₹{challenges[activeModule].prizes.second}
+                    </span>
+                  </div>
+                  <div className="flex justify-between text-xs font-mono pb-2 border-b border-white/5">
+                    <span className="text-blue-400/60">Rank_03</span>
+                    <span className="text-white font-black">
+                      ₹{challenges[activeModule].prizes.third}
+                    </span>
+                  </div>
+                  <div className="flex justify-between text-sm font-black text-yellow-500 pt-1">
+                    <span>TOTAL</span>
+                    <span>₹{challenges[activeModule].prizes.total}</span>
+                  </div>
+                </div>
               </div>
 
-              {/* Action Button */}
               <button
                 onClick={() =>
                   router.push(
-                    `/present/registration?event=${activeModule == 0 ? "3d" : "cv"}`,
+                    `/present/registration?event=${challenges[activeModule].id}`,
                   )
                 }
-                className="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(59,130,246,0.3)] group transition-all"
+                className="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(59,130,246,0.3)] transition-all"
               >
-                Register_Now{" "}
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                INITIATE_ENTRY <ChevronRight className="w-5 h-5" />
               </button>
             </div>
 
-            {/* RIGHT: TASK DEPLOYMENT */}
+            {/* COLUMN 2: RULES, TASKS & SPECS */}
             <div className="lg:col-span-8 space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Task Breakdown */}
+                {/* COMPLIANCE & RULES */}
+                <div className="p-6 bg-red-500/5 border border-red-500/20 rounded-2xl">
+                  <h4 className="text-[10px] text-red-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <ShieldCheck className="w-3 h-3" /> Rules_&_Compliance
+                  </h4>
+                  <ul className="space-y-3">
+                    {challenges[activeModule].rules.map((rule, i) => (
+                      <li
+                        key={i}
+                        className="text-[11px] text-blue-100/60 flex items-start gap-2"
+                      >
+                        <AlertCircle className="w-3 h-3 text-red-400 shrink-0 mt-0.5" />{" "}
+                        {rule}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* TASKS */}
                 <div className="p-6 bg-blue-950/20 border border-blue-500/20 rounded-2xl">
                   <h4 className="text-[10px] text-blue-400 uppercase tracking-widest mb-4 flex items-center gap-2">
-                    <Target className="w-3 h-3" /> Operational_Tasks
+                    <Target className="w-3 h-3" /> Operation_Workflow
                   </h4>
                   <div className="space-y-4">
                     {challenges[activeModule].tasks.map((task, i) => (
-                      <div
-                        key={i}
-                        className="relative pl-6 before:absolute before:left-0 before:top-1 before:w-1 before:h-4 before:bg-blue-500"
-                      >
+                      <div key={i} className="pl-4 border-l-2 border-blue-500">
                         <div className="text-[11px] font-bold text-white uppercase">
                           {task.title}
                         </div>
-                        <div className="text-[11px] text-blue-100/60 leading-snug">
+                        <div className="text-[10px] text-blue-100/50 leading-tight">
                           {task.desc}
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
+              </div>
 
-                {/* Evaluation Logic */}
-                <div className="p-6 bg-black/60 border border-blue-500/20 rounded-2xl">
-                  <h4 className="text-[10px] text-blue-400 uppercase tracking-widest mb-4 flex items-center gap-2">
-                    <Database className="w-3 h-3" /> Evaluation_Parameters
-                  </h4>
-                  <div className="space-y-3">
-                    {challenges[activeModule].evaluation.map((ev, i) => (
-                      <div
-                        key={i}
-                        className="flex items-start gap-3 text-[11px]"
-                      >
-                        <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1 shrink-0 shadow-[0_0_5px_#3b82f6]" />
-                        <span className="text-blue-100/80">{ev}</span>
-                      </div>
-                    ))}
-                  </div>
+              {/* EVALUATION PARAMETERS */}
+              <div className="p-6 bg-black/40 border border-blue-500/10 rounded-2xl">
+                <h4 className="text-[10px] text-blue-400 uppercase tracking-widest mb-4">
+                  Evaluation_Logic
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {challenges[activeModule].evaluation.map((ev, i) => (
+                    <div
+                      key={i}
+                      className="p-3 bg-white/5 rounded-lg border border-white/5 text-[10px] text-blue-100/70"
+                    >
+                      {ev}
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              {/* Deliverables / Final Output */}
-              <div className="p-8 bg-linear-to-r from-blue-900/20 to-transparent border border-blue-500/10 rounded-3xl relative overflow-hidden">
-                <div className="flex flex-col md:flex-row justify-between gap-8 relative z-10">
-                  <div className="flex-1">
-                    <h3 className="text-xl font-black text-white uppercase mb-4 tracking-tighter">
+              {/* HARDWARE & ASSETS */}
+              <div className="p-8 bg-linear-to-r from-blue-900/10 to-transparent border border-blue-500/10 rounded-3xl">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                  <div>
+                    <h3 className="text-lg font-black text-white uppercase mb-4">
                       Required Deliverables
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 gap-2">
                       {challenges[activeModule].deliverables.map((del, i) => (
                         <div
                           key={i}
-                          className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5 hover:border-blue-500/30 transition-colors"
+                          className="flex items-center gap-2 text-[10px] text-blue-300"
                         >
-                          <FileText className="w-4 h-4 text-blue-500 shrink-0" />
-                          <span className="text-[10px] leading-tight text-blue-200/80">
-                            {del}
-                          </span>
+                          <FileText className="w-3 h-3" /> {del}
                         </div>
                       ))}
                     </div>
                   </div>
-
-                  {/* Prize Tier Mini-Card */}
-                  <div className="md:w-48 p-4 bg-blue-500/10 border border-blue-400/30 rounded-2xl flex flex-col justify-center items-center text-center">
-                    <Trophy className="w-8 h-8 text-yellow-500 mb-2 drop-shadow-[0_0_10px_rgba(234,179,8,0.5)]" />
-                    <div className="text-[10px] uppercase font-bold text-blue-400">
-                      Marking_Schema
+                  <div className="p-4 bg-black/60 border border-blue-500/30 rounded-xl">
+                    <div className="text-[10px] text-blue-400 uppercase mb-3">
+                      Hardware_Inventory
                     </div>
-                    <div className="text-xs text-white mt-1 italic">
-                      Partial Marking Awarded per Task
+                    <div className="flex flex-wrap gap-2">
+                      {challenges[activeModule].specs.hardware.map((hw, i) => (
+                        <span
+                          key={i}
+                          className="px-2 py-1 bg-blue-500/20 rounded text-[9px] text-white border border-blue-500/30"
+                        >
+                          {hw}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between text-[9px] text-blue-500/50 uppercase">
+                      <ExternalLink className="w-3 h-3" /> Ref: OpenCV / PID
+                      MATLAB / LIDAR API
                     </div>
                   </div>
                 </div>
-
-                {/* Background Decor */}
-                <div className="absolute bottom-0 right-0 p-4 opacity-5">
-                  <Layers className="w-32 h-32 text-white" />
-                </div>
-              </div>
-
-              {/* Resources Footer */}
-              <div className="flex items-center gap-4 text-[9px] text-blue-500/50 uppercase tracking-[0.2em]">
-                <span className="flex items-center gap-1">
-                  <ExternalLink className="w-3 h-3" /> OpenCV_Docs
-                </span>
-                <span className="flex items-center gap-1">
-                  <ExternalLink className="w-3 h-3" /> ROS_Navigation
-                </span>
-                <span className="flex items-center gap-1">
-                  <ExternalLink className="w-3 h-3" /> PID_Tuning_Guide
-                </span>
               </div>
             </div>
           </motion.div>
