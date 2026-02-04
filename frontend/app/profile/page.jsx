@@ -9,176 +9,17 @@ import {
   LogOut,
   Terminal,
   Cpu,
+  ChevronLeft,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-
-const EVENT_CONFIG = {
-  "General Entry": {
-    name: "General Entry",
-    teamSize: 1,
-    color: "#cbd5e1",
-    sector: "GEN-00",
-  },
-  glider: {
-    name: "RC Glider Soaring",
-    teamSize: 2,
-    color: "#00f2ff",
-    sector: "AIR-01",
-  },
-  payload: {
-    name: "Payload Drop",
-    teamSize: 2,
-    color: "#00f2ff",
-    sector: "AIR-02",
-  },
-  analytic_x: {
-    name: "Global Gourmet",
-    teamSize: 2,
-    color: "#8b5cf6",
-    sector: "ANX-01",
-  },
-  matiks: { name: "Matiks", teamSize: 2, color: "#8b5cf6", sector: "MAT-01" },
-  monsoon_water: {
-    name: "Monsoon-Season Water Management",
-    teamSize: 2,
-    color: "#f59e0b",
-    sector: "CON-01",
-  },
-  open_ground: {
-    name: "Strategic Planning",
-    teamSize: 2,
-    color: "#f59e0b",
-    sector: "CON-02",
-  },
-  sa: {
-    name: "Silicon Architects",
-    teamSize: 2,
-    color: "#d9f99d",
-    sector: "ELE-01",
-  },
-  av: { name: "Analog Verse", teamSize: 2, color: "#d9f99d", sector: "ELE-02" },
-  web: {
-    name: "Scalable Video Streaming",
-    teamSize: 2,
-    color: "#22d3ee",
-    sector: "GDG-01",
-  },
-  ml: {
-    name: "Narrative Synthesis",
-    teamSize: 2,
-    color: "#22d3ee",
-    sector: "GDG-02",
-  },
-  game: { name: "Game Dev", teamSize: 2, color: "#22d3ee", sector: "GDG-03" },
-  "3d": {
-    name: "3D Reconstruction",
-    teamSize: 2,
-    color: "#f472b6",
-    sector: "IVDC-01",
-  },
-  cv: {
-    name: "CV Obstacourse",
-    teamSize: 2,
-    color: "#f472b6",
-    sector: "IVDC-02",
-  },
-  qml: {
-    name: "Quantum Map Generator",
-    teamSize: 1,
-    color: "#4f46e5",
-    sector: "QML-01",
-  },
-  rw: { name: "Robowars", teamSize: 4, color: "#ff0040", sector: "RBT-01" },
-  rs: { name: "Robosoccer", teamSize: 3, color: "#ff0040", sector: "RBT-02" },
-  lf: {
-    name: "Line Follower",
-    teamSize: 1,
-    color: "#ff0040",
-    sector: "RBT-03",
-  },
-  patient_monitor: {
-    name: "Patient Monitoring",
-    teamSize: 2,
-    color: "#10b981",
-    sector: "SXB-01",
-  },
-  screen_addiction: {
-    name: "Health-Tech Solutions",
-    teamSize: 2,
-    color: "#10b981",
-    sector: "SXB-02",
-  },
-  valorant: {
-    name: "Valorant",
-    teamSize: 4,
-    color: "#ff4655",
-    sector: "GAME-01",
-  },
-  bgmi: { name: "BGMI", teamSize: 4, color: "#ff4655", sector: "GAME-02" },
-  eafc: { name: "EAFC", teamSize: 4, color: "#ff4655", sector: "GAME-03" },
-  moba: {
-    name: "Moba Legends",
-    teamSize: 4,
-    color: "#ff4655",
-    sector: "GAME-04",
-  },
-  quiz: { name: "Quiz", teamSize: 4, color: "#fbbf24", sector: "QUIZ-01" },
-  apd: {
-    name: "Asian Parliamentary Debate",
-    teamSize: 4,
-    color: "#fbbf24",
-    sector: "DEB-01",
-  },
-  pw: {
-    name: "Poetry Writing",
-    teamSize: 4,
-    color: "#fbbf24",
-    sector: "LIT-01",
-  },
-  fr: {
-    name: "Fiction Relay",
-    teamSize: 4,
-    color: "#fbbf24",
-    sector: "LIT-02",
-  },
-  ps: { name: "Poetry Slam", teamSize: 4, color: "#fbbf24", sector: "LIT-03" },
-  nukkad: {
-    name: "Nukkad Natak",
-    teamSize: 4,
-    color: "#c084fc",
-    sector: "DRAMA-01",
-  },
-  mono: { name: "MonoAct", teamSize: 4, color: "#c084fc", sector: "DRAMA-02" },
-  canvas: {
-    name: "Canvas Painting",
-    teamSize: 1,
-    color: "#c084fc",
-    sector: "KALA-01",
-  },
-  bands: {
-    name: "Battle of Bands",
-    teamSize: 4,
-    color: "#c084fc",
-    sector: "MUSIC-01",
-  },
-  shutter: {
-    name: "Shutter Up",
-    teamSize: 4,
-    color: "#c084fc",
-    sector: "PHOTO-01",
-  },
-  vlr: {
-    name: "Album Cover Design",
-    teamSize: 4,
-    color: "#c084fc",
-    sector: "VLR-01",
-  },
-};
+import { EVENT_CONFIG } from "@/data/event_config";
+import { useRouter } from "next/navigation";
 
 export default function ProfilePage() {
   const [user, setUser] = useState(null);
   const [registrations, setRegistrations] = useState([]);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -220,11 +61,20 @@ export default function ProfilePage() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-black text-white font-mono overflow-x-hidden">
+    <div className="relative min-h-screen bg-black/30 text-white font-mono overflow-x-hidden">
       {/* HUD Grid Overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(17,24,39,0)_0%,rgba(2,4,10,1)_100%)] z-10" />
 
       <main className="relative z-20 max-w-6xl mx-auto px-6 py-12">
+        <button
+          onClick={() => router.back()}
+          className="flex items-center gap-2 text-blue-500 mb-2"
+        >
+          <ChevronLeft className="w-4 h-4 animate-spin-slow" />
+          <span className="text-[10px] tracking-[0.5em] uppercase">
+            Return
+          </span>
+        </button>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           {/* 1. Biometric Card */}
           <motion.div
@@ -276,15 +126,15 @@ export default function ProfilePage() {
             transition={{ delay: 0.2 }}
             className="lg:col-span-2 space-y-8"
           >
-            <div className="p-8 bg-black/40 border border-blue-500/20 rounded-2xl backdrop-blur-md min-h-100">
-              <div className="flex items-center justify-between mb-8">
-                <div className="flex items-center gap-3">
+            <div className="p-4 sm:p-8 bg-black/40 border border-blue-500/20 rounded-2xl backdrop-blur-md min-h-100">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
+                <div className="flex items-center gap-3 mb-2 sm:mb-0">
                   <Terminal className="w-5 h-5 text-cyan-400" />
                   <h3 className="text-sm font-bold tracking-widest uppercase">
                     Active_Event_Registrations
                   </h3>
                 </div>
-                <div className="text-[10px] text-cyan-500 animate-pulse">
+                <div className="text-[10px]  self-end text-cyan-500 animate-pulse">
                   ● {registrations.length} SECTORS_LOCKED
                 </div>
               </div>
@@ -309,10 +159,10 @@ export default function ProfilePage() {
                         key={i}
                         className="group relative p-4 border border-white/5 bg-white/5 rounded-lg hover:border-blue-500/40 transition-colors"
                       >
-                        <div className="flex flex-wrap justify-between items-start gap-4">
+                        <div className="flex flex-col sm:flex-row flex-wrap sm:justify-between sm:items-start gap-4">
                           <div>
-                            <div className="flex items-center gap-2 mb-1">
-                              <span className="text-[10px] px-2 py-0.5 bg-blue-500/20 text-blue-400 rounded">
+                            <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-1">
+                              <span className="text-[10px] px-2 py-0.5 bg-blue-500/20 w-fit text-blue-400 rounded">
                                 {event.sector}
                               </span>
                               <h4 className="font-bold text-blue-100 uppercase tracking-tight">
@@ -327,7 +177,7 @@ export default function ProfilePage() {
                             </p>
                           </div>
 
-                          <div className="text-right">
+                          <div className="text-right self-end">
                             <div className="flex -space-x-2 mb-2 justify-end">
                               {reg.participants.map((p, idx) => (
                                 <div
