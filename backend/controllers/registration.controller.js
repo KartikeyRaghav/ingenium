@@ -139,25 +139,28 @@ export const getTeamByParticipantEmail = async (req, res) => {
         .json({ message: "Participant not found in any team" });
     }
 
-    const team = teamResult.rows[0];
+    let response = [];
 
     /* ---------- GET ALL PARTICIPANTS OF TEAM ---------- */
-    const participantsResult = await pool.query(
-      `
+    for (const team of teamResult.rows) {
+      const participantsResult = await pool.query(
+        `
       SELECT p.name, p.email, p.mobile
       FROM participants p
       JOIN team_members tm ON tm.participant_id = p.id
       WHERE tm.team_id = $1
       ORDER BY p.id
       `,
-      [team.id],
-    );
+        [team.id],
+      );
+      response.push({
+        team_name: team.team_name,
+        ps_name: team.ps_name,
+        participants: participantsResult.rows,
+      });
+    }
 
-    res.status(200).json({
-      team_name: team.team_name,
-      ps_name: team.ps_name,
-      participants: participantsResult.rows,
-    });
+    res.status(200).json(response);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });

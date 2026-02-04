@@ -40,7 +40,7 @@ export default function PresentPage() {
                 <ChevronLeft className="w-3 h-3" />
               </div>
               <span className="text-[10px] tracking-[0.3em] uppercase font-bold font-mono">
-                Back to Core
+                Back to Navigation
               </span>
             </button>
             <h1 className="text-4xl font-black text-white tracking-tighter uppercase italic flex items-center gap-3">

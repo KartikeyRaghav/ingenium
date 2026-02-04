@@ -87,7 +87,7 @@ const EVENT_CONFIG = {
   rs: { name: "Robosoccer", teamSize: 3, color: "#ff0040", sector: "RBT-02" },
   lf: {
     name: "Line Follower",
-    teamSize: 2,
+    teamSize: 1,
     color: "#ff0040",
     sector: "RBT-03",
   },
