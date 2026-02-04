@@ -85,19 +85,19 @@ export default function QuantumHackathonPS() {
               className="flex items-center gap-2 text-cyan-400 hover:text-white transition-colors group"
             >
               <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              <span className="text-[10px] tracking-[0.6em] uppercase font-bold">
+              <span className="text-[12px] tracking-[0.6em] uppercase font-bold">
                 Return to Events
               </span>
             </button>
             <div className="flex items-center gap-4">
-              <h1 className="text-5xl md:text-6xl font-black tracking-tighter text-white">
+              <h1 className="text-5xl font-black tracking-tighter text-white">
                 Q-<span className="text-cyan-500">MAP</span> GEN
               </h1>
-              <div className="px-3 py-1 bg-cyan-500 text-black text-[10px] font-bold -skew-x-12">
+              <div className="px-3 py-1 bg-cyan-500 text-black text-[13px] font-bold -skew-x-12">
                 QML TRACK
               </div>
             </div>
-            <p className="text-[11px] text-cyan-500/80 tracking-[0.3em] uppercase flex items-center gap-2">
+            <p className="text-[13px] text-cyan-500/80 tracking-[0.3em] uppercase flex items-center gap-2">
               <Terminal className="w-3 h-3" /> Quantum Procedural Content
               Generation (Q-PCG)
             </p>
@@ -125,10 +125,10 @@ export default function QuantumHackathonPS() {
           <div className="lg:col-span-4 space-y-6">
             {/* Background & Objective Module */}
             <div className="p-6 bg-black/40 border border-cyan-500/20 rounded-2xl backdrop-blur-md">
-              <h3 className="text-[10px] text-cyan-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+              <h3 className="text-[14px] text-cyan-500 uppercase tracking-widest mb-4 flex items-center gap-2">
                 <Target className="w-4 h-4" /> Operational_Brief
               </h3>
-              <p className="text-xs leading-relaxed text-gray-300">
+              <p className="text-sm leading-relaxed text-gray-300">
                 Bridge the gap between theoretical knowledge and practical
                 implementation. Targeting{" "}
                 <span className="text-cyan-400 font-bold">UG/PG Students</span>{" "}
@@ -139,7 +139,7 @@ export default function QuantumHackathonPS() {
 
             {/* Event Structure */}
             <div className="p-6 bg-white/5 border border-white/10 rounded-2xl">
-              <h3 className="text-[10px] text-cyan-500 uppercase tracking-widest mb-4">
+              <h3 className="text-[14px] text-cyan-500 uppercase tracking-widest mb-4">
                 Phase_Cycle
               </h3>
               <div className="space-y-4 mb-4">
@@ -151,10 +151,10 @@ export default function QuantumHackathonPS() {
                   <div key={i} className="flex gap-4 items-center">
                     <div className="w-2 h-2 rounded-full bg-cyan-500" />
                     <div>
-                      <p className="text-[10px] font-bold text-white uppercase">
+                      <p className="text-[12px] font-bold text-white uppercase">
                         {phase.p}
                       </p>
-                      <p className="text-[9px] text-gray-500 uppercase">
+                      <p className="text-[11px] text-gray-500 uppercase">
                         {phase.d}
                       </p>
                     </div>
@@ -172,16 +172,16 @@ export default function QuantumHackathonPS() {
 
             {/* Research Anchor */}
             <div className="p-6 bg-cyan-950/30 border-l-4 border-cyan-500 rounded-r-2xl relative group">
-              <h4 className="text-[10px] text-cyan-400 uppercase font-bold mb-2 flex items-center gap-2">
+              <h4 className="text-[14px] text-cyan-400 uppercase font-bold mb-2 flex items-center gap-2">
                 <Dna className="w-3 h-3" /> Research_Anchor
               </h4>
-              <p className="text-[10px] leading-relaxed text-gray-400 italic mb-2">
+              <p className="text-[14px] leading-relaxed text-gray-400 italic mb-2">
                 "A Quantum Procedure for Map Generation".
               </p>
               <a
                 href="https://arxiv.org/abs/2005.10327"
                 target="_blank"
-                className="text-[9px] text-cyan-600 flex items-center gap-1 hover:text-cyan-400 transition-colors"
+                className="text-[11px] text-cyan-600 flex items-center gap-1 hover:text-cyan-400 transition-colors"
               >
                 VIEW SOURCE <ExternalLink className="w-2 h-2" />
               </a>
@@ -204,7 +204,7 @@ export default function QuantumHackathonPS() {
                     <h2 className="text-3xl font-black text-white uppercase tracking-tighter">
                       {pipelineStages[activeLayer].title}
                     </h2>
-                    <p className="text-cyan-500 text-[10px] tracking-widest uppercase">
+                    <p className="text-cyan-500 text-[12px] tracking-widest uppercase">
                       Core_Module_0{activeLayer + 1}
                     </p>
                   </div>
@@ -212,7 +212,7 @@ export default function QuantumHackathonPS() {
                 </div>
 
                 <div className="bg-cyan-500/10 border-l-2 border-cyan-500 p-4 mb-8">
-                  <p className="text-sm leading-relaxed text-cyan-50 font-medium">
+                  <p className="text-md leading-relaxed text-cyan-50 font-medium">
                     {pipelineStages[activeLayer].context}
                   </p>
                 </div>
@@ -223,10 +223,10 @@ export default function QuantumHackathonPS() {
                       key={i}
                       className="flex gap-4 p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-cyan-500/10 transition-all group"
                     >
-                      <div className="text-cyan-500 text-[10px] font-bold mt-0.5">
+                      <div className="text-cyan-500 text-[12px] font-bold mt-0.5">
                         [0{i + 1}]
                       </div>
-                      <span className="text-[11px] leading-relaxed text-gray-300 group-hover:text-white transition-colors">
+                      <span className="text-[13px] leading-relaxed text-gray-300 group-hover:text-white transition-colors">
                         {item}
                       </span>
                     </div>
@@ -250,7 +250,7 @@ export default function QuantumHackathonPS() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Evaluation Metrics */}
               <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-4 flex items-center gap-2">
+                <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-4 flex items-center gap-2">
                   <Award className="w-4 h-4 text-cyan-500" />{" "}
                   Evaluation_Criteria
                 </h3>
@@ -265,10 +265,10 @@ export default function QuantumHackathonPS() {
                       key={i}
                       className="flex flex-col border-b border-white/5 pb-2"
                     >
-                      <span className="text-[10px] font-bold text-cyan-400 uppercase">
+                      <span className="text-[12px] font-bold text-cyan-400 uppercase">
                         {item.l}
                       </span>
-                      <span className="text-[9px] text-gray-500 uppercase">
+                      <span className="text-[11px] text-gray-500 uppercase">
                         {item.d}
                       </span>
                     </li>
@@ -281,7 +281,7 @@ export default function QuantumHackathonPS() {
                 <div className="absolute -right-4 -bottom-4 opacity-10">
                   <Trophy className="w-24 h-24 text-cyan-500" />
                 </div>
-                <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-4 flex items-center gap-2">
+                <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-4 flex items-center gap-2">
                   <Trophy className="w-4 h-4 text-cyan-500" /> Bounty_Registry
                 </h3>
                 <div className="space-y-4">
@@ -291,7 +291,7 @@ export default function QuantumHackathonPS() {
                     <PrizeTier rank="3rd" amount="3,000" />
                   </div>
                   <div className="flex justify-between items-center py-2 border-t border-cyan-500/30">
-                    <span className="text-[10px] text-gray-400 uppercase">
+                    <span className="text-[12px] text-gray-400 uppercase">
                       Total Pool
                     </span>
                     <span className="text-xl font-black text-white italic">
@@ -300,7 +300,7 @@ export default function QuantumHackathonPS() {
                   </div>
                   <div className="flex items-start gap-2 bg-black/40 p-3 rounded-lg border border-red-500/20">
                     <AlertCircle className="w-3 h-3 text-red-400 shrink-0 mt-0.5" />
-                    <p className="text-[8px] text-red-200 leading-tight uppercase">
+                    <p className="text-[10px] text-red-200 tracking-wider uppercase">
                       Rules subject to change at organizer's discretion. Stable
                       internet connectivity required.
                     </p>
@@ -324,10 +324,10 @@ function HeaderNode({ icon, label, value }) {
         {icon}
       </div>
       <div>
-        <span className="text-[8px] text-gray-500 uppercase block mb-0.5 tracking-widest font-bold">
+        <span className="text-[10px] text-gray-500 uppercase block mb-0.5 tracking-widest font-bold">
           {label}
         </span>
-        <span className="text-[10px] font-bold text-white tracking-tighter uppercase">
+        <span className="text-[12px] font-bold text-white tracking-wide uppercase">
           {value}
         </span>
       </div>
@@ -338,8 +338,8 @@ function HeaderNode({ icon, label, value }) {
 function PrizeTier({ rank, amount }) {
   return (
     <div className="bg-black/20 p-2 rounded border border-white/5">
-      <p className="text-[8px] text-cyan-500 uppercase font-bold">{rank}</p>
-      <p className="text-sm font-black text-white italic">₹{amount}</p>
+      <p className="text-[10px] text-cyan-500 uppercase font-bold">{rank}</p>
+      <p className="text-md font-black text-white italic">₹{amount}</p>
     </div>
   );
 }

@@ -68,14 +68,14 @@ export default function HunkaarDramaticsPS() {
               className="flex items-center gap-2 text-orange-400 mb-4"
             >
               <ChevronLeft className="w-4 h-4" />
-              <span className="text-[10px] tracking-[0.5em] uppercase font-bold">
+              <span className="text-[12px] tracking-[0.5em] uppercase font-bold">
                 Return to Events
               </span>
             </button>
             <h1 className="text-5xl font-black tracking-tighter text-white uppercase italic">
               HUNKAAR <span className="text-orange-500">2.0</span>
             </h1>
-            <p className="text-[10px] text-orange-500/60 mt-2 tracking-[0.3em] uppercase">
+            <p className="text-[12px] text-orange-500/60 mt-2 tracking-[0.3em] uppercase">
               Celebrating Social Reflection & Creativity
             </p>
           </div>
@@ -123,13 +123,13 @@ export default function HunkaarDramaticsPS() {
               <div className="absolute top-4 right-4 text-orange-500/10 group-hover:text-orange-500/20 transition-colors">
                 <Volume2 className="w-16 h-16" />
               </div>
-              <h3 className="text-[10px] text-orange-500 uppercase tracking-widest mb-4 font-bold flex items-center gap-2">
+              <h3 className="text-[12px] text-orange-500 uppercase tracking-widest mb-4 font-bold flex items-center gap-2">
                 <Megaphone className="w-3 h-3" /> Module_Briefing
               </h3>
               <h2 className="text-3xl font-black text-white uppercase tracking-tighter mb-1">
                 {competitionData[activeTab].title}
               </h2>
-              <p className="text-[10px] text-orange-400 uppercase font-bold tracking-widest mb-6">
+              <p className="text-[12px] text-orange-400 uppercase font-bold tracking-widest mb-6">
                 {competitionData[activeTab].sub}
               </p>
               <div className="space-y-4 border-t border-white/5 pt-6">
@@ -141,7 +141,7 @@ export default function HunkaarDramaticsPS() {
                   label="Core Format"
                   value={competitionData[activeTab].format}
                 />
-                <p className="text-sm leading-relaxed text-gray-400 italic">
+                <p className="text-md leading-relaxed text-gray-400 italic">
                   "{competitionData[activeTab].objective}"
                 </p>
               </div>
@@ -158,7 +158,7 @@ export default function HunkaarDramaticsPS() {
                     <h3 className="text-lg font-black text-white uppercase tracking-[0.2em]">
                       Bounty_Registry
                     </h3>
-                    <p className="text-[10px] text-orange-500 uppercase tracking-widest italic font-bold">
+                    <p className="text-[12px] text-orange-500 uppercase tracking-widest italic font-bold">
                       Performative_Excellence_Rewards
                     </p>
                   </div>
@@ -198,7 +198,7 @@ export default function HunkaarDramaticsPS() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                 <div>
-                  <h4 className="text-[10px] text-orange-500 uppercase tracking-widest mb-4 font-bold">
+                  <h4 className="text-[12px] text-orange-500 uppercase tracking-widest mb-4 font-bold">
                     Thematic_Spectrum
                   </h4>
                   <div className="flex flex-wrap gap-2">
@@ -211,7 +211,7 @@ export default function HunkaarDramaticsPS() {
                     ].map((theme) => (
                       <span
                         key={theme}
-                        className="text-[10px] bg-orange-500/10 border border-orange-500/20 px-3 py-1 rounded text-orange-200 uppercase font-bold"
+                        className="text-[12px] bg-orange-500/10 border border-orange-500/20 px-3 py-1 rounded text-orange-200 uppercase font-bold"
                       >
                         {theme}
                       </span>
@@ -219,19 +219,19 @@ export default function HunkaarDramaticsPS() {
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-[10px] text-orange-500 uppercase tracking-widest mb-4 font-bold">
+                  <h4 className="text-[12px] text-orange-500 uppercase tracking-widest mb-4 font-bold">
                     Unique_Features
                   </h4>
                   <ul className="space-y-2">
-                    <li className="text-[11px] text-gray-400 flex gap-2">
+                    <li className="text-[13px] text-gray-400 flex gap-2">
                       <span className="text-orange-500 font-bold">▪</span>{" "}
                       Audience Interaction
                     </li>
-                    <li className="text-[11px] text-gray-400 flex gap-2">
+                    <li className="text-[13px] text-gray-400 flex gap-2">
                       <span className="text-orange-500 font-bold">▪</span>{" "}
                       Minimal Props Policy
                     </li>
-                    <li className="text-[11px] text-gray-400 flex gap-2">
+                    <li className="text-[13px] text-gray-400 flex gap-2">
                       <span className="text-orange-500 font-bold">▪</span>{" "}
                       Impact Focus
                     </li>
@@ -247,7 +247,7 @@ export default function HunkaarDramaticsPS() {
                 <MetricItem label="Social Impact" />
                 <MetricItem label="Audience Engagement" />
                 <div className="p-4 bg-orange-500/5 border border-orange-500/20 rounded-xl flex items-center justify-center">
-                  <span className="text-[10px] text-orange-400 uppercase font-bold text-center">
+                  <span className="text-[12px] text-orange-400 uppercase font-bold text-center">
                     Evaluated by expert panel
                   </span>
                 </div>
@@ -283,7 +283,7 @@ export default function HunkaarDramaticsPS() {
                     `/present/registration?event=${activeTab == 0 ? "nukkad" : "mono"}`,
                   )
                 }
-                className="text-[10px] font-bold text-orange-400 uppercase tracking-[0.4em] hover:text-white transition-colors flex items-center gap-2 group"
+                className="text-[12px] font-bold text-orange-400 uppercase tracking-[0.4em] hover:text-white transition-colors flex items-center gap-2 group"
               >
                 Secure your position in the performative core{" "}
                 <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
@@ -300,7 +300,7 @@ export default function HunkaarDramaticsPS() {
 
 function IntelRow({ label, value }) {
   return (
-    <div className="flex justify-between items-center text-[10px] border-b border-white/5 pb-2">
+    <div className="flex justify-between items-center text-[12px] border-b border-white/5 pb-2">
       <span className="text-gray-500 uppercase font-bold">{label}</span>
       <span className="text-orange-400 font-bold uppercase">{value}</span>
     </div>
@@ -310,8 +310,8 @@ function IntelRow({ label, value }) {
 function MetricItem({ label }) {
   return (
     <div className="space-y-2">
-      <div className="text-[10px] text-white/60 uppercase font-bold tracking-tighter leading-tight">
-        {label} <span className="text-[8px] text-orange-500/40 italic"></span>
+      <div className="text-[12px] text-white/60 uppercase font-bold tracking-tighter leading-tight">
+        {label} <span className="text-[10px] text-orange-500/40 italic"></span>
       </div>
       <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
         <motion.div
@@ -327,13 +327,13 @@ function MetricItem({ label }) {
 function PrizeBox({ rank, amount, label }) {
   return (
     <div className="text-center p-3 bg-black/40 border border-white/5 rounded-xl group hover:border-orange-500/30 transition-all">
-      <div className="text-[8px] text-orange-500 uppercase mb-1 font-bold">
+      <div className="text-[10px] text-orange-500 uppercase mb-1 font-bold">
         {rank}
       </div>
       <div className="text-lg font-black text-white italic group-hover:scale-110 transition-transform">
         ₹{amount}
       </div>
-      <div className="text-[7px] text-gray-500 uppercase mt-1 font-bold">
+      <div className="text-[9px] text-gray-500 uppercase mt-1 font-bold">
         {label}
       </div>
     </div>
@@ -344,13 +344,13 @@ function PhaseCard({ idx, label, detail }) {
   return (
     <div className="p-6 bg-white/5 border border-white/5 rounded-2xl group hover:bg-orange-500/5 transition-all">
       <div className="flex items-center gap-3 mb-2">
-        <span className="text-[10px] font-black text-orange-500">
+        <span className="text-[12px] font-black text-orange-500">
           PHASE_{idx}
         </span>
         <div className="h-px grow bg-orange-500/20" />
       </div>
       <h4 className="text-sm font-bold text-white uppercase mb-2">{label}</h4>
-      <p className="text-[10px] text-gray-500 leading-relaxed uppercase">
+      <p className="text-[12px] text-gray-500 leading-relaxed uppercase">
         {detail}
       </p>
     </div>

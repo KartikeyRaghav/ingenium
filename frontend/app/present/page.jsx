@@ -39,16 +39,16 @@ export default function PresentPage() {
               <div className="p-1 border border-blue-500/30 rounded group-hover:bg-blue-500/10">
                 <ChevronLeft className="w-3 h-3" />
               </div>
-              <span className="text-[10px] tracking-[0.3em] uppercase font-bold font-mono">
+              <span className="text-[12px] tracking-[0.3em] uppercase font-bold font-mono">
                 Back to Navigation
               </span>
             </button>
-            <h1 className="text-4xl font-black text-white tracking-tighter uppercase italic flex items-center">
+            <h1 className="text-5xl font-black text-white tracking-tighter uppercase italic flex items-center">
               Competiton<span className="text-blue-500">s</span>
             </h1>
           </div>
           <div className="text-right font-mono hidden md:block">
-            <div className="text-[10px] text-blue-500/40">SIGNAL_STRENGTH</div>
+            <div className="text-[12px] text-blue-500/40">SIGNAL_STRENGTH</div>
             <div className="flex gap-1 justify-end mt-1">
               {[...Array(4)].map((_, i) => (
                 <div
@@ -82,7 +82,7 @@ export default function PresentPage() {
               <tab.icon
                 className={`w-4 h-4 ${activeTab === tab.id ? "text-blue-400" : "text-white/20"}`}
               />
-              <span className="text-xs font-bold uppercase tracking-widest font-mono">
+              <span className="text-sm font-bold uppercase tracking-widest font-mono">
                 {tab.label}
               </span>
             </button>
@@ -98,7 +98,7 @@ export default function PresentPage() {
                   <NodeCorner color={event.color} />
 
                   <div className="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-100 transition-opacity">
-                    <span className="font-mono text-[8px] text-white tracking-tighter italic uppercase">
+                    <span className="font-mono text-[10px] text-white tracking-tighter italic uppercase">
                       REF_{event.id.slice(0, 8)}
                     </span>
                   </div>
@@ -109,7 +109,7 @@ export default function PresentPage() {
 
                   <div className="relative z-10">
                     <div
-                      className={`text-[10px] font-mono text-${event.color}-400 mb-2 flex items-center gap-2`}
+                      className={`text-[12px] font-mono text-${event.color}-400 mb-2 flex items-center gap-2`}
                     >
                       <div
                         className={`w-1 h-1 bg-${event.color}-500 rounded-full animate-pulse`}
@@ -124,7 +124,7 @@ export default function PresentPage() {
                   <div className="relative z-10 flex justify-between items-end">
                     <div className="space-y-1">
                       <div className="w-12 h-0.5 bg-white/10 group-hover:bg-blue-500/50 transition-all group-hover:w-20" />
-                      <div className="text-[9px] font-mono text-gray-500 uppercase">
+                      <div className="text-[11px] font-mono text-gray-500 uppercase">
                         Accessing Protocol...
                       </div>
                     </div>
@@ -149,9 +149,9 @@ export default function PresentPage() {
         {/* --- FOOTER HUD --- */}
         <div className="mt-16 flex flex-col items-center gap-4 opacity-30">
           <div className="w-full h-px bg-linear-to-r from-transparent via-blue-500/20 to-transparent" />
-          <div className="px-6 py-2 flex flex-wrap justify-center gap-8 font-mono text-[9px] text-blue-400">
+          <div className="px-6 py-2 flex flex-wrap justify-center gap-8 font-mono text-[11px] text-blue-400">
             <span>COORD: 22.5248° N, 75.9207° E</span>
-            <span>OS: INGENIUM_KERNEL_3.0</span>
+            <span>OS: INGENIUM_OS</span>
             <span>SEC: AES-256-GCM</span>
             <span>STATUS: {filteredEvents.length} NODES_ONLINE</span>
           </div>

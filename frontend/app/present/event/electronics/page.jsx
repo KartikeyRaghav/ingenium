@@ -176,18 +176,18 @@ export default function ElectronicsPS() {
               className="group flex items-center gap-2 text-amber-500/60 hover:text-amber-500 transition-colors"
             >
               <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              <span className="text-[10px] tracking-[0.4em] uppercase font-bold">
+              <span className="text-[12px] tracking-[0.4em] uppercase font-bold">
                 Return To Events
               </span>
             </button>
-            <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-white uppercase italic leading-none">
+            <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-white uppercase italic leading-none">
               {events[activeTab].id === "SA" ? "SILICON" : "ANALOG"}{" "}
               <span className="text-amber-500">
                 {events[activeTab].id === "SA" ? "ARCHITECTS" : "VERSE"}
               </span>
             </h1>
             <div className="flex items-center gap-4">
-              <span className="bg-amber-500 text-black px-2 py-0.5 text-[10px] font-black uppercase">
+              <span className="bg-amber-500 text-black px-2 py-0.5 text-[12px] font-black uppercase">
                 Ingenium 2026
               </span>
               <p className="text-amber-500/80 tracking-[0.2em] text-xs font-bold uppercase italic">
@@ -226,15 +226,14 @@ export default function ElectronicsPS() {
           {/* LEFT: MISSION BRIEF & BOUNTY */}
           <div className="lg:col-span-4 space-y-8">
             <section className="bg-amber-500/5 border-l-4 border-amber-500 p-8 rounded-r-2xl">
-              <h3 className="text-xs font-bold text-amber-500 uppercase mb-4 flex items-center gap-2">
+              <h3 className="text-sm font-bold text-amber-500 uppercase mb-4 flex items-center gap-2">
                 <Globe className="w-4 h-4" /> 01_System_Objective
               </h3>
               <p className="text-sm leading-relaxed text-gray-300 italic mb-6">
                 "{events[activeTab].objective}"
               </p>
-              <div className="flex items-center gap-2 text-[10px] text-amber-500/60 uppercase tracking-widest">
-                <AlertCircle className="w-3 h-3" /> Target:{" "}
-                {events[activeTab].audience}
+              <div className="flex items-center gap-2 text-[12px] text-amber-500/60 uppercase tracking-widest">
+                Target: {events[activeTab].audience}
               </div>
             </section>
 
@@ -243,7 +242,7 @@ export default function ElectronicsPS() {
               <div className="absolute top-0 right-0 p-4 opacity-10">
                 <Trophy className="w-20 h-20 text-amber-500" />
               </div>
-              <h3 className="text-[10px] font-black text-amber-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+              <h3 className="text-[14px] font-black text-amber-500 uppercase tracking-widest mb-6 flex items-center gap-2">
                 <Zap className="w-3 h-3" /> Bounty_Protocol
               </h3>
               <div className="space-y-4">
@@ -252,7 +251,7 @@ export default function ElectronicsPS() {
                     key={i}
                     className="flex justify-between items-end border-b border-white/5 pb-2"
                   >
-                    <span className="text-[11px] text-gray-500 uppercase italic font-bold">
+                    <span className="text-[13px] text-gray-500 uppercase italic font-bold">
                       {p.rank}
                     </span>
                     <span className="text-xl font-black text-white italic">
@@ -261,20 +260,20 @@ export default function ElectronicsPS() {
                   </div>
                 ))}
                 <div className="pt-2 flex justify-between items-center text-amber-500">
-                  <span className="text-[9px] font-bold uppercase">
+                  <span className="text-[11px] font-bold uppercase">
                     Combined Allocation
                   </span>
-                  <span className="text-sm font-black">₹18,000 Total</span>
+                  <span className="text-md font-black">₹18,000 Total</span>
                 </div>
               </div>
             </section>
 
             <button
               onClick={() =>
-                  router.push(
-                    `/present/registration?event=${activeTab === 0 ? "sa" : "av"}`,
-                  )
-                }
+                router.push(
+                  `/present/registration?event=${activeTab === 0 ? "sa" : "av"}`,
+                )
+              }
               className="w-full group relative overflow-hidden bg-amber-500 py-6 rounded-sm transition-transform active:scale-95 shadow-[0_0_30px_rgba(245,158,11,0.2)]"
             >
               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
@@ -297,12 +296,12 @@ export default function ElectronicsPS() {
                 {events[activeTab].rounds.map((round, i) => (
                   <div key={i} className="relative pl-12">
                     <div className="absolute left-0 top-0 w-5.5 h-5.5 bg-black border-2 border-amber-500 rotate-45 flex items-center justify-center z-10">
-                      <span className="text-[10px] text-amber-500 -rotate-45 font-black">
+                      <span className="text-[12px] text-amber-500 -rotate-45 font-black">
                         0{i + 1}
                       </span>
                     </div>
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="text-[9px] font-bold bg-amber-500/20 text-amber-500 px-2 py-0.5 uppercase tracking-tighter">
+                      <span className="text-[11px] font-bold bg-amber-500/20 text-amber-500 px-2 py-0.5 uppercase tracking-tighter">
                         {round.type}
                       </span>
                       <h4 className="text-white font-black uppercase text-base tracking-tighter">
@@ -316,7 +315,7 @@ export default function ElectronicsPS() {
                           Task: {round.task}
                         </p>
                       </div>
-                      <p className="text-[10px] text-gray-500 leading-relaxed uppercase tracking-wide border-t border-white/5 pt-4">
+                      <p className="text-[12px] text-gray-500 leading-relaxed uppercase tracking-wide border-t border-white/5 pt-4">
                         {round.details}
                       </p>
                     </div>
@@ -327,14 +326,14 @@ export default function ElectronicsPS() {
 
             {/* RULES & COMPLIANCE SECTION */}
             <section className="bg-black/60 border border-amber-500/20 rounded-2xl p-6">
-              <h3 className="text-[10px] font-black text-amber-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+              <h3 className="text-[12px] font-black text-amber-500 uppercase tracking-widest mb-4 flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4" /> Compliance_Protocol
               </h3>
               <ul className="grid grid-cols-1 gap-3 mb-4">
                 {events[activeTab].rules.map((rule, i) => (
                   <li
                     key={i}
-                    className="flex gap-3 text-[10px] text-gray-400 leading-tight uppercase"
+                    className="flex gap-3 text-[12px] text-gray-400 leading-tight uppercase"
                   >
                     <span className="text-amber-500">▶</span> {rule}
                   </li>
@@ -370,7 +369,7 @@ export default function ElectronicsPS() {
                     key={i}
                     className="group flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/5 hover:bg-amber-500/10 hover:border-amber-500/30 transition-all"
                   >
-                    <span className="text-[10px] text-gray-300 font-black uppercase group-hover:text-amber-500 transition-colors">
+                    <span className="text-[12px] text-gray-300 font-black uppercase group-hover:text-amber-500 transition-colors">
                       {tech}
                     </span>
                     <div className="w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)]" />
@@ -380,13 +379,13 @@ export default function ElectronicsPS() {
 
               {/* JUDGING SUMMARY CIRCLE */}
               <div className="mt-12 space-y-4 relative">
-                <div className="text-[9px] text-amber-500/60 uppercase font-black border-b border-amber-500/20 pb-2">
+                <div className="text-[11px] text-amber-500/60 uppercase font-black border-b border-amber-500/20 pb-2">
                   Scoring_Matrix
                 </div>
                 <div className="space-y-4">
                   {events[activeTab].judging.map((j, i) => (
                     <div key={i} className="space-y-1">
-                      <div className="flex justify-between text-[10px] font-bold uppercase">
+                      <div className="flex justify-between text-[12px] font-bold uppercase">
                         <span className="text-gray-400 tracking-tighter">
                           {j.label}
                         </span>
@@ -424,7 +423,7 @@ export default function ElectronicsPS() {
           <div className="flex items-center gap-8 text-[10px] text-amber-500/40 font-black uppercase tracking-[0.3em]">
             <span>Status: Optimal</span>
             <span>Latency: 14ms</span>
-            <span>Version: 3.4.0-Ingenium</span>
+            <span>Version: Ingenium_OS</span>
           </div>
           <div className="flex gap-4">
             <div className="h-8 w-8 rounded-full border border-white/10 flex items-center justify-center text-amber-500/40 hover:text-amber-500 transition-colors cursor-pointer">

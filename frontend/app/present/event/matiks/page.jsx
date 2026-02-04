@@ -80,7 +80,7 @@ export default function MatiksPS() {
               className="flex items-center gap-2 text-rose-500 hover:text-rose-400 transition-colors mb-4"
             >
               <ChevronLeft className="w-4 h-4" />
-              <span className="text-[10px] tracking-[0.5em] uppercase font-bold">
+              <span className="text-[12px] tracking-[0.5em] uppercase font-bold">
                 Return to Events
               </span>
             </button>
@@ -92,7 +92,7 @@ export default function MatiksPS() {
                 Matiks <span className="text-rose-500 italic">Tournament</span>
               </h1>
             </div>
-            <p className="text-[10px] text-rose-500/80 mt-4 tracking-[0.4em] uppercase font-bold">
+            <p className="text-[12px] text-rose-500/80 mt-4 tracking-[0.4em] uppercase font-bold">
               Infinitrix - The Math Club // Ingenium 3.0
             </p>
           </div>
@@ -107,7 +107,7 @@ export default function MatiksPS() {
           {/* --- LEFT COLUMN: INTEL & REQS --- */}
           <div className="lg:col-span-4 space-y-6">
             <div className="space-y-3">
-              <h3 className="text-[10px] text-rose-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+              <h3 className="text-[14px] text-rose-500 uppercase tracking-widest mb-4 flex items-center gap-2">
                 <Terminal className="w-3 h-3" /> Event_Sequence
               </h3>
               {eventStages.map((stage, idx) => (
@@ -122,12 +122,12 @@ export default function MatiksPS() {
                 >
                   <div className="flex items-center gap-4">
                     <span
-                      className={`text-xs font-bold ${activePhase === idx ? "text-rose-500" : "text-white/20"}`}
+                      className={`text-sm font-bold ${activePhase === idx ? "text-rose-500" : "text-white/20"}`}
                     >
                       0{stage.id}
                     </span>
                     <h4
-                      className={`text-sm font-bold uppercase tracking-tighter ${activePhase === idx ? "text-white" : "text-white/60"}`}
+                      className={`text-md font-bold uppercase tracking-wide ${activePhase === idx ? "text-white" : "text-white/60"}`}
                     >
                       {stage.title}
                     </h4>
@@ -138,7 +138,7 @@ export default function MatiksPS() {
 
             {/* Judging Criteria */}
             <div className="p-6 bg-black/60 border border-rose-500/20 rounded-2xl">
-              <h4 className="text-[10px] text-rose-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+              <h4 className="text-[14px] text-rose-500 uppercase tracking-widest mb-4 flex items-center gap-2">
                 <Layout className="w-3 h-3" /> Evaluation_Vector
               </h4>
               <div className="space-y-3 mb-4">
@@ -170,7 +170,7 @@ export default function MatiksPS() {
                 <div className="relative z-10">
                   <div className="flex justify-between items-start mb-6">
                     <div>
-                      <span className="text-[10px] bg-rose-500 text-black px-2 py-0.5 font-bold uppercase mb-2 inline-block">
+                      <span className="text-[12px] bg-rose-500 text-black px-2 py-0.5 font-bold uppercase mb-2 inline-block">
                         Active_Phase: 0{eventStages[activePhase].id}
                       </span>
                       <h2 className="text-3xl font-black text-white uppercase tracking-tighter">
@@ -184,7 +184,7 @@ export default function MatiksPS() {
                     </div>
                   </div>
 
-                  <p className="text-sm leading-relaxed text-rose-100/70 mb-8 max-w-2xl border-l-2 border-rose-500 pl-6 italic">
+                  <p className="text-md leading-relaxed text-rose-100/70 mb-8 max-w-2xl border-l-2 border-rose-500 pl-6 italic">
                     {eventStages[activePhase].context}
                   </p>
 
@@ -195,7 +195,7 @@ export default function MatiksPS() {
                         className="flex gap-4 p-4 bg-white/5 border border-white/5 rounded-xl hover:border-rose-500/30 transition-colors"
                       >
                         <Zap className="w-4 h-4 text-rose-500 shrink-0 mt-1" />
-                        <span className="text-[11px] text-gray-400">
+                        <span className="text-[13px] text-gray-400">
                           {spec}
                         </span>
                       </div>
@@ -224,7 +224,7 @@ export default function MatiksPS() {
               <div className="bg-rose-500/10 border border-rose-500/20 rounded-2xl p-6 relative overflow-hidden">
                 <div className="flex items-center gap-3 mb-4 text-rose-500">
                   <Award className="w-5 h-5" />
-                  <h3 className="text-xs font-bold uppercase tracking-widest">
+                  <h3 className="text-sm font-bold uppercase tracking-widest">
                     Bounty_Registry
                   </h3>
                 </div>
@@ -240,11 +240,11 @@ export default function MatiksPS() {
               <div className="bg-black/60 border border-white/10 rounded-2xl p-6">
                 <div className="flex items-center gap-3 mb-4 text-rose-500">
                   <ShieldAlert className="w-5 h-5" />
-                  <h3 className="text-xs font-bold uppercase tracking-widest">
+                  <h3 className="text-sm font-bold uppercase tracking-widest">
                     Rules_Compliance
                   </h3>
                 </div>
-                <ul className="text-[10px] space-y-2 text-white/60">
+                <ul className="text-[14px] space-y-2 text-white/60">
                   <li className="flex gap-2">
                     <span>•</span>{" "}
                     <span>Individual participation is mandatory.</span>
@@ -268,11 +268,11 @@ export default function MatiksPS() {
             <div className="bg-white/5 border border-white/5 rounded-2xl p-6">
               <div className="flex items-center gap-3 mb-4 text-rose-500">
                 <BookOpen className="w-5 h-5" />
-                <h3 className="text-xs font-bold uppercase tracking-widest">
+                <h3 className="text-sm font-bold uppercase tracking-widest">
                   Strategic_Impact
                 </h3>
               </div>
-              <p className="text-[11px] text-white/60 leading-relaxed">
+              <p className="text-[13px] text-white/60 leading-relaxed">
                 MATIKS aims to break the stereotype of rigid mathematical
                 methods by emphasizing speed and practical reasoning. Expected
                 outcomes include improved logical reasoning skills, enhanced
@@ -294,10 +294,10 @@ function HeaderStat({ icon, label, value }) {
     <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl backdrop-blur-sm">
       <div className="text-rose-500 w-4 h-4">{icon}</div>
       <div>
-        <span className="text-[8px] text-gray-500 uppercase block leading-none mb-1">
+        <span className="text-[10px] text-gray-500 uppercase block leading-none mb-1">
           {label}
         </span>
-        <span className="text-[10px] font-bold text-white uppercase tracking-tighter">
+        <span className="text-[12px] font-bold text-white uppercase tracking-wide">
           {value}
         </span>
       </div>
@@ -307,8 +307,8 @@ function HeaderStat({ icon, label, value }) {
 
 function EvaluationRow({ label, value }) {
   return (
-    <div className="flex justify-between items-center text-[10px] border-b border-white/5 pb-2">
-      <span className="text-gray-500 uppercase tracking-tighter">{label}</span>
+    <div className="flex justify-between items-center text-[12px] border-b border-white/5 pb-2">
+      <span className="text-gray-500 uppercase">{label}</span>
       <span className="text-rose-400 font-bold italic">{value}</span>
     </div>
   );
@@ -319,7 +319,7 @@ function PrizeStat({ label, value, highlight = false }) {
     <div
       className={`p-2 rounded-lg ${highlight ? "bg-rose-500/20 border border-rose-500/40" : "bg-white/5"}`}
     >
-      <span className="text-[8px] text-gray-500 uppercase block">{label}</span>
+      <span className="text-[10px] text-gray-500 uppercase block">{label}</span>
       <span
         className={`text-sm font-black ${highlight ? "text-rose-400" : "text-white"}`}
       >

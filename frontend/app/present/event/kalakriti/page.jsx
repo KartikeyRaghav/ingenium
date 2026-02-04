@@ -55,11 +55,11 @@ export default function KalakritiPS() {
               className="group flex items-center gap-2 text-orange-500 hover:text-orange-400 transition-colors mb-4"
             >
               <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              <span className="text-[10px] tracking-[0.4em] uppercase font-bold">
+              <span className="text-[12px] tracking-[0.4em] uppercase font-bold">
                 Return to Events
               </span>
             </button>
-            <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-white uppercase italic leading-none">
+            <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-white uppercase italic leading-none">
               {eventData.name.split(" ")[0]}{" "}
               <span className="text-orange-500">
                 {eventData.name.split(" ")[1]}
@@ -99,7 +99,7 @@ export default function KalakritiPS() {
             <section className="bg-black/40 backdrop-blur-xl border border-orange-500/30 p-6 rounded-2xl relative overflow-hidden">
               <div className="relative z-10 space-y-6">
                 <div>
-                  <h3 className="text-[10px] text-orange-500 uppercase tracking-widest mb-3 font-bold flex items-center gap-2">
+                  <h3 className="text-[12px] text-orange-500 uppercase tracking-widest mb-3 font-bold flex items-center gap-2">
                     <Info className="w-3 h-3" /> Mission_Description
                   </h3>
                   <p className="text-sm leading-relaxed text-orange-100/70 italic border-l-2 border-orange-500 pl-4">
@@ -109,7 +109,7 @@ export default function KalakritiPS() {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="text-[10px] text-orange-500 uppercase tracking-widest font-bold">
+                  <h3 className="text-[12px] text-orange-500 uppercase tracking-widest font-bold">
                     Standard_Operating_Rules
                   </h3>
                   <div className="grid gap-3">
@@ -149,10 +149,10 @@ export default function KalakritiPS() {
             <div className="p-4 bg-red-950/30 border border-red-500/40 rounded-xl flex items-start gap-3">
               <ShieldAlert className="w-5 h-5 text-red-500 shrink-0" />
               <div>
-                <p className="text-[10px] text-red-400 uppercase font-black tracking-tighter">
+                <p className="text-[12px] text-red-400 uppercase font-black tracking-tighter">
                   Content_Security_Protocol
                 </p>
-                <p className="text-[9px] text-red-400/70 uppercase leading-tight mt-1">
+                <p className="text-[11px] text-red-400/70 uppercase leading-tight mt-1">
                   Explicit content = Immediate Terminal Shutdown
                   (Disqualification).
                 </p>
@@ -180,8 +180,8 @@ export default function KalakritiPS() {
 
                 <div className="mt-10 flex items-center gap-4 p-4 bg-orange-500/5 border border-orange-500/10 rounded-2xl">
                   <Wifi className="w-6 h-6 text-orange-500 animate-pulse" />
-                  <p className="text-[10px] text-gray-400 uppercase leading-relaxed tracking-widest">
-                    External Reference Uplink:{" "}
+                  <p className="text-[12px] text-gray-400 uppercase leading-relaxed tracking-widest">
+                    External Reference Uplink(INTERNET):{" "}
                     <span className="text-orange-500">Authorized</span>.
                   </p>
                 </div>
@@ -213,7 +213,7 @@ export default function KalakritiPS() {
 
                 <div className="bg-orange-500 p-6 rounded-2xl flex flex-col justify-center items-center shadow-xl shadow-orange-950/40">
                   <Trophy className="w-6 h-6 text-black mb-2" />
-                  <span className="text-[9px] text-black font-black uppercase mb-1">
+                  <span className="text-[11px] text-black font-black uppercase mb-1">
                     Total Bounty
                   </span>
                   <span className="text-2xl font-black text-black italic">
@@ -226,7 +226,7 @@ export default function KalakritiPS() {
               <div className="flex justify-center">
                 <button
                   onClick={() => router.push(eventData.registrationPath)}
-                  className="text-[10px] font-bold text-orange-400 uppercase tracking-[0.4em] hover:text-white transition-colors flex items-center gap-2 group"
+                  className="text-[12px] font-bold text-orange-400 uppercase tracking-[0.4em] hover:text-white transition-colors flex items-center gap-2 group"
                 >
                   Initiate deployment into the registry{" "}
                   <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
@@ -247,10 +247,10 @@ function HeaderStat({ icon, label, value }) {
     <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-full">
       <div className="text-orange-500">{icon}</div>
       <div className="flex flex-col">
-        <span className="text-[7px] text-gray-500 uppercase font-black leading-none mb-1">
+        <span className="text-[10px] text-gray-500 uppercase font-black leading-none mb-1">
           {label}
         </span>
-        <span className="text-[10px] font-bold text-white uppercase tracking-tight">
+        <span className="text-[12px] font-bold text-white uppercase tracking-tight">
           {value}
         </span>
       </div>
@@ -261,7 +261,7 @@ function HeaderStat({ icon, label, value }) {
 function RuleItem({ text, prohibited = false }) {
   return (
     <div
-      className={`flex gap-3 items-center text-[10px] uppercase font-bold p-2.5 rounded-lg border ${prohibited ? "border-red-500/20 bg-red-500/5" : "border-white/5 bg-white/5"}`}
+      className={`flex gap-3 items-center text-[12px] uppercase font-bold p-2.5 rounded-lg border ${prohibited ? "border-red-500/20 bg-red-500/5" : "border-white/5 bg-white/5"}`}
     >
       {prohibited ? (
         <Ban className="w-3 h-3 text-red-500" />
@@ -281,7 +281,7 @@ function ScoreCard({ label, weight }) {
       <div className="text-4xl font-black text-orange-500 mb-1 group-hover:scale-110 transition-transform">
         {weight}
       </div>
-      <div className="text-[10px] text-white/60 uppercase font-bold tracking-[0.2em]">
+      <div className="text-[12px] text-white/60 uppercase font-bold tracking-[0.2em]">
         {label}
       </div>
     </div>
@@ -292,7 +292,7 @@ function ThemeCard({ label, weight }) {
   return (
     <div className="p-6 bg-orange-500/10 border border-orange-500/40 rounded-2xl text-center shadow-lg shadow-orange-500/5">
       <div className="text-4xl font-black text-orange-500 mb-1">{weight}</div>
-      <div className="text-[10px] text-white uppercase font-black tracking-[0.2em]">
+      <div className="text-[12px] text-white uppercase font-black tracking-[0.2em]">
         {label}
       </div>
     </div>
@@ -302,7 +302,7 @@ function ThemeCard({ label, weight }) {
 function PrizeSlot({ rank, amount, label }) {
   return (
     <div className="text-center">
-      <div className="text-[8px] text-orange-500 uppercase font-black tracking-widest mb-1">
+      <div className="text-[10px] text-orange-500 uppercase font-black tracking-widest mb-1">
         {rank}_{label}
       </div>
       <div className="text-2xl font-black text-white italic tracking-tighter">

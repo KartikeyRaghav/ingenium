@@ -149,7 +149,7 @@ const NavNode = ({ node, isHovered, onHover, onLeave, onClick, isMobile }) => {
 
       {/* Label */}
       <div
-        className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 md:mt-4 text-center transition-all duration-300 ${isHovered ? "opacity-100 translate-y-0" : "opacity-60 translate-y-2"}`}
+        className={`absolute top-full left-1/2 -translate-x-1/2 text-center transition-all duration-300 ${isHovered ? "opacity-100 translate-y-0" : "opacity-60 translate-y-2"}`}
       >
         <div className="text-[10px] md:text-sm font-bold tracking-[0.2em] text-white font-mono whitespace-nowrap bg-black/50 px-1.5 py-0.5 md:px-2 md:py-1 rounded border border-white/10 backdrop-blur-sm">
           {node.label}

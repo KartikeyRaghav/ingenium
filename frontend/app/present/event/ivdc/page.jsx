@@ -96,7 +96,7 @@ export default function IVDCPS() {
         },
         {
           title: "Control Logic",
-          desc: "Use control algorithms to compute motion corrections and dynamically adjust motor speeds 99].",
+          desc: "Use control algorithms to compute motion corrections and dynamically adjust motor speeds 99.",
         },
       ],
       rules: [
@@ -141,11 +141,11 @@ export default function IVDCPS() {
               className="flex items-center gap-2 text-blue-400 group mb-2"
             >
               <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              <span className="text-[10px] tracking-[0.4em] uppercase">
+              <span className="text-[12px] font-bold tracking-[0.4em] uppercase">
                 Return to Events
               </span>
             </button>
-            <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-white uppercase italic">
+            <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-white uppercase italic">
               IVDC <span className="text-blue-500">KINETIC</span>
             </h1>
           </div>
@@ -164,7 +164,7 @@ export default function IVDCPS() {
                 <span className="text-xs font-bold tracking-widest">
                   0{item.id}
                 </span>
-                <span className="hidden md:block text-[10px] font-bold uppercase tracking-tighter">
+                <span className="hidden md:block text-[12px] font-bold uppercase tracking-tighter">
                   {item.title.split(":")[0]}
                 </span>
               </button>
@@ -184,17 +184,17 @@ export default function IVDCPS() {
             {/* COLUMN 1: MISSION CONTEXT & PRIZES */}
             <div className="lg:col-span-4 space-y-6">
               <div className="p-6 bg-blue-950/20 border border-blue-500/20 rounded-2xl relative group">
-                <div className="flex items-center gap-2 text-blue-400 text-[10px] uppercase tracking-widest mb-4">
+                <div className="flex items-center gap-2 text-blue-400 text-[14px] uppercase tracking-widest mb-4">
                   <Activity className="w-3 h-3 animate-pulse" /> Mission_Core
                 </div>
                 <p className="text-sm leading-relaxed text-blue-100/70 italic mb-6">
                   {challenges[activeModule].motivation}
                 </p>
                 <div className="space-y-2 p-4 bg-blue-500/5 rounded-xl border border-blue-500/10">
-                  <h4 className="text-[10px] text-blue-400 uppercase font-bold flex items-center gap-2">
+                  <h4 className="text-[14px] text-blue-400 uppercase font-bold flex items-center gap-2">
                     <Search className="w-3 h-3" /> Objective
                   </h4>
-                  <p className="text-xs text-white leading-relaxed">
+                  <p className="text-sm text-white leading-relaxed">
                     {challenges[activeModule].problemStatement}
                   </p>
                 </div>
@@ -203,31 +203,31 @@ export default function IVDCPS() {
               {/* PRIZE POOL CARD */}
               <div className="p-6 bg-linear-to-br from-yellow-500/10 to-transparent border border-yellow-500/20 rounded-2xl">
                 <div className="flex justify-between items-center mb-6">
-                  <h4 className="text-[10px] text-yellow-500 uppercase tracking-widest font-bold">
+                  <h4 className="text-[14px] text-yellow-500 uppercase tracking-widest font-bold">
                     Bounty_Pool
                   </h4>
-                  <Trophy className="w-5 h-5 text-yellow-500 shadow-[0_0_10px_#eab308]" />
+                  <Trophy className="w-5 h-5 text-yellow-500" />
                 </div>
                 <div className="space-y-3">
-                  <div className="flex justify-between text-xs font-mono">
+                  <div className="flex justify-between text-sm font-mono">
                     <span className="text-blue-400/60">Rank_01</span>
                     <span className="text-white font-black">
                       ₹{challenges[activeModule].prizes.first}
                     </span>
                   </div>
-                  <div className="flex justify-between text-xs font-mono">
+                  <div className="flex justify-between text-sm font-mono">
                     <span className="text-blue-400/60">Rank_02</span>
                     <span className="text-white font-black">
                       ₹{challenges[activeModule].prizes.second}
                     </span>
                   </div>
-                  <div className="flex justify-between text-xs font-mono pb-2 border-b border-white/5">
+                  <div className="flex justify-between text-sm font-mono pb-2 border-b border-white/5">
                     <span className="text-blue-400/60">Rank_03</span>
                     <span className="text-white font-black">
                       ₹{challenges[activeModule].prizes.third}
                     </span>
                   </div>
-                  <div className="flex justify-between text-sm font-black text-yellow-500 pt-1">
+                  <div className="flex justify-between text-md font-black text-yellow-500 pt-1">
                     <span>TOTAL</span>
                     <span>₹{challenges[activeModule].prizes.total}</span>
                   </div>
@@ -251,14 +251,14 @@ export default function IVDCPS() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* COMPLIANCE & RULES */}
                 <div className="p-6 bg-red-500/5 border border-red-500/20 rounded-2xl">
-                  <h4 className="text-[10px] text-red-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                  <h4 className="text-[14px] text-red-400 uppercase tracking-widest mb-4 flex items-center gap-2">
                     <ShieldCheck className="w-3 h-3" /> Rules_&_Compliance
                   </h4>
                   <ul className="space-y-3 mb-4">
                     {challenges[activeModule].rules.map((rule, i) => (
                       <li
                         key={i}
-                        className="text-[11px] text-blue-100/60 flex items-start gap-2"
+                        className="text-[13px] text-blue-100/60 flex items-start gap-2"
                       >
                         <AlertCircle className="w-3 h-3 text-red-400 shrink-0 mt-0.5" />{" "}
                         {rule}
@@ -276,16 +276,16 @@ export default function IVDCPS() {
 
                 {/* TASKS */}
                 <div className="p-6 bg-blue-950/20 border border-blue-500/20 rounded-2xl">
-                  <h4 className="text-[10px] text-blue-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                  <h4 className="text-[14px] text-blue-400 uppercase tracking-widest mb-4 flex items-center gap-2">
                     <Target className="w-3 h-3" /> Operation_Workflow
                   </h4>
                   <div className="space-y-4">
                     {challenges[activeModule].tasks.map((task, i) => (
                       <div key={i} className="pl-4 border-l-2 border-blue-500">
-                        <div className="text-[11px] font-bold text-white uppercase">
+                        <div className="text-[13px] font-bold text-white uppercase">
                           {task.title}
                         </div>
-                        <div className="text-[10px] text-blue-100/50 leading-tight">
+                        <div className="text-[14px] text-blue-100/50 leading-tight">
                           {task.desc}
                         </div>
                       </div>
@@ -296,14 +296,14 @@ export default function IVDCPS() {
 
               {/* EVALUATION PARAMETERS */}
               <div className="p-6 bg-black/40 border border-blue-500/10 rounded-2xl">
-                <h4 className="text-[10px] text-blue-400 uppercase tracking-widest mb-4">
+                <h4 className="text-[14px] text-blue-400 uppercase tracking-widest mb-4">
                   Evaluation_Logic
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {challenges[activeModule].evaluation.map((ev, i) => (
                     <div
                       key={i}
-                      className="p-3 bg-white/5 rounded-lg border border-white/5 text-[10px] text-blue-100/70"
+                      className="p-3 bg-white/5 rounded-lg border border-white/5 text-[14px] text-blue-100/70"
                     >
                       {ev}
                     </div>
@@ -322,7 +322,7 @@ export default function IVDCPS() {
                       {challenges[activeModule].deliverables.map((del, i) => (
                         <div
                           key={i}
-                          className="flex items-center gap-2 text-[10px] text-blue-300"
+                          className="flex items-center gap-2 text-[14px] text-blue-300"
                         >
                           <FileText className="w-3 h-3" /> {del}
                         </div>
@@ -330,14 +330,14 @@ export default function IVDCPS() {
                     </div>
                   </div>
                   <div className="p-4 bg-black/60 border border-blue-500/30 rounded-xl">
-                    <div className="text-[10px] text-blue-400 uppercase mb-3">
+                    <div className="text-[14px] text-blue-400 uppercase mb-3">
                       Hardware_Inventory
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {challenges[activeModule].specs.hardware.map((hw, i) => (
                         <span
                           key={i}
-                          className="px-2 py-1 bg-blue-500/20 rounded text-[9px] text-white border border-blue-500/30"
+                          className="px-2 py-1 bg-blue-500/20 rounded text-[11px] text-white border border-blue-500/30"
                         >
                           {hw}
                         </span>

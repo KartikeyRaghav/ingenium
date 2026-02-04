@@ -94,14 +94,14 @@ export default function GlitchpopEsportsPS() {
               className="flex items-center gap-2 text-cyan-400 mb-4"
             >
               <ChevronLeft className="w-4 h-4 animate-pulse" />
-              <span className="text-[10px] tracking-[0.5em] uppercase font-bold">
+              <span className="text-[12px] tracking-[0.5em] uppercase font-bold">
                 Return to Events
               </span>
             </button>
             <h1 className="text-5xl font-black tracking-tighter text-white uppercase italic">
               GLITCH<span className="text-cyan-500 italic">POP</span> X INGENIUM
             </h1>
-            <p className="text-[10px] text-cyan-500/60 mt-2 tracking-[0.3em] uppercase">
+            <p className="text-[12px] text-cyan-500/60 mt-2 tracking-[0.3em] uppercase">
               Pro-Level Gaming Collaboration
             </p>
           </div>
@@ -122,7 +122,7 @@ export default function GlitchpopEsportsPS() {
             >
               <div className="absolute inset-0 w-full h-full bg-white/10 -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
               <div className="relative flex items-center gap-3">
-                <span className="text-xs font-black tracking-[0.2em] text-white uppercase">
+                <span className="text-sm font-black tracking-[0.2em] text-white uppercase">
                   Register
                 </span>
                 <ExternalLink className="w-4 h-4 text-white" />
@@ -134,7 +134,7 @@ export default function GlitchpopEsportsPS() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* --- MISSION SELECTOR --- */}
           <div className="lg:col-span-4 space-y-4">
-            <h3 className="text-[10px] text-cyan-500 uppercase tracking-widest mb-4 font-bold">
+            <h3 className="text-[12px] text-cyan-500 uppercase tracking-widest mb-4 font-bold">
               Title_Registry
             </h3>
             {esportsData.map((game, idx) => (
@@ -154,13 +154,13 @@ export default function GlitchpopEsportsPS() {
                     {game.icon}
                   </div>
                   <div>
-                    <span className="text-[9px] text-cyan-500/50 uppercase font-bold">
+                    <span className="text-[11px] text-cyan-500/50 uppercase font-bold">
                       {game.id}_MODULE
                     </span>
                     <h4 className="text-lg font-black text-white uppercase tracking-tighter group-hover:text-cyan-400 transition-colors">
                       {game.title}
                     </h4>
-                    <p className="text-[8px] text-gray-500 uppercase">
+                    <p className="text-[10px] text-gray-500 uppercase">
                       {game.sub}
                     </p>
                   </div>
@@ -190,7 +190,7 @@ export default function GlitchpopEsportsPS() {
                   <h2 className="text-2xl font-black text-white uppercase tracking-tighter mb-4">
                     Briefing: {esportsData[activeGame].title}
                   </h2>
-                  <p className="text-sm leading-relaxed text-cyan-100/70 mb-8 border-l-2 border-cyan-500 pl-6 italic">
+                  <p className="text-md leading-relaxed text-cyan-100/70 mb-8 border-l-2 border-cyan-500 pl-6 italic">
                     "{esportsData[activeGame].objective}"
                   </p>
 
@@ -215,7 +215,7 @@ export default function GlitchpopEsportsPS() {
                     onClick={() =>
                       router.push(esportsData[activeGame].registrationPath)
                     }
-                    className="text-[10px] font-bold text-cyan-400 uppercase tracking-[0.4em] hover:text-white transition-colors flex items-center gap-2 group"
+                    className="text-[12px] font-bold text-cyan-400 uppercase tracking-[0.4em] hover:text-white transition-colors flex items-center gap-2 group"
                   >
                     Authorize deployment for {esportsData[activeGame].id}{" "}
                     <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
@@ -235,25 +235,25 @@ export default function GlitchpopEsportsPS() {
                   <h3 className="text-lg font-black text-white uppercase tracking-[0.2em]">
                     Bounty_Registry
                   </h3>
-                  <p className="text-[10px] text-cyan-500 uppercase tracking-widest italic font-bold">
+                  <p className="text-[12px] text-cyan-500 uppercase tracking-widest italic font-bold">
                     Sponsor_Allocated_Pool
                   </p>
                 </div>
 
                 <div className="flex gap-12">
                   <div className="text-center">
-                    <span className="text-[10px] text-gray-500 uppercase block mb-1">
+                    <span className="text-[12px] text-gray-500 uppercase block mb-1">
                       Total Pool
                     </span>
                     <span className="text-2xl font-black text-cyan-400 italic">
                       ₹1,00,000
                     </span>
-                    <span className="text-[8px] text-cyan-500/50 block mt-1">
+                    <span className="text-[10px] text-cyan-500/50 block mt-1">
                       (Tentative)
                     </span>
                   </div>
                   <div className="text-center border-l border-white/10 pl-12">
-                    <span className="text-[10px] text-gray-500 uppercase block mb-1">
+                    <span className="text-[12px] text-gray-500 uppercase block mb-1">
                       Distribution
                     </span>
                     <span className="text-xl font-black text-white italic underline underline-offset-4 decoration-cyan-500">
@@ -294,10 +294,10 @@ function StatNode({ icon, label, value }) {
     <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-lg">
       <div className="text-cyan-500">{icon}</div>
       <div>
-        <span className="text-[8px] text-gray-500 uppercase block leading-none mb-1 font-bold">
+        <span className="text-[10px] text-gray-500 uppercase block leading-none mb-1 font-bold">
           {label}
         </span>
-        <span className="text-xs font-bold text-white tracking-tighter uppercase italic">
+        <span className="text-sm font-bold text-white tracking-tighter uppercase italic">
           {value}
         </span>
       </div>
@@ -310,10 +310,10 @@ function RequirementCard({ label, value, full }) {
     <div
       className={`p-5 bg-white/5 border border-white/5 rounded-2xl group hover:border-cyan-500/50 transition-all ${full ? "md:col-span-2" : ""}`}
     >
-      <span className="text-[9px] text-cyan-500 uppercase font-bold block mb-1">
+      <span className="text-[12px] text-cyan-500 uppercase font-bold block mb-1">
         {label}
       </span>
-      <p className="text-[11px] text-gray-400 group-hover:text-white transition-colors leading-relaxed">
+      <p className="text-[14px] text-gray-400 group-hover:text-white transition-colors leading-relaxed">
         {value} <span className="text-[7px] text-cyan-500/30 italic"></span>
       </p>
     </div>

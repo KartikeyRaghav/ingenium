@@ -147,11 +147,11 @@ export default function FluxusGDGPS() {
               className="flex items-center gap-2 text-purple-500 hover:text-purple-400 transition-colors group"
             >
               <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              <span className="text-[10px] tracking-[0.4em] uppercase font-bold">
+              <span className="text-[12px] tracking-[0.4em] uppercase font-bold">
                 Return to Events
               </span>
             </button>
-            <h1 className="text-6xl font-black tracking-tighter text-white">
+            <h1 className="text-5xl font-black tracking-tighter text-white">
               SYNTHESIS{" "}
               <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-500 to-cyan-400">
                 CORE
@@ -172,11 +172,11 @@ export default function FluxusGDGPS() {
               >
                 {ps.icon}
                 <div className="text-left hidden sm:block">
-                  <div className="text-[10px] uppercase opacity-60 font-bold">
+                  <div className="text-[12px] uppercase opacity-60 font-bold">
                     {ps.type}
                   </div>
-                  <div className="text-xs font-black uppercase">
-                    STMT_0{ps.id}
+                  <div className="text-sm font-black uppercase">
+                    GDG_0{ps.id}
                   </div>
                 </div>
               </button>
@@ -199,14 +199,14 @@ export default function FluxusGDGPS() {
               <div className="p-8 bg-black/60 border-t-4 border-purple-500 rounded-b-xl backdrop-blur-md">
                 <div className="flex items-center gap-2 mb-4 text-purple-400">
                   <Cpu className="w-4 h-4 animate-pulse" />
-                  <span className="text-[10px] tracking-widest font-bold uppercase">
+                  <span className="text-[14px] tracking-widest font-bold uppercase">
                     Mission_Briefing
                   </span>
                 </div>
                 <h2 className="text-3xl font-black text-white leading-tight uppercase mb-4">
                   {problemStatements[activePS].title}
                 </h2>
-                <p className="text-xs text-slate-400 leading-relaxed font-sans border-l-2 border-white/10 pl-4 mb-6 italic">
+                <p className="text-sm text-slate-400 leading-relaxed font-sans border-l-2 border-white/10 pl-4 mb-6 italic">
                   "{problemStatements[activePS].context}"
                 </p>
                 <button
@@ -226,7 +226,7 @@ export default function FluxusGDGPS() {
                 <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:rotate-12 transition-transform">
                   <Trophy size={100} />
                 </div>
-                <h3 className="text-[10px] font-bold text-cyan-400 uppercase tracking-widest mb-6 flex items-center gap-2">
+                <h3 className="text-[14px] font-bold text-cyan-400 uppercase tracking-widest mb-6 flex items-center gap-2">
                   Bounty_Distribution
                 </h3>
                 <div className="space-y-4">
@@ -251,7 +251,7 @@ export default function FluxusGDGPS() {
                       key={i}
                       className="flex justify-between items-center border-b border-white/5 pb-2"
                     >
-                      <span className="text-[10px] text-slate-500 uppercase">
+                      <span className="text-[12px] text-slate-500 uppercase">
                         {p.label}
                       </span>
                       <span className={`text-xl font-black ${p.color}`}>
@@ -264,14 +264,14 @@ export default function FluxusGDGPS() {
 
               {/* Rules & Compliances */}
               <div className="p-6 bg-red-500/5 border border-red-500/20 rounded-xl">
-                <h3 className="text-[10px] font-bold text-red-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+                <h3 className="text-[14px] font-bold text-red-400 uppercase tracking-widest mb-4 flex items-center gap-2">
                   <ShieldAlert className="w-4 h-4" /> Compliance_Protocols
                 </h3>
                 <div className="space-y-3 mb-4">
                   {problemStatements[activePS].rules.map((rule, i) => (
                     <div
                       key={i}
-                      className="flex gap-2 text-[10px] text-slate-400 leading-tight"
+                      className="flex gap-2 text-[13px] text-slate-400 leading-tight"
                     >
                       <span className="text-red-500">»</span> {rule}
                     </div>
@@ -292,14 +292,14 @@ export default function FluxusGDGPS() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Functional Specs */}
                 <div className="p-8 bg-black/40 border border-white/10 rounded-xl backdrop-blur-md">
-                  <h3 className="text-[10px] font-bold text-purple-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+                  <h3 className="text-[14px] font-bold text-purple-500 uppercase tracking-widest mb-6 flex items-center gap-2">
                     <Layers className="w-4 h-4" /> System_Objectives
                   </h3>
                   <div className="space-y-4">
                     {problemStatements[activePS].objectives.map((obj, i) => (
                       <div key={i} className="flex gap-3 group">
                         <Zap className="w-4 h-4 text-purple-500 shrink-0 mt-1 group-hover:animate-bounce" />
-                        <p className="text-[11px] leading-relaxed text-slate-300 group-hover:text-white transition-colors uppercase">
+                        <p className="text-[13px] leading-relaxed text-slate-300 group-hover:text-white transition-colors uppercase">
                           {obj}
                         </p>
                       </div>
@@ -309,7 +309,7 @@ export default function FluxusGDGPS() {
 
                 {/* Deliverables */}
                 <div className="p-8 bg-white/5 border border-white/10 rounded-xl">
-                  <h3 className="text-[10px] font-bold text-cyan-400 uppercase tracking-widest mb-6 flex items-center gap-2">
+                  <h3 className="text-[14px] font-bold text-cyan-400 uppercase tracking-widest mb-6 flex items-center gap-2">
                     <FileCode2 className="w-4 h-4" /> Protocol_Deliverables
                   </h3>
                   <div className="grid grid-cols-1 gap-3">
@@ -319,7 +319,7 @@ export default function FluxusGDGPS() {
                         className="flex items-center gap-3 p-3 bg-white/5 rounded-lg border border-white/5"
                       >
                         <CheckCircle2 className="w-4 h-4 text-cyan-500" />
-                        <span className="text-[10px] font-bold text-slate-300 uppercase leading-tight">
+                        <span className="text-[12px] font-bold text-slate-300 uppercase leading-tight">
                           {item}
                         </span>
                       </div>
@@ -332,19 +332,19 @@ export default function FluxusGDGPS() {
               <div className="p-6 bg-black/40 border-2 border-dashed border-white/10 rounded-xl flex flex-wrap items-center justify-between gap-6">
                 <div className="flex gap-8">
                   <div className="space-y-1">
-                    <div className="text-[9px] text-slate-500 uppercase">
+                    <div className="text-[11px] text-slate-500 uppercase">
                       Submission_Mode
                     </div>
-                    <div className="text-xs font-bold text-white uppercase flex items-center gap-2">
+                    <div className="text-sm font-bold text-white uppercase flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />{" "}
                       Online_Portal
                     </div>
                   </div>
                   <div className="space-y-1">
-                    <div className="text-[9px] text-slate-500 uppercase">
+                    <div className="text-[11px] text-slate-500 uppercase">
                       Evaluation_Phase
                     </div>
-                    <div className="text-xs font-bold text-white uppercase flex items-center gap-2">
+                    <div className="text-sm font-bold text-white uppercase flex items-center gap-2">
                       <Target className="w-3 h-3 text-purple-500" />{" "}
                       Peer_Review_Ready
                     </div>
@@ -352,7 +352,7 @@ export default function FluxusGDGPS() {
                 </div>
 
                 <div className="flex flex-col items-end gap-1">
-                  <span className="text-[9px] text-slate-500 uppercase">
+                  <span className="text-[11px] text-slate-500 uppercase">
                     Total_Bounty_Pool
                   </span>
                   <span className="text-2xl font-black text-white tracking-tighter">
@@ -364,7 +364,7 @@ export default function FluxusGDGPS() {
               {/* Judging Weights (Document Logic) */}
               <div className="p-4 bg-white/5 rounded-xl border border-white/5 flex items-center gap-4">
                 <Info className="w-4 h-4 text-purple-400 shrink-0" />
-                <p className="text-[9px] text-slate-500 uppercase tracking-widest">
+                <p className="text-[11px] text-slate-500 uppercase tracking-widest">
                   Evaluation: Complexity (30%) • Quality (30%) • Innovation
                   (20%) • Automation (20%)
                 </p>

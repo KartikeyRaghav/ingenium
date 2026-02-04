@@ -258,7 +258,7 @@ export default function LandingPage({ onNavigate }) {
             className="flex mt-20 sm:mt-0 items-center justify-center gap-4"
           >
             <div className="h-px w-8 sm:w-12 bg-linear-to-r from-transparent to-blue-500" />
-            <span className="text-sm flex flex-col sm:flex-row sm:text-lg font-light text-blue-200 tracking-[0.2em] uppercase">
+            <span className="text-sm flex flex-col sm:flex-row sm:text-lg text-blue-200 tracking-[0.2em] uppercase">
               CHRONOVERSE: <div>Past, Present, Future</div>
             </span>
             <div className="h-px w-8 sm:w-12 bg-linear-to-l from-transparent to-blue-500" />
@@ -279,7 +279,7 @@ export default function LandingPage({ onNavigate }) {
             <div className="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/10 transition-colors duration-300" />
 
             {/* Text & Icon */}
-            <div className="relative flex items-center gap-3 text-blue-300 group-hover:text-white transition-colors font-mono text-sm tracking-widest uppercase">
+            <div className="relative flex items-center gap-3 text-blue-300 group-hover:text-white transition-colors font-mono text-lg tracking-widest uppercase">
               <span>Navigate Chronoverse</span>
               <svg
                 className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"

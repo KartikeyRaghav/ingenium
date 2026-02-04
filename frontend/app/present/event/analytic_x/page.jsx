@@ -103,14 +103,14 @@ export default function AnalyticXPS() {
               className="flex items-center gap-2 text-cyan-500 hover:text-cyan-300 transition-colors mb-2 group"
             >
               <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              <span className="text-[10px] tracking-[0.4em] uppercase">
+              <span className="text-[12px] font-bold tracking-[0.4em] uppercase">
                 Return to Events
               </span>
             </button>
             <h1 className="text-5xl font-black tracking-tighter text-white">
               ANALYTIC<span className="text-cyan-500">X</span>
             </h1>
-            <p className="text-cyan-500/60 text-xs mt-2 tracking-widest uppercase flex items-center gap-2">
+            <p className="text-cyan-500/60 text-sm mt-2 tracking-widest uppercase flex items-center gap-2">
               <Globe className="w-3 h-3" /> Global Gourmet Operational Challenge
             </p>
           </div>
@@ -141,31 +141,31 @@ export default function AnalyticXPS() {
             </p>
             <div className="mt-6 flex gap-4 overflow-x-auto pb-2">
               <div className="bg-black/40 p-3 border-l-2 border-red-500 min-w-35">
-                <div className="text-[9px] text-red-400 uppercase font-bold">
+                <div className="text-[11px] text-red-400 uppercase font-bold">
                   Churn Risk
                 </div>
-                <div className="text-xs text-white">Critical Retention</div>
+                <div className="text-sm text-white">Critical Retention</div>
               </div>
               <div className="bg-black/40 p-3 border-l-2 border-cyan-500 min-w-35">
-                <div className="text-[9px] text-cyan-400 uppercase font-bold">
+                <div className="text-[11px] text-cyan-400 uppercase font-bold">
                   Data Lake
                 </div>
-                <div className="text-xs text-white">Heterogeneous</div>
+                <div className="text-sm text-white">Heterogeneous</div>
               </div>
               <div className="bg-black/40 p-3 border-l-2 border-yellow-500 min-w-35">
-                <div className="text-[9px] text-yellow-400 uppercase font-bold">
+                <div className="text-[11px] text-yellow-400 uppercase font-bold">
                   Mode
                 </div>
-                <div className="text-xs text-white">Online</div>
+                <div className="text-sm text-white">Online</div>
               </div>
             </div>
           </div>
 
           <div className="p-6 rounded-2xl bg-red-500/5 border border-red-500/20 flex flex-col">
-            <h4 className="text-[10px] text-red-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+            <h4 className="text-[12px] text-red-500 uppercase tracking-widest mb-4 flex items-center gap-2">
               <FileWarning className="w-3 h-3" /> RULES_&_COMPLIANCE
             </h4>
-            <ul className="text-[10px] space-y-2 text-red-100/60 uppercase mb-4">
+            <ul className="text-[12px] space-y-2 text-red-100/60 uppercase mb-4">
               <li className="flex gap-2">
                 <Zap className="w-2 h-2 mt-1 shrink-0" /> Rule changes are
                 subject to organizer discretion.
@@ -192,7 +192,7 @@ export default function AnalyticXPS() {
         {/* --- PHASE SELECTOR & CONTENT --- */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-4 space-y-3">
-            <h3 className="text-[10px] text-cyan-500/50 uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+            <h3 className="text-[12px] text-cyan-500/50 uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
               <Activity className="w-3 h-3" /> PROBLEM_STAGES
             </h3>
             {phases.map((phase, idx) => (
@@ -213,7 +213,7 @@ export default function AnalyticXPS() {
                   </span>
                   <div className="text-left">
                     <div
-                      className={`text-xs font-bold uppercase tracking-widest ${activePhase === idx ? "text-white" : "text-gray-500"}`}
+                      className={`text-sm font-bold uppercase tracking-widest ${activePhase === idx ? "text-white" : "text-gray-500"}`}
                     >
                       {phase.title}
                     </div>
@@ -245,7 +245,7 @@ export default function AnalyticXPS() {
                     </h2>
                   </div>
                   <div className="text-right">
-                    <div className="text-[10px] text-gray-500 uppercase">
+                    <div className="text-[12px] text-gray-500 uppercase">
                       Success_Metric
                     </div>
                     <div className="text-xl font-black text-cyan-500 uppercase">
@@ -268,7 +268,7 @@ export default function AnalyticXPS() {
                   {phases[activePhase].details.map((detail, i) => (
                     <div
                       key={i}
-                      className="group flex gap-3 p-4 bg-white/5 border border-white/5 rounded-lg text-[10px] leading-relaxed text-gray-400"
+                      className="group flex items-center gap-3 p-4 bg-white/5 border border-white/5 rounded-lg text-[14px] leading-relaxed text-gray-400"
                     >
                       <Zap className="w-3 h-3 text-cyan-500 shrink-0 mt-1" />
                       {detail}
@@ -283,7 +283,7 @@ export default function AnalyticXPS() {
         {/* --- DATASETS & EVALUATION --- */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
           <div className="p-6 bg-black/40 border border-white/10 rounded-2xl">
-            <h4 className="text-[10px] text-cyan-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+            <h4 className="text-[12px] text-cyan-500 uppercase tracking-widest mb-6 flex items-center gap-2">
               <Activity className="w-3 h-3" /> Evaluation_Scorecard
             </h4>
             <div className="space-y-5">
@@ -311,7 +311,7 @@ export default function AnalyticXPS() {
           </div>
 
           <div className="p-6 bg-black/40 border border-white/10 rounded-2xl">
-            <h4 className="text-[10px] text-cyan-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+            <h4 className="text-[12px] text-cyan-500 uppercase tracking-widest mb-6 flex items-center gap-2">
               <LinkIcon className="w-3 h-3" /> REFERENCE_DATASETS
             </h4>
             <div className="space-y-4">
@@ -327,7 +327,7 @@ export default function AnalyticXPS() {
                 name="Open-Meteo (Weather)"
                 url="https://open-meteo.com/"
               />
-              <p className="text-[9px] text-cyan-500/40 leading-tight italic mt-2">
+              <p className="text-[11px] text-cyan-500/40 leading-tight italic mt-2">
                 Note: Greater complexity and creative data sourcing are
                 encouraged for higher scores.
               </p>
@@ -335,7 +335,7 @@ export default function AnalyticXPS() {
           </div>
 
           <div className="p-6 bg-cyan-500/10 border border-cyan-500/30 rounded-2xl relative overflow-hidden flex flex-col justify-between shadow-[0_0_30px_rgba(6,182,212,0.1)]">
-            <h4 className="text-[10px] text-cyan-400 uppercase tracking-widest mb-6 flex items-center gap-2">
+            <h4 className="text-[12px] text-cyan-400 uppercase tracking-widest mb-6 flex items-center gap-2">
               <ShieldCheck className="w-3 h-3" /> COMPETITION_BOUNTY
             </h4>
             <div className="grid grid-cols-3 gap-2 mb-8">
@@ -345,7 +345,7 @@ export default function AnalyticXPS() {
             </div>
             <div className="pt-6 border-t border-cyan-500/20">
               <div className="flex justify-between items-center">
-                <span className="text-[10px] text-cyan-500/60 uppercase">
+                <span className="text-[12px] text-cyan-500/60 uppercase">
                   Total_Allocation
                 </span>
                 <span className="text-3xl font-black text-white tracking-tighter">
@@ -356,7 +356,7 @@ export default function AnalyticXPS() {
                 onClick={() =>
                   router.push(`/present/registration?event=analytic_x`)
                 }
-                className="mt-4 w-full py-3 bg-cyan-500 text-black font-black text-[10px] uppercase tracking-widest hover:bg-white transition-all"
+                className="mt-4 w-full py-3 bg-cyan-500 text-black font-black text-[12px] uppercase tracking-widest hover:bg-white transition-all"
               >
                 APPLY_FOR_BOUNTY
               </button>
@@ -373,7 +373,7 @@ export default function AnalyticXPS() {
 function ScoreBar({ label, percent, desc }) {
   return (
     <div>
-      <div className="flex justify-between text-[10px] mb-1 font-bold">
+      <div className="flex justify-between text-[12px] mb-1 font-bold">
         <span className="text-gray-300 uppercase">{label}</span>
         <span className="text-cyan-500">{percent}%</span>
       </div>
@@ -384,7 +384,7 @@ function ScoreBar({ label, percent, desc }) {
           className="h-full bg-cyan-500"
         />
       </div>
-      <p className="text-[8px] text-gray-600 mt-1 uppercase">{desc}</p>
+      <p className="text-[10px] text-gray-600 mt-1 uppercase">{desc}</p>
     </div>
   );
 }
@@ -397,10 +397,10 @@ function DatasetLink({ name, url }) {
       className="flex items-center justify-between p-2 bg-white/5 rounded hover:bg-cyan-500/10 transition-colors border border-transparent hover:border-cyan-500/20"
     >
       <div className="flex flex-col">
-        <span className="text-[10px] text-white font-bold truncate w-40">
+        <span className="text-[12px] text-white font-bold truncate w-40">
           {name}
         </span>
-        <span className="text-[8px] text-cyan-500/60 truncate w-32">{url}</span>
+        <span className="text-[10px] text-cyan-500/60 truncate w-32">{url}</span>
       </div>
       <LinkIcon className="w-3 h-3 text-cyan-500" />
     </Link>
@@ -410,8 +410,8 @@ function DatasetLink({ name, url }) {
 function PrizeItem({ rank, amount }) {
   return (
     <div className="text-center p-2 bg-black/40 border border-white/5 rounded-lg">
-      <div className="text-[8px] text-cyan-500/60 mb-1 font-bold">{rank}</div>
-      <div className="text-sm font-black text-white italic">₹{amount}</div>
+      <div className="text-[10px] text-cyan-500/60 mb-1 font-bold">{rank}</div>
+      <div className="text-md font-black text-white italic">₹{amount}</div>
     </div>
   );
 }

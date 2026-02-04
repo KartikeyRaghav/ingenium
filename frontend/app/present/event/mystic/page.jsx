@@ -74,14 +74,14 @@ export default function ShutterUpPS() {
               className="flex items-center gap-2 text-white/60 mb-4"
             >
               <ChevronLeft className="w-4 h-4" />
-              <span className="text-[10px] tracking-[0.5em] uppercase font-bold">
+              <span className="text-[12px] tracking-[0.5em] uppercase font-bold">
                 Return to Events
               </span>
             </button>
             <h1 className="text-5xl font-black tracking-tighter text-white uppercase italic">
               SHUTTER <span className="text-white/40">UP</span>
             </h1>
-            <p className="text-[10px] text-white/50 mt-2 tracking-[0.3em] uppercase">
+            <p className="text-[12px] text-white/50 mt-2 tracking-[0.3em] uppercase">
               Theme-Based Storytelling Competition
             </p>
           </div>
@@ -103,7 +103,7 @@ export default function ShutterUpPS() {
             >
               <div className="absolute inset-0 w-full h-full bg-black/10 -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
               <div className="relative flex items-center gap-3">
-                <span className="text-xs font-black tracking-[0.2em] text-black uppercase">
+                <span className="text-sm font-black tracking-[0.2em] text-black uppercase">
                   REGISTER
                 </span>
                 <ExternalLink className="w-4 h-4 text-black" />
@@ -115,7 +115,7 @@ export default function ShutterUpPS() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* --- THEME SELECTOR & DATA --- */}
           <div className="lg:col-span-4 space-y-6">
-            <h3 className="text-[10px] text-white/40 uppercase tracking-widest mb-4 font-bold">
+            <h3 className="text-[12px] text-white/40 uppercase tracking-widest mb-4 font-bold">
               Active_Lenses (Themes)
             </h3>
             <div className="space-y-3">
@@ -136,10 +136,10 @@ export default function ShutterUpPS() {
                       {theme.icon}
                     </div>
                     <div>
-                      <span className="text-[8px] text-white/40 uppercase font-mono">
+                      <span className="text-[12px] text-white/40 uppercase font-mono">
                         {theme.id}
                       </span>
-                      <h4 className="text-sm font-bold uppercase tracking-widest text-white">
+                      <h4 className="text-md font-bold uppercase tracking-widest text-white">
                         {theme.name}
                       </h4>
                     </div>
@@ -150,7 +150,7 @@ export default function ShutterUpPS() {
 
             {/* Metadata Requirements */}
             <div className="p-6 bg-white/5 border border-white/10 rounded-2xl mt-8">
-              <h4 className="text-[10px] text-white/60 uppercase tracking-widest mb-4 flex items-center gap-2">
+              <h4 className="text-[12px] text-white/60 uppercase tracking-widest mb-4 flex items-center gap-2">
                 <FileSearch className="w-3 h-3" /> EXIF_Validation_Required
               </h4>
               <div className="space-y-3 mb-4">
@@ -182,7 +182,7 @@ export default function ShutterUpPS() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                 <div className="space-y-4">
-                  <h4 className="text-[10px] text-white/60 uppercase tracking-widest flex items-center gap-2">
+                  <h4 className="text-[12px] text-white/60 uppercase tracking-widest flex items-center gap-2">
                     <CheckCircle2 className="w-3 h-3 text-green-500" />{" "}
                     Authorized_Processing
                   </h4>
@@ -191,7 +191,7 @@ export default function ShutterUpPS() {
                       (i) => (
                         <span
                           key={i}
-                          className="text-[10px] bg-white/5 p-2 rounded border border-white/5 text-white/70 uppercase font-bold"
+                          className="text-[12px] bg-white/5 p-2 rounded border border-white/5 text-white/70 uppercase font-bold"
                         >
                           {i}
                         </span>
@@ -200,10 +200,10 @@ export default function ShutterUpPS() {
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <h4 className="text-[10px] text-red-400 uppercase tracking-widest flex items-center gap-2 font-bold">
+                  <h4 className="text-[12px] text-red-400 uppercase tracking-widest flex items-center gap-2 font-bold">
                     <Ban className="w-3 h-3" /> Terminal_Restrictions
                   </h4>
-                  <div className="grid grid-cols-1 gap-1 text-[10px] text-red-200/50 uppercase italic font-bold">
+                  <div className="grid grid-cols-1 gap-1 text-[12px] text-red-200/50 uppercase italic font-bold">
                     <p>▪ No Photo-Morphing</p>
                     <p>▪ No Local Editing</p>
                     <p>▪ No AI-Generated Content</p>
@@ -215,7 +215,7 @@ export default function ShutterUpPS() {
               {/* Secondary CTA */}
               <button
                 onClick={() => router.push(competitionData.registrationPath)}
-                className="text-[10px] font-bold text-white uppercase tracking-[0.4em] hover:text-white/60 transition-colors flex items-center gap-2 group mb-8"
+                className="text-[12px] font-bold text-white uppercase tracking-[0.4em] hover:text-white/60 transition-colors flex items-center gap-2 group mb-8"
               >
                 Sync your narrative with the optical registry{" "}
                 <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
@@ -242,7 +242,7 @@ export default function ShutterUpPS() {
                   <h3 className="text-lg font-black text-white uppercase tracking-[0.2em]">
                     Bounty_Allocation
                   </h3>
-                  <p className="text-[10px] text-white/50 uppercase tracking-widest italic">
+                  <p className="text-[12px] text-white/50 uppercase tracking-widest italic">
                     Visual_Aesthetics_Incentive
                   </p>
                 </div>
@@ -266,7 +266,7 @@ export default function ShutterUpPS() {
                 </div>
 
                 <div className="px-6 py-4 bg-white/10 border border-white/30 rounded-xl text-center">
-                  <span className="text-[9px] text-white/60 uppercase block font-bold mb-1">
+                  <span className="text-[11px] text-white/60 uppercase block font-bold mb-1">
                     Aggregate Pool
                   </span>
                   <span className="text-2xl font-black text-white italic">
@@ -288,10 +288,10 @@ function StatusNode({ label, value }) {
   return (
     <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-lg">
       <div>
-        <span className="text-[8px] text-white/40 uppercase block leading-none mb-1 font-bold">
+        <span className="text-[10px] text-white/40 uppercase block leading-none mb-1 font-bold">
           {label}
         </span>
-        <span className="text-xs font-bold text-white tracking-tighter uppercase italic">
+        <span className="text-sm font-bold text-white tracking-tighter uppercase italic">
           {value}
         </span>
       </div>
@@ -301,7 +301,7 @@ function StatusNode({ label, value }) {
 
 function RequirementRow({ text }) {
   return (
-    <div className="flex gap-3 items-center text-[10px] uppercase font-bold text-white/40 group">
+    <div className="flex gap-3 items-center text-[12px] uppercase font-bold text-white/40 group">
       <div className="w-1 h-1 bg-white/60 group-hover:scale-150 transition-transform" />
       <span className="group-hover:text-white transition-colors">{text}</span>
     </div>
@@ -311,7 +311,7 @@ function RequirementRow({ text }) {
 function Metric({ label }) {
   return (
     <div className="text-center group">
-      <div className="text-[8px] text-white/40 font-bold uppercase tracking-tighter leading-tight mb-2 group-hover:text-white transition-colors">
+      <div className="text-[11px] text-white/40 font-bold uppercase tracking-tighter leading-tight mb-2 group-hover:text-white transition-colors">
         {label}
       </div>
       <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
@@ -328,13 +328,13 @@ function Metric({ label }) {
 function BountyItem({ rank, amount, label }) {
   return (
     <div className="text-center">
-      <div className="text-[8px] text-white/40 uppercase mb-1 font-bold tracking-tighter">
+      <div className="text-[10px] text-white/40 uppercase mb-1 font-bold tracking-tighter">
         {rank}_TIER
       </div>
       <div className="text-xl font-black text-white italic leading-none">
         ₹{amount}
       </div>
-      <div className="text-[7px] text-white/30 uppercase mt-1 font-bold">
+      <div className="text-[9px] text-white/30 uppercase mt-1 font-bold">
         {label}
       </div>
     </div>

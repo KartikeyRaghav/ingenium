@@ -85,14 +85,14 @@ export default function LiteraryCompetitionsPS() {
               className="flex items-center gap-2 text-amber-500/60 mb-4"
             >
               <ChevronLeft className="w-4 h-4" />
-              <span className="text-[10px] tracking-[0.5em] uppercase font-bold">
+              <span className="text-[12px] tracking-[0.5em] uppercase font-bold">
                 Return to Events
               </span>
             </button>
             <h1 className="text-5xl font-black tracking-tighter text-white uppercase italic">
               LITERARY <span className="text-amber-500/40">COMPETITIONS</span>
             </h1>
-            <p className="text-[10px] text-amber-200/50 mt-2 tracking-[0.3em] uppercase">
+            <p className="text-[12px] text-amber-200/50 mt-2 tracking-[0.3em] uppercase">
               Encouraging Creativity & Literary Expression
             </p>
           </div>
@@ -118,7 +118,7 @@ export default function LiteraryCompetitionsPS() {
             >
               <div className="absolute inset-0 w-full h-full bg-white/10 -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
               <div className="relative flex items-center gap-3">
-                <span className="text-xs font-black tracking-[0.2em] text-white uppercase">
+                <span className="text-sm font-black tracking-[0.2em] text-white uppercase">
                   Register
                 </span>
                 <ExternalLink className="w-4 h-4 text-white" />
@@ -130,7 +130,7 @@ export default function LiteraryCompetitionsPS() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* --- COMPETITION SELECTOR --- */}
           <div className="lg:col-span-4 space-y-4">
-            <h3 className="text-[10px] text-amber-500/50 uppercase tracking-widest mb-4 font-bold italic">
+            <h3 className="text-[12px] text-amber-500/50 uppercase tracking-widest mb-4 font-bold italic">
               Active_Manuscripts
             </h3>
             {literaryData.map((item, idx) => (
@@ -153,7 +153,7 @@ export default function LiteraryCompetitionsPS() {
                     <h4 className="text-lg font-black text-white uppercase tracking-tighter group-hover:text-amber-400 transition-colors">
                       {item.title}
                     </h4>
-                    <p className="text-[10px] text-amber-500/40 uppercase font-bold tracking-widest">
+                    <p className="text-[12px] text-amber-500/40 uppercase font-bold tracking-widest">
                       {item.sub}
                     </p>
                   </div>
@@ -163,14 +163,14 @@ export default function LiteraryCompetitionsPS() {
 
             {/* System Integrity */}
             <div className="p-6 bg-amber-950/20 border border-amber-500/10 rounded-2xl mt-8">
-              <h4 className="text-[10px] text-amber-500/60 uppercase tracking-widest mb-4 flex items-center gap-2 font-bold">
+              <h4 className="text-[12px] text-amber-500/60 uppercase tracking-widest mb-4 flex items-center gap-2 font-bold">
                 <Terminal className="w-3 h-3" /> Core_Compliance
               </h4>
               <div className="space-y-2">
-                <p className="text-[11px] text-amber-100/40 uppercase leading-tight font-bold">
+                <p className="text-[13px] text-amber-100/40 uppercase leading-tight font-bold">
                   All protocols will be strictly offline.
                 </p>
-                <p className="text-[11px] text-amber-100/40 uppercase leading-tight font-bold">
+                <p className="text-[13px] text-amber-100/40 uppercase leading-tight font-bold">
                   Originality of script is mandatory.
                 </p>
               </div>
@@ -196,13 +196,13 @@ export default function LiteraryCompetitionsPS() {
                   {literaryData[activeTab].title}
                 </h2>
 
-                <p className="text-sm leading-relaxed text-amber-100/70 mb-12 p-6 bg-amber-500/5 border-l-2 border-amber-500 italic max-w-2xl">
+                <p className="text-md leading-relaxed text-amber-100/70 mb-12 p-6 bg-amber-500/5 border-l-2 border-amber-500 italic max-w-2xl">
                   "{literaryData[activeTab].description}"
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   <div className="space-y-4">
-                    <h4 className="text-[10px] text-amber-500 uppercase tracking-[0.2em] font-bold">
+                    <h4 className="text-[12px] text-amber-500 uppercase tracking-[0.2em] font-bold">
                       Lexical_Focus
                     </h4>
                     <ul className="space-y-3">
@@ -214,7 +214,7 @@ export default function LiteraryCompetitionsPS() {
                       ].map((focus) => (
                         <li
                           key={focus}
-                          className="text-[11px] text-gray-400 flex items-center gap-3"
+                          className="text-[13px] text-gray-400 flex items-center gap-3"
                         >
                           <div className="w-1 h-1 bg-amber-500" /> {focus}
                         </li>
@@ -223,10 +223,10 @@ export default function LiteraryCompetitionsPS() {
                   </div>
                   <div className="p-6 bg-amber-500/5 rounded-2xl border border-amber-500/10 flex flex-col justify-center">
                     <ScrollText className="w-8 h-8 text-amber-500/30 mb-2" />
-                    <span className="text-[10px] text-amber-500/60 uppercase font-bold">
+                    <span className="text-[12px] text-amber-500/60 uppercase font-bold">
                       Submission Method
                     </span>
-                    <span className="text-xs text-white uppercase font-black mb-4">
+                    <span className="text-sm text-white uppercase font-black mb-4">
                       Offline Manifest
                     </span>
                     <Link
@@ -244,7 +244,7 @@ export default function LiteraryCompetitionsPS() {
                   onClick={() =>
                     router.push(literaryData[activeTab].registrationPath)
                   }
-                  className="text-[10px] font-bold text-amber-400 uppercase tracking-[0.4em] hover:text-white transition-colors flex items-center gap-2 group"
+                  className="text-[12px] font-bold text-amber-400 uppercase tracking-[0.4em] hover:text-white transition-colors flex items-center gap-2 group"
                 >
                   Commit entry to the manuscript registry{" "}
                   <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
@@ -263,7 +263,7 @@ export default function LiteraryCompetitionsPS() {
                   <h3 className="text-lg font-black text-white uppercase tracking-[0.2em]">
                     Bounty_Registry
                   </h3>
-                  <p className="text-[10px] text-amber-500 uppercase tracking-widest italic font-bold">
+                  <p className="text-[12px] text-amber-500 uppercase tracking-widest italic font-bold">
                     Creative_Lexicon_Rewards
                   </p>
                 </div>
@@ -284,7 +284,7 @@ export default function LiteraryCompetitionsPS() {
                 </div>
 
                 <div className="px-6 py-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-center min-w-35">
-                  <span className="text-[9px] text-amber-500 uppercase block font-bold mb-1">
+                  <span className="text-[11px] text-amber-500 uppercase block font-bold mb-1">
                     Total Pool
                   </span>
                   <span className="text-2xl font-black text-amber-400 italic leading-none">
@@ -307,13 +307,13 @@ function StatusNode({ icon, label, value }) {
     <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-lg">
       <div className="text-amber-500">{icon}</div>
       <div>
-        <span className="text-[8px] text-gray-500 uppercase block leading-none mb-1 font-bold">
+        <span className="text-[10px] text-gray-500 uppercase block leading-none mb-1 font-bold">
           {label}
         </span>
-        <span className="text-xs font-bold text-white tracking-tighter uppercase italic">
+        <span className="text-sm font-bold text-white tracking-tighter uppercase italic">
           {value}
         </span>
-        <span className="text-[7px] text-amber-500/40 ml-1 italic"></span>
+        <span className="text-[9px] text-amber-500/40 ml-1 italic"></span>
       </div>
     </div>
   );
@@ -322,7 +322,7 @@ function StatusNode({ icon, label, value }) {
 function BountyNode({ rank, amount }) {
   return (
     <div className="text-center group">
-      <div className={`text-[8px] font-bold uppercase mb-1 text-amber-500/60`}>
+      <div className={`text-[10px] font-bold uppercase mb-1 text-amber-500/60`}>
         {rank}_ACCESS
       </div>
       <div className="text-xl font-black text-white italic group-hover:scale-110 transition-transform">

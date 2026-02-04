@@ -231,11 +231,11 @@ export default function RoboticsPS() {
               className="flex items-center gap-2 text-rose-500 mb-4 group"
             >
               <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              <span className="text-[10px] tracking-[0.5em] uppercase font-bold">
+              <span className="text-[12px] tracking-[0.5em] uppercase font-bold">
                 Return to Events
               </span>
             </button>
-            <h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase italic leading-none">
+            <h1 className="text-5xl font-black tracking-tighter uppercase italic leading-none">
               {active.title}
             </h1>
           </motion.div>
@@ -251,7 +251,7 @@ export default function RoboticsPS() {
                     : "bg-black/40 border-white/20 text-white hover:border-rose-500/50"
                 }`}
               >
-                <span className="text-xs">{module.id}</span>
+                <span className="text-sm">{module.id}</span>
               </button>
             ))}
           </div>
@@ -272,17 +272,17 @@ export default function RoboticsPS() {
                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:rotate-12 transition-transform">
                   {active.icon}
                 </div>
-                <h3 className="text-rose-500 text-[10px] font-black tracking-[0.2em] mb-2 uppercase flex items-center gap-2">
+                <h3 className="text-rose-500 text-[14px] font-black tracking-[0.2em] mb-2 uppercase flex items-center gap-2">
                   <Target className="w-3 h-3" /> Mission_Objective
                 </h3>
                 <p className="text-sm leading-relaxed text-gray-300 italic">
                   "{active.objective}"
                 </p>
                 <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
-                  <span className="text-[10px] text-gray-500 uppercase font-bold">
+                  <span className="text-[14px] text-gray-500 uppercase font-bold">
                     Team Composition
                   </span>
-                  <span className="text-xs font-bold text-rose-500 uppercase flex items-center gap-2">
+                  <span className="text-sm font-bold text-rose-500 uppercase flex items-center gap-2">
                     <Users className="w-3 h-3" /> {active.teamSize}
                   </span>
                 </div>
@@ -294,11 +294,11 @@ export default function RoboticsPS() {
                     key={i}
                     className="p-4 bg-black/40 border border-white/5 rounded-lg group hover:border-rose-500/40 transition-all"
                   >
-                    <p className="text-[8px] text-gray-500 uppercase font-black mb-1">
+                    <p className="text-[10px] text-gray-500 uppercase font-black mb-1">
                       {c.label}
                     </p>
-                    <p className="text-sm font-black text-white">{c.val}</p>
-                    <p className="text-[9px] text-rose-400/60 mt-1 italic">
+                    <p className="text-[15px] font-black text-white">{c.val}</p>
+                    <p className="text-[11px] text-rose-400/60 mt-1 italic">
                       {c.detail}
                     </p>
                   </div>
@@ -306,12 +306,12 @@ export default function RoboticsPS() {
               </div>
 
               <div className="p-6 bg-black/60 border-l-2 border-rose-500 rounded-r-xl">
-                <h3 className="text-[10px] font-black tracking-[0.2em] mb-4 uppercase text-gray-400 flex items-center gap-2">
+                <h3 className="text-[14px] font-black tracking-[0.2em] mb-4 uppercase text-gray-400 flex items-center gap-2">
                   <Maximize className="w-3 h-3" /> Arena_Specifications
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center border-b border-white/5 pb-2">
-                    <span className="text-[10px] uppercase text-gray-500">
+                    <span className="text-[12px] uppercase text-gray-500">
                       Dimensions
                     </span>
                     <span className="text-xs font-bold">
@@ -319,7 +319,7 @@ export default function RoboticsPS() {
                     </span>
                   </div>
                   <div className="flex justify-between items-center border-b border-white/5 pb-2">
-                    <span className="text-[10px] uppercase text-gray-500">
+                    <span className="text-[12px] uppercase text-gray-500">
                       Environment
                     </span>
                     <span className="text-xs font-bold">
@@ -327,10 +327,10 @@ export default function RoboticsPS() {
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-[10px] uppercase text-gray-500">
+                    <span className="text-[12px] uppercase text-gray-500">
                       Surface Detail
                     </span>
-                    <span className="text-[10px] font-bold text-right ml-4">
+                    <span className="text-[12px] font-bold text-right ml-4">
                       {active.arena.floor}
                     </span>
                   </div>
@@ -341,7 +341,7 @@ export default function RoboticsPS() {
             {/* MIDDLE: PHASES & COMPLIANCE */}
             <div className="lg:col-span-5 space-y-6">
               <div className="p-6 bg-white/5 border border-white/10 rounded-xl">
-                <h3 className="text-[10px] font-black tracking-[0.2em] mb-6 uppercase flex items-center gap-2">
+                <h3 className="text-[14px] font-black tracking-[0.2em] mb-6 uppercase flex items-center gap-2">
                   <Activity className="w-3 h-3 text-rose-500" />{" "}
                   Operational_Phases
                 </h3>
@@ -349,7 +349,7 @@ export default function RoboticsPS() {
                   {active.stages.map((stage, i) => (
                     <div key={i} className="flex gap-4 group">
                       <div className="flex flex-col items-center">
-                        <div className="w-6 h-6 rounded-full border border-rose-500 flex items-center justify-center text-[10px] font-black group-hover:bg-rose-500 group-hover:text-black transition-all">
+                        <div className="w-6 h-6 rounded-full border border-rose-500 flex items-center justify-center text-[12px] font-black group-hover:bg-rose-500 group-hover:text-black transition-all">
                           {i + 1}
                         </div>
                         {i !== active.stages.length - 1 && (
@@ -357,13 +357,13 @@ export default function RoboticsPS() {
                         )}
                       </div>
                       <div className="pb-4">
-                        <p className="text-xs font-black uppercase text-white leading-none mb-1">
+                        <p className="text-sm font-black uppercase text-white leading-none mb-1">
                           {stage.title}
                         </p>
-                        <p className="text-[9px] text-rose-500 font-bold mb-2 uppercase italic">
+                        <p className="text-[11px] text-rose-500 font-bold mb-2 uppercase italic">
                           {stage.meta}
                         </p>
-                        <p className="text-[10px] text-gray-400 leading-relaxed">
+                        <p className="text-[14px] text-gray-400 leading-relaxed">
                           {stage.details}
                         </p>
                       </div>
@@ -374,50 +374,50 @@ export default function RoboticsPS() {
 
               {/* Rules & Compliance Section */}
               <div className="p-6 bg-black/40 border border-white/10 rounded-xl">
-                <h3 className="text-[10px] font-black tracking-[0.2em] mb-4 uppercase text-gray-400 flex items-center gap-2">
+                <h3 className="text-[14px] font-black tracking-[0.2em] mb-4 uppercase text-gray-400 flex items-center gap-2">
                   <ShieldCheck className="w-3 h-3 text-emerald-500" />{" "}
                   Protocol_Compliance
                 </h3>
                 <ul className="space-y-2 mb-4">
                   {active.id === "RW" && (
                     <>
-                      <li className="text-[10px] text-gray-400 flex gap-2">
-                        <div className="w-1 h-1 bg-rose-500 mt-1 shrink-0" />{" "}
+                      <li className="text-[14px] text-gray-400 flex items-center gap-2">
+                        <div className="w-1 h-1 bg-rose-500 shrink-0" />{" "}
                         Prohibited: {active.weapons.prohibited}
                       </li>
-                      <li className="text-[10px] text-gray-400 flex gap-2">
-                        <div className="w-1 h-1 bg-rose-500 mt-1 shrink-0" />{" "}
+                      <li className="text-[14px] text-gray-400 flex items-center gap-2">
+                        <div className="w-1 h-1 bg-rose-500 shrink-0" />{" "}
                         Mandatory weapon locking and emergency cutoffs{" "}
                       </li>
                     </>
                   )}
                   {active.id === "RS" && (
                     <>
-                      <li className="text-[10px] text-gray-400 flex gap-2">
-                        <div className="w-1 h-1 bg-blue-500 mt-1 shrink-0" />{" "}
+                      <li className="text-[14px] text-gray-400 flex items-center gap-2">
+                        <div className="w-1 h-1 bg-blue-500 shrink-0" />{" "}
                         Wheeled-only drive mechanisms permitted
                       </li>
-                      <li className="text-[10px] text-gray-400 flex gap-2">
-                        <div className="w-1 h-1 bg-blue-500 mt-1 shrink-0" />{" "}
-                        Robot must manage ball detection & scoring
-                        autonomously/semi-autonomously
+                      <li className="text-[14px] text-gray-400 flex items-center gap-2">
+                        <div className="w-1 h-1 bg-blue-500 shrink-0" />{" "}
+                        Robot must manage ball detection & scoring autonomously/
+                        semi-autonomously
                       </li>
                     </>
                   )}
                   {active.id === "LF" && (
                     <>
-                      <li className="text-[10px] text-gray-400 flex gap-2">
-                        <div className="w-1 h-1 bg-emerald-500 mt-1 shrink-0" />{" "}
+                      <li className="text-[14px] text-gray-400 flex items-center gap-2">
+                        <div className="w-1 h-1 bg-emerald-500 shrink-0" />{" "}
                         Manual intervention results in penalties{" "}
                       </li>
-                      <li className="text-[10px] text-gray-400 flex gap-2">
-                        <div className="w-1 h-1 bg-emerald-500 mt-1 shrink-0" />{" "}
+                      <li className="text-[14px] text-gray-400 flex items-center gap-2">
+                        <div className="w-1 h-1 bg-emerald-500 shrink-0" />{" "}
                         Only IR or Optical sensors permitted
                       </li>
                     </>
                   )}
-                  <li className="text-[10px] text-rose-500/80 italic flex gap-2">
-                    <Scale className="w-3 h-3 shrink-0" /> Rules are subject to
+                  <li className="text-[14px] text-rose-500/80 italic flex items-center   gap-2">
+                    <Scale className="w-4 h-4 shrink-0" /> Rules are subject to
                     change at organizers' discretion
                   </li>
                 </ul>
@@ -434,10 +434,10 @@ export default function RoboticsPS() {
             {/* RIGHT: PRIZES & ACTION */}
             <div className="lg:col-span-3 space-y-6">
               <div className="p-6 bg-white/5 border border-white/10 rounded-xl relative group">
-                <h3 className="text-[10px] font-black tracking-[0.2em] mb-4 uppercase text-rose-500 flex items-center gap-2">
+                <h3 className="text-[14px] font-black tracking-[0.2em] mb-4 uppercase text-rose-500 flex items-center gap-2">
                   <Info className="w-3 h-3" /> System_Overview
                 </h3>
-                <p className="text-[11px] text-gray-400 leading-relaxed italic group-hover:text-gray-200 transition-colors">
+                <p className="text-[13px] text-gray-400 leading-relaxed italic group-hover:text-gray-200 transition-colors">
                   {active.philosophy}
                 </p>
               </div>
@@ -466,7 +466,7 @@ export default function RoboticsPS() {
                       key={i}
                       className="flex justify-between items-center border-b border-black/10 pb-1"
                     >
-                      <span className="text-[10px] font-bold uppercase">
+                      <span className="text-[12px] font-bold uppercase">
                         {p.name}
                       </span>
                       <span className="text-sm font-black italic">
@@ -492,7 +492,7 @@ export default function RoboticsPS() {
               <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl">
                 <div className="flex items-center gap-3 text-rose-500">
                   <AlertTriangle className="w-5 h-5 shrink-0" />
-                  <span className="text-[8px] uppercase font-bold leading-tight">
+                  <span className="text-[10px] uppercase font-bold leading-tight">
                     Safety protocols mandatory. Non-compliance results in
                     immediate disqualification.
                   </span>

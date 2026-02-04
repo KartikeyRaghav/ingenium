@@ -113,14 +113,14 @@ export default function SolveXBioPS() {
               className="flex items-center gap-2 text-emerald-400 hover:text-white transition-colors group"
             >
               <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              <span className="text-[10px] tracking-[0.4em] uppercase font-bold text-emerald-500/80">
+              <span className="text-[12px] tracking-[0.4em] uppercase font-bold text-emerald-500/80">
                 Return to Events
               </span>
             </button>
             <h1 className="text-5xl md:text-6xl font-black tracking-tighter text-white uppercase italic">
               SolveX<span className="text-emerald-500">Bio</span>
             </h1>
-            <p className="text-[10px] text-emerald-500/60 tracking-[0.3em] uppercase">
+            <p className="text-[14px] text-emerald-500/60 tracking-[0.3em] uppercase">
               Biotech & Biomedical Problem-Solving Challenge
             </p>
           </div>
@@ -153,7 +153,7 @@ export default function SolveXBioPS() {
           {/* --- SIDEBAR: NAVIGATION & SCORING --- */}
           <div className="lg:col-span-4 space-y-6">
             <section>
-              <h3 className="text-[10px] text-emerald-500 uppercase tracking-widest mb-4 flex items-center gap-2 font-bold">
+              <h3 className="text-[14px] text-emerald-500 uppercase tracking-widest mb-4 flex items-center gap-2 font-bold">
                 <Microscope className="w-3 h-3" /> Select_Problem_Statement
               </h3>
               <div className="space-y-3">
@@ -174,10 +174,10 @@ export default function SolveXBioPS() {
                         {brief.icon}
                       </div>
                       <div>
-                        <p className="text-[9px] text-emerald-500/50 uppercase font-bold tracking-tighter">
+                        <p className="text-[11px] text-emerald-500/50 uppercase font-bold tracking-tighter">
                           PS_0{brief.id}
                         </p>
-                        <h4 className="text-sm font-bold text-white uppercase">
+                        <h4 className="text-lg font-bold text-white uppercase">
                           {brief.title}
                         </h4>
                       </div>
@@ -189,7 +189,7 @@ export default function SolveXBioPS() {
 
             {/* Judging Criteria Table */}
             <div className="p-6 bg-black/40 border border-emerald-500/20 rounded-2xl">
-              <h4 className="text-[10px] text-emerald-400 uppercase tracking-widest mb-4 flex items-center gap-2">
+              <h4 className="text-[14px] font-bold text-emerald-400 uppercase tracking-widest mb-4 flex items-center gap-2">
                 <ClipboardCheck className="w-3 h-3" /> Evaluation_Matrix (100
                 Marks)
               </h4>
@@ -224,10 +224,10 @@ export default function SolveXBioPS() {
 
             {/* Rules Module */}
             <div className="p-6 bg-emerald-950/20 border border-emerald-500/10 rounded-2xl space-y-4">
-              <h4 className="text-[10px] text-red-400 uppercase tracking-widest flex items-center gap-2 font-bold">
+              <h4 className="text-[14px] text-red-400 uppercase tracking-widest flex items-center gap-2 font-bold">
                 <AlertTriangle className="w-3 h-3" /> Compliance_Protocols
               </h4>
-              <ul className="space-y-3 text-[10px]">
+              <ul className="space-y-3 text-[12px]">
                 <li className="text-gray-400">
                   <span className="text-emerald-400 font-bold">
                     PREP PHASE:
@@ -267,25 +267,25 @@ export default function SolveXBioPS() {
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   <div className="space-y-4">
-                    <h5 className="text-[10px] text-emerald-500 uppercase tracking-widest border-b border-emerald-500/20 pb-2">
+                    <h5 className="text-[14px] text-emerald-500 uppercase tracking-widest border-b border-emerald-500/20 pb-2">
                       Contextual_Background
                     </h5>
-                    <p className="text-xs leading-relaxed text-gray-400 italic">
+                    <p className="text-sm leading-relaxed text-gray-400 italic">
                       "{medicalBriefs[activeTab].background}"
                     </p>
                   </div>
                   <div className="space-y-4">
-                    <h5 className="text-[10px] text-emerald-500 uppercase tracking-widest border-b border-emerald-500/20 pb-2">
+                    <h5 className="text-[14px] text-emerald-500 uppercase tracking-widest border-b border-emerald-500/20 pb-2">
                       The_Challenge
                     </h5>
-                    <p className="text-xs leading-relaxed text-emerald-50">
+                    <p className="text-sm leading-relaxed text-emerald-50">
                       {medicalBriefs[activeTab].challenge}
                     </p>
                   </div>
                 </div>
 
                 <div className="mb-8">
-                  <h5 className="text-[10px] text-emerald-500 uppercase tracking-widest mb-4">
+                  <h5 className="text-[14px] text-emerald-500 uppercase tracking-widest mb-4">
                     Technical_Specs & Requirements
                   </h5>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -294,10 +294,10 @@ export default function SolveXBioPS() {
                         key={i}
                         className="flex flex-col p-4 bg-emerald-500/5 border border-white/5 rounded-xl"
                       >
-                        <span className="text-[10px] font-bold text-emerald-400 uppercase mb-1">
+                        <span className="text-[14px] font-bold text-emerald-400 uppercase mb-1">
                           {req.label}
                         </span>
-                        <span className="text-[11px] text-gray-400">
+                        <span className="text-[13px] text-gray-400">
                           {req.desc}
                         </span>
                       </div>
@@ -307,13 +307,13 @@ export default function SolveXBioPS() {
 
                 <div className="flex flex-col md:flex-row gap-6 items-center border-t border-emerald-500/20 pt-8">
                   <div className="flex-1 space-y-3 w-full">
-                    <h5 className="text-[10px] text-emerald-500 uppercase tracking-widest flex items-center gap-2">
+                    <h5 className="text-[14px] text-emerald-500 uppercase tracking-widest flex items-center gap-2">
                       <FileText className="w-3 h-3" /> Required_Deliverables
                     </h5>
                     {medicalBriefs[activeTab].deliverables.map((item, i) => (
                       <div
                         key={i}
-                        className="flex items-center gap-3 text-[11px] text-gray-300"
+                        className="flex items-center gap-3 text-[13px] text-gray-300"
                       >
                         <div className="w-1 h-1 bg-emerald-500 rounded-full" />
                         {item}
@@ -346,7 +346,7 @@ export default function SolveXBioPS() {
                   <h3 className="text-sm font-black text-white uppercase tracking-[0.2em]">
                     SolveX_Bounty_Registry
                   </h3>
-                  <p className="text-[9px] text-emerald-500/60 uppercase">
+                  <p className="text-[11px] text-emerald-500/60 uppercase">
                     Reward Distribution per PS
                   </p>
                 </div>
@@ -366,7 +366,7 @@ export default function SolveXBioPS() {
                 </div>
 
                 <div className="px-6 py-4 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-center">
-                  <span className="text-[9px] text-emerald-500 uppercase block font-bold mb-1">
+                  <span className="text-[11px] text-emerald-500 uppercase block font-bold mb-1">
                     Total Pool
                   </span>
                   <span className="text-2xl font-black text-emerald-400 italic font-mono">
@@ -387,10 +387,10 @@ function HeaderTag({ icon, label, value }) {
     <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-xl">
       <div className="text-emerald-500">{icon}</div>
       <div>
-        <span className="text-[7px] text-gray-500 uppercase block leading-none mb-1">
+        <span className="text-[10px] text-gray-500 uppercase block leading-none mb-1">
           {label}
         </span>
-        <span className="text-[10px] font-bold text-white uppercase whitespace-nowrap">
+        <span className="text-[13px] font-bold text-white uppercase whitespace-nowrap">
           {value}
         </span>
       </div>
@@ -401,8 +401,8 @@ function HeaderTag({ icon, label, value }) {
 function RubricRow({ label, marks, desc }) {
   return (
     <div className="group space-y-1">
-      <div className="flex justify-between items-center text-[10px] border-b border-white/5 pb-1">
-        <span className="text-gray-400 uppercase font-bold">{label}</span>
+      <div className="flex justify-between items-center text-[13px] border-b border-white/5 pb-1">
+        <span className="text-gray-400 uppercase font-semibold">{label}</span>
         <span className="text-emerald-500 font-bold">{marks} Marks</span>
       </div>
       <p className="text-[9px] text-gray-500 italic hidden group-hover:block transition-all">
@@ -415,7 +415,7 @@ function RubricRow({ label, marks, desc }) {
 function BountyNode({ rank, amount, color }) {
   return (
     <div className="text-center">
-      <div className="text-[8px] text-emerald-500/70 uppercase mb-1 font-bold">
+      <div className="text-[10px] text-emerald-500/70 uppercase mb-1 font-bold">
         {rank}_Tier
       </div>
       <div className={`text-xl font-black ${color} italic font-mono`}>

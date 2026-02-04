@@ -54,20 +54,6 @@ export default function BattleOfBandsPS() {
 
   return (
     <div className="relative min-h-screen text-slate-100 font-mono p-4 md:p-8 overflow-hidden bg-black/30">
-      {/* Audio Waveform Background Decoration */}
-      <div className="absolute inset-0 pointer-events-none opacity-10">
-        <div className="flex items-end justify-center gap-1 h-full pb-20">
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="w-4 bg-purple-500 rounded-t-full"
-              animate={{ height: ["10%", "60%", "20%", "80%", "10%"] }}
-              transition={{ duration: 2, repeat: Infinity, delay: i * 0.1 }}
-            />
-          ))}
-        </div>
-      </div>
-
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* --- AMPLIFIED HEADER --- */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 border-b border-purple-500/20 pb-8">
@@ -77,14 +63,14 @@ export default function BattleOfBandsPS() {
               className="flex items-center gap-2 text-purple-400 mb-4"
             >
               <ChevronLeft className="w-4 h-4" />
-              <span className="text-[10px] tracking-[0.5em] uppercase font-bold">
+              <span className="text-[12px] tracking-[0.5em] uppercase font-bold">
                 Return to Events
               </span>
             </button>
             <h1 className="text-5xl font-black tracking-tighter text-white uppercase italic">
               BATTLE <span className="text-purple-500">OF</span> BANDS
             </h1>
-            <p className="text-[10px] text-purple-400/60 mt-2 tracking-[0.3em] uppercase">
+            <p className="text-[12px] text-purple-400/60 mt-2 tracking-[0.3em] uppercase">
               Live Musical Expression & Strategic Synergy
             </p>
           </div>
@@ -115,7 +101,7 @@ export default function BattleOfBandsPS() {
             >
               <div className="absolute inset-0 w-full h-full bg-white/10 -skew-x-12 translate-x-full group-hover:translate-x-0 transition-transform duration-500" />
               <div className="relative flex items-center gap-3">
-                <span className="text-xs font-black tracking-[0.2em] text-white uppercase">
+                <span className="text-sm font-black tracking-[0.2em] text-white uppercase">
                   Register
                 </span>
                 <ExternalLink className="w-4 h-4 text-white" />
@@ -127,11 +113,11 @@ export default function BattleOfBandsPS() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* --- MISSION BRIEFING --- */}
           <div className="lg:col-span-4 space-y-6">
-            <h3 className="text-[10px] text-purple-500 uppercase tracking-widest mb-4 font-bold">
+            <h3 className="text-[12px] text-purple-500 uppercase tracking-widest mb-4 font-bold">
               Sonic_Context
             </h3>
             <div className="p-6 bg-purple-900/10 border border-purple-500/20 rounded-2xl backdrop-blur-xl">
-              <p className="text-sm leading-relaxed text-purple-100/80 mb-6 italic border-l-2 border-purple-500 pl-4">
+              <p className="text-md leading-relaxed text-purple-100/80 mb-6 italic border-l-2 border-purple-500 pl-4">
                 "Nurturing musical talent across genres, providing a platform
                 for creative expression and live exploration."
               </p>
@@ -144,7 +130,7 @@ export default function BattleOfBandsPS() {
 
             {/* Genre Spectrum */}
             <div className="p-6 bg-black/40 border border-white/5 rounded-2xl">
-              <h4 className="text-[10px] text-gray-500 uppercase tracking-widest mb-4 flex items-center gap-2 font-bold">
+              <h4 className="text-[12px] text-gray-500 uppercase tracking-widest mb-4 flex items-center gap-2 font-bold">
                 <Radio className="w-3 h-3" /> Frequency_Bands (Genres)
               </h4>
               <div className="flex flex-wrap gap-2 mb-4">
@@ -158,7 +144,7 @@ export default function BattleOfBandsPS() {
                 ].map((tag) => (
                   <span
                     key={tag}
-                    className="text-[9px] bg-white/5 px-2 py-1 rounded border border-white/10 text-purple-300 uppercase"
+                    className="text-[11px] bg-white/5 px-2 py-1 rounded border border-white/10 text-purple-300 uppercase"
                   >
                     {" "}
                     {tag}
@@ -194,7 +180,7 @@ export default function BattleOfBandsPS() {
                       onClick={() => setActivePhase(idx)}
                       className={`p-4 text-left border rounded-xl transition-all ${activePhase === idx ? "bg-purple-500/10 border-purple-500 shadow-[0_0_15px_rgba(168,85,247,0.3)]" : "bg-black/20 border-white/5 hover:border-white/20"}`}
                     >
-                      <div className="text-[8px] text-purple-500 mb-1 font-bold">
+                      <div className="text-[12px] text-purple-500 mb-1 font-bold">
                         PHASE_0{idx + 1}
                       </div>
                       <div className="text-xs font-bold text-white uppercase">
@@ -205,7 +191,7 @@ export default function BattleOfBandsPS() {
                 </div>
 
                 <div className="p-6 bg-purple-500/5 border-l-2 border-purple-500 rounded-r-xl mb-8">
-                  <p className="text-sm text-purple-100/80 leading-relaxed italic">
+                  <p className="text-md text-purple-100/80 leading-relaxed italic">
                     {competitionData.phases[activePhase].detail}
                   </p>
                 </div>
@@ -213,7 +199,7 @@ export default function BattleOfBandsPS() {
                 {/* Secondary CTA */}
                 <button
                   onClick={() => router.push(competitionData.registrationPath)}
-                  className="text-[10px] font-bold text-purple-400 uppercase tracking-[0.4em] hover:text-white transition-colors flex items-center gap-2 group"
+                  className="text-[12px] font-bold text-purple-400 uppercase tracking-[0.4em] hover:text-white transition-colors flex items-center gap-2 group"
                 >
                   Authorize band deployment to the mainstage{" "}
                   <ChevronRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
@@ -225,10 +211,10 @@ export default function BattleOfBandsPS() {
                 <div className="flex items-center gap-4">
                   <Zap className="w-8 h-8 text-purple-500/40 animate-pulse" />
                   <div>
-                    <div className="text-[10px] text-purple-500 uppercase font-bold tracking-widest">
+                    <div className="text-[12px] text-purple-500 uppercase font-bold tracking-widest">
                       Evaluation_Logic
                     </div>
-                    <div className="text-[11px] text-white uppercase italic">
+                    <div className="text-[13px] text-white uppercase italic">
                       Stage & Audio Synergy
                     </div>
                   </div>
@@ -253,7 +239,7 @@ export default function BattleOfBandsPS() {
                   <h3 className="text-lg font-black text-white uppercase tracking-[0.2em]">
                     Bounty_Registry
                   </h3>
-                  <p className="text-[10px] text-purple-500 uppercase tracking-widest italic font-bold">
+                  <p className="text-[12px] text-purple-500 uppercase tracking-widest italic font-bold">
                     Sonic_Excellence_Rewards
                   </p>
                 </div>
@@ -277,7 +263,7 @@ export default function BattleOfBandsPS() {
                 </div>
 
                 <div className="px-6 py-4 bg-purple-500/10 border border-purple-500/30 rounded-xl text-center min-w-35">
-                  <span className="text-[9px] text-purple-500 uppercase block font-bold mb-1">
+                  <span className="text-[11px] text-purple-500 uppercase block font-bold mb-1">
                     Total Pool
                   </span>
                   <span className="text-2xl font-black text-purple-400 italic">
@@ -300,10 +286,10 @@ function StatNode({ icon, label, value }) {
     <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-3 rounded-lg">
       <div className="text-purple-500">{icon}</div>
       <div>
-        <span className="text-[8px] text-gray-500 uppercase block leading-none mb-1 font-bold">
+        <span className="text-[10px] text-gray-500 uppercase block leading-none mb-1 font-bold">
           {label}
         </span>
-        <span className="text-xs font-bold text-white tracking-tighter uppercase">
+        <span className="text-sm font-bold text-white tracking-tighter uppercase">
           {value}
         </span>
       </div>
@@ -313,20 +299,18 @@ function StatNode({ icon, label, value }) {
 
 function ObjectiveItem({ text }) {
   return (
-    <div className="flex gap-3 items-center text-[10px] uppercase font-bold text-gray-400 group">
+    <div className="flex gap-3 items-center text-[12px] uppercase font-bold text-gray-400 group">
       <div className="w-1.5 h-1.5 rounded-full bg-purple-500 group-hover:scale-150 transition-transform" />
       <span className="group-hover:text-white transition-colors">{text}</span>
-      <span className="text-[7px] text-purple-500/30 font-mono"></span>
     </div>
   );
 }
 
 function EvaluationMetric({ label }) {
   return (
-    <div className="flex items-center gap-2 text-[9px] text-white/40 uppercase font-bold group">
+    <div className="flex items-center gap-2 text-[12px] text-white/40 uppercase font-bold group">
       <ChevronRight className="w-2 h-2 text-purple-500 group-hover:translate-x-1 transition-transform" />
       <span className="group-hover:text-white transition-colors">{label}</span>
-      <span className="text-[7px] text-purple-500/30"></span>
     </div>
   );
 }
@@ -334,13 +318,13 @@ function EvaluationMetric({ label }) {
 function BountyNode({ rank, amount, label }) {
   return (
     <div className="text-center group">
-      <div className="text-[8px] text-purple-500 uppercase mb-1 font-bold tracking-tighter">
+      <div className="text-[10px] text-purple-500 uppercase mb-1 font-bold tracking-tighter">
         {rank}_TIER
       </div>
       <div className="text-xl font-black text-white italic group-hover:scale-110 transition-transform">
         ₹{amount}
       </div>
-      <div className="text-[7px] text-purple-400/40 uppercase mt-1 font-bold">
+      <div className="text-[9px] text-purple-400/40 uppercase mt-1 font-bold">
         {label}
       </div>
     </div>

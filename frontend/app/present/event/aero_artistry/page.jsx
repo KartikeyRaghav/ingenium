@@ -67,7 +67,7 @@ export default function AeroAirtistryPS() {
                 className="flex items-center gap-2 text-blue-500 mb-2"
               >
                 <ChevronLeft className="w-4 h-4 animate-spin-slow" />
-                <span className="text-[10px] tracking-[0.5em] uppercase">
+                <span className="text-[12px] font-bold tracking-[0.5em] uppercase">
                   Return to Events
                 </span>
               </button>
@@ -137,7 +137,7 @@ export default function AeroAirtistryPS() {
 
               <SectionBox title="Scoring_Algorithm">
                 <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-xl mb-4">
-                  <code className="text-[10px] text-blue-300 wrap-break-word leading-loose">
+                  <code className="text-[12px] text-blue-300 wrap-break-word leading-loose">
                     {activeCategory === 1
                       ? "TOTAL = (Round_1_Pts) + [(Glide_Time_R3 * 2) - Penalties]"
                       : "TOTAL = Stage_1 + Stage_2 + Stage_3"}
@@ -158,7 +158,7 @@ export default function AeroAirtistryPS() {
 
               {activeCategory === 1 && (
                 <div className="p-6 bg-red-900/10 border border-red-500/30 rounded-2xl">
-                  <h4 className="text-[10px] text-red-400 uppercase mb-3 flex items-center gap-2">
+                  <h4 className="text-[12px] text-red-400 uppercase mb-3 flex items-center gap-2">
                     <AlertTriangle className="w-3 h-3" /> Critical_Penalties
                   </h4>
                   <ul className="text-[9px] space-y-2 text-red-200/60 uppercase mb-4">
@@ -251,7 +251,7 @@ function CategoryBtn({ active, onClick, label, icon }) {
       }`}
     >
       <span className="relative z-10">{icon}</span>
-      <span className="text-[10px] font-black tracking-[0.3em] relative z-10">
+      <span className="text-[12px] font-black tracking-[0.3em] relative z-10">
         {label}
       </span>
     </button>
@@ -275,9 +275,9 @@ function ConstraintRow({ icon, label, value }) {
     <div className="flex items-center justify-between py-2 border-b border-white/5">
       <div className="flex items-center gap-3 text-blue-400">
         {icon}
-        <span className="text-[10px] uppercase text-blue-200/50">{label}</span>
+        <span className="text-[12px] uppercase text-blue-200/50">{label}</span>
       </div>
-      <span className="text-[10px] text-white font-bold">{value}</span>
+      <span className="text-[12px] text-white font-bold">{value}</span>
     </div>
   );
 }
@@ -310,7 +310,7 @@ function PrizeSection() {
           className={`p-6 bg-linear-to-br ${p.color} to-transparent border border-white/10 rounded-2xl`}
         >
           <Trophy className="w-4 h-4 text-blue-400 mb-4" />
-          <div className="text-[10px] text-blue-500 uppercase tracking-tighter mb-1">
+          <div className="text-[12px] text-blue-500 uppercase tracking-tighter mb-1">
             {p.rank}_STATUS
           </div>
           <div className="text-3xl font-black text-white italic tracking-tighter">

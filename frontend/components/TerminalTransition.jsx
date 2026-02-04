@@ -38,13 +38,13 @@ export default function TerminalTransition({ children }) {
             <div className="relative w-full max-w-lg px-6">
               <div className="flex items-center gap-4 mb-2">
                 <div className="h-1 w-12 bg-blue-500 animate-pulse" />
-                <span className="text-blue-400 text-[10px] tracking-[0.3em] uppercase">
+                <span className="text-blue-400 text-[12px] tracking-[0.3em] uppercase">
                   Recalibrating Neural Link
                 </span>
               </div>
 
               {/* Fake Terminal Logs */}
-              <div className="space-y-1 text-blue-500/60 text-[9px] uppercase">
+              <div className="space-y-1 text-blue-500/60 text-[11px] uppercase">
                 <p className="animate-pulse"> {`> AUTH_KEY: VALIDATED`}</p>
                 <p className="opacity-40">
                   {" "}
