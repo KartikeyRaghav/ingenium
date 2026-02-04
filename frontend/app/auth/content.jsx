@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import api from "@/lib/api";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function AuthTerminal() {
   const [isLogin, setIsLogin] = useState(true);
@@ -28,6 +29,7 @@ export default function AuthTerminal() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [error, setError] = useState(null);
+  const { refreshUser } = useContext(AuthContext);
 
   const handleLoginSignup = async (e) => {
     e.preventDefault();
@@ -41,6 +43,7 @@ export default function AuthTerminal() {
         const res = await api.post("/user/signup", formData);
         localStorage.setItem("access_token", res.data.access_token);
       }
+      refreshUser();
       router.push(searchParams.get("path"));
     } catch (error) {
       console.log(error);

@@ -11,22 +11,16 @@ import {
   Cpu,
   ChevronLeft,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { EVENT_CONFIG } from "@/data/event_config";
 import { useRouter } from "next/navigation";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function ProfilePage() {
-  const [user, setUser] = useState(null);
   const [registrations, setRegistrations] = useState([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
+  const { logout, user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchRegistrations = async () => {
@@ -71,9 +65,7 @@ export default function ProfilePage() {
           className="flex items-center gap-2 text-blue-500 mb-2"
         >
           <ChevronLeft className="w-4 h-4 animate-spin-slow" />
-          <span className="text-[10px] tracking-[0.5em] uppercase">
-            Return
-          </span>
+          <span className="text-[10px] tracking-[0.5em] uppercase">Return</span>
         </button>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           {/* 1. Biometric Card */}
@@ -207,27 +199,16 @@ export default function ProfilePage() {
             </div>
 
             {/* Quick Actions Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { icon: Settings, label: "Settings" },
-                { icon: Cpu, label: "Nodes" },
-                { icon: Database, label: "Archive" },
-                {
-                  icon: LogOut,
-                  label: "Disconnect",
-                  color: "hover:border-red-500/50 hover:text-red-400",
-                },
-              ].map((action, i) => (
-                <button
-                  key={i}
-                  className={`p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-blue-500/10 transition-all group flex flex-col items-center gap-2 ${action.color || "hover:border-blue-500/50"}`}
-                >
-                  <action.icon className="w-5 h-5 text-gray-400 group-hover:text-blue-400 transition-colors" />
-                  <span className="text-[10px] uppercase tracking-tighter">
-                    {action.label}
-                  </span>
-                </button>
-              ))}
+            <div className="grid grid-cols-1 gap-4">
+              <button
+                onClick={logout}
+                className={`p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-blue-500/10 transition-all group flex flex-col items-center gap-2 hover:border-red-500/50 hover:text-red-400`}
+              >
+                <LogOut className="w-5 h-5 text-gray-400 group-hover:text-blue-400 transition-colors" />
+                <span className="text-[10px] uppercase tracking-tighter">
+                  Logout
+                </span>
+              </button>
             </div>
           </motion.div>
         </div>
