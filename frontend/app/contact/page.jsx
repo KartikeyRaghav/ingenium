@@ -17,6 +17,7 @@ const TechCorner = ({ className }) => (
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="square"
+      strokeLinejoin="round"
       className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
     />
     <path d="M2 2h10M2 2v10" stroke="currentColor" strokeWidth="2" />
@@ -39,7 +40,7 @@ export default function ContactPage() {
 
   return (
     <PageTransitionWrapper>
-      <main className="relative min-h-screen bg-black/30 overflow-hidden selection:bg-emerald-500/30">
+      <main className="relative min-h-screen bg-black/30 overflow-x-hidden selection:bg-emerald-500/30">
         {/* Advanced Background Grid: Perspective Plane */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-size-[40px_40px] mask-[radial-gradient(ellipse_at_center,black_40%,transparent_100%)] opacity-50" />
 
@@ -48,9 +49,9 @@ export default function ContactPage() {
 
         <div className="relative z-10 px-4 py-8 md:py-16">
           {/* Top Navigation Bar */}
-          <div className="max-w-7xl mx-auto mb-12 flex justify-between items-center border-b border-emerald-500/20 pb-4">
-            <Link href="/?state=navigation">
-              <button className="group flex items-center gap-3 text-emerald-400/80 hover:text-emerald-300 transition-colors uppercase text-xs tracking-[0.2em]">
+          <div className="max-w-7xl mx-auto mb-12 flex flex-col sm:flex-row justify-between items-center border-b border-emerald-500/20 pb-4 gap-4 sm:gap-0">
+            <Link href="/?state=navigation" className="w-full sm:w-auto">
+              <button className="group flex items-center justify-center sm:justify-start gap-3 text-emerald-400/80 hover:text-emerald-300 transition-colors uppercase text-xs tracking-[0.2em] w-full sm:w-auto">
                 <div className="w-8 h-8 rounded-full border border-emerald-500/30 flex items-center justify-center group-hover:bg-emerald-500/10 transition-all">
                   <svg
                     className="w-4 h-4"
@@ -76,21 +77,21 @@ export default function ContactPage() {
           </div>
 
           {/* Hero Section: Glitch & Terminal Style */}
-          <header className="max-w-7xl mx-auto mb-20 relative">
+          <header className="max-w-7xl mx-auto mb-16 md:mb-20 relative">
             <div className="absolute -left-4 top-0 bottom-0 w-1 bg-linear-to-b from-transparent via-emerald-500/50 to-transparent" />
 
-            <div className="pl-6 md:pl-10">
+            <div className="pl-4 md:pl-10">
               <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded border border-emerald-500/30 bg-emerald-500/5 backdrop-blur-sm">
                 <span className="text-[10px] font-mono text-emerald-300 tracking-widest uppercase">
                   Channel: Secure_Uplink
                 </span>
               </div>
 
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-transparent bg-clip-text bg-linear-to-r from-emerald-100 via-emerald-400 to-teal-500 font-sans">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-transparent bg-clip-text bg-linear-to-r from-emerald-100 via-emerald-400 to-teal-500 font-sans break-words">
                 TRANSMISSION <span className="text-emerald-500/50">HUB</span>
               </h1>
 
-              <p className="text-lg text-emerald-100/60 max-w-2xl font-light tracking-wide border-l-2 border-emerald-500/20 pl-4 py-2">
+              <p className="text-sm md:text-lg text-emerald-100/60 max-w-2xl font-light tracking-wide border-l-2 border-emerald-500/20 pl-4 py-2">
                 Initiating connection protocols. Select a frequency below to
                 establish communication with the{" "}
                 <span className="text-emerald-400 font-medium">INGENIUM</span>{" "}
@@ -100,16 +101,16 @@ export default function ContactPage() {
           </header>
 
           {/* SECTION 1: CORE COMMAND (The Core Team) */}
-          <section className="max-w-7xl mx-auto mb-24">
+          <section className="max-w-7xl mx-auto mb-20 md:mb-24">
             <div className="flex items-center gap-4 mb-8">
               <div className="h-px flex-1 bg-linear-to-r from-transparent via-emerald-500/30 to-transparent" />
-              <h2 className="text-sm font-mono text-emerald-400 tracking-[0.3em] uppercase">
+              <h2 className="text-xs md:text-sm font-mono text-emerald-400 tracking-[0.3em] uppercase text-center">
                 Core Command Manifest
               </h2>
               <div className="h-px flex-1 bg-linear-to-r from-transparent via-emerald-500/30 to-transparent" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {coreTeam.map((member, index) => (
                 <div key={index} className="group relative">
                   {/* Holographic Card Background */}
@@ -139,7 +140,7 @@ export default function ContactPage() {
                     {/* Hexagon Avatar */}
                     <div className="relative mb-6">
                       <div
-                        className="w-28 h-28 bg-emerald-950 clip-path-hexagon flex items-center justify-center relative z-10 border-2 border-emerald-500/30 group-hover:border-emerald-400 transition-colors"
+                        className="w-24 h-24 md:w-28 md:h-28 bg-emerald-950 clip-path-hexagon flex items-center justify-center relative z-10 border-2 border-emerald-500/30 group-hover:border-emerald-400 transition-colors"
                         style={{
                           clipPath:
                             "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
@@ -153,7 +154,7 @@ export default function ContactPage() {
                       <div className="absolute -inset-1 border border-dashed border-emerald-500/40 rounded-full animate-[spin_10s_linear_infinite]" />
                     </div>
 
-                    <h3 className="text-xl font-bold text-white tracking-wide mb-1 group-hover:text-emerald-300 transition-colors">
+                    <h3 className="text-lg md:text-xl font-bold text-white tracking-wide mb-1 group-hover:text-emerald-300 transition-colors">
                       {member.name}
                     </h3>
                     <div className="text-xs font-mono text-emerald-500 mb-4 px-2 py-0.5 bg-emerald-500/10 rounded border border-emerald-500/20">
@@ -178,18 +179,18 @@ export default function ContactPage() {
           </section>
 
           {/* SECTION 2: FIELD OPERATIVES (Coordinators) */}
-          <section className="max-w-7xl mx-auto mb-24">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-sans text-white tracking-wide flex items-center gap-3">
+          <section className="max-w-7xl mx-auto mb-20 md:mb-24">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 gap-4 sm:gap-0">
+              <h2 className="text-xl md:text-2xl font-sans text-white tracking-wide flex items-center gap-3">
                 <span className="w-1 h-8 bg-emerald-500"></span>
                 Field Operatives
               </h2>
-              <span className="text-xs font-mono text-emerald-500/50 border border-emerald-500/20 px-3 py-1 rounded-full">
+              <span className="text-xs font-mono text-emerald-500/50 border border-emerald-500/20 px-3 py-1 rounded-full self-start sm:self-auto">
                 {coordinators.length} UNITS ACTIVE
               </span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
               {coordinators.map((co, index) => (
                 <div
                   key={index}
@@ -200,11 +201,11 @@ export default function ContactPage() {
                   </div>
 
                   <div className="p-5 flex items-start gap-4">
-                    <div className="w-12 h-12 bg-linear-to-br from-emerald-500/20 to-transparent rounded flex items-center justify-center font-mono text-emerald-400 text-lg border border-emerald-500/20">
+                    <div className="w-10 h-10 md:w-12 md:h-12 bg-linear-to-br from-emerald-500/20 to-transparent rounded flex items-center justify-center font-mono text-emerald-400 text-lg border border-emerald-500/20 shrink-0">
                       {co.name.charAt(0)}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-white font-medium truncate group-hover:text-emerald-300 transition-colors">
+                      <h3 className="text-white font-medium truncate group-hover:text-emerald-300 transition-colors text-sm md:text-base">
                         {co.name}
                       </h3>
                       <p className="text-xs text-emerald-500/70 uppercase tracking-wider mb-2">
@@ -214,7 +215,7 @@ export default function ContactPage() {
                       <div className="flex items-center gap-2 mt-3">
                         <a
                           href={`mailto:${co.contact}`}
-                          className="text-xs flex items-center gap-2 px-3 py-1.5 bg-emerald-500/5 hover:bg-emerald-500/20 border border-emerald-500/20 rounded-md text-emerald-400 transition-all group-hover:w-full justify-center"
+                          className="text-xs flex items-center gap-2 px-3 py-1.5 bg-emerald-500/5 hover:bg-emerald-500/20 border border-emerald-500/20 rounded-md text-emerald-400 transition-all group-hover:w-full justify-center whitespace-nowrap"
                         >
                           <svg
                             className="w-3 h-3"
@@ -240,10 +241,10 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-7xl mx-auto">
             {/* Left: Interactive Info Panel */}
             <div className="lg:col-span-5 space-y-6">
-              <GlassPanel className="p-8 border-l-4 border-l-emerald-500 relative overflow-hidden">
+              <GlassPanel className="p-6 md:p-8 border-l-4 border-l-emerald-500 relative overflow-hidden">
                 <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-emerald-500/20 blur-xl rounded-full" />
 
-                <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <h3 className="text-lg md:text-xl font-bold text-white mb-6 flex items-center gap-2">
                   <svg
                     className="w-5 h-5 text-emerald-400"
                     fill="none"
@@ -255,7 +256,7 @@ export default function ContactPage() {
                   H.Q. Coordinates
                 </h3>
 
-                <div className="space-y-6 font-mono text-sm">
+                <div className="space-y-4 md:space-y-6 font-mono text-xs md:text-sm">
                   <div className="group flex items-start gap-4 p-3 hover:bg-emerald-500/5 rounded transition-colors cursor-crosshair">
                     <span className="text-emerald-500/50">LOC:</span>
                     <div>
@@ -268,7 +269,7 @@ export default function ContactPage() {
 
                   <div className="group flex items-start gap-4 p-3 hover:bg-emerald-500/5 rounded transition-colors cursor-pointer">
                     <span className="text-emerald-500/50">COM:</span>
-                    <div>
+                    <div className="break-all">
                       <p className="text-emerald-300">contact@ingenium.in</p>
                       <p className="text-emerald-500/60">Encrypted Channel</p>
                     </div>
@@ -279,7 +280,7 @@ export default function ContactPage() {
                   <p className="text-xs text-emerald-500/40 mb-4 uppercase tracking-widest">
                     Secure Frequencies
                   </p>
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 flex-wrap">
                     {socialLinks.map((link, i) => (
                       <a
                         key={i}
@@ -311,8 +312,8 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div className="p-8">
-                  <h3 className="text-emerald-400 font-mono mb-6 text-sm">
+                <div className="p-4 md:p-8">
+                  <h3 className="text-emerald-400 font-mono mb-6 text-sm break-all">
                     <span className="text-emerald-600 mr-2">$</span>
                     initiate_newsletter_sequence.exe
                   </h3>
@@ -322,15 +323,15 @@ export default function ContactPage() {
                       // Enter your designation to receive updates...
                     </p>
                     <div className="relative group">
-                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-emerald-500/50 font-mono">
+                      <div className="absolute inset-y-0 left-0 pl-3 md:pl-4 flex items-center pointer-events-none text-emerald-500/50 font-mono">
                         {">"}
                       </div>
                       <input
                         type="email"
-                        className="w-full bg-emerald-950/30 border border-emerald-500/30 rounded-none py-4 pl-10 pr-32 text-emerald-300 placeholder-emerald-800 font-mono focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400/50 transition-all"
+                        className="w-full bg-emerald-950/30 border border-emerald-500/30 rounded-none py-3 md:py-4 pl-8 md:pl-10 pr-24 md:pr-32 text-sm md:text-base text-emerald-300 placeholder-emerald-800 font-mono focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400/50 transition-all"
                         placeholder="email_address..."
                       />
-                      <button className="absolute right-2 top-2 bottom-2 px-6 bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs tracking-wider uppercase transition-colors">
+                      <button className="absolute right-1 md:right-2 top-1 md:top-2 bottom-1 md:bottom-2 px-3 md:px-6 bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-[10px] md:text-xs tracking-wider uppercase transition-colors">
                         Execute
                       </button>
                     </div>
