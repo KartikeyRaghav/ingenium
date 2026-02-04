@@ -30,7 +30,7 @@ export default function PresentPage() {
     <PageTransitionWrapper>
       <div className="max-w-7xl mx-auto py-12 px-6">
         {/* --- HEADER HUD --- */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-8 border-b border-blue-500/20 pb-6 gap-4">
+        <div className="flex flex-col md:flex-row justify-between md:items-end mb-8 border-b border-blue-500/20 pb-6 gap-4">
           <div>
             <button
               onClick={() => router.push(`/?state=navigation`)}
@@ -43,11 +43,8 @@ export default function PresentPage() {
                 Back to Navigation
               </span>
             </button>
-            <h1 className="text-4xl font-black text-white tracking-tighter uppercase italic flex items-center gap-3">
-              Mission <span className="text-blue-500">Manifest</span>
-              <span className="text-[10px] not-italic font-mono text-blue-500/40 border border-blue-500/20 px-2 py-1 rounded">
-                v3.0.1
-              </span>
+            <h1 className="text-4xl font-black text-white tracking-tighter uppercase italic flex items-center">
+              Competiton<span className="text-blue-500">s</span>
             </h1>
           </div>
           <div className="text-right font-mono hidden md:block">

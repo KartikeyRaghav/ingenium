@@ -160,7 +160,7 @@ export default function LandingPage({ onNavigate }) {
       <div className="warp-flash absolute inset-0 bg-white opacity-0 pointer-events-none z-50" />
 
       {/* --- TOP LEFT HEADING (Event Name) --- */}
-      <div className="absolute top-8 left-8 z-30 pointer-events-none mix-blend-screen hidden md:block">
+      <div className="absolute top-8 left-8 z-30 pointer-events-none mix-blend-screen hidden sm:block">
         <h2
           className="text-2xl font-bold tracking-widest text-blue-100/80 uppercase"
           style={{ fontFamily: "Oxanium, sans-serif" }}
@@ -170,7 +170,7 @@ export default function LandingPage({ onNavigate }) {
       </div>
 
       {/* --- TOP RIGHT HEADING (College Name) --- */}
-      <div className="absolute top-8 right-8 z-30 pointer-events-none mix-blend-screen hidden md:block">
+      <div className="absolute top-8 right-8 z-30 pointer-events-none mix-blend-screen hidden sm:block">
         <h2
           className="text-2xl font-bold tracking-widest text-blue-100/80 uppercase"
           style={{ fontFamily: "Oxanium, sans-serif" }}
@@ -231,11 +231,11 @@ export default function LandingPage({ onNavigate }) {
       {/* --- CONTENT OVERLAY --- */}
       <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none">
         {/* Title Group */}
-        <div className="text-center mb-8 mix-blend-screen space-y-4">
+        <div className="text-center mb-2 sm:mb-8 mix-blend-screen space-y-4">
           {/* Top Tag: IIT Indore */}
           <p
             ref={tagRef}
-            className="text-xs md:text-sm text-blue-300/60 font-mono tracking-[0.3em] uppercase border-b border-blue-500/20 pb-2 inline-block"
+            className="text-xs sm:text-sm text-blue-300/60 font-mono tracking-[0.3em] uppercase border-b border-blue-500/20 pb-2 inline-block"
           >
             IIT Indore • Techno-Cultural Fest
           </p>
@@ -243,7 +243,7 @@ export default function LandingPage({ onNavigate }) {
           {/* Main Title: INGENIUM (Decoded) */}
           <h1
             ref={titleRef}
-            className="block text-7xl md:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-white via-blue-100 to-blue-900 drop-shadow-[0_0_30px_rgba(59,130,246,0.5)]"
+            className="block text-7xl sm:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-b from-white via-blue-100 to-blue-900 drop-shadow-[0_0_30px_rgba(59,130,246,0.5)]"
             style={{ fontFamily: "Oxanium, sans-serif" }}
           >
             {/* {"INGENIUM".split("").map((char, i) => (
@@ -255,18 +255,18 @@ export default function LandingPage({ onNavigate }) {
           {/* Subtitle: Chronoverse */}
           <div
             ref={subtitleRef}
-            className="flex items-center justify-center gap-4"
+            className="flex mt-20 sm:mt-0 items-center justify-center gap-4"
           >
-            <div className="h-px w-8 md:w-12 bg-linear-to-r from-transparent to-blue-500" />
-            <span className="text-sm md:text-lg font-light text-blue-200 tracking-[0.2em] uppercase">
-              CHRONOVERSE: Past, Present, Future
+            <div className="h-px w-8 sm:w-12 bg-linear-to-r from-transparent to-blue-500" />
+            <span className="text-sm flex flex-col sm:flex-row sm:text-lg font-light text-blue-200 tracking-[0.2em] uppercase">
+              CHRONOVERSE: <div>Past, Present, Future</div>
             </span>
-            <div className="h-px w-8 md:w-12 bg-linear-to-l from-transparent to-blue-500" />
+            <div className="h-px w-8 sm:w-12 bg-linear-to-l from-transparent to-blue-500" />
           </div>
         </div>
 
         {/* CTA Interaction Zone */}
-        <div ref={ctaRef} className="mt-12 pointer-events-auto">
+        <div ref={ctaRef} className="mt-0 sm:mt-12 pointer-events-auto">
           <button
             onClick={handleEnter}
             className="group relative px-12 py-5 bg-transparent overflow-hidden cursor-pointer"

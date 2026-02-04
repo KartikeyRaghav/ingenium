@@ -88,7 +88,7 @@ export default function MatiksPS() {
               <div className="bg-rose-500 p-2 rounded-sm shadow-[0_0_15px_rgba(244,63,94,0.5)]">
                 <Sigma className="w-8 h-8 text-black" />
               </div>
-              <h1 className="text-5xl font-black tracking-tighter text-white uppercase">
+              <h1 className="text-4xl sm:text-5xl font-black tracking-tighter text-white uppercase">
                 Matiks <span className="text-rose-500 italic">Tournament</span>
               </h1>
             </div>
