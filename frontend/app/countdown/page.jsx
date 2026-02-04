@@ -27,7 +27,6 @@ function calculateTimeLeft() {
 // --- Sub-Components for Advanced UI ---
 const EventHorizon = () => {
   const containerRef = useRef(null);
-  const textRef = useRef(null);
 
   useEffect(() => {
     const tl = gsap.timeline();
@@ -35,7 +34,7 @@ const EventHorizon = () => {
       .fromTo(
         ".glitch-text",
         { scale: 0.8, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 1.5, ease: "expo.out" },
+        { scale: 1, opacity: 1, duration: 1.5, ease: "expo.out" }
       )
       .to(".energy-beam", {
         height: "100vh",
@@ -49,9 +48,9 @@ const EventHorizon = () => {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 flex flex-col items-center justify-center bg-black/30 opacity-0 px-65"
+      className="fixed inset-0 flex flex-col items-center justify-center bg-black/30 opacity-0 px-4 md:px-0"
     >
-      <Link href="/?state=navigation" className="z-20 mb-10 self-start">
+      <Link href="/?state=navigation" className="z-20 mb-10 self-start absolute top-6 left-6 md:relative md:top-auto md:left-auto">
         <button className="group flex items-center gap-3 text-cyan-400/70 hover:text-cyan-200 transition-colors uppercase text-xs tracking-[0.2em]">
           <div className="w-8 h-8 rounded-full border border-cyan-500/30 flex items-center justify-center group-hover:bg-cyan-500/10 transition-all">
             <svg
@@ -68,25 +67,25 @@ const EventHorizon = () => {
               />
             </svg>
           </div>
-          <span>Return to Chronoverse</span>
+          <span className="hidden sm:inline">Return to Chronoverse</span>
+          <span className="sm:hidden">Back</span>
         </button>
       </Link>
-      <div className="relative text-center z-10">
+      <div className="relative text-center z-10 w-full max-w-4xl">
         <div className="absolute -inset-10 bg-cyan-500/20 blur-[100px] animate-pulse" />
-        <h2 className="glitch-text text-6xl md:text-9xl font-black text-white tracking-widest mb-4">
-          INGENIUM <span className="text-cyan-400">ONLINE</span>
+        <h2 className="glitch-text text-4xl sm:text-6xl md:text-9xl font-black text-white tracking-widest mb-4 break-words">
+          INGENIUM <span className="text-cyan-400 block sm:inline">ONLINE</span>
         </h2>
         <div className="h-px w-full bg-linear-to-r from-transparent via-cyan-500 to-transparent mb-8" />
-        <p className="text-cyan-400 font-mono tracking-[0.5em] animate-bounce">
+        <p className="text-cyan-400 font-mono text-xs sm:text-base tracking-[0.2em] sm:tracking-[0.5em] animate-bounce px-2">
           TEMPORAL ANOMALY DETECTED // PROTOCOL ACTIVATED
         </p>
-
       </div>
-        <Link href="/present" className="z-20">
-          <button className="mt-12 px-12 py-4 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black transition-all duration-500 font-mono uppercase tracking-[0.3em] shadow-[0_0_20px_rgba(6,182,212,0.4)]">
-            Enter the Event
-          </button>
-        </Link>
+      <Link href="/present" className="z-20">
+        <button className="mt-12 px-8 py-3 sm:px-12 sm:py-4 border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black transition-all duration-500 font-mono uppercase text-sm sm:text-base tracking-[0.3em] shadow-[0_0_20px_rgba(6,182,212,0.4)]">
+          Enter the Event
+        </button>
+      </Link>
     </div>
   );
 };
@@ -116,7 +115,7 @@ function ReactorRing({ value, max, label, delay }) {
   const progress = (value / max) * circumference;
 
   return (
-    <div className="relative group flex flex-col items-center justify-center p-4">
+    <div className="relative group flex flex-col items-center justify-center p-2 sm:p-4">
       {/* Container Box with Tech Borders */}
       <div className="absolute inset-0 bg-cyan-950/10 border border-cyan-500/20 rounded-xl backdrop-blur-sm -skew-x-3 transform transition-all group-hover:bg-cyan-900/20 group-hover:border-cyan-400/50" />
 
@@ -124,7 +123,7 @@ function ReactorRing({ value, max, label, delay }) {
       <TechCorner className="bottom-2 right-2 rotate-180" />
 
       {/* The Reactor Visualization */}
-      <div className="relative w-40 h-40 md:w-48 md:h-48 flex items-center justify-center z-10">
+      <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 flex items-center justify-center z-10">
         {/* Outer Rotating Gear (Decorative) */}
         <div className="absolute inset-0 border border-dashed border-cyan-500/20 rounded-full animate-[spin_10s_linear_infinite]" />
 
@@ -132,11 +131,14 @@ function ReactorRing({ value, max, label, delay }) {
         <div className="absolute inset-4 border border-dotted border-blue-500/30 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
 
         {/* Progress SVG */}
-        <svg className="absolute inset-0 w-full h-full -rotate-90 drop-shadow-[0_0_10px_rgba(6,182,212,0.5)]">
+        <svg
+          className="absolute inset-0 w-full h-full -rotate-90 drop-shadow-[0_0_10px_rgba(6,182,212,0.5)]"
+          viewBox="0 0 160 160" // Explicit viewBox to ensure scaling works
+        >
           {/* Background Track */}
           <circle
-            cx="50%"
-            cy="50%"
+            cx="80"
+            cy="80"
             r={radius}
             fill="none"
             stroke="rgba(6, 182, 212, 0.1)"
@@ -144,13 +146,13 @@ function ReactorRing({ value, max, label, delay }) {
           />
           {/* Active Progress Bar */}
           <circle
-            cx="50%"
-            cy="50%"
+            cx="80"
+            cy="80"
             r={radius}
             fill="none"
             stroke="url(#cyanGradient)"
             strokeWidth="6"
-            strokeLinecap="butt" // "Butt" looks more mechanical than "round"
+            strokeLinecap="butt"
             strokeDasharray={`${circumference} ${circumference}`}
             strokeDashoffset={circumference - progress}
             className="transition-all duration-1000 ease-out"
@@ -165,10 +167,10 @@ function ReactorRing({ value, max, label, delay }) {
 
         {/* Digital Value Display */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-5xl md:text-6xl font-bold font-mono tracking-tighter text-white drop-shadow-[0_0_15px_rgba(34,211,238,0.8)]">
+          <span className="text-3xl sm:text-5xl md:text-6xl font-bold font-mono tracking-tighter text-white drop-shadow-[0_0_15px_rgba(34,211,238,0.8)]">
             {String(value).padStart(2, "0")}
           </span>
-          <span className="text-[10px] md:text-xs text-cyan-400/80 font-mono uppercase tracking-[0.3em] mt-2 bg-cyan-950/50 px-2 py-0.5 rounded border border-cyan-500/30">
+          <span className="text-[9px] sm:text-[10px] md:text-xs text-cyan-400/80 font-mono uppercase tracking-[0.3em] mt-1 sm:mt-2 bg-cyan-950/50 px-2 py-0.5 rounded border border-cyan-500/30">
             {label}
           </span>
         </div>
@@ -186,13 +188,18 @@ function ReactorRing({ value, max, label, delay }) {
 
 // Data Panel Component (Fake Telemetry)
 const TelemetryPanel = ({ label, value, status, color = "text-cyan-400" }) => (
-  <div className="hidden md:flex flex-col p-3 bg-black/40 border-l-2 border-cyan-500/30 backdrop-blur-md">
-    <span className="text-[9px] text-cyan-500/50 font-mono uppercase tracking-widest mb-1">
+  // Removed 'hidden' to make it responsive (show on mobile in grid)
+  <div className="flex flex-col p-2 sm:p-3 bg-black/40 border-l-2 border-cyan-500/30 backdrop-blur-md min-w-[120px]">
+    <span className="text-[8px] sm:text-[9px] text-cyan-500/50 font-mono uppercase tracking-widest mb-1">
       {label}
     </span>
-    <div className="flex items-end gap-2">
-      <span className={`text-xl font-mono leading-none ${color}`}>{value}</span>
-      <span className="text-[9px] text-cyan-500/40 font-mono">{status}</span>
+    <div className="flex flex-col sm:flex-row sm:items-end gap-1 sm:gap-2">
+      <span className={`text-base sm:text-xl font-mono leading-none ${color}`}>
+        {value}
+      </span>
+      <span className="text-[8px] sm:text-[9px] text-cyan-500/40 font-mono">
+        {status}
+      </span>
     </div>
   </div>
 );
@@ -243,7 +250,7 @@ export default function TimeCorePage() {
     <PageTransitionWrapper>
       <main
         ref={mainContentRef}
-        className="relative min-h-screen bg-black/30 overflow-hidden flex flex-col items-center justify-center"
+        className="relative min-h-screen bg-black/30 overflow-x-hidden flex flex-col items-center justify-center py-10 md:py-0"
       >
         {/* If expired, show the EventHorizon overlay */}
         {timeLeft.expired ? (
@@ -254,12 +261,12 @@ export default function TimeCorePage() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.15)_0%,transparent_60%)] animate-pulse-slow" />
             <div className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.05)_1px,transparent_1px)] bg-size-[60px_60px] opacity-30 mask-[radial-gradient(ellipse_at_center,black_40%,transparent_100%)]" />
 
-            {/* Main Content (Wrapped in opacity control for transition) */}
+            {/* Main Content */}
             <div
               className={`relative z-10 w-full max-w-7xl mx-auto px-4 flex flex-col items-center transition-opacity duration-1000 ${timeLeft.expired ? "opacity-0 scale-95" : "opacity-100"}`}
             >
               {/* Top Header */}
-              <div className="absolute top-0 left-0 w-full px-6 py-8 flex justify-between items-start">
+              <div className="absolute top-0 left-0 w-full px-4 sm:px-6 py-4 sm:py-8 flex justify-between items-start z-50">
                 <Link href="/?state=navigation">
                   <button className="group flex items-center gap-3 text-cyan-400/70 hover:text-cyan-200 transition-colors uppercase text-xs tracking-[0.2em]">
                     <div className="w-8 h-8 rounded-full border border-cyan-500/30 flex items-center justify-center group-hover:bg-cyan-500/10 transition-all">
@@ -277,12 +284,15 @@ export default function TimeCorePage() {
                         />
                       </svg>
                     </div>
-                    <span>Return to Chronoverse</span>
+                    <span className="hidden sm:inline">
+                      Return to Chronoverse
+                    </span>
+                    <span className="sm:hidden">Back</span>
                   </button>
                 </Link>
 
                 <div className="flex flex-col items-end gap-1">
-                  <div className="flex items-center gap-2 text-[10px] font-mono text-cyan-500">
+                  <div className="flex items-center gap-2 text-[8px] sm:text-[10px] font-mono text-cyan-500">
                     <span
                       className={`w-2 h-2 rounded-full ${timeLeft.expired ? "bg-red-500" : "bg-cyan-400 animate-ping"}`}
                     />
@@ -294,18 +304,17 @@ export default function TimeCorePage() {
               </div>
 
               {/* Title Section */}
-              <div className="text-center mb-16 relative">
-                <h1 className="text-5xl md:text-8xl font-black text-white tracking-tighter drop-shadow-[0_0_25px_rgba(6,182,212,0.4)]">
+              <div className="text-center mt-12 sm:mt-0 mb-8 sm:mb-16 relative w-full">
+                <h1 className="text-4xl sm:text-6xl md:text-8xl font-black text-white tracking-tighter drop-shadow-[0_0_25px_rgba(6,182,212,0.4)]">
                   INGENIUM
-                  <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-600">
-                    {" "}
+                  <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-600 block sm:inline sm:ml-4">
                     26
                   </span>
                 </h1>
               </div>
 
               {/* Reactor Rings */}
-              <div className="flex flex-wrap justify-center gap-6 md:gap-12 mb-16">
+              <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-12 mb-8 sm:mb-16 w-full max-w-[340px] sm:max-w-none">
                 <ReactorRing
                   value={timeLeft.days}
                   max={365}
@@ -333,12 +342,14 @@ export default function TimeCorePage() {
               </div>
 
               {/* Telemetry Deck */}
-              <div className="w-full max-w-4xl grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+              <div className="w-full max-w-[90%] md:max-w-4xl grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8 sm:mb-12">
                 <TelemetryPanel
                   label="Core Temp"
                   value={timeLeft.expired ? "OVERHEAT" : "4,500 K"}
                   status={timeLeft.expired ? "CRITICAL" : "STABLE"}
-                  color={timeLeft.expired ? "text-red-500" : "text-cyan-400"}
+                  color={
+                    timeLeft.expired ? "text-red-500" : "text-cyan-400"
+                  }
                 />
                 <TelemetryPanel
                   label="Flux Capacitor"
@@ -359,10 +370,10 @@ export default function TimeCorePage() {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col md:flex-row gap-6 relative z-20">
-                <Link href="/present">
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 relative z-20 w-full max-w-md sm:max-w-none px-6 sm:px-0">
+                <Link href="/present" className="w-full sm:w-auto">
                   <button
-                    className="px-8 py-4 bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500 hover:text-black hover:shadow-[0_0_30px_rgba(6,182,212,0.6)] transition-all duration-300 font-mono text-sm uppercase tracking-widest clip-path-polygon"
+                    className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500 hover:text-black hover:shadow-[0_0_30px_rgba(6,182,212,0.6)] transition-all duration-300 font-mono text-xs sm:text-sm uppercase tracking-widest clip-path-polygon"
                     style={{
                       clipPath:
                         "polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px)",
@@ -372,8 +383,8 @@ export default function TimeCorePage() {
                   </button>
                 </Link>
 
-                <Link href="/contact">
-                  <button className="px-8 py-4 bg-transparent border border-cyan-500/20 text-cyan-500/60 hover:text-cyan-400 hover:border-cyan-400 transition-all font-mono text-sm uppercase tracking-widest">
+                <Link href="/contact" className="w-full sm:w-auto">
+                  <button className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-transparent border border-cyan-500/20 text-cyan-500/60 hover:text-cyan-400 hover:border-cyan-400 transition-all font-mono text-xs sm:text-sm uppercase tracking-widest">
                     Establish Comms
                   </button>
                 </Link>
