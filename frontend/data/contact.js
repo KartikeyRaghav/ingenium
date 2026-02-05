@@ -87,7 +87,7 @@ export const team = [
     instagram: "https://www.instagram.com/thecampuslens_",
   },
   {
-    name: "Charmee VipulKumar Thakkar ",
+    name: "Charmee VipulKumar Thakkar",
     email: "bdes250809002@iiti.ac.in",
     team: "Creatives and Design",
     linkedin: "https://www.linkedin.com/in/charmee-thakkar-713a42377/",
@@ -136,7 +136,7 @@ export const team = [
     instagram: "https://www.instagram.com/suyashk343",
   },
   {
-    name: "Prakhar Shrivastava ",
+    name: "Prakhar Shrivastava",
     email: "che250008026@iiti.ac.in",
     team: "Marketing and Sponsorship",
     linkedin: "https://www.linkedin.com/in/prakhar-shrivastava-202838243",
@@ -255,7 +255,7 @@ export const team = [
     instagram: "https://www.instagram.com/chat_with_sam_07",
   },
   {
-    name: "Upendra Singh gurjar",
+    name: "Upendra Singh Gurjar",
     email: "ce250004049@iiti.ac.in",
     team: "Public Relations and Outreach",
     linkedin: "https://www.linkedin.com/in/upendra-singh-428705370",
@@ -290,7 +290,7 @@ export const team = [
     instagram: "https://www.instagram.com/omjain2402",
   },
   {
-    name: "Sonu kumar teli",
+    name: "Sonu Kumar Teli",
     email: "ce250004045@iiti.ac.in",
     team: "Public Relations and Outreach",
     linkedin: "https://www.linkedin.com/in/sonu-kumar-3bb719381",
@@ -360,7 +360,7 @@ export const team = [
     instagram: "https://www.instagram.com/krishnam_goyal_1307",
   },
   {
-    name: "Rudresh Kohade ",
+    name: "Rudresh Kohade",
     email: "me250003066@iiti.ac.in",
     team: "Public Relations and Outreach",
     linkedin: "https://www.linkedin.com/in/rudresh-kohade-a62532372",
@@ -550,7 +550,7 @@ export const team = [
     instagram: "https://www.instagram.com/vishruthi.vijey",
   },
   {
-    name: "Naresh choudhary",
+    name: "Naresh Choudhary",
     email: "cse250001052@iiti.ac.in",
     team: "Web Development",
     linkedin: "https://www.linkedin.com/in/naresh-choudhary-4731aa377/",
